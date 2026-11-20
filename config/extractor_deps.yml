@@ -1,0 +1,45 @@
+# Extractor dependency order. Downstream may read upstream normalized records only.
+version: 1
+
+order:
+  - discovery
+  - maps
+  - mobs
+  - items
+  - npcs
+  - map_connections   # needs maps + npcs
+  - spawns            # needs maps + mobs
+  - item_scripts      # needs items
+  - item_restrictions # needs items
+  - drops             # needs mobs + items + config resolver
+  - shops             # needs npcs + items
+  - quests            # needs npcs + items + mobs
+  - instances         # needs maps + npcs
+  - boxes             # needs items
+  - recipes           # needs items + npcs
+  - enchantments      # needs items + npcs
+  - item_relationships
+  - map_distances     # needs map_connections
+  - provenance
+  - sql_sync
+
+depends:
+  maps: [discovery]
+  mobs: [discovery]
+  items: [discovery]
+  npcs: [discovery, maps]
+  map_connections: [maps, npcs]
+  spawns: [maps, mobs]
+  item_scripts: [items]
+  item_restrictions: [items]
+  drops: [mobs, items]
+  shops: [npcs, items]
+  quests: [npcs, items, mobs]
+  instances: [maps, npcs]
+  boxes: [items]
+  recipes: [items, npcs]
+  enchantments: [items, npcs]
+  item_relationships: [items]
+  map_distances: [map_connections, maps]
+  provenance: []
+  sql_sync: [map_distances, provenance]

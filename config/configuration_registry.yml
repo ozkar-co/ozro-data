@@ -1,0 +1,59 @@
+# Conf keys that Effective Resolver must apply. Values read live from files; not hard-coded here.
+version: 1
+
+file: conf/import/battle_conf.txt
+# Also merge conf/battle/*.conf then import overrides (rAthena load order).
+
+rates:
+  drops:
+    - item_rate_common
+    - item_rate_common_boss
+    - item_rate_heal
+    - item_rate_heal_boss
+    - item_rate_use
+    - item_rate_use_boss
+    - item_rate_equip
+    - item_rate_equip_boss
+    - item_rate_card
+    - item_rate_card_boss
+    - item_rate_card_mvp
+    - item_rate_mvp
+    - item_rate_treasure
+  exp:
+    - base_exp_rate
+    - job_exp_rate
+    - mvp_exp_rate
+    - quest_exp_rate
+  hp:
+    - monster_hp_rate
+    - mvp_hp_rate
+
+# Observed OzRo import values at discovery time (verify on each run; do not trust this block as input):
+discovered_snapshot:
+  item_rate_common: 500
+  item_rate_heal: 1000
+  item_rate_use: 1000
+  item_rate_equip: 1500
+  item_rate_card: 1000
+  item_rate_card_boss: 10000
+  item_rate_card_mvp: 10000
+  item_rate_mvp: 500
+  base_exp_rate: 500
+  job_exp_rate: 500
+  mvp_exp_rate: 1000
+  quest_exp_rate: 300
+  monster_hp_rate: 200
+  mvp_hp_rate: 200
+
+connection_friction_weights:
+  warp: 1.0
+  kafra: 0.2
+  dungeon_tp: 0.5
+  airship: 1.5
+  boat: 1.2
+
+features_observed:
+  feature.barter: on
+  use_sql_db: no
+  renewal: true
+  packetver: 20211103

@@ -1,0 +1,61 @@
+paths:
+  rathena: /home/oz/Code/rathena
+  ozro_cli: /home/oz/Code/ozro-cli
+  # ozro-site is NOT a source of truth.
+
+server:
+  renewal: true
+  scripts_main: npc/re/scripts_main.conf
+  maps_conf: conf/maps_athena.conf
+  map_index: db/map_index.txt
+  use_sql_db: false
+
+db:
+  # Load order: base RE YAML, then import overrides.
+  base_dir: db/re
+  import_dir: db/import
+  item_files:
+    - db/re/item_db.yml
+    - db/re/item_db_equip.yml
+    - db/re/item_db_etc.yml
+    - db/re/item_db_usable.yml
+    - db/import/item_db.yml
+  mob_files:
+    - db/re/mob_db.yml
+    - db/import/mob_db.yml
+  other:
+    - db/re/quest_db.yml
+    - db/import/quest_db.yml
+    - db/re/instance_db.yml
+    - db/import/instance_db.yml
+    - db/re/item_group_db.yml
+    - db/import/item_group_db.yml
+    - db/re/item_combos.yml
+    - db/import/item_combos.yml
+    - db/re/item_enchant.yml
+    - db/import/item_enchant.yml
+    - db/re/produce_db.txt
+    - npc/barters.yml
+
+conf:
+  battle_import: conf/import/battle_conf.txt
+  battle_dir: conf/battle
+  map_import: conf/import/map_conf.txt
+  inter: conf/inter_athena.conf
+
+client:
+  grf_dir: tmp
+  grf_files:
+    - data.grf
+    - rdata.grf
+    - renewal2021.grf
+    - resources2021.grf
+    - gefenia.grf
+  patch_grf:
+    - patch/ozro.grf
+    - patch/ozro_fix.grf
+    - patch/gefenia.grf
+
+output:
+  reports_dir: reports
+  table_prefix: ozro_

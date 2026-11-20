@@ -1,0 +1,158 @@
+# Machine-readable source registry. Paths relative to paths.rathena / paths.ozro_cli.
+# Truth for transport/connections: warps + NPC scripts in rathena only.
+
+version: 1
+
+domains:
+  maps:
+    sources:
+      - kind: maps_conf
+        path: conf/maps_athena.conf
+        note: enabled map: lines only
+      - kind: map_index
+        path: db/map_index.txt
+      - kind: client_grf
+        repo: ozro_cli
+        note: presence of map resources in GRF/patch
+
+  map_connections:
+    sources:
+      - kind: warp_scripts
+        entry: npc/re/scripts_main.conf
+        via: [npc/scripts_warps.conf, npc/re/scripts_warps.conf]
+        note: warp portal lines
+      - kind: npc_scripts
+        entry: npc/re/scripts_main.conf
+        note: kafra, airport, boat, scripted warps; parse warp/warpparty/callfunc destinations
+      - kind: ozro_custom_warps
+        path: npc/custom/ozro/warps/
+        loaded_via: npc/scripts_custom.conf
+        note: F_OzroWarp (zeny + Blue Gemstone)
+
+  npcs:
+    sources:
+      - kind: npc_scripts
+        entry: npc/re/scripts_main.conf
+        note: all enabled npc:/import: recursively
+
+  mobs:
+    sources:
+      - kind: yaml
+        path: db/re/mob_db.yml
+      - kind: yaml_override
+        path: db/import/mob_db.yml
+      - kind: conf
+        path: conf/import/battle_conf.txt
+        keys: [monster_hp_rate, mvp_hp_rate, base_exp_rate, job_exp_rate, mvp_exp_rate]
+
+  spawns:
+    sources:
+      - kind: spawn_scripts
+        via: [npc/scripts_monsters.conf, npc/re/scripts_monsters.conf]
+      - kind: scripted_spawn
+        entry: npc/re/scripts_main.conf
+        note: monster/areamonster/boss_monster in scripts
+
+  items:
+    sources:
+      - kind: yaml
+        paths:
+          - db/re/item_db.yml
+          - db/re/item_db_equip.yml
+          - db/re/item_db_etc.yml
+          - db/re/item_db_usable.yml
+      - kind: yaml_override
+        path: db/import/item_db.yml
+
+  item_scripts:
+    sources:
+      - kind: item_yaml_script_fields
+        note: Script/EquipScript/UnEquipScript in item_db
+
+  item_restrictions:
+    sources:
+      - kind: item_yaml_flags
+      - kind: txt
+        path: db/re/item_noequip.txt
+      - kind: txt_override
+        path: db/import/item_noequip.txt
+
+  drops:
+    sources:
+      - kind: mob_yaml_drops
+        path: db/re/mob_db.yml
+      - kind: yaml_override
+        path: db/import/mob_db.yml
+      - kind: map_drops
+        path: db/re/map_drops.yml
+      - kind: conf
+        path: conf/import/battle_conf.txt
+        keys: [item_rate_*]
+
+  shops:
+    sources:
+      - kind: npc_shop
+        note: shop/cashshop/itemshop/pointshop/marketshop lines
+      - kind: barters
+        path: npc/barters.yml
+
+  quests:
+    sources:
+      - kind: yaml
+        path: db/re/quest_db.yml
+      - kind: yaml_override
+        path: db/import/quest_db.yml
+      - kind: npc_scripts
+        note: setquest/completequest/checkquest + ozro bounty/repeteables
+
+  instances:
+    sources:
+      - kind: yaml
+        path: db/re/instance_db.yml
+      - kind: yaml_override
+        path: db/import/instance_db.yml
+      - kind: npc_scripts
+        path: npc/re/instances/
+
+  boxes:
+    sources:
+      - kind: item_group
+        path: db/re/item_group_db.yml
+      - kind: yaml_override
+        path: db/import/item_group_db.yml
+
+  recipes:
+    sources:
+      - kind: produce_db
+        path: db/re/produce_db.txt
+      - kind: npc_scripts
+        note: crafting NPCs
+
+  enchantments:
+    sources:
+      - kind: yaml
+        path: db/re/item_enchant.yml
+      - kind: yaml_override
+        path: db/import/item_enchant.yml
+      - kind: npc_scripts
+        note: refine/enchant/socket NPCs
+
+  item_relationships:
+    sources:
+      - kind: yaml
+        path: db/re/item_combos.yml
+      - kind: yaml_override
+        path: db/import/item_combos.yml
+
+  client_resources:
+    sources:
+      - kind: grf
+        repo: ozro_cli
+        dir: tmp
+      - kind: grf
+        repo: ozro_cli
+        dir: patch
+
+non_sources:
+  - /home/oz/Code/ozro-site
+  - prior tools under ozro-cli/tools, ozro-site/tools, rathena/tools (failed designs)

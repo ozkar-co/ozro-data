@@ -1,0 +1,9 @@
+table_prefix: ozro_
+
+# Used from Etapa 5. Local docker or production DSN.
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: ozro
+  password: ozro
+  database: ozro_data
