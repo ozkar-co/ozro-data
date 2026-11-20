@@ -11,3 +11,7 @@ docker-data/
 .env
 *.log
 .DS_Store
+.cursor/
+.vscode/
+.claude/
+
