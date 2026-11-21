@@ -8,6 +8,8 @@ from .connections import extract_connections
 from .map_distances import extract_map_distances
 from .skills import extract_skills
 from .spawns import extract_spawns
+from .shops import extract_shops
+from .npc_scripts import extract_npc_scripts
 
 __all__ = [
     "extract_maps",
@@ -18,4 +20,6 @@ __all__ = [
     "extract_map_distances",
     "extract_skills",
     "extract_spawns",
+    "extract_shops",
+    "extract_npc_scripts",
 ]

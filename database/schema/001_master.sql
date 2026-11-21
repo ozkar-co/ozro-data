@@ -319,10 +319,17 @@ CREATE TABLE IF NOT EXISTS ozro_mob_drops (
 CREATE TABLE IF NOT EXISTS ozro_npc_shops (
   shop_id CHAR(40) NOT NULL PRIMARY KEY,
   npc_id VARCHAR(128) NOT NULL,
+  shop_name VARCHAR(128) NULL,
   shop_type VARCHAR(32) NOT NULL,
-  currency VARCHAR(32) NULL,
+  currency VARCHAR(64) NULL,
+  cost_item_id INT NULL,
+  cost_variable VARCHAR(64) NULL,
+  discount TINYINT(1) NULL,
+  script_path VARCHAR(512) NULL,
+  script_line INT NULL,
   provenance_id CHAR(40) NULL,
-  INDEX idx_shop_npc (npc_id)
+  INDEX idx_shop_npc (npc_id),
+  INDEX idx_shop_type (shop_type)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_npc_shop_items (
@@ -330,7 +337,40 @@ CREATE TABLE IF NOT EXISTS ozro_npc_shop_items (
   item_id INT NOT NULL,
   price INT NULL,
   stock INT NULL,
-  PRIMARY KEY (shop_id, item_id)
+  price_is_default TINYINT(1) NULL,
+  PRIMARY KEY (shop_id, item_id),
+  INDEX idx_shop_item (item_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_npc_shop_links (
+  link_id CHAR(40) NOT NULL PRIMARY KEY,
+  caller_npc_id VARCHAR(128) NULL,
+  target_name VARCHAR(128) NULL,
+  resolve_status VARCHAR(32) NOT NULL,
+  script_path VARCHAR(512) NULL,
+  script_line INT NULL,
+  provenance_id CHAR(40) NULL,
+  INDEX idx_shop_link_caller (caller_npc_id),
+  INDEX idx_shop_link_status (resolve_status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_npc_shop_link_shops (
+  link_id CHAR(40) NOT NULL,
+  shop_id CHAR(40) NOT NULL,
+  PRIMARY KEY (link_id, shop_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_npc_script_evidence (
+  evidence_id CHAR(40) NOT NULL PRIMARY KEY,
+  npc_id VARCHAR(128) NOT NULL,
+  script_path VARCHAR(512) NULL,
+  script_line INT NULL,
+  functions JSON NULL,
+  quest_ids JSON NULL,
+  mob_commands JSON NULL,
+  variable_count INT NULL,
+  provenance_id CHAR(40) NULL,
+  INDEX idx_npc_evidence_npc (npc_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_quests (

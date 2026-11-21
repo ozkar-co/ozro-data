@@ -76,6 +76,14 @@ def cmd_extract(args: argparse.Namespace) -> int:
         from extractors import extract_spawns
 
         summary = extract_spawns(ROOT)
+    elif domain == "shops":
+        from extractors import extract_shops
+
+        summary = extract_shops(ROOT)
+    elif domain == "npc_scripts":
+        from extractors import extract_npc_scripts
+
+        summary = extract_npc_scripts(ROOT)
     else:
         print(f"unknown domain: {domain}", file=sys.stderr)
         return 2
@@ -100,6 +108,8 @@ def main() -> int:
             "map_distances",
             "skills",
             "spawns",
+            "shops",
+            "npc_scripts",
         ],
         help="entity domain to extract",
     )

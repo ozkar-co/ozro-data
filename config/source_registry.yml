@@ -35,6 +35,23 @@ domains:
         entry: npc/re/scripts_main.conf
         note: all enabled npc:/import: recursively
 
+  shops:
+    sources:
+      - kind: shop_headers
+        entry: npc/re/scripts_main.conf
+        note: shop/cashshop/itemshop/pointshop/marketshop headers
+      - kind: callshop_links
+        entry: npc/re/scripts_main.conf
+        note: callshop literal/prefix → shop_id; barter names classified only
+      - kind: deferred
+        note: barter_db inventory, dynamic callshop arrays, buysell scripted
+
+  npc_scripts:
+    sources:
+      - kind: script_bodies
+        entry: npc/re/scripts_main.conf
+        note: Etapa 3 evidence → refine functions; after Skills
+
   mobs:
     sources:
       - kind: yaml
