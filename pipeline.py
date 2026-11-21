@@ -64,6 +64,10 @@ def cmd_extract(args: argparse.Namespace) -> int:
         from extractors import extract_connections
 
         summary = extract_connections(ROOT)
+    elif domain == "spawns":
+        from extractors import extract_spawns
+
+        summary = extract_spawns(ROOT)
     else:
         print(f"unknown domain: {domain}", file=sys.stderr)
         return 2
@@ -79,7 +83,7 @@ def main() -> int:
     p_ext = sub.add_parser("extract", help="Etapa 2+: extract a domain")
     p_ext.add_argument(
         "domain",
-        choices=["maps", "mobs", "items", "npcs", "map_connections"],
+        choices=["maps", "mobs", "items", "npcs", "map_connections", "spawns"],
         help="entity domain to extract",
     )
     p_ext.set_defaults(func=cmd_extract)
