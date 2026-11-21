@@ -147,10 +147,13 @@ domains:
     sources:
       - kind: yaml
         path: db/re/quest_db.yml
+        note: Id/Title/Targets/Drops/TimeLimit
       - kind: yaml_override
         path: db/import/quest_db.yml
-      - kind: npc_scripts
-        note: setquest/completequest/checkquest + ozro bounty/repeteables
+      - kind: npc_script_evidence
+        note: quest_ids from setquest/checkquest/… → npc_quest_links
+      - kind: deferred
+        note: script rewards/requirements; quest type; Location→map; ozro bounty
 
   instances:
     sources:

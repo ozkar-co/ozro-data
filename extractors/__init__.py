@@ -13,6 +13,7 @@ from .npc_scripts import extract_npc_scripts
 from .item_scripts import extract_item_scripts
 from .item_restrictions import extract_item_restrictions
 from .drops import extract_drops
+from .quests import extract_quests
 
 __all__ = [
     "extract_maps",
@@ -28,4 +29,5 @@ __all__ = [
     "extract_item_scripts",
     "extract_item_restrictions",
     "extract_drops",
+    "extract_quests",
 ]

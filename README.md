@@ -20,6 +20,7 @@ python pipeline.py extract npc_scripts      # script body evidence → refine np
 python pipeline.py extract item_scripts     # Script/EquipScript/UnEquipScript from item_db
 python pipeline.py extract item_restrictions # Trade.* + item_noequip bitmask
 python pipeline.py extract drops            # mob_db + map_drops; needs items+mobs
+python pipeline.py extract quests           # quest_db + npc links; needs mobs/items/evidence
 ```
 
 

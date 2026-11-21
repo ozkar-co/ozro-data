@@ -100,9 +100,12 @@ CREATE TABLE IF NOT EXISTS ozro_npc_functions (
 
 CREATE TABLE IF NOT EXISTS ozro_npc_quests (
   npc_id VARCHAR(128) NOT NULL,
-  quest_id VARCHAR(64) NOT NULL,
+  quest_id INT NOT NULL,
   role VARCHAR(32) NULL,
-  PRIMARY KEY (npc_id, quest_id)
+  script_path VARCHAR(512) NULL,
+  in_quest_db TINYINT(1) NULL,
+  PRIMARY KEY (npc_id, quest_id),
+  INDEX idx_npc_quest_qid (quest_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_mobs (
@@ -399,10 +402,40 @@ CREATE TABLE IF NOT EXISTS ozro_npc_script_evidence (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_quests (
-  quest_id VARCHAR(64) NOT NULL PRIMARY KEY,
-  name VARCHAR(128) NULL,
-  data JSON NULL,
+  quest_id INT NOT NULL PRIMARY KEY,
+  title VARCHAR(255) NULL,
+  time_limit_seconds INT NULL,
+  time_limit_raw VARCHAR(64) NULL,
+  target_count INT NULL,
+  drop_count INT NULL,
+  source_file VARCHAR(512) NULL,
   provenance_id CHAR(40) NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_quest_targets (
+  quest_id INT NOT NULL,
+  target_index INT NOT NULL,
+  mob_subindex INT NOT NULL DEFAULT 0,
+  objective_id INT NULL,
+  mob_id INT NULL,
+  mob_aegis_name VARCHAR(64) NULL,
+  count INT NULL,
+  location VARCHAR(128) NULL,
+  race VARCHAR(64) NULL,
+  min_level INT NULL,
+  PRIMARY KEY (quest_id, target_index, mob_subindex),
+  INDEX idx_qtarget_mob (mob_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_quest_drops (
+  quest_id INT NOT NULL,
+  drop_index INT NOT NULL,
+  mob_id INT NULL,
+  item_id INT NULL,
+  rate INT NULL,
+  PRIMARY KEY (quest_id, drop_index),
+  INDEX idx_qdrop_mob (mob_id),
+  INDEX idx_qdrop_item (item_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_instances (
