@@ -9,6 +9,7 @@ python pipeline.py discover
 python pipeline.py extract maps   # needs reports/client_maps.jsonl
 python pipeline.py extract mobs   # needs reports/client_mob_server_gaps.jsonl
 python pipeline.py extract items  # needs reports/client_item_info.jsonl
+python pipeline.py extract npcs   # needs reports/discovery_files.yml
 ```
 
 
