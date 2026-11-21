@@ -60,47 +60,20 @@ def _parse_sprite(sprite_field: str) -> int | str | None:
 
 def _infer_functions(
     npc_type: str,
-    display_name: str,
-    script_path: str,
-    unique_name: str | None,
+    _display_name: str,
+    _script_path: str,
+    _unique_name: str | None,
 ) -> list[str]:
-    funcs: list[str] = []
-    path_l = script_path.lower()
-    name_l = display_name.lower()
-    uniq_l = (unique_name or "").lower()
+    """Etapa 2: only 100% sure marks from header type; else pending.
 
+    Path/name heuristics and deep script behavior → Etapa 3.
+    """
+    funcs: list[str] = []
     if npc_type in {"shop", "cashshop", "itemshop", "pointshop", "marketshop"}:
         funcs.append("Shop")
     if npc_type in {"warp", "warp2"}:
         funcs.append("Warper")
-    if "kafra" in name_l or "kafra" in path_l or "kafra" in uniq_l:
-        funcs.extend(["Kafra", "Storage"])
-    if "heal" in name_l or "healer" in path_l:
-        funcs.append("Healer")
-    if "warper" in name_l or "warp" in path_l and npc_type == "script":
-        funcs.append("Warper")
-    if "/quests/" in path_l or path_l.startswith("npc/re/quests/"):
-        funcs.append("Quest")
-    if "instance" in path_l or "memorial" in path_l:
-        funcs.append("Instance")
-    if "guild" in path_l:
-        funcs.append("Guild")
-    if "refin" in name_l or "refin" in path_l:
-        funcs.append("Refine")
-    if "enchant" in name_l or "enchant" in path_l:
-        funcs.append("Enchant")
-    if "socket" in name_l or "socket" in path_l:
-        funcs.append("Socket")
-    if "repair" in name_l:
-        funcs.append("Repair")
-    if "custom/ozro" in path_l:
-        funcs.append("Custom")
-    if "airport" in path_l or "airship" in path_l:
-        funcs.append("Transport")
-
-    # unique preserve order
-    seen: set[str] = set()
-    return [f for f in funcs if not (f in seen or seen.add(f))]
+    return funcs or ["pending"]
 
 
 def _stable_npc_id(
@@ -166,6 +139,7 @@ def parse_npc_line(
 
     funcs = _infer_functions(npc_type, display, script_path, unique)
     npc_id = _stable_npc_id(unique, display, map_id, x, y, script_path, line_no)
+    layer = "absolute" if funcs != ["pending"] else "pending"
 
     return {
         "npc_id": npc_id,
@@ -176,18 +150,47 @@ def parse_npc_line(
         "y": y,
         "facing": facing,
         "sprite_id": sprite,
+        "sprite_stem": None,
+        "has_sprite": None,
         "npc_type": npc_type,
         "functions": funcs,
         "duplicate_of": duplicate_of,
         "script_path": script_path,
         "script_line": line_no,
-        "classification_layer": "inferred",
+        "classification_layer": layer,
         "provenance_id": _provenance_id("npcs", npc_id, f"{script_path}:{line_no}"),
         "source": {
             "script_path": script_path,
             "line": line_no,
         },
     }
+
+
+def _load_sprite_index(path: Path) -> dict[int | str, dict[str, Any]]:
+    """Index client_npc_sprites by numeric sprite_id and by JT name."""
+    out: dict[int | str, dict[str, Any]] = {}
+    if not path.is_file():
+        return out
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        row = json.loads(line)
+        info = {
+            "sprite_stem": row.get("sprite_stem"),
+            "has_spr": bool(row.get("has_spr")),
+            "has_act": bool(row.get("has_act")),
+            "paths": row.get("paths"),
+            "winner_grf": row.get("winner_grf"),
+            "act_deps_complete": row.get("act_deps_complete"),
+        }
+        for sid in row.get("sprite_ids") or []:
+            out[int(sid)] = info
+        for jt in row.get("jt_names") or []:
+            out[str(jt)] = info
+            # scripts sometimes use bare constant without JT_ prefix style
+            if str(jt).startswith("JT_"):
+                out[str(jt)[3:]] = info
+    return out
 
 
 def extract_npcs(project_root: Path | None = None) -> dict[str, Any]:
@@ -204,6 +207,7 @@ def extract_npcs(project_root: Path | None = None) -> dict[str, Any]:
         )
     disc = yaml.safe_load(files_path.read_text(encoding="utf-8"))
     scripts: list[str] = list(disc.get("scripts") or [])
+    sprite_index = _load_sprite_index(reports_dir / "client_npc_sprites.jsonl")
 
     records: list[dict[str, Any]] = []
     seen_ids: set[str] = set()
@@ -222,6 +226,19 @@ def extract_npcs(project_root: Path | None = None) -> dict[str, Any]:
             rec = parse_npc_line(line, rel, line_no)
             if not rec:
                 continue
+            sid = rec.get("sprite_id")
+            client = None
+            if sid is not None:
+                client = sprite_index.get(sid) or sprite_index.get(str(sid))
+            if client:
+                rec["sprite_stem"] = client.get("sprite_stem")
+                rec["has_sprite"] = bool(
+                    client.get("has_spr") and client.get("has_act")
+                )
+                rec["client"] = client
+            else:
+                rec["has_sprite"] = False if sid is not None else None
+                rec["client"] = None
             npc_id = rec["npc_id"]
             if npc_id in seen_ids:
                 # Keep first; count collision (common with reused ::labels across files).
@@ -251,6 +268,12 @@ def extract_npcs(project_root: Path | None = None) -> dict[str, Any]:
         "script_files": len(scripts),
         "with_map": sum(1 for r in records if r["map_id"]),
         "floating": sum(1 for r in records if not r["map_id"]),
+        "with_sprite_asset": sum(1 for r in records if r.get("has_sprite")),
+        "sprite_id_unresolved": sum(
+            1
+            for r in records
+            if r.get("sprite_id") is not None and not r.get("has_sprite")
+        ),
         "id_collision_renames": dup_collisions,
         "ozro_custom": sum(
             1 for r in records if "custom/ozro" in (r["script_path"] or "")

@@ -1,6 +1,6 @@
 {
-  "schema_version": 7,
-  "generated_at": "2026-11-21T05:35:27Z",
+  "schema_version": 8,
+  "generated_at": "2026-11-21T06:58:34Z",
   "data_ini": "patch/data.ini",
   "data_ini_order": [
     "ozro.grf",
@@ -63,6 +63,7 @@
     "npc_sprites": 1289,
     "npc_sprites_files": 1366,
     "npc_sprites_unwired": 77,
+    "npc_sprites_with_ids": 1289,
     "npcs_act_deps_incomplete": 0,
     "npcs_act_gap_rows": 0,
     "npcs_act_wav_missing_unique": 0
