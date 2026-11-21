@@ -1,6 +1,6 @@
 {
-  "schema_version": 2,
-  "generated_at": "2026-11-21T03:24:30Z",
+  "schema_version": 4,
+  "generated_at": "2026-11-21T03:54:55Z",
   "data_ini": "patch/data.ini",
   "data_ini_order": [
     "ozro.grf",
@@ -16,10 +16,10 @@
       "label": "ozro",
       "file": "ozro.grf",
       "path": "patch/ozro.grf",
-      "entries": 7651,
-      "winners_contributed": 7651,
-      "sha256": "e9674625413ffc2c5a795f451061df91a4b7c67817c95743aaacc7d572045c7f",
-      "size_bytes": 58803425
+      "entries": 7797,
+      "winners_contributed": 7797,
+      "sha256": "154a93378d085dfb3bd0189e1e2da400f9a5c5166fd9c58c6378731ffb1d3f62",
+      "size_bytes": 68944722
     },
     {
       "priority": 2,
@@ -27,12 +27,12 @@
       "file": "data.grf",
       "path": "tmp/data.grf",
       "entries": 160731,
-      "winners_contributed": 160683,
+      "winners_contributed": 160681,
       "sha256": "630d594ec3ad795a3c3600ffed6644a9398726445fdb77e179edd417b455cfc7",
       "size_bytes": 3216636020
     }
   ],
-  "active_path_count": 168334,
+  "active_path_count": 168478,
   "rathena": "/home/oz/Code/rathena",
   "counts": {
     "maps": 1217,
@@ -47,7 +47,17 @@
     "items_server_ok": 21932,
     "items_no_iteminfo": 6439,
     "items_missing_assets": 690,
-    "mob_sprites": 1448,
+    "mob_sprites": 1493,
+    "mob_gr2_stems": 21,
+    "mob_wavs_indexed": 2887,
+    "mobs_act_deps_incomplete": 0,
+    "mobs_act_gap_rows": 0,
+    "mobs_act_wav_missing_unique": 0,
+    "mobs_server": 2675,
+    "mobs_server_ok": 2551,
+    "mobs_no_identity": 120,
+    "mobs_no_jobname": 0,
+    "mobs_missing_sprite": 4,
     "npc_sprites": 1235
   },
   "outputs": [
@@ -58,6 +68,8 @@
     "client_item_info.jsonl",
     "client_item_server_gaps.jsonl",
     "client_mob_sprites.jsonl",
+    "client_mob_act_gaps.jsonl",
+    "client_mob_server_gaps.jsonl",
     "client_npc_sprites.jsonl"
   ]
 }
