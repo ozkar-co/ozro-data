@@ -23,6 +23,9 @@ from .random_options import extract_random_options
 from .barters import extract_barters
 from .npc_enchants import extract_npc_enchants
 from .acquisition import extract_acquisition
+from .item_dependencies import extract_item_dependencies
+from .npc_script_rewards import extract_npc_script_rewards
+from .closure_sanity import extract_closure_sanity
 
 __all__ = [
     "extract_maps",
@@ -48,4 +51,7 @@ __all__ = [
     "extract_barters",
     "extract_npc_enchants",
     "extract_acquisition",
+    "extract_item_dependencies",
+    "extract_npc_script_rewards",
+    "extract_closure_sanity",
 ]

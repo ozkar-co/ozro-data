@@ -202,6 +202,46 @@ def extract_acquisition(project_root: Path | None = None) -> dict[str, Any]:
                 provenance_src="npc_enchant_items.jsonl",
             )
 
+    # Socket item→item (Seiyablem/Leablem): result item is obtainable via transform
+    transforms = reports_dir / "npc_item_transforms.jsonl"
+    if transforms.is_file():
+        for t in _iter_jsonl(transforms):
+            _add(
+                source_type="socketing",
+                source_ref=str(t.get("npc_item_transform_id")),
+                item_id=t.get("to_item_id"),
+                extra={
+                    "from_item_id": t.get("from_item_id"),
+                    "script_path": t.get("script_path"),
+                    "func_name": t.get("func_name"),
+                },
+                provenance_src="npc_item_transforms.jsonl",
+            )
+    else:
+        missing_inputs.append("npc_item_transforms.jsonl")
+
+    # Literal getitem/getitembound from NPC scripts
+    script_rewards = reports_dir / "npc_script_rewards.jsonl"
+    if script_rewards.is_file():
+        for s in _iter_jsonl(script_rewards):
+            qty = int(s.get("quantity") or 1)
+            _add(
+                source_type="npc_reward",
+                source_ref=str(s.get("npc_script_reward_id")),
+                item_id=s.get("item_id"),
+                quantity_min=qty,
+                quantity_max=qty,
+                npc_id=s.get("npc_id"),
+                map_id=s.get("map_id"),
+                extra={
+                    "script_path": s.get("script_path"),
+                    "command": s.get("command"),
+                },
+                provenance_src="npc_script_rewards.jsonl",
+            )
+    else:
+        missing_inputs.append("npc_script_rewards.jsonl")
+
     out_path = reports_dir / "acquisition_outputs.jsonl"
     with out_path.open("w", encoding="utf-8") as f:
         for row in outputs:
@@ -231,8 +271,8 @@ def extract_acquisition(project_root: Path | None = None) -> dict[str, Any]:
         "without_source_sample": without_sample,
         "missing_inputs": missing_inputs,
         "coverage_note": (
-            "without_source includes cash/quest-script/instance-only/GM; "
-            "not all are content gaps"
+            "without_source = unused client pool (custom quests/shops/events); "
+            "not content gaps"
         ),
         "wrote": [str(out_path)],
     }

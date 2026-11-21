@@ -26,6 +26,11 @@ _SETARRAY_RE = re.compile(
     re.IGNORECASE,
 )
 _NUM_RE = re.compile(r"\b(\d{3,7})\b")
+# Seiyablem/Leablem: callfunc "Func_Socket"|"Func_Socket2", from_id, to_id, ...
+_FUNC_SOCKET_RE = re.compile(
+    r'callfunc\s+"(Func_Socket2?)"\s*,\s*(\d+)\s*,\s*(\d+)\s*,',
+    re.IGNORECASE,
+)
 
 _TARGET_VARS = re.compile(r"^\.@[Ii]tems$", re.IGNORECASE)
 # Common enchant stone / pool array names in official scripts.
@@ -102,7 +107,9 @@ def extract_npc_enchants(project_root: Path | None = None) -> dict[str, Any]:
 
     sources_out: list[dict[str, Any]] = []
     items_out: list[dict[str, Any]] = []
+    transforms_out: list[dict[str, Any]] = []
     unresolved = 0
+    unresolved_transform = 0
     scripts_scanned = 0
 
     def _emit_item(
@@ -192,6 +199,43 @@ def extract_npc_enchants(project_root: Path | None = None) -> dict[str, Any]:
                     evidence=evidence, seen=seen,
                 )
 
+        # Socket item→item transforms (Func_Socket / Func_Socket2)
+        transform_n = 0
+        for m in _FUNC_SOCKET_RE.finditer(text):
+            func = m.group(1)
+            from_id = int(m.group(2))
+            to_id = int(m.group(3))
+            if from_id not in item_ids or from_id not in client_ids:
+                unresolved_transform += 1
+                continue
+            if to_id not in item_ids or to_id not in client_ids:
+                unresolved_transform += 1
+                continue
+            tid = _eid("npctransform", rel, func, from_id, to_id)
+            transforms_out.append(
+                {
+                    "npc_item_transform_id": tid,
+                    "npc_enchant_source_id": sid,
+                    "script_path": rel,
+                    "transform_kind": "socketing",
+                    "func_name": func,
+                    "from_item_id": from_id,
+                    "to_item_id": to_id,
+                    "provenance_id": _provenance_id(
+                        "npc_item_transforms", tid, rel
+                    ),
+                }
+            )
+            transform_n += 1
+            _emit_item(
+                rel=rel, sid=sid, item_id=from_id, role="transform_from",
+                evidence=func, seen=seen,
+            )
+            _emit_item(
+                rel=rel, sid=sid, item_id=to_id, role="transform_to",
+                evidence=func, seen=seen,
+            )
+
         stone_n = sum(1 for a, b in seen if b == "stone")
         target_n = sum(1 for a, b in seen if b == "target")
         sources_out.append(
@@ -202,6 +246,7 @@ def extract_npc_enchants(project_root: Path | None = None) -> dict[str, Any]:
                 "getitem2_count": gi2_count,
                 "stone_count": stone_n,
                 "target_count": target_n,
+                "transform_count": transform_n,
                 "provenance_id": _provenance_id("npc_enchant_sources", sid, rel),
             }
         )
@@ -209,6 +254,7 @@ def extract_npc_enchants(project_root: Path | None = None) -> dict[str, Any]:
     writes = {
         "npc_enchant_sources": sources_out,
         "npc_enchant_items": items_out,
+        "npc_item_transforms": transforms_out,
     }
     wrote: list[str] = []
     for name, rows in writes.items():
@@ -225,8 +271,11 @@ def extract_npc_enchants(project_root: Path | None = None) -> dict[str, Any]:
         "item_rows": len(items_out),
         "unique_stones": len({r["item_id"] for r in items_out if r["role"] == "stone"}),
         "unique_targets": len({r["item_id"] for r in items_out if r["role"] == "target"}),
+        "socket_transform_rows": len(transforms_out),
+        "unique_socket_results": len({r["to_item_id"] for r in transforms_out}),
         "by_kind": {},
         "unresolved_item": unresolved,
+        "unresolved_transform": unresolved_transform,
         "wrote": wrote,
     }
     for s in sources_out:

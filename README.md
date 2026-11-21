@@ -30,6 +30,9 @@ python pipeline.py extract random_options   # item_randomopt_db/group + drop lin
 python pipeline.py extract barters          # barters.yml inventory + RequiredItems
 python pipeline.py extract npc_enchants     # getitem2/socket NPC stone+target inventory
 python pipeline.py extract acquisition      # union drops/shops/barters/boxes/recipes/quests
+python pipeline.py extract item_dependencies  # §22.2 consume/produce/socket/combo/box edges
+python pipeline.py extract npc_script_rewards # literal getitem/getitembound → NPC
+python pipeline.py extract closure_sanity   # Etapa 3 closure checks + smoke map list
 ```
 
 

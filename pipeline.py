@@ -136,6 +136,18 @@ def cmd_extract(args: argparse.Namespace) -> int:
         from extractors import extract_acquisition
 
         summary = extract_acquisition(ROOT)
+    elif domain == "item_dependencies":
+        from extractors import extract_item_dependencies
+
+        summary = extract_item_dependencies(ROOT)
+    elif domain == "npc_script_rewards":
+        from extractors import extract_npc_script_rewards
+
+        summary = extract_npc_script_rewards(ROOT)
+    elif domain == "closure_sanity":
+        from extractors import extract_closure_sanity
+
+        summary = extract_closure_sanity(ROOT)
     else:
         print(f"unknown domain: {domain}", file=sys.stderr)
         return 2
@@ -175,6 +187,9 @@ def main() -> int:
             "barters",
             "npc_enchants",
             "acquisition",
+            "item_dependencies",
+            "npc_script_rewards",
+            "closure_sanity",
         ],
         help="entity domain to extract",
     )

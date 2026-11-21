@@ -23,6 +23,9 @@ order:
   - barters           # needs items (+ npcs optional)
   - npc_enchants      # needs items + discovery scripts
   - acquisition       # union of catalog extracts
+  - item_dependencies # §22.2 graph from prior reports
+  - npc_script_rewards
+  - closure_sanity
   - map_distances     # needs map_connections
   - provenance
   - sql_sync
@@ -47,7 +50,10 @@ depends:
   random_options: [drops]
   barters: [items, npcs]
   npc_enchants: [items]
-  acquisition: [drops, shops, boxes, recipes, quests, barters, npc_enchants]
+  acquisition: [drops, shops, boxes, recipes, quests, barters, npc_enchants, npc_script_rewards]
+  item_dependencies: [recipes, barters, item_relationships, npc_enchants, boxes]
+  npc_script_rewards: [items, npcs]
+  closure_sanity: [barters, item_dependencies, npc_script_rewards, acquisition]
   map_distances: [map_connections, maps]
   provenance: []
   sql_sync: [map_distances, provenance]
