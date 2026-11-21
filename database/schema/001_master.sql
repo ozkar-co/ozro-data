@@ -318,14 +318,27 @@ CREATE TABLE IF NOT EXISTS ozro_mob_drops (
   drop_id CHAR(40) NOT NULL PRIMARY KEY,
   mob_id INT NOT NULL,
   item_id INT NOT NULL,
-  drop_slot VARCHAR(32) NULL,
+  drop_category VARCHAR(32) NULL,
+  is_map_bonus TINYINT(1) NOT NULL DEFAULT 0,
+  drop_slot INT NULL,
   chance_base INT NULL,
-  chance_effective DECIMAL(12,6) NULL,
+  chance_effective INT NULL,
+  rate_unit VARCHAR(16) NULL,
   rate_key VARCHAR(64) NULL,
+  rate_adjust INT NULL,
+  rate_status VARCHAR(32) NULL,
+  boss_kind VARCHAR(16) NULL,
+  item_family VARCHAR(16) NULL,
   stealable TINYINT(1) NULL,
+  map_id VARCHAR(64) NULL,
+  source_file VARCHAR(512) NULL,
   provenance_id CHAR(40) NULL,
   INDEX idx_drop_mob (mob_id),
-  INDEX idx_drop_item (item_id)
+  INDEX idx_drop_item (item_id),
+  INDEX idx_drop_cat (drop_category),
+  INDEX idx_drop_map (map_id),
+  INDEX idx_drop_map_bonus (is_map_bonus),
+  INDEX idx_drop_rate_status (rate_status)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_npc_shops (

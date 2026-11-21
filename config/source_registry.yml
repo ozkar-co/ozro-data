@@ -123,13 +123,18 @@ domains:
     sources:
       - kind: mob_yaml_drops
         path: db/re/mob_db.yml
+        note: Drops + MvpDrops; rate unit per_10000
       - kind: yaml_override
         path: db/import/mob_db.yml
       - kind: map_drops
         path: db/re/map_drops.yml
+        note: map bonus layer; Rate per_100000; is_map_bonus; no item_rate_*
       - kind: conf
-        path: conf/import/battle_conf.txt
-        keys: [item_rate_*]
+        paths: [conf/battle/drops.conf, conf/import/battle_conf.txt]
+        keys: [item_rate_*, item_drop_*_min/max]
+        note: linear mob_drop_adjust for mob_db only; MVP list uses item_rate_mvp
+      - kind: deferred
+        note: verify item_rate_*_mvp via @iteminfo; enable_bonus_map_drops runtime; mob_item_ratio.yml; script/event; VIP/luk
 
   shops:
     sources:
