@@ -104,6 +104,10 @@ def cmd_extract(args: argparse.Namespace) -> int:
         from extractors import extract_instances
 
         summary = extract_instances(ROOT)
+    elif domain == "boxes":
+        from extractors import extract_boxes
+
+        summary = extract_boxes(ROOT)
     else:
         print(f"unknown domain: {domain}", file=sys.stderr)
         return 2
@@ -135,6 +139,7 @@ def main() -> int:
             "drops",
             "quests",
             "instances",
+            "boxes",
         ],
         help="entity domain to extract",
     )

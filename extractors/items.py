@@ -10,6 +10,7 @@ from typing import Any
 import yaml
 
 from discovery.scan import _load_extractor_config
+from extractors.client_scope import load_client_item_ids
 
 _LOCATION_FAMILY = {
     "Head_Top": "head_top",
@@ -222,11 +223,16 @@ def extract_items(project_root: Path | None = None) -> dict[str, Any]:
 
     item_files = list(cfg["db"]["item_files"])
     by_id, import_ids = _load_item_db(rathena, item_files)
+    client_ids = load_client_item_ids(reports_dir)
     client = _load_jsonl_index(reports_dir / "client_item_info.jsonl", "item_id")
     gaps = _load_jsonl_index(reports_dir / "client_item_server_gaps.jsonl", "item_id")
 
     records: list[dict[str, Any]] = []
+    skipped_no_client = 0
     for iid in sorted(by_id):
+        if iid not in client_ids:
+            skipped_no_client += 1
+            continue
         row = by_id[iid]
         classed = classify_item(row)
         info = client.get(iid)
@@ -309,6 +315,8 @@ def extract_items(project_root: Path | None = None) -> dict[str, Any]:
     summary = {
         "domain": "items",
         "item_count": len(records),
+        "server_item_count": len(by_id),
+        "skipped_no_client": skipped_no_client,
         "costume_count": sum(1 for r in records if r["is_costume"]),
         "assets_complete": sum(1 for r in records if r["assets_complete"]),
         "with_script": sum(1 for r in records if r["has_script"]),

@@ -22,6 +22,7 @@ python pipeline.py extract item_restrictions # Trade.* + item_noequip bitmask
 python pipeline.py extract drops            # mob_db + map_drops; needs items+mobs
 python pipeline.py extract quests           # quest_db + npc links; needs mobs/items/evidence
 python pipeline.py extract instances        # instance_db + maps + NPC create links
+python pipeline.py extract boxes            # item_group_db + getgroupitem links
 ```
 
 

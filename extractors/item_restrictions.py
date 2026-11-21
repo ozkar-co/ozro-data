@@ -11,6 +11,7 @@ from typing import Any
 import yaml
 
 from discovery.scan import _load_extractor_config
+from extractors.client_scope import load_client_item_ids
 
 # Trade: keys (YAML) → restriction_key. Keep each separate (brief §11).
 _TRADE_KEYS = (
@@ -106,12 +107,17 @@ def extract_item_restrictions(project_root: Path | None = None) -> dict[str, Any
 
     item_files: list[str] = list(cfg.get("db", {}).get("item_files") or [])
     by_id = _load_item_rows(rathena, item_files)
+    client_ids = load_client_item_ids(reports_dir)
 
     records: list[dict[str, Any]] = []
     by_source: dict[str, int] = {"trade": 0, "flag_noconsume": 0, "noequip": 0}
     by_key: dict[str, int] = {}
+    skipped_no_client = 0
 
     for iid, (row, src) in by_id.items():
+        if iid not in client_ids:
+            skipped_no_client += 1
+            continue
         trade = row.get("Trade")
         if isinstance(trade, dict):
             for key in _TRADE_KEYS:
@@ -165,6 +171,9 @@ def extract_item_restrictions(project_root: Path | None = None) -> dict[str, Any
             noequip_map[iid] = (flag, rel, line_no)
 
     for iid, (flag, rel, line_no) in sorted(noequip_map.items()):
+        if iid not in client_ids:
+            skipped_no_client += 1
+            continue
         decoded = _decode_noequip(flag)
         rid = f"{iid}|noequip"
         records.append(
@@ -200,6 +209,7 @@ def extract_item_restrictions(project_root: Path | None = None) -> dict[str, Any
         "domain": "item_restrictions",
         "restriction_rows": len(records),
         "unique_items": len({r["item_id"] for r in records}),
+        "skipped_no_client": skipped_no_client,
         "by_source": by_source,
         "by_key": by_key,
         "deferred": [

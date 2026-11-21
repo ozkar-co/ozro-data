@@ -11,6 +11,7 @@ from typing import Any
 import yaml
 
 from discovery.scan import _load_extractor_config
+from extractors.client_scope import load_client_item_ids
 
 _SCRIPT_KINDS = ("Script", "EquipScript", "UnEquipScript")
 
@@ -92,10 +93,12 @@ def extract_item_scripts(project_root: Path | None = None) -> dict[str, Any]:
     reports_dir.mkdir(parents=True, exist_ok=True)
 
     files: list[str] = list(cfg.get("db", {}).get("item_files") or [])
+    client_ids = load_client_item_ids(reports_dir)
     # item_id+kind → record (later files / import override)
     by_key: dict[tuple[int, str], dict[str, Any]] = {}
     per_file: dict[str, int] = {}
     skipped_empty = 0
+    skipped_no_client = 0
 
     for rel in files:
         path = rathena / rel
@@ -108,6 +111,9 @@ def extract_item_scripts(project_root: Path | None = None) -> dict[str, Any]:
             if iid is None:
                 continue
             iid = int(iid)
+            if iid not in client_ids:
+                skipped_no_client += 1
+                continue
             for kind in _SCRIPT_KINDS:
                 body = _normalize_body(row.get(kind))
                 if body is None:
@@ -160,6 +166,7 @@ def extract_item_scripts(project_root: Path | None = None) -> dict[str, Any]:
         "effect_tags": effect_tags,
         "per_file": per_file,
         "skipped_empty": skipped_empty,
+        "skipped_no_client": skipped_no_client,
         "deferred": [
             "getgroupitem_group_resolve",
             "callfunc_expansion",

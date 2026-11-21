@@ -172,8 +172,13 @@ domains:
     sources:
       - kind: item_group
         path: db/re/item_group_db.yml
+        note: Group/SubGroups/List Rate+Amount; algorithms All/SharedPool/Random
       - kind: yaml_override
         path: db/import/item_group_db.yml
+      - kind: item_scripts
+        note: getgroupitem(IG_*) → box_item_links
+      - kind: deferred
+        note: SharedPool probability normalize; NPC/quest reward boxes
 
   recipes:
     sources:

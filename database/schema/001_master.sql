@@ -470,18 +470,41 @@ CREATE TABLE IF NOT EXISTS ozro_instance_npcs (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_boxes (
-  box_id VARCHAR(64) NOT NULL PRIMARY KEY,
-  item_id INT NULL,
-  data JSON NULL,
-  provenance_id CHAR(40) NULL
+  box_id CHAR(40) NOT NULL PRIMARY KEY,
+  group_name VARCHAR(128) NOT NULL,
+  group_key VARCHAR(128) NULL,
+  subgroup_count INT NULL,
+  reward_count INT NULL,
+  contains_nested_box TINYINT(1) NULL,
+  opener_item_count INT NULL,
+  source_file VARCHAR(512) NULL,
+  provenance_id CHAR(40) NULL,
+  UNIQUE KEY uq_box_group (group_key)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_box_rewards (
-  box_id VARCHAR(64) NOT NULL,
-  item_id INT NOT NULL,
+  reward_id CHAR(40) NOT NULL PRIMARY KEY,
+  box_id CHAR(40) NOT NULL,
+  subgroup INT NULL,
+  algorithm VARCHAR(32) NULL,
+  list_index INT NULL,
+  item_id INT NULL,
+  item_aegis_name VARCHAR(64) NULL,
+  rate INT NULL,
   amount INT NULL,
-  chance DECIMAL(12,6) NULL,
-  PRIMARY KEY (box_id, item_id, amount)
+  reward_is_container TINYINT(1) NULL,
+  reward_opens_group TINYINT(1) NULL,
+  INDEX idx_box_rew_box (box_id),
+  INDEX idx_box_rew_item (item_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_box_item_links (
+  link_id CHAR(40) NOT NULL PRIMARY KEY,
+  item_id INT NOT NULL,
+  box_id CHAR(40) NOT NULL,
+  is_container_flag TINYINT(1) NULL,
+  INDEX idx_box_link_item (item_id),
+  INDEX idx_box_link_box (box_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_recipes (
