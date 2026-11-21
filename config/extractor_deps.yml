@@ -19,6 +19,10 @@ order:
   - recipes           # needs items + npcs
   - enchantments      # needs items + npcs
   - item_relationships
+  - random_options    # needs drops for links
+  - barters           # needs items (+ npcs optional)
+  - npc_enchants      # needs items + discovery scripts
+  - acquisition       # union of catalog extracts
   - map_distances     # needs map_connections
   - provenance
   - sql_sync
@@ -40,6 +44,10 @@ depends:
   recipes: [items, npcs]
   enchantments: [items, npcs]
   item_relationships: [items]
+  random_options: [drops]
+  barters: [items, npcs]
+  npc_enchants: [items]
+  acquisition: [drops, shops, boxes, recipes, quests, barters, npc_enchants]
   map_distances: [map_connections, maps]
   provenance: []
   sql_sync: [map_distances, provenance]

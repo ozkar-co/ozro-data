@@ -425,10 +425,11 @@ def extract_shops(project_root: Path | None = None) -> dict[str, Any]:
         "callshop": link_stats,
         "barter_names_indexed": len(barter_names),
         "deferred": [
-            "barter_db_inventory",
             "callshop_dynamic_arrays",
             "buysell_scripted",
         ],
+        "barter_inventory": "domain barters",
+
         "wrote": [str(shops_path), str(items_path), str(links_path)],
     }
     summary_path = reports_dir / "shops_summary.json"

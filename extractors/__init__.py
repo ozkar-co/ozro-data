@@ -19,6 +19,10 @@ from .boxes import extract_boxes
 from .recipes import extract_recipes
 from .enchantments import extract_enchantments
 from .item_relationships import extract_item_relationships
+from .random_options import extract_random_options
+from .barters import extract_barters
+from .npc_enchants import extract_npc_enchants
+from .acquisition import extract_acquisition
 
 __all__ = [
     "extract_maps",
@@ -40,4 +44,8 @@ __all__ = [
     "extract_recipes",
     "extract_enchantments",
     "extract_item_relationships",
+    "extract_random_options",
+    "extract_barters",
+    "extract_npc_enchants",
+    "extract_acquisition",
 ]

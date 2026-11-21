@@ -142,6 +142,13 @@ domains:
         note: shop/cashshop/itemshop/pointshop/marketshop lines
       - kind: barters
         path: npc/barters.yml
+        note: names for callshop classify; full inventory → domain barters
+
+  barters:
+    sources:
+      - kind: yaml
+        path: npc/barters.yml
+        note: Footer.Imports tree; Items + RequiredItems; client gate on offer
 
   quests:
     sources:
@@ -198,11 +205,15 @@ domains:
       - kind: yaml_override
         path: db/import/item_enchant.yml
       - kind: npc_scripts
-        note: getitem2 enchanters (Craftsman, Mora, …) — playable path
-      - kind: deferred
-        note: barter_rgsr_in_*; EnchantGradeExchange; socket Seiyablem/Leablem
+        note: getitem2 enchanters → extract npc_enchants
       - kind: runtime_unavailable
         note: reform/grade lab NPCs not loaded; grademk not in maps conf
+
+  npc_enchants:
+    sources:
+      - kind: npc_scripts
+        note: discovery scripts with getitem2 / enchan* / socket_enchant*
+        evidence: set_addpart, setarray enchant*, getitem2 card slots
 
   random_options:
     sources:
@@ -210,10 +221,18 @@ domains:
         path: db/re/item_randomopt_db.yml
       - kind: yaml
         path: db/re/item_randomopt_group.yml
+      - kind: yaml_override
+        path: db/import/item_randomopt_db.yml
+      - kind: yaml_override
+        path: db/import/item_randomopt_group.yml
       - kind: drops
-        note: RandomOptionGroup on mob/map drops (e.g. Crimson)
-      - kind: deferred
-        note: domain aparte de enchantments/cards — ver master_dataset §21bis
+        note: RandomOptionGroup on mob/map drops → drop_random_option_links
+
+  acquisition:
+    sources:
+      - kind: union
+        note: drops+shops+barters+boxes+recipes+quest_drops(+npc enchant stones)
+        deferred: script quest/instance rewards; cash-only; GM
 
   item_relationships:
     sources:

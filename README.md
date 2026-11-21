@@ -26,6 +26,10 @@ python pipeline.py extract boxes            # item_group_db + getgroupitem links
 python pipeline.py extract recipes          # produce_db → recipes + materials
 python pipeline.py extract enchantments     # item_enchant.yml targets/options/perfect/upgrades
 python pipeline.py extract item_relationships  # item_combos.yml groups/sets/members
+python pipeline.py extract random_options   # item_randomopt_db/group + drop links
+python pipeline.py extract barters          # barters.yml inventory + RequiredItems
+python pipeline.py extract npc_enchants     # getitem2/socket NPC stone+target inventory
+python pipeline.py extract acquisition      # union drops/shops/barters/boxes/recipes/quests
 ```
 
 

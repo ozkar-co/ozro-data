@@ -352,11 +352,11 @@ def extract_enchantments(project_root: Path | None = None) -> dict[str, Any]:
         "unresolved_item": unresolved[0],
         "chance_unit": "per_100000",
         "deferred": [
-            "npc_socket_enchant_seiyablem_leablem",
-            "npc_armor_enchant_craftsman",
             "enchantgrade_bonus_rows",
             "item_reform_overlap",
         ],
+        "npc_getitem2_socket": "domain npc_enchants",
+
         "wrote": wrote,
     }
     summary_path = reports_dir / "enchantments_summary.json"
