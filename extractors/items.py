@@ -105,54 +105,110 @@ def _true_keys(mapping: Any) -> list[str]:
     return [str(k) for k, v in mapping.items() if v]
 
 
+def _synthesize_equip_slot_key(locations: list[str]) -> str | None:
+    """Single synthetic key from the full location set (equip only, not cards)."""
+    if not locations:
+        return None
+    locs = frozenset(locations)
+
+    head = {"Head_Top", "Head_Mid", "Head_Low"}
+    chead = {"Costume_Head_Top", "Costume_Head_Mid", "Costume_Head_Low"}
+    if locs == head:
+        return "headgear_entire"
+    if locs == {"Head_Top", "Head_Mid"}:
+        return "headgear_top_mid"
+    if locs == {"Head_Low", "Head_Mid"}:
+        return "headgear_mid_low"
+    if locs == {"Head_Top", "Head_Low"}:
+        return "headgear_top_low"
+    if locs == chead:
+        return "costume_headgear_entire"
+    if locs == {"Costume_Head_Top", "Costume_Head_Mid"}:
+        return "costume_headgear_top_mid"
+    if locs == {"Costume_Head_Low", "Costume_Head_Mid"}:
+        return "costume_headgear_mid_low"
+    if locs == {"Costume_Head_Top", "Costume_Head_Low"}:
+        return "costume_headgear_top_low"
+
+    if len(locs) == 1:
+        only = next(iter(locs))
+        return _LOCATION_FAMILY.get(only, only.lower())
+
+    # Stable composite for uncommon multi-sets.
+    families = []
+    for loc in sorted(locs):
+        families.append(_LOCATION_FAMILY.get(loc, loc.lower()))
+    return "+".join(families)
+
+
+def _synthesize_card_insert_key(locations: list[str]) -> str | None:
+    if not locations:
+        return None
+    families = [_LOCATION_FAMILY.get(loc, loc.lower()) for loc in sorted(locations)]
+    if len(families) == 1:
+        return families[0]
+    # Cards that can go in every common gear slot.
+    if len(set(families)) >= 6:
+        return "any_gear_slot"
+    return "+".join(families)
+
+
 def classify_item(row: dict[str, Any]) -> dict[str, Any]:
-    """Normalized category / costume / slot family from Type + Locations."""
+    """Normalized category / costume / single-truth slot keys from Type + Locations."""
     item_type = row.get("Type")
     type_key = str(item_type).lower() if item_type is not None else ""
     locations = _true_keys(row.get("Locations"))
     costume_locs = [k for k in locations if k.startswith("Costume_")]
     shadow_locs = [k for k in locations if k.startswith("Shadow_")]
     is_costume = bool(costume_locs)
+    is_card = type_key == "card"
 
     if is_costume:
         category = "Costume"
-        primary = costume_locs[0]
     elif type_key == "shadowgear" or shadow_locs:
         category = "Shadow Gear"
-        primary = shadow_locs[0] if shadow_locs else None
     elif type_key == "armor" and locations:
-        # Prefer distinctive armor slots over generic.
+        category = "Armor"
         for key, cat in (
             ("Garment", "Garment"),
             ("Shoes", "Shoes"),
             ("Right_Accessory", "Accessory"),
             ("Left_Accessory", "Accessory"),
             ("Both_Accessory", "Accessory"),
-            ("Head_Top", "Armor"),
-            ("Head_Mid", "Armor"),
-            ("Head_Low", "Armor"),
-            ("Armor", "Armor"),
         ):
             if key in locations:
                 category = cat
-                primary = key
                 break
-        else:
-            category = "Armor"
-            primary = locations[0]
     else:
         category = _TYPE_CATEGORY.get(type_key, "Miscellaneous")
-        primary = locations[0] if locations else None
 
-    family = _LOCATION_FAMILY.get(primary) if primary else None
-    subcategory = row.get("SubType") or primary
+    if is_card:
+        equip_slot_key = None
+        equip_slot_families = []
+        card_insert_slots = locations
+        card_insert_key = _synthesize_card_insert_key(locations)
+    else:
+        equip_slot_key = _synthesize_equip_slot_key(locations)
+        equip_slot_families = sorted(
+            {
+                _LOCATION_FAMILY[loc]
+                for loc in locations
+                if loc in _LOCATION_FAMILY
+            }
+        )
+        card_insert_slots = None
+        card_insert_key = None
+
+    subcategory = row.get("SubType") or equip_slot_key or card_insert_key
 
     return {
         "item_category": category,
         "item_subcategory": str(subcategory) if subcategory else None,
         "is_costume": is_costume,
-        "equip_location": primary,
-        "equip_location_family": family,
+        "equip_slot_key": equip_slot_key,
+        "equip_slot_families": equip_slot_families,
+        "card_insert_slots": card_insert_slots,
+        "card_insert_key": card_insert_key,
         "locations_list": locations,
     }
 
@@ -200,8 +256,10 @@ def extract_items(project_root: Path | None = None) -> dict[str, Any]:
             "item_category": classed["item_category"],
             "item_subcategory": classed["item_subcategory"],
             "is_costume": classed["is_costume"],
-            "equip_location": classed["equip_location"],
-            "equip_location_family": classed["equip_location_family"],
+            "equip_slot_key": classed["equip_slot_key"],
+            "equip_slot_families": classed["equip_slot_families"],
+            "card_insert_slots": classed["card_insert_slots"],
+            "card_insert_key": classed["card_insert_key"],
             "buy_base": row.get("Buy"),
             "sell_base": row.get("Sell"),
             "buy_effective": None,
