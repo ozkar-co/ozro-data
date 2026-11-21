@@ -1,0 +1,483 @@
+{"skill_id":158,"aegis_name":"NPC_PIERCINGATT","reason":"no_skillinfo","display_name":"Piercing Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":159,"aegis_name":"NPC_MENTALBREAKER","reason":"no_skillinfo","display_name":"Spirit Destruction","has_skillinfo":false,"has_icon":false}
+{"skill_id":160,"aegis_name":"NPC_RANGEATTACK","reason":"no_skillinfo","display_name":"Stand off attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":161,"aegis_name":"NPC_ATTRICHANGE","reason":"no_skillinfo","display_name":"Attribute Change","has_skillinfo":false,"has_icon":false}
+{"skill_id":162,"aegis_name":"NPC_CHANGEWATER","reason":"no_skillinfo","display_name":"Water Attribute Change","has_skillinfo":false,"has_icon":false}
+{"skill_id":163,"aegis_name":"NPC_CHANGEGROUND","reason":"no_skillinfo","display_name":"Earth Attribute Change","has_skillinfo":false,"has_icon":false}
+{"skill_id":164,"aegis_name":"NPC_CHANGEFIRE","reason":"no_skillinfo","display_name":"Fire Attribute Change","has_skillinfo":false,"has_icon":false}
+{"skill_id":165,"aegis_name":"NPC_CHANGEWIND","reason":"no_skillinfo","display_name":"Wind Attribute Change","has_skillinfo":false,"has_icon":false}
+{"skill_id":166,"aegis_name":"NPC_CHANGEPOISON","reason":"no_skillinfo","display_name":"Poison Attribute Change","has_skillinfo":false,"has_icon":false}
+{"skill_id":167,"aegis_name":"NPC_CHANGEHOLY","reason":"no_skillinfo","display_name":"Holy Attribute Change","has_skillinfo":false,"has_icon":false}
+{"skill_id":168,"aegis_name":"NPC_CHANGEDARKNESS","reason":"no_skillinfo","display_name":"Shadow Attribute Change","has_skillinfo":false,"has_icon":false}
+{"skill_id":169,"aegis_name":"NPC_CHANGETELEKINESIS","reason":"no_skillinfo","display_name":"Ghost Attribute Change","has_skillinfo":false,"has_icon":false}
+{"skill_id":170,"aegis_name":"NPC_CRITICALSLASH","reason":"no_skillinfo","display_name":"Defense disregard attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":171,"aegis_name":"NPC_COMBOATTACK","reason":"no_skillinfo","display_name":"Multi-stage Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":172,"aegis_name":"NPC_GUIDEDATTACK","reason":"no_skillinfo","display_name":"Guided Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":173,"aegis_name":"NPC_SELFDESTRUCTION","reason":"no_skillinfo","display_name":"Suicide bombing","has_skillinfo":false,"has_icon":false}
+{"skill_id":174,"aegis_name":"NPC_SPLASHATTACK","reason":"no_skillinfo","display_name":"Splash attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":175,"aegis_name":"NPC_SUICIDE","reason":"no_skillinfo","display_name":"Suicide","has_skillinfo":false,"has_icon":false}
+{"skill_id":176,"aegis_name":"NPC_POISON","reason":"no_skillinfo","display_name":"Poison Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":177,"aegis_name":"NPC_BLINDATTACK","reason":"no_skillinfo","display_name":"Blind Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":178,"aegis_name":"NPC_SILENCEATTACK","reason":"no_skillinfo","display_name":"Silence Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":179,"aegis_name":"NPC_STUNATTACK","reason":"no_skillinfo","display_name":"Stun Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":180,"aegis_name":"NPC_PETRIFYATTACK","reason":"no_skillinfo","display_name":"Petrify Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":181,"aegis_name":"NPC_CURSEATTACK","reason":"no_skillinfo","display_name":"Curse Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":182,"aegis_name":"NPC_SLEEPATTACK","reason":"no_skillinfo","display_name":"Sleep attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":183,"aegis_name":"NPC_RANDOMATTACK","reason":"no_skillinfo","display_name":"Random Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":184,"aegis_name":"NPC_WATERATTACK","reason":"no_skillinfo","display_name":"Water Attribute Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":185,"aegis_name":"NPC_GROUNDATTACK","reason":"no_skillinfo","display_name":"Earth Attribute Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":186,"aegis_name":"NPC_FIREATTACK","reason":"no_skillinfo","display_name":"Fire Attribute Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":187,"aegis_name":"NPC_WINDATTACK","reason":"no_skillinfo","display_name":"Wind Attribute Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":188,"aegis_name":"NPC_POISONATTACK","reason":"no_skillinfo","display_name":"Poison Attribute Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":189,"aegis_name":"NPC_HOLYATTACK","reason":"no_skillinfo","display_name":"Holy Attribute Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":190,"aegis_name":"NPC_DARKNESSATTACK","reason":"no_skillinfo","display_name":"Shadow Attribute Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":191,"aegis_name":"NPC_TELEKINESISATTACK","reason":"no_skillinfo","display_name":"Ghost Attribute Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":192,"aegis_name":"NPC_MAGICALATTACK","reason":"no_skillinfo","display_name":"Demon Shock Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":193,"aegis_name":"NPC_METAMORPHOSIS","reason":"no_skillinfo","display_name":"Metamorphosis","has_skillinfo":false,"has_icon":false}
+{"skill_id":194,"aegis_name":"NPC_PROVOCATION","reason":"no_skillinfo","display_name":"Provocation","has_skillinfo":false,"has_icon":false}
+{"skill_id":195,"aegis_name":"NPC_SMOKING","reason":"no_skillinfo","display_name":"Smoking","has_skillinfo":false,"has_icon":false}
+{"skill_id":196,"aegis_name":"NPC_SUMMONSLAVE","reason":"no_skillinfo","display_name":"Follower Summons","has_skillinfo":false,"has_icon":false}
+{"skill_id":197,"aegis_name":"NPC_EMOTION","reason":"no_skillinfo","display_name":"Emotion","has_skillinfo":false,"has_icon":false}
+{"skill_id":198,"aegis_name":"NPC_TRANSFORMATION","reason":"no_skillinfo","display_name":"Transformation","has_skillinfo":false,"has_icon":false}
+{"skill_id":199,"aegis_name":"NPC_BLOODDRAIN","reason":"no_skillinfo","display_name":"Sucking Blood","has_skillinfo":false,"has_icon":false}
+{"skill_id":200,"aegis_name":"NPC_ENERGYDRAIN","reason":"no_skillinfo","display_name":"Energy Drain","has_skillinfo":false,"has_icon":false}
+{"skill_id":201,"aegis_name":"NPC_KEEPING","reason":"no_skillinfo","display_name":"Keeping","has_skillinfo":false,"has_icon":false}
+{"skill_id":202,"aegis_name":"NPC_DARKBREATH","reason":"no_skillinfo","display_name":"Dark Breath","has_skillinfo":false,"has_icon":false}
+{"skill_id":203,"aegis_name":"NPC_DARKBLESSING","reason":"no_skillinfo","display_name":"Dark Blessing","has_skillinfo":false,"has_icon":false}
+{"skill_id":204,"aegis_name":"NPC_BARRIER","reason":"no_skillinfo","display_name":"Barrier","has_skillinfo":false,"has_icon":false}
+{"skill_id":205,"aegis_name":"NPC_DEFENDER","reason":"missing_icon","display_name":"Defender","has_skillinfo":true,"has_icon":false}
+{"skill_id":206,"aegis_name":"NPC_LICK","reason":"no_skillinfo","display_name":"Lick","has_skillinfo":false,"has_icon":false}
+{"skill_id":207,"aegis_name":"NPC_HALLUCINATION","reason":"no_skillinfo","display_name":"Hallucination","has_skillinfo":false,"has_icon":false}
+{"skill_id":208,"aegis_name":"NPC_REBIRTH","reason":"no_skillinfo","display_name":"Rebirth","has_skillinfo":false,"has_icon":false}
+{"skill_id":209,"aegis_name":"NPC_SUMMONMONSTER","reason":"no_skillinfo","display_name":"Monster Summons","has_skillinfo":false,"has_icon":false}
+{"skill_id":291,"aegis_name":"SA_MONOCELL","reason":"missing_icon","display_name":"Mono Cell","has_skillinfo":true,"has_icon":false}
+{"skill_id":292,"aegis_name":"SA_CLASSCHANGE","reason":"missing_icon","display_name":"Class Change","has_skillinfo":true,"has_icon":false}
+{"skill_id":293,"aegis_name":"SA_SUMMONMONSTER","reason":"missing_icon","display_name":"Summon Monster","has_skillinfo":true,"has_icon":false}
+{"skill_id":294,"aegis_name":"SA_REVERSEORCISH","reason":"missing_icon","display_name":"Reverse Orcish","has_skillinfo":true,"has_icon":false}
+{"skill_id":295,"aegis_name":"SA_DEATH","reason":"missing_icon","display_name":"Grim Reaper","has_skillinfo":true,"has_icon":false}
+{"skill_id":296,"aegis_name":"SA_FORTUNE","reason":"missing_icon","display_name":"Fortune","has_skillinfo":true,"has_icon":false}
+{"skill_id":297,"aegis_name":"SA_TAMINGMONSTER","reason":"missing_icon","display_name":"Taming Monster","has_skillinfo":true,"has_icon":false}
+{"skill_id":298,"aegis_name":"SA_QUESTION","reason":"missing_icon","display_name":"?","has_skillinfo":true,"has_icon":false}
+{"skill_id":299,"aegis_name":"SA_GRAVITY","reason":"missing_icon","display_name":"Gravity","has_skillinfo":true,"has_icon":false}
+{"skill_id":300,"aegis_name":"SA_LEVELUP","reason":"missing_icon","display_name":"Level Up","has_skillinfo":true,"has_icon":false}
+{"skill_id":301,"aegis_name":"SA_INSTANTDEATH","reason":"missing_icon","display_name":"Instant Death","has_skillinfo":true,"has_icon":false}
+{"skill_id":302,"aegis_name":"SA_FULLRECOVERY","reason":"missing_icon","display_name":"Full Recovery","has_skillinfo":true,"has_icon":false}
+{"skill_id":303,"aegis_name":"SA_COMA","reason":"missing_icon","display_name":"Coma","has_skillinfo":true,"has_icon":false}
+{"skill_id":331,"aegis_name":"NPC_RANDOMMOVE","reason":"no_skillinfo","display_name":"Random Move","has_skillinfo":false,"has_icon":false}
+{"skill_id":332,"aegis_name":"NPC_SPEEDUP","reason":"no_skillinfo","display_name":"Speed UP","has_skillinfo":false,"has_icon":false}
+{"skill_id":333,"aegis_name":"NPC_REVENGE","reason":"no_skillinfo","display_name":"Revenge","has_skillinfo":false,"has_icon":false}
+{"skill_id":338,"aegis_name":"NPC_DARKCROSS","reason":"no_skillinfo","display_name":"Cross of Darkness","has_skillinfo":false,"has_icon":false}
+{"skill_id":339,"aegis_name":"NPC_GRANDDARKNESS","reason":"no_skillinfo","display_name":"Grand cross of Darkness","has_skillinfo":false,"has_icon":false}
+{"skill_id":340,"aegis_name":"NPC_DARKSTRIKE","reason":"no_skillinfo","display_name":"Soul Strike of Darkness","has_skillinfo":false,"has_icon":false}
+{"skill_id":341,"aegis_name":"NPC_DARKTHUNDER","reason":"no_skillinfo","display_name":"Darkness Jupitel","has_skillinfo":false,"has_icon":false}
+{"skill_id":342,"aegis_name":"NPC_STOP","reason":"no_skillinfo","display_name":"Stop","has_skillinfo":false,"has_icon":false}
+{"skill_id":343,"aegis_name":"NPC_WEAPONBRAKER","reason":"no_skillinfo","display_name":"Break weapon","has_skillinfo":false,"has_icon":false}
+{"skill_id":344,"aegis_name":"NPC_ARMORBRAKE","reason":"no_skillinfo","display_name":"Break armor","has_skillinfo":false,"has_icon":false}
+{"skill_id":345,"aegis_name":"NPC_HELMBRAKE","reason":"no_skillinfo","display_name":"Break helm","has_skillinfo":false,"has_icon":false}
+{"skill_id":346,"aegis_name":"NPC_SHIELDBRAKE","reason":"no_skillinfo","display_name":"Break shield","has_skillinfo":false,"has_icon":false}
+{"skill_id":347,"aegis_name":"NPC_UNDEADATTACK","reason":"no_skillinfo","display_name":"Undead Element Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":348,"aegis_name":"NPC_CHANGEUNDEAD","reason":"no_skillinfo","display_name":"Undead Attribute Change","has_skillinfo":false,"has_icon":false}
+{"skill_id":349,"aegis_name":"NPC_POWERUP","reason":"no_skillinfo","display_name":"Power Up","has_skillinfo":false,"has_icon":false}
+{"skill_id":350,"aegis_name":"NPC_AGIUP","reason":"no_skillinfo","display_name":"Agility Up","has_skillinfo":false,"has_icon":false}
+{"skill_id":351,"aegis_name":"NPC_SIEGEMODE","reason":"no_skillinfo","display_name":"Siege Mode","has_skillinfo":false,"has_icon":false}
+{"skill_id":352,"aegis_name":"NPC_CALLSLAVE","reason":"no_skillinfo","display_name":"Recall Slaves","has_skillinfo":false,"has_icon":false}
+{"skill_id":353,"aegis_name":"NPC_INVISIBLE","reason":"no_skillinfo","display_name":"Invisible","has_skillinfo":false,"has_icon":false}
+{"skill_id":354,"aegis_name":"NPC_RUN","reason":"no_skillinfo","display_name":"Run","has_skillinfo":false,"has_icon":false}
+{"skill_id":360,"aegis_name":"LK_FURY","reason":"no_skillinfo","display_name":"Fury","has_skillinfo":false,"has_icon":true}
+{"skill_id":473,"aegis_name":"SM_SELFPROVOKE","reason":"no_skillinfo","display_name":"Provoke Self","has_skillinfo":false,"has_icon":false}
+{"skill_id":474,"aegis_name":"NPC_EMOTION_ON","reason":"no_skillinfo","display_name":"Emotion ON","has_skillinfo":false,"has_icon":false}
+{"skill_id":492,"aegis_name":"ITEM_ENCHANTARMS","reason":"no_skillinfo","display_name":"Weapon Enchantment","has_skillinfo":false,"has_icon":false}
+{"skill_id":572,"aegis_name":"SL_DEATHKNIGHT","reason":"missing_icon","display_name":"Death Knight Spirit","has_skillinfo":true,"has_icon":false}
+{"skill_id":573,"aegis_name":"SL_COLLECTOR","reason":"missing_icon","display_name":"Dark Collector Spirit","has_skillinfo":true,"has_icon":false}
+{"skill_id":574,"aegis_name":"SL_NINJA","reason":"missing_icon","display_name":"Ninja Spirit","has_skillinfo":true,"has_icon":false}
+{"skill_id":575,"aegis_name":"SL_GUNNER","reason":"missing_icon","display_name":"Gunslinger Spirit","has_skillinfo":true,"has_icon":false}
+{"skill_id":653,"aegis_name":"NPC_EARTHQUAKE","reason":"missing_icon","display_name":"Earthquake","has_skillinfo":true,"has_icon":false}
+{"skill_id":654,"aegis_name":"NPC_FIREBREATH","reason":"no_skillinfo","display_name":"Fire Breath","has_skillinfo":false,"has_icon":false}
+{"skill_id":655,"aegis_name":"NPC_ICEBREATH","reason":"no_skillinfo","display_name":"Ice Breath","has_skillinfo":false,"has_icon":false}
+{"skill_id":656,"aegis_name":"NPC_THUNDERBREATH","reason":"no_skillinfo","display_name":"Thunder Breath","has_skillinfo":false,"has_icon":false}
+{"skill_id":657,"aegis_name":"NPC_ACIDBREATH","reason":"no_skillinfo","display_name":"Acid Breath","has_skillinfo":false,"has_icon":false}
+{"skill_id":658,"aegis_name":"NPC_DARKNESSBREATH","reason":"no_skillinfo","display_name":"Darkness Breath","has_skillinfo":false,"has_icon":false}
+{"skill_id":659,"aegis_name":"NPC_DRAGONFEAR","reason":"missing_icon","display_name":"Dragon Fear","has_skillinfo":true,"has_icon":false}
+{"skill_id":660,"aegis_name":"NPC_BLEEDING","reason":"no_skillinfo","display_name":"Bleeding","has_skillinfo":false,"has_icon":false}
+{"skill_id":661,"aegis_name":"NPC_PULSESTRIKE","reason":"missing_icon","display_name":"Pulse Strike","has_skillinfo":true,"has_icon":false}
+{"skill_id":662,"aegis_name":"NPC_HELLJUDGEMENT","reason":"missing_icon","display_name":"Hell Judgement","has_skillinfo":true,"has_icon":false}
+{"skill_id":663,"aegis_name":"NPC_WIDESILENCE","reason":"missing_icon","display_name":"Wide Silence","has_skillinfo":true,"has_icon":false}
+{"skill_id":664,"aegis_name":"NPC_WIDEFREEZE","reason":"missing_icon","display_name":"Wide Freeze","has_skillinfo":true,"has_icon":false}
+{"skill_id":665,"aegis_name":"NPC_WIDEBLEEDING","reason":"missing_icon","display_name":"Wide Bleeding","has_skillinfo":true,"has_icon":false}
+{"skill_id":666,"aegis_name":"NPC_WIDESTONE","reason":"missing_icon","display_name":"Wide Stone","has_skillinfo":true,"has_icon":false}
+{"skill_id":667,"aegis_name":"NPC_WIDECONFUSE","reason":"missing_icon","display_name":"Wide Confuse","has_skillinfo":true,"has_icon":false}
+{"skill_id":668,"aegis_name":"NPC_WIDESLEEP","reason":"missing_icon","display_name":"Wide Sleep","has_skillinfo":true,"has_icon":false}
+{"skill_id":669,"aegis_name":"NPC_WIDESIGHT","reason":"missing_icon","display_name":"Wide Sight","has_skillinfo":true,"has_icon":false}
+{"skill_id":670,"aegis_name":"NPC_EVILLAND","reason":"missing_icon","display_name":"Evil Land","has_skillinfo":true,"has_icon":false}
+{"skill_id":671,"aegis_name":"NPC_MAGICMIRROR","reason":"missing_icon","display_name":"Magic Mirror","has_skillinfo":true,"has_icon":false}
+{"skill_id":672,"aegis_name":"NPC_SLOWCAST","reason":"missing_icon","display_name":"Slow Cast","has_skillinfo":true,"has_icon":false}
+{"skill_id":673,"aegis_name":"NPC_CRITICALWOUND","reason":"missing_icon","display_name":"Critical Wound","has_skillinfo":true,"has_icon":false}
+{"skill_id":674,"aegis_name":"NPC_EXPULSION","reason":"no_skillinfo","display_name":"Expulsion","has_skillinfo":false,"has_icon":false}
+{"skill_id":675,"aegis_name":"NPC_STONESKIN","reason":"missing_icon","display_name":"Stone Skin","has_skillinfo":true,"has_icon":false}
+{"skill_id":676,"aegis_name":"NPC_ANTIMAGIC","reason":"missing_icon","display_name":"Anti Magic","has_skillinfo":true,"has_icon":false}
+{"skill_id":677,"aegis_name":"NPC_WIDECURSE","reason":"missing_icon","display_name":"Wide Curse","has_skillinfo":true,"has_icon":false}
+{"skill_id":678,"aegis_name":"NPC_WIDESTUN","reason":"missing_icon","display_name":"Wide Stun","has_skillinfo":true,"has_icon":false}
+{"skill_id":679,"aegis_name":"NPC_VAMPIRE_GIFT","reason":"missing_icon","display_name":"Vampire Gift","has_skillinfo":true,"has_icon":false}
+{"skill_id":680,"aegis_name":"NPC_WIDESOULDRAIN","reason":"missing_icon","display_name":"Wide Soul Drain","has_skillinfo":true,"has_icon":false}
+{"skill_id":682,"aegis_name":"NPC_TALK","reason":"no_skillinfo","display_name":"Talk","has_skillinfo":false,"has_icon":false}
+{"skill_id":683,"aegis_name":"NPC_HELLPOWER","reason":"missing_icon","display_name":"Hell Power","has_skillinfo":true,"has_icon":false}
+{"skill_id":684,"aegis_name":"NPC_WIDEHELLDIGNITY","reason":"no_skillinfo","display_name":"Hell Dignity","has_skillinfo":false,"has_icon":false}
+{"skill_id":685,"aegis_name":"NPC_INVINCIBLE","reason":"no_skillinfo","display_name":"Invincible","has_skillinfo":false,"has_icon":false}
+{"skill_id":686,"aegis_name":"NPC_INVINCIBLEOFF","reason":"no_skillinfo","display_name":"Invincible off","has_skillinfo":false,"has_icon":false}
+{"skill_id":687,"aegis_name":"NPC_ALLHEAL","reason":"missing_icon","display_name":"Lifestream","has_skillinfo":true,"has_icon":false}
+{"skill_id":689,"aegis_name":"CASH_BLESSING","reason":"no_skillinfo","display_name":"Party Blessing","has_skillinfo":false,"has_icon":false}
+{"skill_id":690,"aegis_name":"CASH_INCAGI","reason":"no_skillinfo","display_name":"Party Increase AGI","has_skillinfo":false,"has_icon":false}
+{"skill_id":691,"aegis_name":"CASH_ASSUMPTIO","reason":"no_skillinfo","display_name":"Party Assumptio","has_skillinfo":false,"has_icon":false}
+{"skill_id":693,"aegis_name":"ALL_PARTYFLEE","reason":"missing_icon","display_name":"Blowing Wind !!","has_skillinfo":true,"has_icon":false}
+{"skill_id":694,"aegis_name":"ALL_ANGEL_PROTECT","reason":"missing_icon","display_name":"Thank You So Much!!","has_skillinfo":true,"has_icon":false}
+{"skill_id":697,"aegis_name":"ALL_REVERSEORCISH","reason":"missing_icon","display_name":"Reverse Orcish","has_skillinfo":true,"has_icon":false}
+{"skill_id":706,"aegis_name":"NPC_VENOMFOG","reason":"missing_icon","display_name":"Poison Mist","has_skillinfo":true,"has_icon":false}
+{"skill_id":707,"aegis_name":"NPC_MILLENNIUMSHIELD","reason":"missing_icon","display_name":"Millennium Shield","has_skillinfo":true,"has_icon":false}
+{"skill_id":708,"aegis_name":"NPC_COMET","reason":"missing_icon","display_name":"Comet","has_skillinfo":true,"has_icon":false}
+{"skill_id":709,"aegis_name":"NPC_ICEMINE","reason":"missing_icon","display_name":"Ice Mine","has_skillinfo":true,"has_icon":false}
+{"skill_id":711,"aegis_name":"NPC_FLAMECROSS","reason":"missing_icon","display_name":"Flame Cross","has_skillinfo":true,"has_icon":false}
+{"skill_id":712,"aegis_name":"NPC_PULSESTRIKE2","reason":"missing_icon","display_name":"Pulse Strike","has_skillinfo":true,"has_icon":false}
+{"skill_id":713,"aegis_name":"NPC_DANCINGBLADE","reason":"no_skillinfo","display_name":"Dancing Blade","has_skillinfo":false,"has_icon":false}
+{"skill_id":714,"aegis_name":"NPC_DANCINGBLADE_ATK","reason":"no_skillinfo","display_name":"Dancing Blade Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":715,"aegis_name":"NPC_DARKPIERCING","reason":"no_skillinfo","display_name":"Dark Piercing","has_skillinfo":false,"has_icon":false}
+{"skill_id":716,"aegis_name":"NPC_MAXPAIN","reason":"missing_icon","display_name":"Max Pain","has_skillinfo":true,"has_icon":false}
+{"skill_id":717,"aegis_name":"NPC_MAXPAIN_ATK","reason":"no_skillinfo","display_name":"Max Pain Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":718,"aegis_name":"NPC_DEATHSUMMON","reason":"no_skillinfo","display_name":"Death Summon","has_skillinfo":false,"has_icon":false}
+{"skill_id":719,"aegis_name":"NPC_HELLBURNING","reason":"no_skillinfo","display_name":"Hell Burning","has_skillinfo":false,"has_icon":false}
+{"skill_id":720,"aegis_name":"NPC_JACKFROST","reason":"missing_icon","display_name":"Jack Frost","has_skillinfo":true,"has_icon":false}
+{"skill_id":721,"aegis_name":"NPC_WIDEWEB","reason":"missing_icon","display_name":"Wide Spider Web","has_skillinfo":true,"has_icon":false}
+{"skill_id":722,"aegis_name":"NPC_WIDESUCK","reason":"missing_icon","display_name":"Wide Vampire","has_skillinfo":true,"has_icon":false}
+{"skill_id":723,"aegis_name":"NPC_STORMGUST2","reason":"missing_icon","display_name":"Storm Gust","has_skillinfo":true,"has_icon":false}
+{"skill_id":724,"aegis_name":"NPC_FIRESTORM","reason":"missing_icon","display_name":"Fire Storm","has_skillinfo":true,"has_icon":false}
+{"skill_id":725,"aegis_name":"NPC_REVERBERATION","reason":"missing_icon","display_name":"Reverberation","has_skillinfo":true,"has_icon":false}
+{"skill_id":726,"aegis_name":"NPC_REVERBERATION_ATK","reason":"no_skillinfo","display_name":"Reverberation Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":727,"aegis_name":"NPC_LEX_AETERNA","reason":"missing_icon","display_name":"Lex Aeterna","has_skillinfo":true,"has_icon":false}
+{"skill_id":728,"aegis_name":"NPC_ARROWSTORM","reason":"missing_icon","display_name":"Arrow Storm","has_skillinfo":true,"has_icon":false}
+{"skill_id":729,"aegis_name":"NPC_CHEAL","reason":"no_skillinfo","display_name":"NPC Coluceo Heal","has_skillinfo":false,"has_icon":false}
+{"skill_id":730,"aegis_name":"NPC_SR_CURSEDCIRCLE","reason":"missing_icon","display_name":"Cursed Circle","has_skillinfo":true,"has_icon":false}
+{"skill_id":731,"aegis_name":"NPC_DRAGONBREATH","reason":"missing_icon","display_name":"Dragon Breath","has_skillinfo":true,"has_icon":false}
+{"skill_id":732,"aegis_name":"NPC_FATALMENACE","reason":"missing_icon","display_name":"Fatal Menace","has_skillinfo":true,"has_icon":false}
+{"skill_id":733,"aegis_name":"NPC_MAGMA_ERUPTION","reason":"missing_icon","display_name":"Magma Eruption","has_skillinfo":true,"has_icon":false}
+{"skill_id":734,"aegis_name":"NPC_MAGMA_ERUPTION_DOTDAMAGE","reason":"no_skillinfo","display_name":"NPC Magma Eruption Dot Damage","has_skillinfo":false,"has_icon":false}
+{"skill_id":735,"aegis_name":"NPC_MANDRAGORA","reason":"missing_icon","display_name":"Mandragora Howling","has_skillinfo":true,"has_icon":false}
+{"skill_id":736,"aegis_name":"NPC_PSYCHIC_WAVE","reason":"missing_icon","display_name":"Psychic Wave","has_skillinfo":true,"has_icon":false}
+{"skill_id":737,"aegis_name":"NPC_RAYOFGENESIS","reason":"missing_icon","display_name":"Ray of Genesis","has_skillinfo":true,"has_icon":false}
+{"skill_id":738,"aegis_name":"NPC_VENOMIMPRESS","reason":"no_skillinfo","display_name":"NPC Venom Impress","has_skillinfo":false,"has_icon":false}
+{"skill_id":739,"aegis_name":"NPC_CLOUD_KILL","reason":"missing_icon","display_name":"Cloud Kill","has_skillinfo":true,"has_icon":false}
+{"skill_id":740,"aegis_name":"NPC_IGNITIONBREAK","reason":"missing_icon","display_name":"Ignition Break","has_skillinfo":true,"has_icon":false}
+{"skill_id":741,"aegis_name":"NPC_PHANTOMTHRUST","reason":"no_skillinfo","display_name":"Phantom Thrust","has_skillinfo":false,"has_icon":false}
+{"skill_id":742,"aegis_name":"NPC_POISON_BUSTER","reason":"no_skillinfo","display_name":"Poison Buster","has_skillinfo":false,"has_icon":false}
+{"skill_id":743,"aegis_name":"NPC_HALLUCINATIONWALK","reason":"missing_icon","display_name":"Hallucination Walk","has_skillinfo":true,"has_icon":false}
+{"skill_id":744,"aegis_name":"NPC_ELECTRICWALK","reason":"missing_icon","display_name":"Electric Walk","has_skillinfo":true,"has_icon":false}
+{"skill_id":745,"aegis_name":"NPC_FIREWALK","reason":"missing_icon","display_name":"Fire Walk","has_skillinfo":true,"has_icon":false}
+{"skill_id":747,"aegis_name":"NPC_LEASH","reason":"missing_icon","display_name":"Grasp of Death","has_skillinfo":true,"has_icon":false}
+{"skill_id":748,"aegis_name":"NPC_WIDELEASH","reason":"missing_icon","display_name":"Wide Grasp of Death","has_skillinfo":true,"has_icon":false}
+{"skill_id":749,"aegis_name":"NPC_WIDECRITICALWOUND","reason":"no_skillinfo","display_name":"Wide Critical Wounds","has_skillinfo":false,"has_icon":false}
+{"skill_id":751,"aegis_name":"NPC_ALL_STAT_DOWN","reason":"missing_icon","display_name":"All Stats Down","has_skillinfo":true,"has_icon":false}
+{"skill_id":752,"aegis_name":"NPC_GRADUAL_GRAVITY","reason":"missing_icon","display_name":"Gravity Raise","has_skillinfo":true,"has_icon":false}
+{"skill_id":753,"aegis_name":"NPC_DAMAGE_HEAL","reason":"missing_icon","display_name":"Recovery Switch","has_skillinfo":true,"has_icon":false}
+{"skill_id":754,"aegis_name":"NPC_IMMUNE_PROPERTY","reason":"missing_icon","display_name":"Elemental Immunity","has_skillinfo":true,"has_icon":false}
+{"skill_id":755,"aegis_name":"NPC_MOVE_COORDINATE","reason":"missing_icon","display_name":"Change Location","has_skillinfo":true,"has_icon":false}
+{"skill_id":756,"aegis_name":"NPC_WIDEBLEEDING2","reason":"missing_icon","display_name":"Demonic Mass Bleeding","has_skillinfo":true,"has_icon":false}
+{"skill_id":757,"aegis_name":"NPC_WIDESILENCE2","reason":"missing_icon","display_name":"Demonic Mass Silence","has_skillinfo":true,"has_icon":false}
+{"skill_id":758,"aegis_name":"NPC_WIDESTUN2","reason":"missing_icon","display_name":"Demonic Mass Stun","has_skillinfo":true,"has_icon":false}
+{"skill_id":759,"aegis_name":"NPC_WIDESTONE2","reason":"missing_icon","display_name":"Demonic Mass Stone","has_skillinfo":true,"has_icon":false}
+{"skill_id":760,"aegis_name":"NPC_WIDESLEEP2","reason":"missing_icon","display_name":"Demonic Mass Sleep","has_skillinfo":true,"has_icon":false}
+{"skill_id":761,"aegis_name":"NPC_WIDECURSE2","reason":"missing_icon","display_name":"Demonic Mass Curse","has_skillinfo":true,"has_icon":false}
+{"skill_id":762,"aegis_name":"NPC_WIDECONFUSE2","reason":"missing_icon","display_name":"Demonic Mass Confusion","has_skillinfo":true,"has_icon":false}
+{"skill_id":763,"aegis_name":"NPC_WIDEFREEZE2","reason":"missing_icon","display_name":"Demonic Mass Freezing","has_skillinfo":true,"has_icon":false}
+{"skill_id":764,"aegis_name":"NPC_BLEEDING2","reason":"no_skillinfo","display_name":"Bleeding","has_skillinfo":false,"has_icon":false}
+{"skill_id":765,"aegis_name":"NPC_ICEBREATH2","reason":"no_skillinfo","display_name":"Ice Breath","has_skillinfo":false,"has_icon":false}
+{"skill_id":768,"aegis_name":"NPC_HELLJUDGEMENT2","reason":"missing_icon","display_name":"Demonic Hell Judgement","has_skillinfo":true,"has_icon":false}
+{"skill_id":769,"aegis_name":"NPC_RAINOFMETEOR","reason":"missing_icon","display_name":"Rain of Meteor","has_skillinfo":true,"has_icon":false}
+{"skill_id":770,"aegis_name":"NPC_GROUNDDRIVE","reason":"missing_icon","display_name":"Ground Drive","has_skillinfo":true,"has_icon":false}
+{"skill_id":771,"aegis_name":"NPC_RELIEVE_ON","reason":"no_skillinfo","display_name":"NPC_RELIEVE_ON","has_skillinfo":false,"has_icon":false}
+{"skill_id":772,"aegis_name":"NPC_RELIEVE_OFF","reason":"no_skillinfo","display_name":"NPC_RELIEVE_OFF","has_skillinfo":false,"has_icon":false}
+{"skill_id":776,"aegis_name":"NPC_LAST","reason":"no_skillinfo","display_name":"Deadly Curse","has_skillinfo":false,"has_icon":false}
+{"skill_id":779,"aegis_name":"NPC_DEADLYCURSE2","reason":"no_client","display_name":"Deadly Curse 2","has_skillinfo":false,"has_icon":false}
+{"skill_id":780,"aegis_name":"NPC_CANE_OF_EVIL_EYE","reason":"no_client","display_name":"Cane of evil eye","has_skillinfo":false,"has_icon":false}
+{"skill_id":783,"aegis_name":"NPC_KILLING_AURA","reason":"no_client","display_name":"Killing Aura","has_skillinfo":false,"has_icon":false}
+{"skill_id":784,"aegis_name":"ALL_EVENT_20TH_ANNIVERSARY","reason":"no_client","display_name":"RO 20th Anniversary Firecracker","has_skillinfo":false,"has_icon":false}
+{"skill_id":2055,"aegis_name":"AB_DUPLELIGHT_MELEE","reason":"missing_icon","display_name":"Duple Light","has_skillinfo":true,"has_icon":false}
+{"skill_id":2056,"aegis_name":"AB_DUPLELIGHT_MAGIC","reason":"missing_icon","display_name":"Duple Light","has_skillinfo":true,"has_icon":false}
+{"skill_id":2215,"aegis_name":"WL_CHAINLIGHTNING_ATK","reason":"no_skillinfo","display_name":"Chain Lightning Attack","has_skillinfo":false,"has_icon":true}
+{"skill_id":2218,"aegis_name":"WL_TETRAVORTEX_FIRE","reason":"no_skillinfo","display_name":"Tetra Vortex Fire","has_skillinfo":false,"has_icon":true}
+{"skill_id":2219,"aegis_name":"WL_TETRAVORTEX_WATER","reason":"no_skillinfo","display_name":"Tetra Vortex Water","has_skillinfo":false,"has_icon":true}
+{"skill_id":2220,"aegis_name":"WL_TETRAVORTEX_WIND","reason":"no_skillinfo","display_name":"Tetra Vortex Wind","has_skillinfo":false,"has_icon":true}
+{"skill_id":2221,"aegis_name":"WL_TETRAVORTEX_GROUND","reason":"no_skillinfo","display_name":"Tetra Vortex Earth","has_skillinfo":false,"has_icon":true}
+{"skill_id":2225,"aegis_name":"WL_SUMMON_ATK_FIRE","reason":"no_skillinfo","display_name":"Summon Attack Fire","has_skillinfo":false,"has_icon":true}
+{"skill_id":2226,"aegis_name":"WL_SUMMON_ATK_WIND","reason":"no_skillinfo","display_name":"Summon Attack Wind","has_skillinfo":false,"has_icon":true}
+{"skill_id":2227,"aegis_name":"WL_SUMMON_ATK_WATER","reason":"no_skillinfo","display_name":"Summon Attack Water","has_skillinfo":false,"has_icon":true}
+{"skill_id":2228,"aegis_name":"WL_SUMMON_ATK_GROUND","reason":"no_skillinfo","display_name":"Summon Attack Earth","has_skillinfo":false,"has_icon":true}
+{"skill_id":2284,"aegis_name":"SC_STARTMARK","reason":"no_skillinfo","display_name":"Fatal Menace","has_skillinfo":false,"has_icon":false}
+{"skill_id":2331,"aegis_name":"SR_HELLGATE","reason":"no_skillinfo","display_name":"Hell Gate","has_skillinfo":false,"has_icon":false}
+{"skill_id":2339,"aegis_name":"SR_GENTLETOUCH","reason":"no_skillinfo","display_name":"Gentle Touch","has_skillinfo":false,"has_icon":false}
+{"skill_id":2342,"aegis_name":"SR_CRESCENTELBOW_AUTOSPELL","reason":"no_skillinfo","display_name":"Crescent Elbow Autospell","has_skillinfo":false,"has_icon":false}
+{"skill_id":2415,"aegis_name":"WM_REVERBERATION_MELEE","reason":"no_skillinfo","display_name":"Reverberation Melee","has_skillinfo":false,"has_icon":false}
+{"skill_id":2416,"aegis_name":"WM_REVERBERATION_MAGIC","reason":"no_skillinfo","display_name":"Reverberation Magic","has_skillinfo":false,"has_icon":false}
+{"skill_id":2484,"aegis_name":"GN_CRAZYWEED_ATK","reason":"no_skillinfo","display_name":"Crazy Weed Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":2487,"aegis_name":"GN_FIRE_EXPANSION_SMOKE_POWDER","reason":"no_skillinfo","display_name":"Fire Expansion Smoke Powder","has_skillinfo":false,"has_icon":false}
+{"skill_id":2488,"aegis_name":"GN_FIRE_EXPANSION_TEAR_GAS","reason":"no_skillinfo","display_name":"Fire Expansion Tear Gas","has_skillinfo":false,"has_icon":false}
+{"skill_id":2489,"aegis_name":"GN_FIRE_EXPANSION_ACID","reason":"no_skillinfo","display_name":"Fire Expansion Acid","has_skillinfo":false,"has_icon":false}
+{"skill_id":2491,"aegis_name":"GN_HELLS_PLANT_ATK","reason":"no_skillinfo","display_name":"Hell's Plant Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":2498,"aegis_name":"GN_SLINGITEM_RANGEMELEEATK","reason":"no_skillinfo","display_name":"Sling Item Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":2516,"aegis_name":"WM_SEVERE_RAINSTORM_MELEE","reason":"no_skillinfo","display_name":"Severe Rainstorm Melee","has_skillinfo":false,"has_icon":false}
+{"skill_id":2519,"aegis_name":"LG_OVERBRAND_BRANDISH","reason":"no_skillinfo","display_name":"Overbrand Brandish","has_skillinfo":false,"has_icon":false}
+{"skill_id":2520,"aegis_name":"LG_OVERBRAND_PLUSATK","reason":"no_skillinfo","display_name":"Overbrand Plus Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":2533,"aegis_name":"ALL_ODINS_RECALL","reason":"missing_icon","display_name":"Odin's Recall","has_skillinfo":true,"has_icon":false}
+{"skill_id":2543,"aegis_name":"ALL_RAY_OF_PROTECTION","reason":"missing_icon","display_name":"Ray of Protection","has_skillinfo":true,"has_icon":false}
+{"skill_id":2572,"aegis_name":"RL_R_TRIP_PLUSATK","reason":"no_skillinfo","display_name":"Round Trip Plus Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":2594,"aegis_name":"SJ_FALLINGSTAR_ATK","reason":"missing_icon","display_name":"Falling Star","has_skillinfo":true,"has_icon":false}
+{"skill_id":2595,"aegis_name":"SJ_FALLINGSTAR_ATK2","reason":"missing_icon","display_name":"Falling Star","has_skillinfo":true,"has_icon":false}
+{"skill_id":3028,"aegis_name":"OB_OBOROGENSOU_TRANSITION_ATK","reason":"no_skillinfo","display_name":"Moonlight Fantasy Transition Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":3041,"aegis_name":"ALL_NIFLHEIM_RECALL","reason":"missing_icon","display_name":"Return to Niflheim","has_skillinfo":true,"has_icon":false}
+{"skill_id":3043,"aegis_name":"ALL_GLASTHEIM_RECALL","reason":"missing_icon","display_name":"Return to Glastheim","has_skillinfo":true,"has_icon":false}
+{"skill_id":3044,"aegis_name":"ALL_THANATOS_RECALL","reason":"missing_icon","display_name":"Return to Thanatos","has_skillinfo":true,"has_icon":false}
+{"skill_id":3045,"aegis_name":"ALL_LIGHTHALZEN_RECALL","reason":"no_client","display_name":"Return To Lighthalzen","has_skillinfo":false,"has_icon":false}
+{"skill_id":5005,"aegis_name":"RK_LUXANIMA","reason":"missing_icon","display_name":"Lux Anima","has_skillinfo":true,"has_icon":false}
+{"skill_id":5015,"aegis_name":"NC_MAGMA_ERUPTION_DOTDAMAGE","reason":"no_skillinfo","display_name":"Magma Eruption Dot Damage","has_skillinfo":false,"has_icon":false}
+{"skill_id":5030,"aegis_name":"SU_SV_ROOTTWIST_ATK","reason":"no_skillinfo","display_name":"Silver Vine Root Twist Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5034,"aegis_name":"SU_PICKYPECK_DOUBLE_ATK","reason":"no_skillinfo","display_name":"Picky Peck Double Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5042,"aegis_name":"SU_CN_METEOR2","reason":"no_skillinfo","display_name":"Catnip Meteor 2","has_skillinfo":false,"has_icon":false}
+{"skill_id":5043,"aegis_name":"SU_LUNATICCARROTBEAT2","reason":"no_skillinfo","display_name":"Lunatic Carrot Beat 2","has_skillinfo":false,"has_icon":false}
+{"skill_id":5067,"aegis_name":"ALL_EQSWITCH","reason":"no_client","display_name":"Equip Switch","has_skillinfo":false,"has_icon":false}
+{"skill_id":5078,"aegis_name":"WL_READING_SB_READING","reason":"no_skillinfo","display_name":"Reading Spellbook","has_skillinfo":false,"has_icon":false}
+{"skill_id":5202,"aegis_name":"DK_SERVANTWEAPON_ATK","reason":"no_skillinfo","display_name":"Servant Weapon Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5209,"aegis_name":"DK_HACKANDSLASHER_ATK","reason":"no_skillinfo","display_name":"Hack And Slasher Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5219,"aegis_name":"AG_VIOLENT_QUAKE_ATK","reason":"no_skillinfo","display_name":"Violent Quake Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5223,"aegis_name":"AG_ALL_BLOOM_ATK","reason":"no_skillinfo","display_name":"All Bloom Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5224,"aegis_name":"AG_ALL_BLOOM_ATK2","reason":"no_skillinfo","display_name":"All Bloom Attack 2","has_skillinfo":false,"has_icon":false}
+{"skill_id":5226,"aegis_name":"AG_CRYSTAL_IMPACT_ATK","reason":"no_skillinfo","display_name":"Crystal Impact Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5231,"aegis_name":"AG_ASTRAL_STRIKE_ATK","reason":"no_skillinfo","display_name":"Astral Strike Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5236,"aegis_name":"AG_CRIMSON_ARROW_ATK","reason":"no_skillinfo","display_name":"Crimson Arrow Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5274,"aegis_name":"CD_ARBITRIUM_ATK","reason":"no_skillinfo","display_name":"Arbitrium Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5306,"aegis_name":"AG_DESTRUCTIVE_HURRICANE_CLIMAX","reason":"no_client","display_name":"Destructive Hurricane Climax","has_skillinfo":false,"has_icon":false}
+{"skill_id":5307,"aegis_name":"BO_ACIDIFIED_ZONE_WATER_ATK","reason":"no_client","display_name":"Actified Zone Water Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5308,"aegis_name":"BO_ACIDIFIED_ZONE_GROUND_ATK","reason":"no_client","display_name":"Actified Zone Ground Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5309,"aegis_name":"BO_ACIDIFIED_ZONE_WIND_ATK","reason":"no_client","display_name":"Actified Zone Wind Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5310,"aegis_name":"BO_ACIDIFIED_ZONE_FIRE_ATK","reason":"no_client","display_name":"Actified Zone Fire Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5354,"aegis_name":"TR_ROSEBLOSSOM_ATK","reason":"no_skillinfo","display_name":"Rose Blossom Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5382,"aegis_name":"ABC_CHAIN_REACTION_SHOT_ATK","reason":"no_skillinfo","display_name":"Chain Reaction Shot Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5383,"aegis_name":"ABC_CHAIN_REACTION_SHOT_ATK","reason":"no_skillinfo","display_name":"From The Abyss Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5384,"aegis_name":"ABC_FROM_THE_ABYSS_ATK","reason":"no_skillinfo","display_name":"Wooden Throw Rock","has_skillinfo":false,"has_icon":false}
+{"skill_id":5385,"aegis_name":"BO_WOODEN_ATTACK","reason":"no_client","display_name":"Wooden Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":5386,"aegis_name":"BO_HELL_HOWLING","reason":"no_client","display_name":"Hell Howling","has_skillinfo":false,"has_icon":false}
+{"skill_id":5387,"aegis_name":"BO_HELL_DUSTY","reason":"no_client","display_name":"Hell Dusty","has_skillinfo":false,"has_icon":false}
+{"skill_id":5388,"aegis_name":"BO_FAIRY_DUSTY","reason":"no_client","display_name":"Fairy Dusty","has_skillinfo":false,"has_icon":false}
+{"skill_id":5389,"aegis_name":"EM_ELEMENTAL_BUSTER_FIRE","reason":"no_client","display_name":"Elemental Buster Fire","has_skillinfo":false,"has_icon":false}
+{"skill_id":5390,"aegis_name":"EM_ELEMENTAL_BUSTER_WATER","reason":"no_client","display_name":"Elemental Buster Water","has_skillinfo":false,"has_icon":false}
+{"skill_id":5391,"aegis_name":"EM_ELEMENTAL_BUSTER_WIND","reason":"no_client","display_name":"Elemental Buster Wind","has_skillinfo":false,"has_icon":false}
+{"skill_id":5392,"aegis_name":"EM_ELEMENTAL_BUSTER_GROUND","reason":"no_client","display_name":"Elemental Buster Ground","has_skillinfo":false,"has_icon":false}
+{"skill_id":5393,"aegis_name":"EM_ELEMENTAL_BUSTER_POISON","reason":"no_client","display_name":"Elemental Buster Poison","has_skillinfo":false,"has_icon":false}
+{"skill_id":5401,"aegis_name":"NW_P_F_I","reason":"no_client","display_name":"P.F.I","has_skillinfo":false,"has_icon":false}
+{"skill_id":5402,"aegis_name":"NW_GRENADE_MASTERY","reason":"no_client","display_name":"Grenade Mastery","has_skillinfo":false,"has_icon":false}
+{"skill_id":5403,"aegis_name":"NW_INTENSIVE_AIM","reason":"no_client","display_name":"Intensive Aim","has_skillinfo":false,"has_icon":false}
+{"skill_id":5404,"aegis_name":"NW_GRENADE_FRAGMENT","reason":"no_client","display_name":"Grenade Fragment","has_skillinfo":false,"has_icon":false}
+{"skill_id":5405,"aegis_name":"NW_THE_VIGILANTE_AT_NIGHT","reason":"no_client","display_name":"The Vigilante at Night","has_skillinfo":false,"has_icon":false}
+{"skill_id":5406,"aegis_name":"NW_ONLY_ONE_BULLET","reason":"no_client","display_name":"Only One Bullet","has_skillinfo":false,"has_icon":false}
+{"skill_id":5407,"aegis_name":"NW_SPIRAL_SHOOTING","reason":"no_client","display_name":"Spiral Shooting","has_skillinfo":false,"has_icon":false}
+{"skill_id":5408,"aegis_name":"NW_MAGAZINE_FOR_ONE","reason":"no_client","display_name":"Magazine for One","has_skillinfo":false,"has_icon":false}
+{"skill_id":5409,"aegis_name":"NW_WILD_FIRE","reason":"no_client","display_name":"Wild Fire","has_skillinfo":false,"has_icon":false}
+{"skill_id":5410,"aegis_name":"NW_BASIC_GRENADE","reason":"no_client","display_name":"Basic Grenade","has_skillinfo":false,"has_icon":false}
+{"skill_id":5411,"aegis_name":"NW_HASTY_FIRE_IN_THE_HOLE","reason":"no_client","display_name":"Hasty Fire in the Hole","has_skillinfo":false,"has_icon":false}
+{"skill_id":5412,"aegis_name":"NW_GRENADES_DROPPING","reason":"no_client","display_name":"Grenades Dropping","has_skillinfo":false,"has_icon":false}
+{"skill_id":5413,"aegis_name":"NW_AUTO_FIRING_LAUNCHER","reason":"no_client","display_name":"Auto Firing Launcher","has_skillinfo":false,"has_icon":false}
+{"skill_id":5414,"aegis_name":"NW_HIDDEN_CARD","reason":"no_client","display_name":"Hidden Card","has_skillinfo":false,"has_icon":false}
+{"skill_id":5415,"aegis_name":"NW_MISSION_BOMBARD","reason":"no_client","display_name":"Mission Bombard","has_skillinfo":false,"has_icon":false}
+{"skill_id":5416,"aegis_name":"SOA_TALISMAN_MASTERY","reason":"no_client","display_name":"Talisman Mastery","has_skillinfo":false,"has_icon":false}
+{"skill_id":5417,"aegis_name":"SOA_SOUL_MASTERY","reason":"no_client","display_name":"Soul Mastery","has_skillinfo":false,"has_icon":false}
+{"skill_id":5418,"aegis_name":"SOA_TALISMAN_OF_PROTECTION","reason":"no_client","display_name":"Talisman Of Protection","has_skillinfo":false,"has_icon":false}
+{"skill_id":5419,"aegis_name":"SOA_TALISMAN_OF_WARRIOR","reason":"no_client","display_name":"Talisman Of Warrior","has_skillinfo":false,"has_icon":false}
+{"skill_id":5420,"aegis_name":"SOA_TALISMAN_OF_MAGICIAN","reason":"no_client","display_name":"Talisman Of Magician","has_skillinfo":false,"has_icon":false}
+{"skill_id":5421,"aegis_name":"SOA_SOUL_GATHERING","reason":"no_client","display_name":"Soul Gathering","has_skillinfo":false,"has_icon":false}
+{"skill_id":5422,"aegis_name":"SOA_TOTEM_OF_TUTELARY","reason":"no_client","display_name":"Totem Of Tutelary","has_skillinfo":false,"has_icon":false}
+{"skill_id":5423,"aegis_name":"SOA_TALISMAN_OF_FIVE_ELEMENTS","reason":"no_client","display_name":"Talisman Of Five Elements","has_skillinfo":false,"has_icon":false}
+{"skill_id":5424,"aegis_name":"SOA_TALISMAN_OF_SOUL_STEALING","reason":"no_client","display_name":"Talisman Of Soul Stealing","has_skillinfo":false,"has_icon":false}
+{"skill_id":5425,"aegis_name":"SOA_EXORCISM_OF_MALICIOUS_SOUL","reason":"no_client","display_name":"Exorcism Of Malicious Soul","has_skillinfo":false,"has_icon":false}
+{"skill_id":5426,"aegis_name":"SOA_TALISMAN_OF_BLUE_DRAGON","reason":"no_client","display_name":"Talisman Of Blue Dragon","has_skillinfo":false,"has_icon":false}
+{"skill_id":5427,"aegis_name":"SOA_TALISMAN_OF_WHITE_TIGER","reason":"no_client","display_name":"Talisman Of White Tiger","has_skillinfo":false,"has_icon":false}
+{"skill_id":5428,"aegis_name":"SOA_TALISMAN_OF_RED_PHOENIX","reason":"no_client","display_name":"Talisman Of Red Phoenix","has_skillinfo":false,"has_icon":false}
+{"skill_id":5429,"aegis_name":"SOA_TALISMAN_OF_BLACK_TORTOISE","reason":"no_client","display_name":"Talisman Of Black Tortoise","has_skillinfo":false,"has_icon":false}
+{"skill_id":5430,"aegis_name":"SOA_TALISMAN_OF_FOUR_BEARING_GOD","reason":"no_client","display_name":"Talisman Of Four Bearing God","has_skillinfo":false,"has_icon":false}
+{"skill_id":5431,"aegis_name":"SOA_CIRCLE_OF_DIRECTIONS_AND_ELEMENTALS","reason":"no_client","display_name":"Circle Of Directions And Elementals","has_skillinfo":false,"has_icon":false}
+{"skill_id":5432,"aegis_name":"SOA_SOUL_OF_HEAVEN_AND_EARTH","reason":"no_client","display_name":"Soul Of Heaven And Earth","has_skillinfo":false,"has_icon":false}
+{"skill_id":5433,"aegis_name":"SH_MYSTICAL_CREATURE_MASTERY","reason":"no_client","display_name":"Mystical Creature Mastery","has_skillinfo":false,"has_icon":false}
+{"skill_id":5434,"aegis_name":"SH_COMMUNE_WITH_CHUL_HO","reason":"no_client","display_name":"Commune with Chulho","has_skillinfo":false,"has_icon":false}
+{"skill_id":5435,"aegis_name":"SH_CHUL_HO_SONIC_CLAW","reason":"no_client","display_name":"Chulho Sonic Claw","has_skillinfo":false,"has_icon":false}
+{"skill_id":5436,"aegis_name":"SH_HOWLING_OF_CHUL_HO","reason":"no_client","display_name":"Howling of Chulho","has_skillinfo":false,"has_icon":false}
+{"skill_id":5437,"aegis_name":"SH_HOGOGONG_STRIKE","reason":"no_client","display_name":"Hogogong Strike","has_skillinfo":false,"has_icon":false}
+{"skill_id":5438,"aegis_name":"SH_COMMUNE_WITH_KI_SUL","reason":"no_client","display_name":"Commune with Kisul","has_skillinfo":false,"has_icon":false}
+{"skill_id":5439,"aegis_name":"SH_KI_SUL_WATER_SPRAYING","reason":"no_client","display_name":"Kisul Water Spraying","has_skillinfo":false,"has_icon":false}
+{"skill_id":5440,"aegis_name":"SH_MARINE_FESTIVAL_OF_KI_SUL","reason":"no_client","display_name":"Marine Festival of Kisul","has_skillinfo":false,"has_icon":false}
+{"skill_id":5441,"aegis_name":"SH_SANDY_FESTIVAL_OF_KI_SUL","reason":"no_client","display_name":"Sandy Festival of Kisul","has_skillinfo":false,"has_icon":false}
+{"skill_id":5442,"aegis_name":"SH_KI_SUL_RAMPAGE","reason":"no_client","display_name":"Kisul Rampage","has_skillinfo":false,"has_icon":false}
+{"skill_id":5443,"aegis_name":"SH_COMMUNE_WITH_HYUN_ROK","reason":"no_client","display_name":"Commune with Hyunrok","has_skillinfo":false,"has_icon":false}
+{"skill_id":5444,"aegis_name":"SH_COLORS_OF_HYUN_ROK","reason":"no_client","display_name":"Colors of Hyunrok","has_skillinfo":false,"has_icon":false}
+{"skill_id":5445,"aegis_name":"SH_HYUN_ROKS_BREEZE","reason":"no_client","display_name":"Hyunrok Breeze","has_skillinfo":false,"has_icon":false}
+{"skill_id":5446,"aegis_name":"SH_HYUN_ROK_CANNON","reason":"no_client","display_name":"Hyunrok Cannon","has_skillinfo":false,"has_icon":false}
+{"skill_id":5447,"aegis_name":"SH_TEMPORARY_COMMUNION","reason":"no_client","display_name":"Temporary Communion","has_skillinfo":false,"has_icon":false}
+{"skill_id":5448,"aegis_name":"SH_BLESSING_OF_MYSTICAL_CREATURES","reason":"no_client","display_name":"Blessing of Mystical Creatures","has_skillinfo":false,"has_icon":false}
+{"skill_id":5449,"aegis_name":"HN_SELFSTUDY_TATICS","reason":"no_client","display_name":"Self Study Tactics","has_skillinfo":false,"has_icon":false}
+{"skill_id":5450,"aegis_name":"HN_SELFSTUDY_SOCERY","reason":"no_client","display_name":"Self Study Sorcery","has_skillinfo":false,"has_icon":false}
+{"skill_id":5451,"aegis_name":"HN_DOUBLEBOWLINGBASH","reason":"no_client","display_name":"Double Bowling Bash","has_skillinfo":false,"has_icon":false}
+{"skill_id":5452,"aegis_name":"HN_MEGA_SONIC_BLOW","reason":"no_client","display_name":"Mega Sonic Blow","has_skillinfo":false,"has_icon":false}
+{"skill_id":5453,"aegis_name":"HN_SHIELD_CHAIN_RUSH","reason":"no_client","display_name":"Shield Chain Rush","has_skillinfo":false,"has_icon":false}
+{"skill_id":5454,"aegis_name":"HN_SPIRAL_PIERCE_MAX","reason":"no_client","display_name":"Spiral Pierce Max","has_skillinfo":false,"has_icon":false}
+{"skill_id":5455,"aegis_name":"HN_METEOR_STORM_BUSTER","reason":"no_client","display_name":"Meteor Storm Buster","has_skillinfo":false,"has_icon":false}
+{"skill_id":5456,"aegis_name":"HN_JUPITEL_THUNDER_STORM","reason":"no_client","display_name":"Jupitel Thunderstorm","has_skillinfo":false,"has_icon":false}
+{"skill_id":5457,"aegis_name":"HN_JACK_FROST_NOVA","reason":"no_client","display_name":"Jack Frost Nova","has_skillinfo":false,"has_icon":false}
+{"skill_id":5458,"aegis_name":"HN_HELLS_DRIVE","reason":"no_client","display_name":"Hell's Drive","has_skillinfo":false,"has_icon":false}
+{"skill_id":5459,"aegis_name":"HN_GROUND_GRAVITATION","reason":"no_client","display_name":"Ground Gravitation","has_skillinfo":false,"has_icon":false}
+{"skill_id":5460,"aegis_name":"HN_NAPALM_VULCAN_STRIKE","reason":"no_client","display_name":"Napalm Vulcan Strike","has_skillinfo":false,"has_icon":false}
+{"skill_id":5461,"aegis_name":"HN_BREAKINGLIMIT","reason":"no_client","display_name":"Breaking Limit","has_skillinfo":false,"has_icon":false}
+{"skill_id":5462,"aegis_name":"HN_RULEBREAK","reason":"no_client","display_name":"Rule Break","has_skillinfo":false,"has_icon":false}
+{"skill_id":5463,"aegis_name":"SKE_SKY_MASTERY","reason":"no_client","display_name":"Sky Mastery","has_skillinfo":false,"has_icon":false}
+{"skill_id":5464,"aegis_name":"SKE_WAR_BOOK_MASTERY","reason":"no_client","display_name":"War Book Mastery","has_skillinfo":false,"has_icon":false}
+{"skill_id":5465,"aegis_name":"SKE_RISING_SUN","reason":"no_client","display_name":"Rising Sun","has_skillinfo":false,"has_icon":false}
+{"skill_id":5466,"aegis_name":"SKE_NOON_BLAST","reason":"no_client","display_name":"Noon Blast","has_skillinfo":false,"has_icon":false}
+{"skill_id":5467,"aegis_name":"SKE_SUNSET_BLAST","reason":"no_client","display_name":"Sunset Blast","has_skillinfo":false,"has_icon":false}
+{"skill_id":5468,"aegis_name":"SKE_RISING_MOON","reason":"no_client","display_name":"Rising Moon","has_skillinfo":false,"has_icon":false}
+{"skill_id":5469,"aegis_name":"SKE_MIDNIGHT_KICK","reason":"no_client","display_name":"Midnight Kick","has_skillinfo":false,"has_icon":false}
+{"skill_id":5470,"aegis_name":"SKE_DAWN_BREAK","reason":"no_client","display_name":"Dawn Break","has_skillinfo":false,"has_icon":false}
+{"skill_id":5471,"aegis_name":"SKE_TWINKLING_GALAXY","reason":"no_client","display_name":"Twinkling Galaxy","has_skillinfo":false,"has_icon":false}
+{"skill_id":5472,"aegis_name":"SKE_STAR_BURST","reason":"no_client","display_name":"Star Burst","has_skillinfo":false,"has_icon":false}
+{"skill_id":5473,"aegis_name":"SKE_STAR_CANNON","reason":"no_client","display_name":"Star Cannon","has_skillinfo":false,"has_icon":false}
+{"skill_id":5474,"aegis_name":"SKE_ALL_IN_THE_SKY","reason":"no_client","display_name":"All in the Sky","has_skillinfo":false,"has_icon":false}
+{"skill_id":5475,"aegis_name":"SKE_ENCHANTING_SKY","reason":"no_client","display_name":"Enchanting Sky","has_skillinfo":false,"has_icon":false}
+{"skill_id":5476,"aegis_name":"SS_TOKEDASU","reason":"no_client","display_name":"Melt Away","has_skillinfo":false,"has_icon":false}
+{"skill_id":5477,"aegis_name":"SS_SHIMIRU","reason":"no_client","display_name":"Infiltrate","has_skillinfo":false,"has_icon":false}
+{"skill_id":5478,"aegis_name":"SS_AKUMUKESU","reason":"no_client","display_name":"Nightmare Erasion","has_skillinfo":false,"has_icon":false}
+{"skill_id":5479,"aegis_name":"SS_SHINKIROU","reason":"no_client","display_name":"Mirage","has_skillinfo":false,"has_icon":false}
+{"skill_id":5480,"aegis_name":"SS_KAGEGARI","reason":"no_client","display_name":"Shadow Hunting","has_skillinfo":false,"has_icon":false}
+{"skill_id":5481,"aegis_name":"SS_KAGENOMAI","reason":"no_client","display_name":"Shadow Dance","has_skillinfo":false,"has_icon":false}
+{"skill_id":5482,"aegis_name":"SS_KAGEGISSEN","reason":"no_client","display_name":"Shadow Flash","has_skillinfo":false,"has_icon":false}
+{"skill_id":5483,"aegis_name":"SS_FUUMASHOUAKU","reason":"no_client","display_name":"Huuma Shuriken - Grasp","has_skillinfo":false,"has_icon":false}
+{"skill_id":5484,"aegis_name":"SS_FUUMAKOUCHIKU","reason":"no_client","display_name":"Huuma Shuriken - Construct","has_skillinfo":false,"has_icon":false}
+{"skill_id":5485,"aegis_name":"SS_KUNAIWAIKYOKU","reason":"no_client","display_name":"Kunai - Distortion","has_skillinfo":false,"has_icon":false}
+{"skill_id":5486,"aegis_name":"SS_KUNAIKAITEN","reason":"no_client","display_name":"Kunai - Rotation","has_skillinfo":false,"has_icon":false}
+{"skill_id":5487,"aegis_name":"SS_KUNAIKUSSETSU","reason":"no_client","display_name":"Kunai - Refraction","has_skillinfo":false,"has_icon":false}
+{"skill_id":5488,"aegis_name":"SS_SEKIENHOU","reason":"no_client","display_name":"Red Flame Cannon","has_skillinfo":false,"has_icon":false}
+{"skill_id":5489,"aegis_name":"SS_REIKETSUHOU","reason":"no_client","display_name":"Cold Blooded Cannon","has_skillinfo":false,"has_icon":false}
+{"skill_id":5490,"aegis_name":"SS_RAIDENPOU","reason":"no_client","display_name":"Thundering Cannon","has_skillinfo":false,"has_icon":false}
+{"skill_id":5491,"aegis_name":"SS_KINRYUUHOU","reason":"no_client","display_name":"Golden Dragon Cannon","has_skillinfo":false,"has_icon":false}
+{"skill_id":5492,"aegis_name":"SS_ANTENPOU","reason":"no_client","display_name":"Darkening Cannon","has_skillinfo":false,"has_icon":false}
+{"skill_id":5493,"aegis_name":"SS_KAGEAKUMU","reason":"no_client","display_name":"Shadow - Nightmare","has_skillinfo":false,"has_icon":false}
+{"skill_id":5494,"aegis_name":"SS_HITOUAKUMU","reason":"no_client","display_name":"Kunai - Nightmare","has_skillinfo":false,"has_icon":false}
+{"skill_id":5495,"aegis_name":"SS_ANKOKURYUUAKUMU","reason":"no_client","display_name":"Dark Dragon - Nightmare","has_skillinfo":false,"has_icon":false}
+{"skill_id":5496,"aegis_name":"NW_THE_VIGILANTE_AT_NIGHT_GUN_GATLING","reason":"no_client","display_name":"The Vigilante At Night Gun Gatling","has_skillinfo":false,"has_icon":false}
+{"skill_id":5497,"aegis_name":"NW_THE_VIGILANTE_AT_NIGHT_GUN_SHOTGUN","reason":"no_client","display_name":"The Vigilante At Night Gun Shotgun","has_skillinfo":false,"has_icon":false}
+{"skill_id":5499,"aegis_name":"SS_FOUR_CHARM","reason":"no_client","display_name":"Four Colors Charm","has_skillinfo":false,"has_icon":false}
+{"skill_id":5500,"aegis_name":"NW_WILD_SHOT","reason":"no_client","display_name":"Wild Shot","has_skillinfo":false,"has_icon":false}
+{"skill_id":5501,"aegis_name":"NW_MIDNIGHT_FALLEN","reason":"no_client","display_name":"Midnight Fallen","has_skillinfo":false,"has_icon":false}
+{"skill_id":5502,"aegis_name":"SKE_SKY_SUN","reason":"no_client","display_name":"Sky Sun","has_skillinfo":false,"has_icon":false}
+{"skill_id":5503,"aegis_name":"SKE_SKY_MOON","reason":"no_client","display_name":"Sky Moon","has_skillinfo":false,"has_icon":false}
+{"skill_id":5504,"aegis_name":"SKE_STAR_LIGHT_KICK","reason":"no_client","display_name":"Star Light Kick","has_skillinfo":false,"has_icon":false}
+{"skill_id":5505,"aegis_name":"HN_OVERCOMING_CRISIS","reason":"no_client","display_name":"Overcoming Crisis","has_skillinfo":false,"has_icon":false}
+{"skill_id":5506,"aegis_name":"SH_CHUL_HO_BATTERING","reason":"no_client","display_name":"Chulho Battering","has_skillinfo":false,"has_icon":false}
+{"skill_id":5507,"aegis_name":"SH_HYUN_ROK_SPIRIT_POWER","reason":"no_client","display_name":"Hyunrok Spirit Power","has_skillinfo":false,"has_icon":false}
+{"skill_id":6001,"aegis_name":"DK_DRAGONIC_BREATH","reason":"no_client","display_name":"Dragonic Breath","has_skillinfo":false,"has_icon":false}
+{"skill_id":6002,"aegis_name":"MT_SPARK_BLASTER","reason":"no_client","display_name":"Spark Blaster","has_skillinfo":false,"has_icon":false}
+{"skill_id":6003,"aegis_name":"MT_TRIPLE_LASER","reason":"no_client","display_name":"Triple Laser","has_skillinfo":false,"has_icon":false}
+{"skill_id":6004,"aegis_name":"MT_MIGHTY_SMASH","reason":"no_client","display_name":"Mighty Smash","has_skillinfo":false,"has_icon":false}
+{"skill_id":6005,"aegis_name":"BO_EXPLOSIVE_POWDER","reason":"no_client","display_name":"Explosive Powder","has_skillinfo":false,"has_icon":false}
+{"skill_id":6006,"aegis_name":"BO_MAYHEMIC_THORNS","reason":"no_client","display_name":"Mayhemic Thorns","has_skillinfo":false,"has_icon":false}
+{"skill_id":6502,"aegis_name":"DK_DRAGONIC_PIERCE","reason":"no_client","display_name":"Dragonic Pierce","has_skillinfo":false,"has_icon":false}
+{"skill_id":6503,"aegis_name":"IG_RADIANT_SPEAR","reason":"no_client","display_name":"Radiant Spear","has_skillinfo":false,"has_icon":false}
+{"skill_id":6504,"aegis_name":"IG_IMPERIAL_CROSS","reason":"no_client","display_name":"Imperial Cross","has_skillinfo":false,"has_icon":false}
+{"skill_id":6505,"aegis_name":"IG_IMPERIAL_PRESSURE","reason":"no_client","display_name":"Imperial Pressure","has_skillinfo":false,"has_icon":false}
+{"skill_id":6506,"aegis_name":"MT_RUSH_STRIKE","reason":"no_client","display_name":"Rush Strike","has_skillinfo":false,"has_icon":false}
+{"skill_id":6507,"aegis_name":"MT_POWERFUL_SWING","reason":"no_client","display_name":"Powerful Swing","has_skillinfo":false,"has_icon":false}
+{"skill_id":6508,"aegis_name":"MT_ENERGY_CANNONADE","reason":"no_client","display_name":"Energy Cannonade","has_skillinfo":false,"has_icon":false}
+{"skill_id":6509,"aegis_name":"BO_MYSTERY_POWDER","reason":"no_client","display_name":"Mystery Powder","has_skillinfo":false,"has_icon":false}
+{"skill_id":6510,"aegis_name":"BO_DUST_EXPLOSION","reason":"no_client","display_name":"Dust Explosion","has_skillinfo":false,"has_icon":false}
+{"skill_id":6511,"aegis_name":"SHC_CROSS_SLASH","reason":"no_client","display_name":"Cross Slash","has_skillinfo":false,"has_icon":false}
+{"skill_id":6512,"aegis_name":"ABC_HIT_AND_SLIDING","reason":"no_client","display_name":"Hit And Sliding","has_skillinfo":false,"has_icon":false}
+{"skill_id":6513,"aegis_name":"ABC_CHASING_BREAK","reason":"no_client","display_name":"Chasing Break","has_skillinfo":false,"has_icon":false}
+{"skill_id":6514,"aegis_name":"ABC_CHASING_SHOT","reason":"no_client","display_name":"Chasing Shot","has_skillinfo":false,"has_icon":false}
+{"skill_id":6515,"aegis_name":"ABC_ABYSS_FLAME","reason":"no_client","display_name":"Abyss Flame","has_skillinfo":false,"has_icon":false}
+{"skill_id":6516,"aegis_name":"AG_ENERGY_CONVERSION","reason":"no_client","display_name":"Energy Conversion","has_skillinfo":false,"has_icon":false}
+{"skill_id":6517,"aegis_name":"EM_PSYCHIC_STREAM","reason":"no_client","display_name":"Psychic Stream","has_skillinfo":false,"has_icon":false}
+{"skill_id":6518,"aegis_name":"CD_DIVINUS_FLOS","reason":"no_client","display_name":"Divinus Flos","has_skillinfo":false,"has_icon":false}
+{"skill_id":6519,"aegis_name":"IQ_BLAZING_FLAME_BLAST","reason":"no_client","display_name":"Blazing Flame Blast","has_skillinfo":false,"has_icon":false}
+{"skill_id":6520,"aegis_name":"WH_WILD_WALK","reason":"no_client","display_name":"Wild Walk","has_skillinfo":false,"has_icon":false}
+{"skill_id":6521,"aegis_name":"TR_RHYTHMICAL_WAVE","reason":"no_client","display_name":"Rhythmical Wave","has_skillinfo":false,"has_icon":false}
+{"skill_id":6522,"aegis_name":"ABC_ABYSS_FLAME_ATK","reason":"no_client","display_name":"Abyss Flame Attack","has_skillinfo":false,"has_icon":false}
+{"skill_id":8044,"aegis_name":"MH_LAST","reason":"no_skillinfo","display_name":"Blast Forge","has_skillinfo":false,"has_icon":false}
+{"skill_id":8045,"aegis_name":"HOMUN_LAST","reason":"no_skillinfo","display_name":"Tempering","has_skillinfo":false,"has_icon":false}
+{"skill_id":8046,"aegis_name":"MH_CLASSY_FLUTTER","reason":"no_client","display_name":"Classy Flutter","has_skillinfo":false,"has_icon":false}
+{"skill_id":8047,"aegis_name":"MH_TWISTER_CUTTER","reason":"no_client","display_name":"Twister Cutter","has_skillinfo":false,"has_icon":false}
+{"skill_id":8048,"aegis_name":"MH_ABSOLUTE_ZEPHYR","reason":"no_client","display_name":"Absolute Zephyr","has_skillinfo":false,"has_icon":false}
+{"skill_id":8049,"aegis_name":"MH_BRUSHUP_CLAW","reason":"no_client","display_name":"Brushup Claw","has_skillinfo":false,"has_icon":false}
+{"skill_id":8050,"aegis_name":"MH_BLAZING_AND_FURIOUS","reason":"no_client","display_name":"Blazing And Furious","has_skillinfo":false,"has_icon":false}
+{"skill_id":8051,"aegis_name":"MH_THE_ONE_FIGHTER_RISES","reason":"no_client","display_name":"The One Fighter Rises","has_skillinfo":false,"has_icon":false}
+{"skill_id":8052,"aegis_name":"MH_POLISHING_NEEDLE","reason":"no_client","display_name":"Polishing Needle","has_skillinfo":false,"has_icon":false}
+{"skill_id":8053,"aegis_name":"MH_TOXIN_OF_MANDARA","reason":"no_client","display_name":"Toxin Of Mandara","has_skillinfo":false,"has_icon":false}
+{"skill_id":8054,"aegis_name":"MH_NEEDLE_STINGER","reason":"no_client","display_name":"Needle Stinger","has_skillinfo":false,"has_icon":false}
+{"skill_id":8055,"aegis_name":"MH_LICHT_GEHORN","reason":"no_client","display_name":"Licht Gehorn","has_skillinfo":false,"has_icon":false}
+{"skill_id":8056,"aegis_name":"MH_GLANZEN_SPIES","reason":"no_client","display_name":"Glanzen Spies","has_skillinfo":false,"has_icon":false}
+{"skill_id":8057,"aegis_name":"MH_HEILIGE_PFERD","reason":"no_client","display_name":"Heilige Pferd","has_skillinfo":false,"has_icon":false}
+{"skill_id":8058,"aegis_name":"MH_GOLDENE_TONE","reason":"no_client","display_name":"Goldene Tone","has_skillinfo":false,"has_icon":false}
+{"skill_id":8059,"aegis_name":"MH_BLAZING_LAVA","reason":"no_client","display_name":"Blazing Lava","has_skillinfo":false,"has_icon":false}
+{"skill_id":8401,"aegis_name":"EL_CIRCLE_OF_FIRE","reason":"missing_icon","display_name":"Circle of Fire","has_skillinfo":true,"has_icon":false}
+{"skill_id":8402,"aegis_name":"EL_FIRE_CLOAK","reason":"missing_icon","display_name":"Fire Cloak","has_skillinfo":true,"has_icon":false}
+{"skill_id":8403,"aegis_name":"EL_FIRE_MANTLE","reason":"missing_icon","display_name":"Fire Mantle","has_skillinfo":true,"has_icon":false}
+{"skill_id":8404,"aegis_name":"EL_WATER_SCREEN","reason":"missing_icon","display_name":"Water Screen","has_skillinfo":true,"has_icon":false}
+{"skill_id":8405,"aegis_name":"EL_WATER_DROP","reason":"missing_icon","display_name":"Water Drop","has_skillinfo":true,"has_icon":false}
+{"skill_id":8406,"aegis_name":"EL_WATER_BARRIER","reason":"missing_icon","display_name":"Water Barrier","has_skillinfo":true,"has_icon":false}
+{"skill_id":8407,"aegis_name":"EL_WIND_STEP","reason":"missing_icon","display_name":"Wind Step","has_skillinfo":true,"has_icon":false}
+{"skill_id":8408,"aegis_name":"EL_WIND_CURTAIN","reason":"missing_icon","display_name":"Wind Curtain","has_skillinfo":true,"has_icon":false}
+{"skill_id":8409,"aegis_name":"EL_ZEPHYR","reason":"missing_icon","display_name":"Zephyr","has_skillinfo":true,"has_icon":false}
+{"skill_id":8410,"aegis_name":"EL_SOLID_SKIN","reason":"missing_icon","display_name":"Solid Skin","has_skillinfo":true,"has_icon":false}
+{"skill_id":8411,"aegis_name":"EL_STONE_SHIELD","reason":"missing_icon","display_name":"Stone Shield","has_skillinfo":true,"has_icon":false}
+{"skill_id":8412,"aegis_name":"EL_POWER_OF_GAIA","reason":"missing_icon","display_name":"Power of Gaia","has_skillinfo":true,"has_icon":false}
+{"skill_id":8413,"aegis_name":"EL_PYROTECHNIC","reason":"missing_icon","display_name":"Pyrotechnic","has_skillinfo":true,"has_icon":false}
+{"skill_id":8414,"aegis_name":"EL_HEATER","reason":"missing_icon","display_name":"Heater","has_skillinfo":true,"has_icon":false}
+{"skill_id":8415,"aegis_name":"EL_TROPIC","reason":"missing_icon","display_name":"Tropic","has_skillinfo":true,"has_icon":false}
+{"skill_id":8416,"aegis_name":"EL_AQUAPLAY","reason":"missing_icon","display_name":"Aqua Play","has_skillinfo":true,"has_icon":false}
+{"skill_id":8417,"aegis_name":"EL_COOLER","reason":"missing_icon","display_name":"Cooler","has_skillinfo":true,"has_icon":false}
+{"skill_id":8418,"aegis_name":"EL_CHILLY_AIR","reason":"missing_icon","display_name":"Chilly Air","has_skillinfo":true,"has_icon":false}
+{"skill_id":8419,"aegis_name":"EL_GUST","reason":"missing_icon","display_name":"Gust","has_skillinfo":true,"has_icon":false}
+{"skill_id":8420,"aegis_name":"EL_BLAST","reason":"missing_icon","display_name":"Blast","has_skillinfo":true,"has_icon":false}
+{"skill_id":8421,"aegis_name":"EL_WILD_STORM","reason":"missing_icon","display_name":"Wild Storm","has_skillinfo":true,"has_icon":false}
+{"skill_id":8422,"aegis_name":"EL_PETROLOGY","reason":"missing_icon","display_name":"Petrology","has_skillinfo":true,"has_icon":false}
+{"skill_id":8423,"aegis_name":"EL_CURSED_SOIL","reason":"missing_icon","display_name":"Cursed Soil","has_skillinfo":true,"has_icon":false}
+{"skill_id":8424,"aegis_name":"EL_UPHEAVAL","reason":"missing_icon","display_name":"Upheaval","has_skillinfo":true,"has_icon":false}
+{"skill_id":8425,"aegis_name":"EL_FIRE_ARROW","reason":"missing_icon","display_name":"Fire Arrow","has_skillinfo":true,"has_icon":false}
+{"skill_id":8426,"aegis_name":"EL_FIRE_BOMB","reason":"missing_icon","display_name":"Fire Bomb","has_skillinfo":true,"has_icon":false}
+{"skill_id":8427,"aegis_name":"EL_FIRE_BOMB_ATK","reason":"missing_icon","display_name":"Fire Bomb","has_skillinfo":true,"has_icon":false}
+{"skill_id":8428,"aegis_name":"EL_FIRE_WAVE","reason":"missing_icon","display_name":"Fire Wave","has_skillinfo":true,"has_icon":false}
+{"skill_id":8429,"aegis_name":"EL_FIRE_WAVE_ATK","reason":"missing_icon","display_name":"Fire Wave","has_skillinfo":true,"has_icon":false}
+{"skill_id":8430,"aegis_name":"EL_ICE_NEEDLE","reason":"missing_icon","display_name":"Ice Needle","has_skillinfo":true,"has_icon":false}
+{"skill_id":8431,"aegis_name":"EL_WATER_SCREW","reason":"missing_icon","display_name":"Water Screw","has_skillinfo":true,"has_icon":false}
+{"skill_id":8432,"aegis_name":"EL_WATER_SCREW_ATK","reason":"missing_icon","display_name":"Water Screw","has_skillinfo":true,"has_icon":false}
+{"skill_id":8433,"aegis_name":"EL_TIDAL_WEAPON","reason":"missing_icon","display_name":"Tidal Weapon","has_skillinfo":true,"has_icon":false}
+{"skill_id":8434,"aegis_name":"EL_WIND_SLASH","reason":"missing_icon","display_name":"Wind Slash","has_skillinfo":true,"has_icon":false}
+{"skill_id":8435,"aegis_name":"EL_HURRICANE","reason":"missing_icon","display_name":"Hurricane","has_skillinfo":true,"has_icon":false}
+{"skill_id":8436,"aegis_name":"EL_HURRICANE_ATK","reason":"missing_icon","display_name":"Hurricane","has_skillinfo":true,"has_icon":false}
+{"skill_id":8437,"aegis_name":"EL_TYPOON_MIS","reason":"missing_icon","display_name":"Typhoon Missile","has_skillinfo":true,"has_icon":false}
+{"skill_id":8438,"aegis_name":"EL_TYPOON_MIS_ATK","reason":"missing_icon","display_name":"Typhoon Missile","has_skillinfo":true,"has_icon":false}
+{"skill_id":8439,"aegis_name":"EL_STONE_HAMMER","reason":"missing_icon","display_name":"Stone Hammer","has_skillinfo":true,"has_icon":false}
+{"skill_id":8440,"aegis_name":"EL_ROCK_CRUSHER","reason":"missing_icon","display_name":"Rock Crusher","has_skillinfo":true,"has_icon":false}
+{"skill_id":8441,"aegis_name":"EL_ROCK_CRUSHER_ATK","reason":"missing_icon","display_name":"Rock Crusher","has_skillinfo":true,"has_icon":false}
+{"skill_id":8442,"aegis_name":"EL_STONE_RAIN","reason":"missing_icon","display_name":"Stone Rain","has_skillinfo":true,"has_icon":false}
+{"skill_id":8443,"aegis_name":"EM_EL_FLAMETECHNIC","reason":"missing_icon","display_name":"Flametechnic","has_skillinfo":true,"has_icon":false}
+{"skill_id":8444,"aegis_name":"EM_EL_FLAMEARMOR","reason":"missing_icon","display_name":"Flame Armor","has_skillinfo":true,"has_icon":false}
+{"skill_id":8445,"aegis_name":"EM_EL_FLAMEROCK","reason":"missing_icon","display_name":"Flame Rock","has_skillinfo":true,"has_icon":false}
+{"skill_id":8446,"aegis_name":"EM_EL_COLD_FORCE","reason":"missing_icon","display_name":"Cold Force","has_skillinfo":true,"has_icon":false}
+{"skill_id":8447,"aegis_name":"EM_EL_CRYSTAL_ARMOR","reason":"missing_icon","display_name":"Crystal Armor","has_skillinfo":true,"has_icon":false}
+{"skill_id":8448,"aegis_name":"EM_EL_AGE_OF_ICE","reason":"missing_icon","display_name":"Age of Ice","has_skillinfo":true,"has_icon":false}
+{"skill_id":8449,"aegis_name":"EM_EL_GRACE_BREEZE","reason":"missing_icon","display_name":"Grace Breeze","has_skillinfo":true,"has_icon":false}
+{"skill_id":8450,"aegis_name":"EM_EL_EYES_OF_STORM","reason":"missing_icon","display_name":"Eyes of Storm","has_skillinfo":true,"has_icon":false}
+{"skill_id":8451,"aegis_name":"EM_EL_STORM_WIND","reason":"missing_icon","display_name":"Storm Wind","has_skillinfo":true,"has_icon":false}
+{"skill_id":8452,"aegis_name":"EM_EL_EARTH_CARE","reason":"missing_icon","display_name":"Earth Care","has_skillinfo":true,"has_icon":false}
+{"skill_id":8453,"aegis_name":"EM_EL_STRONG_PROTECTION","reason":"missing_icon","display_name":"Strong Protection","has_skillinfo":true,"has_icon":false}
+{"skill_id":8454,"aegis_name":"EM_EL_AVALANCHE","reason":"missing_icon","display_name":"Avalanche","has_skillinfo":true,"has_icon":false}
+{"skill_id":8455,"aegis_name":"EM_EL_DEEP_POISONING","reason":"missing_icon","display_name":"Deep Poisoning","has_skillinfo":true,"has_icon":false}
+{"skill_id":8456,"aegis_name":"EM_EL_POISON_SHIELD","reason":"missing_icon","display_name":"Poison Shield","has_skillinfo":true,"has_icon":false}
+{"skill_id":8457,"aegis_name":"EM_EL_DEADLY_POISON","reason":"missing_icon","display_name":"Deadly Poison","has_skillinfo":true,"has_icon":false}
+{"skill_id":8601,"aegis_name":"ABR_BATTLE_BUSTER","reason":"missing_icon","display_name":"ABR Battle Buster","has_skillinfo":true,"has_icon":false}
+{"skill_id":8602,"aegis_name":"ABR_DUAL_CANNON_FIRE","reason":"missing_icon","display_name":"ABR Dual Cannon Fire","has_skillinfo":true,"has_icon":false}
+{"skill_id":8603,"aegis_name":"ABR_NET_REPAIR","reason":"missing_icon","display_name":"ABR Net Repair","has_skillinfo":true,"has_icon":false}
+{"skill_id":8604,"aegis_name":"ABR_NET_SUPPORT","reason":"missing_icon","display_name":"ABR Net Support","has_skillinfo":true,"has_icon":false}
+{"skill_id":8605,"aegis_name":"ABR_INFINITY_BUSTER","reason":"missing_icon","display_name":"ABR Infinity Buster","has_skillinfo":true,"has_icon":false}
+{"skill_id":10015,"aegis_name":"GD_ITEMEMERGENCYCALL","reason":"missing_icon","display_name":"Emergency Call","has_skillinfo":true,"has_icon":false}

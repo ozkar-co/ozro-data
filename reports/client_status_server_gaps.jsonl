@@ -1,0 +1,487 @@
+{"status_name":"ALL_GLASTHEIM_RECALL","icon":"EFST_ALL_GLASTHEIM_RECALL","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"ALL_LIGHTHALZEN_RECALL","icon":"EFST_ALL_LIGHTHALZEN_RECALL","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"ALL_NIFLHEIM_RECALL","icon":"EFST_ALL_NIFLHEIM_RECALL","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"ALL_PRONTERA_RECALL","icon":"EFST_ALL_PRONTERA_RECALL","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"ALL_THANATOS_RECALL","icon":"EFST_ALL_THANATOS_RECALL","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Abr_Battle_Warior","icon":"EFST_ABR_BATTLE_WARIOR","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Abr_Dual_Cannon","icon":"EFST_ABR_DUAL_CANNON","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Abr_Infinity","icon":"EFST_ABR_INFINITY","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Abr_Mother_Net","icon":"EFST_ABR_MOTHER_NET","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Acaraje","icon":"EFST_ACARAJE","reason":"missing_icon","display_name":"Akaraje","has_stateinfo":true,"has_icon":false}
+{"status_name":"Active_Monster_Transform","icon":"EFST_ACTIVE_MONSTER_TRANSFORM","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Agifood","icon":"EFST_FOOD_AGI","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Agiup","icon":"EFST_AGIUP","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"All_Riding","icon":"EFST_ALL_RIDING","reason":"missing_icon","display_name":"Riding","has_stateinfo":true,"has_icon":false}
+{"status_name":"All_Riding_Reuse_Limit","icon":"EFST_ALL_RIDING_REUSE_LIMIT","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Angel_Protect","icon":"EFST_ANGEL_PROTECT","reason":"missing_icon","display_name":"Thank You So Much","has_stateinfo":true,"has_icon":false}
+{"status_name":"Angriffs_Modus","icon":"EFST_ANGRIFFS_MODUS","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Ankle","icon":"EFST_ANKLESNARE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Aquaplay","icon":"EFST_AQUAPLAY","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Aquaplay_Option","icon":"EFST_AQUAPLAY_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Aspdpotion0","icon":"EFST_ATTHASTE_POTION1","reason":"missing_icon","display_name":"Concentration Potion","has_stateinfo":true,"has_icon":false}
+{"status_name":"Aspdpotion1","icon":"EFST_ATTHASTE_POTION2","reason":"missing_icon","display_name":"Awakening Potion","has_stateinfo":true,"has_icon":false}
+{"status_name":"Aspdpotion2","icon":"EFST_ATTHASTE_POTION3","reason":"missing_icon","display_name":"Berserk Potion","has_stateinfo":true,"has_icon":false}
+{"status_name":"Aspdpotion3","icon":"EFST_ATTHASTE_INFINITY","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Assumptio","icon":"EFST_ASSUMPTIO2","reason":"missing_icon","display_name":"Assumptio","has_stateinfo":true,"has_icon":false}
+{"status_name":"Auto_Firing_Launcher","icon":"EFST_AUTO_FIRING_LAUNCHEREFST","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Autocounter","icon":"EFST_AUTOCOUNTER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Banana_Bomb","icon":"EFST_BANANA_BOMB","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Banana_Bomb_Sitdown","icon":"EFST_BANANA_BOMB_SITDOWN_POSTDELAY","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Banding_Defence","icon":"EFST_BANDING_DEFENCE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Barrier","icon":"EFST_BARRIER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Battleorders","icon":"EFST_GDSKILL_BATTLEORDER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Berserk","icon":"EFST_BERSERK","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Bite","icon":"EFST_WUGBITE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Bladestop","icon":"EFST_BLADESTOP","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Blast","icon":"EFST_BLAST","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Blast_Option","icon":"EFST_BLAST_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Bleeding","icon":"EFST_BLOODING","reason":"missing_icon","display_name":"Bleeding","has_stateinfo":true,"has_icon":false}
+{"status_name":"Blessing_of_M_C_Debuff","icon":"EFST_BLESSING_OF_M_C_DEBUFF","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Blessing_of_M_Creatures","icon":"EFST_BLESSING_OF_M_CREATURES","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Boost500","icon":"EFST_BOOST500","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Bossmapinfo","icon":"EFST_CASH_BOSS_ALARM","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Breakinglimit","icon":"EFST_BREAKINGLIMIT","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Brokenarmor","icon":"EFST_BROKENARMOR","reason":"missing_icon","display_name":"Broken Armor","has_stateinfo":true,"has_icon":false}
+{"status_name":"Brokenweapon","icon":"EFST_BROKENWEAPON","reason":"missing_icon","display_name":"Broken Weapon","has_stateinfo":true,"has_icon":false}
+{"status_name":"Buchedenoel","icon":"EFST_BUCHEDENOEL","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"C_Buff_3","icon":"EFST_C_BUFF_3","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"C_Buff_4","icon":"EFST_C_BUFF_4","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"C_Buff_5","icon":"EFST_C_BUFF_5","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"C_Buff_6","icon":"EFST_C_BUFF_6","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Camouflage","icon":"EFST_CAMOUFLAGE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Cbc","icon":"EFST_CBC","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Changeundead","icon":"EFST_PROPERTYUNDEAD","reason":"missing_icon","display_name":"Undead elemental","has_stateinfo":true,"has_icon":false}
+{"status_name":"Chargingpierce_Count","icon":"EFST_CHARGINGPIERCE_COUNT","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Chasewalk","icon":"EFST_CHASEWALK","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Chasewalk2","icon":"EFST_CHASEWALK2","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Chasing","icon":"EFST_CHASING","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Chilly_Air","icon":"EFST_CHILLY_AIR","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Chilly_Air_Option","icon":"EFST_CHILLY_AIR_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Circle_Of_Fire","icon":"EFST_CIRCLE_OF_FIRE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Circle_Of_Fire_Option","icon":"EFST_CIRCLE_OF_FIRE_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Clan_Info","icon":"EFST_CLAN_INFO","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Closeconfine","icon":"EFST_RG_CCONFINE_M","reason":"missing_icon","display_name":"Close Confine","has_stateinfo":true,"has_icon":false}
+{"status_name":"Closeconfine2","icon":"EFST_RG_CCONFINE_S","reason":"missing_icon","display_name":"Close Confine","has_stateinfo":true,"has_icon":false}
+{"status_name":"Cocktail_Warg_Blood","icon":"EFST_COCKTAIL_WARG_BLOOD","reason":"missing_icon","display_name":"Warg Blood Cocktail","has_stateinfo":true,"has_icon":false}
+{"status_name":"Cold_Force","icon":"EFST_COLD_FORCE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Cold_Force_Option","icon":"EFST_COLD_FORCE_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Colors_of_Hyun_Rok_1","icon":"EFST_COLORS_OF_HYUN_ROK_1","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Colors_of_Hyun_Rok_2","icon":"EFST_COLORS_OF_HYUN_ROK_2","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Colors_of_Hyun_Rok_3","icon":"EFST_COLORS_OF_HYUN_ROK_3","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Colors_of_Hyun_Rok_4","icon":"EFST_COLORS_OF_HYUN_ROK_4","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Colors_of_Hyun_Rok_5","icon":"EFST_COLORS_OF_HYUN_ROK_5","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Colors_of_Hyun_Rok_6","icon":"EFST_COLORS_OF_HYUN_ROK_6","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Colors_of_Hyun_Rok_Buff","icon":"EFST_COLORS_OF_HYUN_ROK_BUFF","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Commonsc_Resist","icon":"EFST_TARGET_BLOOD","reason":"missing_icon","display_name":"Abnormal State Resistance Potion","has_stateinfo":true,"has_icon":false}
+{"status_name":"Contents_1","icon":"EFST_CONTENTS_1","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_10","icon":"EFST_CONTENTS_10","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_15","icon":"EFST_CONTENTS_15","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_16","icon":"EFST_CONTENTS_16","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_17","icon":"EFST_CONTENTS_17","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_18","icon":"EFST_CONTENTS_18","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_19","icon":"EFST_CONTENTS_19","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_2","icon":"EFST_CONTENTS_2","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_20","icon":"EFST_CONTENTS_20","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_26","icon":"EFST_CONTENTS_26","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_27","icon":"EFST_CONTENTS_27","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_28","icon":"EFST_CONTENTS_28","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_29","icon":"EFST_CONTENTS_29","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_3","icon":"EFST_CONTENTS_3","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_31","icon":"EFST_CONTENTS_31","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_32","icon":"EFST_CONTENTS_32","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_33","icon":"EFST_CONTENTS_33","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_34","icon":"EFST_CONTENTS_34","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_35","icon":"EFST_CONTENTS_35","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_4","icon":"EFST_CONTENTS_4","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_5","icon":"EFST_CONTENTS_5","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_6","icon":"EFST_CONTENTS_6","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_7","icon":"EFST_CONTENTS_7","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_8","icon":"EFST_CONTENTS_8","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Contents_9","icon":"EFST_CONTENTS_9","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Cooler","icon":"EFST_COOLER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Cooler_Option","icon":"EFST_COOLER_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Cp_Armor","icon":"EFST_PROTECTARMOR","reason":"missing_icon","display_name":"Chemical Protection Armor","has_stateinfo":true,"has_icon":false}
+{"status_name":"Cp_Helm","icon":"EFST_PROTECTHELM","reason":"missing_icon","display_name":"Chemical Protection Helm","has_stateinfo":true,"has_icon":false}
+{"status_name":"Cp_Shield","icon":"EFST_PROTECTSHIELD","reason":"missing_icon","display_name":"Chemical Protection Shield","has_stateinfo":true,"has_icon":false}
+{"status_name":"Cp_Weapon","icon":"EFST_PROTECTWEAPON","reason":"missing_icon","display_name":"Chemical Protection Weapon","has_stateinfo":true,"has_icon":false}
+{"status_name":"Crescentelbow","icon":"EFST_CRESCENTELBOW","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Crescivebolt","icon":"EFST_CRESCIVEBOLT","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Crifood","icon":"EFST_FOOD_CRITICALSUCCESSVALUE","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Crystal_Armor","icon":"EFST_CRYSTAL_ARMOR","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Crystal_Armor_Option","icon":"EFST_CRYSTAL_ARMOR_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Crystalize","icon":"EFST_COLD","reason":"missing_icon","display_name":"Crystallization","has_stateinfo":true,"has_icon":false}
+{"status_name":"Cursed_Soil","icon":"EFST_CURSED_SOIL","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Cursed_Soil_Option","icon":"EFST_CURSED_SOIL_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Cursedcircle_Target","icon":"EFST_CURSEDCIRCLE_TARGET","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Dailysendmailcnt","icon":"EFST_DAILYSENDMAILCNT","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Damage_Heal","icon":"EFST_DAMAGE_HEAL","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Dancing","icon":"EFST_BDPLAYING","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Dawn_Moon","icon":"EFST_DAWN_MOON","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Deathbound","icon":"EFST_DEATHBOUND","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Deathhurt","icon":"EFST_DEATHHURT","reason":"missing_icon","display_name":"Death Hurt","has_stateinfo":true,"has_icon":false}
+{"status_name":"Decoration_Of_Music","icon":"EFST_DECORATION_OF_MUSIC","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Deep_Poisoning","icon":"EFST_DEEP_POISONING","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Deep_Poisoning_Option","icon":"EFST_DEEP_POISONING_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Def_Rate","icon":"EFST_PROTECT_DEF","reason":"missing_icon","display_name":"Physical Defense Potion","has_stateinfo":true,"has_icon":false}
+{"status_name":"Deluge","icon":"EFST_GROUNDMAGIC","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Devotion","icon":"EFST_DEVOTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Dexfood","icon":"EFST_FOOD_DEX","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Dodge","icon":"EFST_DODGE_ON","reason":"missing_icon","display_name":"Tumbling","has_stateinfo":true,"has_icon":false}
+{"status_name":"Dressup","icon":"EFST_DRESS_UP","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Drocera_Herb_Steamed","icon":"EFST_DROCERA_HERB_STEAMED","reason":"missing_icon","display_name":"Drocera Herb Stew","has_stateinfo":true,"has_icon":false}
+{"status_name":"Duplelight","icon":"EFST_DUPLELIGHT","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"ECLAGE_RECALL","icon":"EFST_ECLAGE_RECALL","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"E_Slash_Count","icon":"EFST_E_SLASH_COUNT","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Earth_Care","icon":"EFST_EARTH_CARE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Earth_Care_Option","icon":"EFST_EARTH_CARE_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Earth_Insignia","icon":"EFST_EARTH_INSIGNIA","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Earthdrive","icon":"EFST_EARTHDRIVE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Earthscroll","icon":"EFST_EARTHSCROLL","reason":"missing_icon","display_name":"Happy Break","has_stateinfo":true,"has_icon":false}
+{"status_name":"Earthshaker","icon":"EFST_EARTHSHAKER","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Earthweapon","icon":"EFST_PROPERTYGROUND","reason":"missing_icon","display_name":"Seismic Weapon","has_stateinfo":true,"has_icon":false}
+{"status_name":"Electricshocker","icon":"EFST_ELECTRICSHOCKER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Elemental_Veil","icon":"EFST_ELEMENTAL_VEIL","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Elementalchange","icon":"EFST_ARMOR_PROPERTY","reason":"missing_icon","display_name":"Change Element Scroll","has_stateinfo":true,"has_icon":false}
+{"status_name":"Enchantarms","icon":"EFST_WEAPONPROPERTY","reason":"missing_icon","display_name":"Enchant weapon with element","has_stateinfo":true,"has_icon":false}
+{"status_name":"Entry_Queue_Apply_Delay","icon":"EFST_ENTRY_QUEUE_APPLY_DELAY","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Entry_Queue_Notify_Admission_Time_Out","icon":"EFST_ENTRY_QUEUE_NOTIFY_ADMISSION_TIME_OUT","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Epiclesis","icon":"EFST_EPICLESIS","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Eqc","icon":"EFST_EQC","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Expboost","icon":"EFST_CASH_PLUSEXP","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Explosionspirits","icon":"EFST_EXPLOSIONSPIRITS","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Eyes_Of_Storm","icon":"EFST_EYES_OF_STORM","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Eyes_Of_Storm_Option","icon":"EFST_EYES_OF_STORM_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Fire_Charm_Power","icon":"EFST_FIRE_CHARM_POWER","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Fire_Cloak","icon":"EFST_FIRE_CLOAK","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Fire_Cloak_Option","icon":"EFST_FIRE_CLOAK_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Fire_Insignia","icon":"EFST_FIRE_INSIGNIA","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Fireweapon","icon":"EFST_PROPERTYFIRE","reason":"missing_icon","display_name":"Flame Launcher","has_stateinfo":true,"has_icon":false}
+{"status_name":"Flamearmor","icon":"EFST_FLAMEARMOR","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Flamearmor_Option","icon":"EFST_FLAMEARMOR_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Flametechnic","icon":"EFST_FLAMETECHNIC","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Flametechnic_Option","icon":"EFST_FLAMETECHNIC_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Flashcombo","icon":"EFST_FLASHCOMBO","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Fleefood","icon":"EFST_FOOD_BASICAVOIDANCE","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Flowersmoke","icon":"EFST_FLOWERSMOKE","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Fogwall","icon":"EFST_FOGWALL","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Food_Agi_Cash","icon":"EFST_FOOD_AGI_CASH","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Food_Dex_Cash","icon":"EFST_FOOD_DEX_CASH","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Food_Int_Cash","icon":"EFST_FOOD_INT_CASH","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Food_Luk_Cash","icon":"EFST_FOOD_LUK_CASH","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Food_Str_Cash","icon":"EFST_FOOD_STR_CASH","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Food_Vit_Cash","icon":"EFST_FOOD_VIT_CASH","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Freeze_Sp","icon":"EFST_FREEZE_SP","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Fstone","icon":"EFST_FSTONE","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Full_Swing_K","icon":"EFST_FULL_SWING_K","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"GUARDIAN_RECALL","icon":"EFST_GUARDIAN_RECALL","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"G_LIFEPOTION","icon":"EFST_G_LIFEPOTION","reason":"missing_icon","display_name":"Life Potion","has_stateinfo":true,"has_icon":false}
+{"status_name":"Ghostweapon","icon":"EFST_PROPERTYTELEKINESIS","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Goldene_Ferse","icon":"EFST_GOLDENE_FERSE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Goldene_Tone","icon":"EFST_GOLDENE_TONE","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Gospel","icon":"EFST_GOSPEL","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Grace_Breeze","icon":"EFST_GRACE_BREEZE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Grace_Breeze_Option","icon":"EFST_GRACE_BREEZE_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Grenade_Fragment_1","icon":"EFST_GRENADE_FRAGMENT_1","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Grenade_Fragment_2","icon":"EFST_GRENADE_FRAGMENT_2","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Grenade_Fragment_3","icon":"EFST_GRENADE_FRAGMENT_3","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Grenade_Fragment_4","icon":"EFST_GRENADE_FRAGMENT_4","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Grenade_Fragment_5","icon":"EFST_GRENADE_FRAGMENT_5","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Grenade_Fragment_6","icon":"EFST_GRENADE_FRAGMENT_6","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Ground_Charm_Power","icon":"EFST_GROUND_CHARM_POWER","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Groundgravity","icon":"EFST_GROUNDGRAVITY","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Gust","icon":"EFST_GUST","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Gust_Option","icon":"EFST_GUST_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Hallucinationwalk_Postdelay","icon":"EFST_HALLUCINATIONWALK_POSTDELAY","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Happiness_Star","icon":"EFST_HAPPINESS_STAR","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Hat_Effect","icon":"EFST_HAT_EFFECT","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Heater","icon":"EFST_HEATER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Heater_Option","icon":"EFST_HEATER_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Heaven_and_Earth","icon":"EFST_HEAVEN_AND_EARTH","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Hellpower","icon":"EFST_HELLPOWER","reason":"missing_icon","display_name":"Hell Power","has_stateinfo":true,"has_icon":false}
+{"status_name":"Hermode","icon":"EFST_HERMODE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Hidden_Card","icon":"EFST_HIDDEN_CARD","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Hitfood","icon":"EFST_FOOD_BASICHIT","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Hnnoweapon","icon":"EFST_NOEQUIPWEAPON","reason":"missing_icon","display_name":"Strip Weapon","has_stateinfo":true,"has_icon":false}
+{"status_name":"Hogogong","icon":"EFST_HOGOGONG","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Illusiondoping","icon":"EFST_ILLUSIONDOPING","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Immune_Property_Darkness","icon":"EFST_IMMUNE_PROPERTY_DARKNESS","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Immune_Property_Fire","icon":"EFST_IMMUNE_PROPERTY_FIRE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Immune_Property_Ground","icon":"EFST_IMMUNE_PROPERTY_GROUND","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Immune_Property_Nothing","icon":"EFST_IMMUNE_PROPERTY_NOTHING","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Immune_Property_Poison","icon":"EFST_IMMUNE_PROPERTY_POISON","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Immune_Property_Saint","icon":"EFST_IMMUNE_PROPERTY_SAINT","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Immune_Property_Telekinesis","icon":"EFST_IMMUNE_PROPERTY_TELEKINESIS","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Immune_Property_Undead","icon":"EFST_IMMUNE_PROPERTY_UNDEAD","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Immune_Property_Water","icon":"EFST_IMMUNE_PROPERTY_WATER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Immune_Property_Wind","icon":"EFST_IMMUNE_PROPERTY_WIND","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Inccri","icon":"EFST_CRITICALPERCENT","reason":"missing_icon","display_name":"Abrasive","has_stateinfo":true,"has_icon":false}
+{"status_name":"Incflee2","icon":"EFST_PLUSAVOIDVALUE","reason":"missing_icon","display_name":"Cup of Welcome","has_stateinfo":true,"has_icon":false}
+{"status_name":"Inchealrate","icon":"EFST_HEALPLUS","reason":"missing_icon","display_name":"Regeneration Potion","has_stateinfo":true,"has_icon":false}
+{"status_name":"Increase_Maxhp","icon":"EFST_ATKER_ASPD","reason":"missing_icon","display_name":"Super Medicine","has_stateinfo":true,"has_icon":false}
+{"status_name":"Increase_Maxsp","icon":"EFST_ATKER_MOVESPEED","reason":"missing_icon","display_name":"Revive Medicine","has_stateinfo":true,"has_icon":false}
+{"status_name":"Increasing","icon":"EFST_GS_ACCURACY","reason":"missing_icon","display_name":"Increase Accuracy","has_stateinfo":true,"has_icon":false}
+{"status_name":"Int_Scroll","icon":"EFST_INT_SCROLL","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Intensive_Aim","icon":"EFST_INTENSIVE_AIM","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Intensive_Aim_Count","icon":"EFST_INTENSIVE_AIM_COUNT","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Intfood","icon":"EFST_FOOD_INT","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Intravision","icon":"EFST_CLAIRVOYANCE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Invincible","icon":"EFST_INVINCIBLE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Itemboost","icon":"EFST_CASH_RECEIVEITEM","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Jexpboost","icon":"EFST_CASH_PLUSONLYJOBEXP","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Jyumonjikiri","icon":"EFST_KO_JYUMONJIKIRI","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Kaite","icon":"EFST_KAITE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Ki_Sul_Rampage","icon":"EFST_KI_SUL_RAMPAGE","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Killing_Aura","icon":"EFST_KILLING_AURA","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Kyougaku","icon":"EFST_KYOUGAKU","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"L_Lifepotion","icon":"EFST_L_LIFEPOTION","reason":"missing_icon","display_name":"Medium Life Potion","has_stateinfo":true,"has_icon":false}
+{"status_name":"Leechesend","icon":"EFST_LEECHESEND","reason":"missing_icon","display_name":"Leech End","has_stateinfo":true,"has_icon":false}
+{"status_name":"Life_Force_F","icon":"EFST_LIFE_FORCE_F","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Lifeinsurance","icon":"EFST_CASH_DEATHPENALTY","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Ljosalfar","icon":"EFST_LJOSALFAR","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Loud","icon":"EFST_SHOUT","reason":"missing_icon","display_name":"Crazy Uproar","has_stateinfo":true,"has_icon":false}
+{"status_name":"Lukfood","icon":"EFST_FOOD_LUK","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Madogear","icon":"EFST_MADOGEAR_TYPE","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"MagicCandy","icon":"EFST_MAGIC_CANDY","reason":"missing_icon","display_name":"Magic Candy","has_stateinfo":true,"has_icon":false}
+{"status_name":"Magical_Feather","icon":"EFST_MAGICAL_FEATHER","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Magicmushroom","icon":"EFST_MAGICMUSHROOM","reason":"missing_icon","display_name":"Magic Mushroom","has_stateinfo":true,"has_icon":false}
+{"status_name":"Magicrod","icon":"EFST_MAGICROD","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Mana_Plus","icon":"EFST_MANA_PLUS","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Manu_Atk","icon":"EFST_MANU_ATK","reason":"missing_icon","display_name":"Manuk's Golden Chance","has_stateinfo":true,"has_icon":false}
+{"status_name":"Manu_Def","icon":"EFST_MANU_DEF","reason":"missing_icon","display_name":"Manuk's Will","has_stateinfo":true,"has_icon":false}
+{"status_name":"Manu_Matk","icon":"EFST_MANU_MATK","reason":"missing_icon","display_name":"Manuk's Faith","has_stateinfo":true,"has_icon":false}
+{"status_name":"Maple_Falls","icon":"EFST_MAPLE_FALLS","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Marine_Festival","icon":"EFST_MARINE_FESTIVAL","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Marionette","icon":"EFST_MARIONETTE_MASTER","reason":"missing_icon","display_name":"Marionette Control","has_stateinfo":true,"has_icon":false}
+{"status_name":"Maxpain","icon":"EFST_MAXPAIN","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Maxspellbook","icon":"EFST_SPELLBOOK7","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mdef_Rate","icon":"EFST_PROTECT_MDEF","reason":"missing_icon","display_name":"MDEF Potion","has_stateinfo":true,"has_icon":false}
+{"status_name":"Melon_Bomb","icon":"EFST_MELON_BOMB","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Memorize","icon":"EFST_MEMORIZE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Mental_Potion","icon":"EFST_TARGET_ASPD","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Merc_Atkup","icon":"EFST_MER_ATK","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Merc_Fleeup","icon":"EFST_MER_FLEE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Merc_Hitup","icon":"EFST_MER_HIT","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Merc_Hpup","icon":"EFST_MER_HP","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Merc_Spup","icon":"EFST_MER_SP","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mermaid_Longing","icon":"EFST_MERMAID_LONGING","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Midnight_Moon","icon":"EFST_MIDNIGHT_MOON","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Millenniumshield","icon":"EFST_REUSE_MILLENNIUMSHIELD","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mindbreaker","icon":"EFST_MINDBREAKER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Minor_Bbq","icon":"EFST_MINOR_BBQ","reason":"missing_icon","display_name":"Minor Brisket","has_stateinfo":true,"has_icon":false}
+{"status_name":"Mistyfrost","icon":"EFST_MISTYFROST","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Monster_Transform","icon":"EFST_MONSTER_TRANSFORM","reason":"missing_icon","display_name":"Monster Transformation","has_stateinfo":true,"has_icon":false}
+{"status_name":"Moonstar","icon":"EFST_MOONSTAR","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mtf_Aspd","icon":"EFST_MTF_ASPD","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mtf_Aspd2","icon":"EFST_MTF_ASPD2","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mtf_Cridamage","icon":"EFST_MTF_CRIDAMAGE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mtf_Hitflee","icon":"EFST_MTF_HITFLEE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mtf_Matk","icon":"EFST_MTF_MATK","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mtf_Matk2","icon":"EFST_MTF_MATK2","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mtf_Mhp","icon":"EFST_MTF_MHP","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mtf_Mleatked","icon":"EFST_MTF_MLEATKED","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mtf_Msp","icon":"EFST_MTF_MSP","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mtf_Pumpkin","icon":"EFST_MTF_PUMPKIN","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mtf_Rangeatk","icon":"EFST_MTF_RANGEATK","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mtf_Rangeatk2","icon":"EFST_MTF_RANGEATK2","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mustle_M","icon":"EFST_MUSTLE_M","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mysterious_Powder","icon":"EFST_MYSTERIOUS_POWDER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Mystery_Powder","icon":"EFST_MYSTERY_POWDER","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Netherworld","icon":"EFST_NETHERWORLD","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Neutralbarrier_Master","icon":"EFST_NEUTRALBARRIER_MASTER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Nightmare","icon":"EFST_NIGHTMARE","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Noaction","icon":"EFST_NOACTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Noon_Sun","icon":"EFST_NOON_SUN","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Novaexplosing","icon":"EFST_NOVAEXPLOSING","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Npc_Hallucinationwalk","icon":"EFST_NPC_HALLUCINATIONWALK","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Oblivioncurse","icon":"EFST_OBLIVIONCURSE","reason":"missing_icon","display_name":"Oblivion Curse","has_stateinfo":true,"has_icon":false}
+{"status_name":"Onehand","icon":"EFST_ONEHANDQUICKEN","reason":"missing_icon","display_name":"One Hand Quicken","has_stateinfo":true,"has_icon":false}
+{"status_name":"Oratio","icon":"EFST_ORATIO","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Overcoming_Crisis","icon":"EFST_OVERCOMING_CRISIS","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Overheat","icon":"EFST_OVERHEAT","reason":"missing_icon","display_name":"Over Heat","has_stateinfo":true,"has_icon":false}
+{"status_name":"Overheat_Limitpoint","icon":"EFST_OVERHEAT_LIMITPOINT","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Paralyse","icon":"EFST_PARALYSE","reason":"missing_icon","display_name":"Paralyze","has_stateinfo":true,"has_icon":false}
+{"status_name":"Paralysis","icon":"EFST_NEEDLE_OF_PARALYZE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Partyflee","icon":"EFST_PARTYFLEE","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Period_Plusexp_2nd","icon":"EFST_PERIOD_PLUSEXP_2ND","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Period_Receiveitem_2nd","icon":"EFST_PERIOD_RECEIVEITEM_2ND","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Petrology","icon":"EFST_PETROLOGY","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Petrology_Option","icon":"EFST_PETROLOGY_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Poison_Shield","icon":"EFST_POISON_SHIELD","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Poison_Shield_Option","icon":"EFST_POISON_SHIELD_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"PopeCookie","icon":"EFST_POPECOOKIE","reason":"missing_icon","display_name":"Pope Cookie","has_stateinfo":true,"has_icon":false}
+{"status_name":"Power_Of_Gaia","icon":"EFST_POWER_OF_GAIA","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Powerup","icon":"EFST_POWERUP","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Propertywalk","icon":"EFST_PROPERTYWALK","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Protectexp","icon":"EFST_PROTECTEXP","reason":"missing_icon","display_name":"Mom, Dad, I love you!","has_stateinfo":true,"has_icon":false}
+{"status_name":"Push_Cart","icon":"EFST_ON_PUSH_CART","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Putti_Tails_Noodles","icon":"EFST_PUTTI_TAILS_NOODLES","reason":"missing_icon","display_name":"Petit Tail Noodle","has_stateinfo":true,"has_icon":false}
+{"status_name":"Pyrexia","icon":"EFST_PYREXIA","reason":"missing_icon","display_name":"Pyrexia","has_stateinfo":true,"has_icon":false}
+{"status_name":"Pyrotechnic","icon":"EFST_PYROTECHNIC","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Pyrotechnic_Option","icon":"EFST_PYROTECHNIC_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Qd_Shot_Ready","icon":"EFST_E_QD_SHOT_READY","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"RETURN_TO_ELDICASTES","icon":"EFST_RETURN_TO_ELDICASTES","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Raid","icon":"EFST_RAID","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Readycounter","icon":"EFST_COUNTER_ON","reason":"missing_icon","display_name":"Counter Kick Stance","has_stateinfo":true,"has_icon":false}
+{"status_name":"Readydown","icon":"EFST_DOWNKICK_ON","reason":"missing_icon","display_name":"Heel Drop Stance","has_stateinfo":true,"has_icon":false}
+{"status_name":"Readystorm","icon":"EFST_STORMKICK_ON","reason":"missing_icon","display_name":"Tornado Kick","has_stateinfo":true,"has_icon":false}
+{"status_name":"Readyturn","icon":"EFST_TURNKICK_ON","reason":"missing_icon","display_name":"Roundhouse Stance","has_stateinfo":true,"has_icon":false}
+{"status_name":"Regeneration","icon":"EFST_GDSKILL_REGENERATION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Rejectsword","icon":"EFST_SWORDREJECT","reason":"missing_icon","display_name":"Reject Sword","has_stateinfo":true,"has_icon":false}
+{"status_name":"Relieve_On","icon":"EFST_RELIEVE_DAMAGE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Crushstrike","icon":"EFST_REUSE_CRUSHSTRIKE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_A","icon":"EFST_REUSE_LIMIT_A","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_Aspd_Potion","icon":"EFST_REUSE_LIMIT_ASPD_POTION","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_B","icon":"EFST_REUSE_LIMIT_B","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_C","icon":"EFST_REUSE_LIMIT_C","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_D","icon":"EFST_REUSE_LIMIT_D","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_E","icon":"EFST_REUSE_LIMIT_E","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_Ecl","icon":"EFST_REUSE_LIMIT_ECL","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_F","icon":"EFST_REUSE_LIMIT_F","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_G","icon":"EFST_REUSE_LIMIT_G","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_H","icon":"EFST_REUSE_LIMIT_H","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_Luxanima","icon":"EFST_REUSE_LIMIT_LUXANIMA","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_Mtf","icon":"EFST_REUSE_LIMIT_MTF","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Limit_Recall","icon":"EFST_REUSE_LIMIT_RECALL","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Millenniumshield","icon":"EFST_REUSE_MILLENNIUMSHIELD","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Refresh","icon":"EFST_REUSE_REFRESH","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Reuse_Stormblast","icon":"EFST_REUSE_STORMBLAST","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Rising_Moon","icon":"EFST_RISING_MOON","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Rising_Sun","icon":"EFST_RISING_SUN","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Rock_Crusher","icon":"EFST_ROCK_CRUSHER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Rock_Crusher_Atk","icon":"EFST_ROCK_CRUSHER_ATK","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Rollingcutter","icon":"EFST_ROLLINGCUTTER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Roseblossom","icon":"EFST_ROSEBLOSSOM","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Rulebreak","icon":"EFST_RULEBREAK","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Run","icon":"EFST_RUN","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Rush_Quake1","icon":"EFST_RUSH_QUAKE1","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Rush_Quake2","icon":"EFST_RUSH_QUAKE2","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"S_Lifepotion","icon":"EFST_S_LIFEPOTION","reason":"missing_icon","display_name":"Small Life Potion","has_stateinfo":true,"has_icon":false}
+{"status_name":"Sandy_Festival","icon":"EFST_SANDY_FESTIVAL","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Savage_Steak","icon":"EFST_SAVAGE_STEAK","reason":"missing_icon","display_name":"Savage BBQ","has_stateinfo":true,"has_icon":false}
+{"status_name":"Shadow_Clock","icon":"EFST_SHADOW_CLOCK","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Shadowweapon","icon":"EFST_PROPERTYDARK","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Shieldchainrush","icon":"EFST_SHIELDCHAINRUSH","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Shinkirou_Call","icon":"EFST_SBUNSHIN","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Siroma_Ice_Tea","icon":"EFST_SIROMA_ICE_TEA","reason":"missing_icon","display_name":"Siroma Icetea","has_stateinfo":true,"has_icon":false}
+{"status_name":"Skf_Aspd","icon":"EFST_SKF_ASPD","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Skf_Atk","icon":"EFST_SKF_ATK","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Skf_Cast","icon":"EFST_SKF_CAST","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Skf_Matk","icon":"EFST_SKF_MATK","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Sky_Enchant","icon":"EFST_SKY_ENCHANT","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Sma","icon":"EFST_SMA_READY","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Smokepowder","icon":"EFST_FIRE_EXPANSION_SMOKE_POWDER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Solid_Skin","icon":"EFST_SOLID_SKIN","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Solid_Skin_Option","icon":"EFST_SOLID_SKIN_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Soulattack","icon":"EFST_SOULATTACK","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Soulenergy","icon":"EFST_SOULENERGY","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Sp_Sha","icon":"EFST_SP_SHA","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"SparkCandy","icon":"EFST_STEAMPACK","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Spcost_Rate","icon":"EFST_ATKER_BLOOD","reason":"missing_icon","display_name":"SP Consumption Decrease Potion","has_stateinfo":true,"has_icon":false}
+{"status_name":"Speedup0","icon":"EFST_MOVHASTE_HORSE","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Speedup1","icon":"EFST_MOVHASTE_POTION","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Spellbook1","icon":"EFST_SPELLBOOK1","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Spellbook2","icon":"EFST_SPELLBOOK2","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Spellbook3","icon":"EFST_SPELLBOOK3","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Spellbook4","icon":"EFST_SPELLBOOK4","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Spellbook5","icon":"EFST_SPELLBOOK5","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Spellbook6","icon":"EFST_SPELLBOOK6","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Spellfist","icon":"EFST_SPELLFIST","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Sphere_1","icon":"EFST_SUMMON1","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Sphere_2","icon":"EFST_SUMMON2","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Sphere_3","icon":"EFST_SUMMON3","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Sphere_4","icon":"EFST_SUMMON4","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Sphere_5","icon":"EFST_SUMMON5","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Spiderweb","icon":"EFST_SPIDERWEB","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Spl_Atk","icon":"EFST_SPL_ATK","reason":"missing_icon","display_name":"Pinguicula's Pickled Fruit","has_stateinfo":true,"has_icon":false}
+{"status_name":"Spl_Def","icon":"EFST_SPL_DEF","reason":"missing_icon","display_name":"Honey Jam","has_stateinfo":true,"has_icon":false}
+{"status_name":"Spl_Matk","icon":"EFST_SPL_MATK","reason":"missing_icon","display_name":"Cornus's Tear","has_stateinfo":true,"has_icon":false}
+{"status_name":"Splasher","icon":"EFST_SPLASHER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Spurt","icon":"EFST_STRUP","reason":"missing_icon","display_name":"Sprint","has_stateinfo":true,"has_icon":false}
+{"status_name":"Star_Burst","icon":"EFST_STAR_BURST","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Stealthfield_Master","icon":"EFST_STEALTHFIELD_MASTER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Stomachache","icon":"EFST_STOMACHACHE","reason":"missing_icon","display_name":"Stomach Ache","has_stateinfo":true,"has_icon":false}
+{"status_name":"Stone_Shield","icon":"EFST_STONE_SHIELD","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Stone_Shield_Option","icon":"EFST_STONE_SHIELD_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Stop","icon":"EFST_STOP","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Str_Scroll","icon":"EFST_STR_SCROLL","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Strangelights","icon":"EFST_STRANGELIGHTS","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Strfood","icon":"EFST_FOOD_STR","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Striparmor","icon":"EFST_NOEQUIPARMOR","reason":"missing_icon","display_name":"Strip Armor","has_stateinfo":true,"has_icon":false}
+{"status_name":"Striphelm","icon":"EFST_NOEQUIPHELM","reason":"missing_icon","display_name":"Strip Helm","has_stateinfo":true,"has_icon":false}
+{"status_name":"Stripshield","icon":"EFST_NOEQUIPSHIELD","reason":"missing_icon","display_name":"Strip Shield","has_stateinfo":true,"has_icon":false}
+{"status_name":"Stripweapon","icon":"EFST_NOEQUIPWEAPON","reason":"missing_icon","display_name":"Strip Weapon","has_stateinfo":true,"has_icon":false}
+{"status_name":"Strong_Protection","icon":"EFST_STRONG_PROTECTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Strong_Protection_Option","icon":"EFST_STRONG_PROTECTION_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Suiton","icon":"EFST_NJ_SUITON","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Summon_Elemental_Ardor","icon":"EFST_SUMMON_ELEMENTAL_ARDOR","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Summon_Elemental_Diluvio","icon":"EFST_SUMMON_ELEMENTAL_DILUVIO","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Summon_Elemental_Procella","icon":"EFST_SUMMON_ELEMENTAL_PROCELLA","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Summon_Elemental_Serpens","icon":"EFST_SUMMON_ELEMENTAL_SERPENS","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Summon_Elemental_Terremotus","icon":"EFST_SUMMON_ELEMENTAL_TERREMOTUS","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Sunset_Sun","icon":"EFST_SUNSET_SUN","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Super_Star","icon":"EFST_SUPER_STAR","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Swingdance","icon":"EFST_SWING","reason":"missing_icon","display_name":"Swing Dance","has_stateinfo":true,"has_icon":false}
+{"status_name":"Swoo","icon":"EFST_SWOO","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Symphonyoflover","icon":"EFST_SYMPHONY_LOVE","reason":"missing_icon","display_name":"Symphony of Lover","has_stateinfo":true,"has_icon":false}
+{"status_name":"T_Fifth_God","icon":"EFST_T_FIVETH_GOD","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"T_First_God","icon":"EFST_T_FIRST_GOD","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"T_Fourth_God","icon":"EFST_T_FOURTH_GOD","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"T_Second_God","icon":"EFST_T_SECOND_GOD","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"T_Third_God","icon":"EFST_T_THIRD_GOD","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Talisman_of_Magician","icon":"EFST_TALISMAN_OF_MAGICIAN","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Talisman_of_Protection","icon":"EFST_TALISMAN_OF_PROTECTION","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Talisman_of_Warrior","icon":"EFST_TALISMAN_OF_WARRIOR","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Talisman_of_five_Elements","icon":"EFST_TALISMAN_OF_FIVE_ELEMENTS","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Teargas","icon":"EFST_FIRE_EXPANSION_TEAR_GAS","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Tempering","icon":"EFST_TEMPERING","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Temporary_Communion","icon":"EFST_TEMPORARY_COMMUNION","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Tidal_Weapon","icon":"EFST_TIDAL_WEAPON","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Tidal_Weapon_Option","icon":"EFST_TIDAL_WEAPON_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Time_Accessory","icon":"EFST_TIME_ACCESSORY","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Tinder_Breaker","icon":"EFST_TINDER_BREAKER_POSTDELAY","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Tinder_Breaker2","icon":"EFST_TINDER_BREAKER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Toxin","icon":"EFST_TOXIN","reason":"missing_icon","display_name":"Toxin","has_stateinfo":true,"has_icon":false}
+{"status_name":"Toxin_Of_Mandara","icon":"EFST_TOXIN_OF_MANDARA","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Tropic","icon":"EFST_TROPIC","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Tropic_Option","icon":"EFST_TROPIC_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Truesight","icon":"EFST_TRUESIGHT","reason":"missing_icon","display_name":"True Sight","has_stateinfo":true,"has_icon":false}
+{"status_name":"UltimateCook","icon":"EFST_ULTIMATECOOK","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Upheaval","icon":"EFST_UPHEAVAL","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Upheaval_Option","icon":"EFST_UPHEAVAL_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Use_Skill_Sp_Sha","icon":"EFST_USE_SKILL_SP_SHA","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Use_Skill_Sp_Spa","icon":"EFST_USE_SKILL_SP_SPA","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Venombleed","icon":"EFST_VENOMBLEED","reason":"missing_icon","display_name":"Venom Bleed","has_stateinfo":true,"has_icon":false}
+{"status_name":"Venomimpress","icon":"EFST_VENOMIMPRESS","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Violentgale","icon":"EFST_GROUNDMAGIC","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Vitalize_Potion","icon":"EFST_VITALIZE_POTION","reason":"missing_icon","display_name":"Vitalize Potion","has_stateinfo":true,"has_icon":false}
+{"status_name":"Vitfood","icon":"EFST_FOOD_VIT","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Voiceofsiren","icon":"EFST_SIREN","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Volcano","icon":"EFST_GROUNDMAGIC","reason":"missing_icon","display_name":"%s","has_stateinfo":true,"has_icon":false}
+{"status_name":"Warm","icon":"EFST_SG_SUN_WARM","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Water_Barrier","icon":"EFST_WATER_BARRIER","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Water_Charm_Power","icon":"EFST_WATER_CHARM_POWER","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Water_Drop","icon":"EFST_WATER_DROP","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Water_Drop_Option","icon":"EFST_WATER_DROP_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Water_Insignia","icon":"EFST_WATER_INSIGNIA","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Water_Screen","icon":"EFST_WATER_SCREEN","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Water_Screen_Option","icon":"EFST_WATER_SCREEN_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Waterweapon","icon":"EFST_PROPERTYWATER","reason":"missing_icon","display_name":"Frost Weapon","has_stateinfo":true,"has_icon":false}
+{"status_name":"Weight50","icon":"EFST_WEIGHTOVER50","reason":"missing_icon","display_name":"Weight over 70%","has_stateinfo":true,"has_icon":false}
+{"status_name":"Weight90","icon":"EFST_WEIGHTOVER90","reason":"missing_icon","display_name":"Weight Over 90%","has_stateinfo":true,"has_icon":false}
+{"status_name":"Wideweb","icon":"EFST_WIDEWEB","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Wild_Storm","icon":"EFST_WILD_STORM","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Wild_Storm_Option","icon":"EFST_WILD_STORM_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Wild_Walk","icon":"EFST_WILD_WALK","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Wind_Charm_Power","icon":"EFST_WIND_CHARM_POWER","reason":"no_client_efst","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Wind_Curtain","icon":"EFST_WIND_CURTAIN","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Wind_Curtain_Option","icon":"EFST_WIND_CURTAIN_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Wind_Insignia","icon":"EFST_WIND_INSIGNIA","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Wind_Step","icon":"EFST_WIND_STEP","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Wind_Step_Option","icon":"EFST_WIND_STEP_OPTION","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"Windweapon","icon":"EFST_PROPERTYWIND","reason":"missing_icon","display_name":"Lightning Loader","has_stateinfo":true,"has_icon":false}
+{"status_name":"Winkcharm","icon":"EFST_DC_WINKCHARM","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Wugdash","icon":"EFST_WUGDASH","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Zenkai","icon":"EFST_ZENKAI","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"Zephyr","icon":"EFST_ZEPHYR","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":false}
+{"status_name":"_Bloodylust","icon":"EFST_BLOODYLUST","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}
+{"status_name":"_Manhole","icon":"EFST_MANHOLE","reason":"no_stateinfo","display_name":null,"has_stateinfo":false,"has_icon":true}

@@ -1,6 +1,6 @@
 {
-  "schema_version": 8,
-  "generated_at": "2026-11-21T06:58:34Z",
+  "schema_version": 11,
+  "generated_at": "2026-11-21T13:36:52Z",
   "data_ini": "patch/data.ini",
   "data_ini_order": [
     "ozro.grf",
@@ -66,7 +66,30 @@
     "npc_sprites_with_ids": 1289,
     "npcs_act_deps_incomplete": 0,
     "npcs_act_gap_rows": 0,
-    "npcs_act_wav_missing_unique": 0
+    "npcs_act_wav_missing_unique": 0,
+    "skills": 1662,
+    "skills_with_skillinfo": 1446,
+    "skills_with_display_name": 1446,
+    "skills_with_alt_names": 667,
+    "skills_with_icon": 1183,
+    "skills_with_sprite": 1173,
+    "skills_missing_icon": 479,
+    "skills_server": 1635,
+    "skills_server_ok": 1152,
+    "skills_no_client": 167,
+    "skills_no_skillinfo": 154,
+    "skills_server_missing_icon": 162,
+    "statuses": 1163,
+    "statuses_with_stateinfo": 712,
+    "statuses_with_display_name": 712,
+    "statuses_with_icon": 703,
+    "statuses_missing_icon": 460,
+    "statuses_server": 1019,
+    "statuses_server_with_icon": 905,
+    "statuses_server_ok": 418,
+    "statuses_no_client_efst": 113,
+    "statuses_no_stateinfo": 253,
+    "statuses_server_missing_icon": 121
   },
   "outputs": [
     "client_grf_index_meta.json",
@@ -79,6 +102,10 @@
     "client_mob_act_gaps.jsonl",
     "client_mob_server_gaps.jsonl",
     "client_npc_sprites.jsonl",
-    "client_npc_act_gaps.jsonl"
+    "client_npc_act_gaps.jsonl",
+    "client_skills.jsonl",
+    "client_skill_server_gaps.jsonl",
+    "client_statuses.jsonl",
+    "client_status_server_gaps.jsonl"
   ]
 }
