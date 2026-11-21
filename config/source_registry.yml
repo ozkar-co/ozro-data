@@ -159,10 +159,14 @@ domains:
     sources:
       - kind: yaml
         path: db/re/instance_db.yml
+        note: Id/Name/Enter/AdditionalMaps/TimeLimit
       - kind: yaml_override
         path: db/import/instance_db.yml
       - kind: npc_scripts
         path: npc/re/instances/
+        note: instance_create literal → NPC links; dynamic names unbound
+      - kind: deferred
+        note: requirements/rewards; idle timeout; var-based create names
 
   boxes:
     sources:

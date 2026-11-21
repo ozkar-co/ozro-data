@@ -439,10 +439,34 @@ CREATE TABLE IF NOT EXISTS ozro_quest_drops (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_instances (
-  instance_id VARCHAR(64) NOT NULL PRIMARY KEY,
-  name VARCHAR(128) NULL,
-  data JSON NULL,
-  provenance_id CHAR(40) NULL
+  instance_id INT NOT NULL PRIMARY KEY,
+  name VARCHAR(255) NULL,
+  time_limit_seconds INT NULL,
+  enter_map_id VARCHAR(64) NULL,
+  enter_x INT NULL,
+  enter_y INT NULL,
+  map_count INT NULL,
+  source_file VARCHAR(512) NULL,
+  provenance_id CHAR(40) NULL,
+  INDEX idx_inst_enter (enter_map_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_instance_maps (
+  instance_id INT NOT NULL,
+  map_id VARCHAR(64) NOT NULL,
+  role VARCHAR(32) NULL,
+  PRIMARY KEY (instance_id, map_id),
+  INDEX idx_inst_map (map_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_instance_npcs (
+  instance_id INT NULL,
+  npc_id VARCHAR(128) NOT NULL,
+  role VARCHAR(32) NULL,
+  match_kind VARCHAR(32) NULL,
+  script_path VARCHAR(512) NULL,
+  PRIMARY KEY (npc_id, script_path(191), role(32)),
+  INDEX idx_inst_npc_inst (instance_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_boxes (
