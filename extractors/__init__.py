@@ -10,6 +10,7 @@ from .skills import extract_skills
 from .spawns import extract_spawns
 from .shops import extract_shops
 from .npc_scripts import extract_npc_scripts
+from .item_scripts import extract_item_scripts
 
 __all__ = [
     "extract_maps",
@@ -22,4 +23,5 @@ __all__ = [
     "extract_spawns",
     "extract_shops",
     "extract_npc_scripts",
+    "extract_item_scripts",
 ]

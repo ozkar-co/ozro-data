@@ -17,6 +17,7 @@ python pipeline.py extract spawns           # headers+scripted+slaves; needs ski
 python pipeline.py extract mobs             # re-run after spawns to resolve mob_role
 python pipeline.py extract shops            # header shop/cashshop/… → npc_shops + items
 python pipeline.py extract npc_scripts      # script body evidence → refine npc functions
+python pipeline.py extract item_scripts     # Script/EquipScript/UnEquipScript from item_db
 ```
 
 

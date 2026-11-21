@@ -96,7 +96,15 @@ domains:
   item_scripts:
     sources:
       - kind: item_yaml_script_fields
-        note: Script/EquipScript/UnEquipScript in item_db
+        paths:
+          - db/re/item_db.yml
+          - db/re/item_db_equip.yml
+          - db/re/item_db_etc.yml
+          - db/re/item_db_usable.yml
+          - db/import/item_db.yml
+        note: Script/EquipScript/UnEquipScript; effects_partial tags only; no LLM
+      - kind: deferred
+        note: callfunc expansion, getgroupitem→group, combo scripts, full semantics
 
   item_restrictions:
     sources:

@@ -263,11 +263,19 @@ CREATE TABLE IF NOT EXISTS ozro_item_properties (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_item_scripts (
+  item_script_id CHAR(40) NOT NULL PRIMARY KEY,
   item_id INT NOT NULL,
   script_kind ENUM('Script','EquipScript','UnEquipScript','other') NOT NULL,
+  trigger_name VARCHAR(32) NULL,
   script_body MEDIUMTEXT NOT NULL,
+  script_hash CHAR(40) NULL,
+  parsed_effects JSON NULL,
+  parse_status VARCHAR(32) NULL,
+  source_file VARCHAR(512) NULL,
   provenance_id CHAR(40) NULL,
-  PRIMARY KEY (item_id, script_kind)
+  UNIQUE KEY uq_item_script_kind (item_id, script_kind),
+  INDEX idx_item_script_item (item_id),
+  INDEX idx_item_script_status (parse_status)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_item_restrictions (
