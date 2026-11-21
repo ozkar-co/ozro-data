@@ -68,6 +68,10 @@ def cmd_extract(args: argparse.Namespace) -> int:
         from extractors import extract_map_distances
 
         summary = extract_map_distances(ROOT)
+    elif domain == "skills":
+        from extractors import extract_skills
+
+        summary = extract_skills(ROOT)
     elif domain == "spawns":
         from extractors import extract_spawns
 
@@ -94,6 +98,7 @@ def main() -> int:
             "npcs",
             "map_connections",
             "map_distances",
+            "skills",
             "spawns",
         ],
         help="entity domain to extract",

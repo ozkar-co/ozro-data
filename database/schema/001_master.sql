@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS ozro_mobs (
 CREATE TABLE IF NOT EXISTS ozro_spawns (
   spawn_id CHAR(40) NOT NULL PRIMARY KEY,
   mob_id INT NOT NULL,
-  map_id VARCHAR(64) NOT NULL,
+  map_id VARCHAR(64) NULL,
   spawn_type VARCHAR(32) NOT NULL,
   amount INT NULL,
   x INT NULL,
@@ -157,10 +157,57 @@ CREATE TABLE IF NOT EXISTS ozro_spawns (
   respawn_unit VARCHAR(16) NULL,
   spawn_condition JSON NULL,
   event_id VARCHAR(64) NULL,
+  parent_mob_id INT NULL,
+  skill_id INT NULL,
   script_path VARCHAR(512) NULL,
   provenance_id CHAR(40) NULL,
   INDEX idx_spawn_mob (mob_id),
-  INDEX idx_spawn_map (map_id)
+  INDEX idx_spawn_map (map_id),
+  INDEX idx_spawn_parent (parent_mob_id),
+  INDEX idx_spawn_type (spawn_type)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_skills (
+  skill_id INT NOT NULL PRIMARY KEY,
+  aegis_name VARCHAR(128) NULL,
+  name VARCHAR(128) NULL,
+  skill_owner VARCHAR(16) NULL,
+  provenance_id CHAR(40) NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_mob_skills (
+  mob_skill_id CHAR(40) NOT NULL PRIMARY KEY,
+  mob_id INT NOT NULL,
+  skill_id INT NULL,
+  skill_name VARCHAR(128) NULL,
+  state VARCHAR(32) NULL,
+  skill_lv INT NULL,
+  rate INT NULL,
+  condition_type VARCHAR(64) NULL,
+  condition_value VARCHAR(64) NULL,
+  val1 INT NULL,
+  vals JSON NULL,
+  source_file VARCHAR(512) NULL,
+  source_line INT NULL,
+  provenance_id CHAR(40) NULL,
+  INDEX idx_mob_skill_mob (mob_id),
+  INDEX idx_mob_skill_skill (skill_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_skill_summons (
+  summon_id CHAR(40) NOT NULL PRIMARY KEY,
+  summon_kind VARCHAR(32) NOT NULL,
+  parent_mob_id INT NULL,
+  skill_id INT NULL,
+  summoned_mob_id INT NOT NULL,
+  amount INT NULL,
+  conditions JSON NULL,
+  source_file VARCHAR(512) NULL,
+  source_line INT NULL,
+  provenance_id CHAR(40) NULL,
+  INDEX idx_summon_parent (parent_mob_id),
+  INDEX idx_summon_child (summoned_mob_id),
+  INDEX idx_summon_kind (summon_kind)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_items (

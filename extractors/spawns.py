@@ -1,4 +1,4 @@
-"""Spawns extractor — permanent monster/boss_monster headers from enabled scripts."""
+"""Spawns extractor — permanent headers + scripted monster/areamonster/guardian."""
 
 from __future__ import annotations
 
@@ -21,6 +21,16 @@ _SPAWN_RE = re.compile(
 )
 
 _EVENT_RE = re.compile(r'^"(?P<event>[^"]*)"\s*$')
+
+# Indented script commands (not map-header lines).
+_SCRIPTED_CALL_RE = re.compile(
+    r"^\s+(?P<kind>monster|areamonster|guardian)\s+(?P<args>.+?)\s*;?\s*$"
+)
+_STR_LIT_RE = re.compile(r'^"(?P<val>(?:\\.|[^"\\])*)"$')
+_INT_LIT_RE = re.compile(r"^-?\d+$")
+_INSTANCE_MAP_RE = re.compile(
+    r'^instance_mapname\s*\(\s*"(?P<map>[A-Za-z0-9_@-]+)"\s*\)$'
+)
 
 
 def _provenance_id(domain: str, record_id: str, source_path: str) -> str:
@@ -142,6 +152,218 @@ def _spawn_type(kind: str, script_path: str, map_id: str, event_id: str | None) 
     return "permanent"
 
 
+def _split_args(argstr: str) -> list[str]:
+    """Split script args on commas; respect quotes and parentheses."""
+    parts: list[str] = []
+    cur: list[str] = []
+    depth = 0
+    in_q = False
+    i = 0
+    s = argstr.strip().rstrip(";")
+    while i < len(s):
+        ch = s[i]
+        if in_q:
+            cur.append(ch)
+            if ch == "\\" and i + 1 < len(s):
+                cur.append(s[i + 1])
+                i += 2
+                continue
+            if ch == '"':
+                in_q = False
+            i += 1
+            continue
+        if ch == '"':
+            in_q = True
+            cur.append(ch)
+        elif ch == "(":
+            depth += 1
+            cur.append(ch)
+        elif ch == ")":
+            depth = max(0, depth - 1)
+            cur.append(ch)
+        elif ch == "," and depth == 0:
+            parts.append("".join(cur).strip())
+            cur = []
+        else:
+            cur.append(ch)
+        i += 1
+    if cur or parts:
+        parts.append("".join(cur).strip())
+    return [p for p in parts if p != ""]
+
+
+def _parse_str_lit(expr: str) -> str | None:
+    m = _STR_LIT_RE.match(expr.strip())
+    return m.group("val") if m else None
+
+
+def _parse_int_lit(expr: str) -> int | None:
+    e = expr.strip()
+    if _INT_LIT_RE.fullmatch(e):
+        return int(e)
+    return None
+
+
+def _resolve_map_expr(expr: str) -> tuple[str | None, str | None]:
+    """Return (map_id or None, raw_expr if unresolved)."""
+    e = expr.strip()
+    lit = _parse_str_lit(e)
+    if lit is not None:
+        return lit, None
+    im = _INSTANCE_MAP_RE.match(e)
+    if im:
+        return im.group("map"), None
+    return None, e
+
+
+def _resolve_mob_token(expr: str, aegis_to_id: dict[str, int]) -> tuple[int | None, str | None]:
+    e = expr.strip()
+    n = _parse_int_lit(e)
+    if n is not None:
+        return n, None
+    lit = _parse_str_lit(e)
+    if lit is not None:
+        if lit in aegis_to_id:
+            return aegis_to_id[lit], None
+        return None, e
+    return None, e
+
+
+def _resolve_name(expr: str) -> str | None:
+    return _parse_str_lit(expr)
+
+
+def _scripted_spawn_type(script_path: str, map_id: str | None, map_raw: str | None) -> str:
+    path_l = script_path.lower()
+    if "instance" in path_l:
+        return "instance"
+    if map_id and re.match(r"^\d+@", map_id):
+        return "instance"
+    if map_raw and "instance_mapname" in map_raw:
+        return "instance"
+    return "scripted"
+
+
+def _parse_scripted_call(
+    kind: str, args: list[str], aegis_to_id: dict[str, int]
+) -> dict[str, Any] | None:
+    """Parse monster/areamonster/guardian args. Require resolvable mob_id."""
+    unresolved: list[str] = []
+
+    if kind == "areamonster":
+        if len(args) < 8:
+            return None
+        map_id, map_raw = _resolve_map_expr(args[0])
+        if map_raw:
+            unresolved.append("map")
+        coords = []
+        for idx, label in enumerate(("x", "y", "x2", "y2"), start=1):
+            v = _parse_int_lit(args[idx])
+            coords.append(v)
+            if v is None:
+                unresolved.append(label)
+        display = _resolve_name(args[5])
+        if display is None:
+            unresolved.append("display_name")
+        mob_id, mob_raw = _resolve_mob_token(args[6], aegis_to_id)
+        if mob_id is None:
+            return None  # cannot attribute spawn without mob
+        amount = _parse_int_lit(args[7])
+        if amount is None:
+            unresolved.append("amount")
+        event_id = _parse_str_lit(args[8]) if len(args) > 8 else None
+        return {
+            "mob_id": mob_id,
+            "map_id": map_id,
+            "display_name": display,
+            "amount": amount,
+            "x": coords[0],
+            "y": coords[1],
+            "x_area": None,
+            "y_area": None,
+            "x2": coords[2],
+            "y2": coords[3],
+            "event_id": event_id,
+            "unresolved": unresolved,
+            "map_raw": map_raw,
+            "mob_raw": mob_raw,
+        }
+
+    if kind == "guardian":
+        if len(args) < 5:
+            return None
+        map_id, map_raw = _resolve_map_expr(args[0])
+        if map_raw:
+            unresolved.append("map")
+        x = _parse_int_lit(args[1])
+        y = _parse_int_lit(args[2])
+        if x is None:
+            unresolved.append("x")
+        if y is None:
+            unresolved.append("y")
+        display = _resolve_name(args[3])
+        if display is None:
+            unresolved.append("display_name")
+        mob_id, mob_raw = _resolve_mob_token(args[4], aegis_to_id)
+        if mob_id is None:
+            return None
+        event_id = _parse_str_lit(args[5]) if len(args) > 5 else None
+        return {
+            "mob_id": mob_id,
+            "map_id": map_id,
+            "display_name": display,
+            "amount": 1,
+            "x": x,
+            "y": y,
+            "x_area": None,
+            "y_area": None,
+            "x2": None,
+            "y2": None,
+            "event_id": event_id,
+            "unresolved": unresolved,
+            "map_raw": map_raw,
+            "mob_raw": mob_raw,
+        }
+
+    # monster
+    if len(args) < 6:
+        return None
+    map_id, map_raw = _resolve_map_expr(args[0])
+    if map_raw:
+        unresolved.append("map")
+    x = _parse_int_lit(args[1])
+    y = _parse_int_lit(args[2])
+    if x is None:
+        unresolved.append("x")
+    if y is None:
+        unresolved.append("y")
+    display = _resolve_name(args[3])
+    if display is None:
+        unresolved.append("display_name")
+    mob_id, mob_raw = _resolve_mob_token(args[4], aegis_to_id)
+    if mob_id is None:
+        return None
+    amount = _parse_int_lit(args[5])
+    if amount is None:
+        unresolved.append("amount")
+    event_id = _parse_str_lit(args[6]) if len(args) > 6 else None
+    return {
+        "mob_id": mob_id,
+        "map_id": map_id,
+        "display_name": display,
+        "amount": amount,
+        "x": x,
+        "y": y,
+        "x_area": None,
+        "y_area": None,
+        "x2": None,
+        "y2": None,
+        "event_id": event_id,
+        "unresolved": unresolved,
+        "map_raw": map_raw,
+        "mob_raw": mob_raw,
+    }
+
 
 def extract_spawns(project_root: Path | None = None) -> dict[str, Any]:
     root = project_root or Path(__file__).resolve().parents[1]
@@ -163,6 +385,8 @@ def extract_spawns(project_root: Path | None = None) -> dict[str, Any]:
     by_type: dict[str, int] = {}
     by_kind: dict[str, int] = {}
     parse_fail = 0
+    scripted_skip_no_mob = 0
+    scripted_partial = 0
 
     for rel in scripts:
         path = rathena / rel
@@ -174,67 +398,206 @@ def extract_spawns(project_root: Path | None = None) -> dict[str, Any]:
             line = raw.split("//", 1)[0].rstrip()
             if not line.strip():
                 continue
-            # strip block comments at EOL
             if "/*" in line:
                 line = re.sub(r"/\*.*?\*/", "", line).rstrip()
+
+            # --- permanent / boss headers ---
             m = _SPAWN_RE.match(line)
-            if not m:
-                continue
-            try:
-                map_id, x, y, x_area, y_area = _parse_loc(m.group("loc"))
-            except ValueError:
-                parse_fail += 1
-                continue
-            body = _parse_body(m.group("body"), aegis_to_id)
-            if not body:
-                parse_fail += 1
+            if m:
+                try:
+                    map_id, x, y, x_area, y_area = _parse_loc(m.group("loc"))
+                except ValueError:
+                    parse_fail += 1
+                    continue
+                body = _parse_body(m.group("body"), aegis_to_id)
+                if not body:
+                    parse_fail += 1
+                    continue
+
+                kind = m.group("kind")
+                name = m.group("name").strip()
+                stype = _spawn_type(kind, rel, map_id, body["event_id"])
+                sid = _spawn_id(
+                    "header",
+                    map_id,
+                    body["mob_id"],
+                    x,
+                    y,
+                    x_area,
+                    y_area,
+                    body["amount"],
+                    body["respawn_min"],
+                    body["respawn_max"],
+                    body["event_id"],
+                    kind,
+                    rel,
+                    line_no,
+                )
+                rec = {
+                    "spawn_id": sid,
+                    "mob_id": body["mob_id"],
+                    "map_id": map_id,
+                    "spawn_type": stype,
+                    "spawn_kind": kind,
+                    "display_name": name,
+                    "amount": body["amount"],
+                    "x": x,
+                    "y": y,
+                    "x_area": x_area,
+                    "y_area": y_area,
+                    "respawn_min": body["respawn_min"],
+                    "respawn_max": body["respawn_max"],
+                    "respawn_unit": "ms" if body["respawn_min"] is not None else None,
+                    "spawn_condition": None,
+                    "event_id": body["event_id"],
+                    "boss_flag": body["boss_flag"],
+                    "script_path": rel,
+                    "script_line": line_no,
+                    "classification_layer": "absolute",
+                    "provenance_id": _provenance_id("spawns", sid, f"{rel}:{line_no}"),
+                    "source": {"script_path": rel, "line": line_no, "form": "header"},
+                }
+                records.append(rec)
+                by_type[stype] = by_type.get(stype, 0) + 1
+                by_kind[kind] = by_kind.get(kind, 0) + 1
                 continue
 
-            kind = m.group("kind")
-            name = m.group("name").strip()
-            stype = _spawn_type(kind, rel, map_id, body["event_id"])
+            # --- scripted monster / areamonster / guardian ---
+            sm = _SCRIPTED_CALL_RE.match(line)
+            if not sm:
+                continue
+            kind = sm.group("kind")
+            args = _split_args(sm.group("args"))
+            parsed = _parse_scripted_call(kind, args, aegis_to_id)
+            if not parsed:
+                scripted_skip_no_mob += 1
+                continue
+
+            stype = _scripted_spawn_type(rel, parsed["map_id"], parsed.get("map_raw"))
+            # Instance path + scripted call: keep type instance (not scripted)
+            if stype == "instance":
+                pass
+            else:
+                stype = "scripted"
+
+            unresolved = list(parsed.get("unresolved") or [])
+            if unresolved:
+                scripted_partial += 1
+            cond = {"unresolved": unresolved} if unresolved else None
+            if parsed.get("map_raw"):
+                cond = cond or {}
+                cond["map_expr"] = parsed["map_raw"]
+
             sid = _spawn_id(
-                map_id,
-                body["mob_id"],
-                x,
-                y,
-                x_area,
-                y_area,
-                body["amount"],
-                body["respawn_min"],
-                body["respawn_max"],
-                body["event_id"],
+                "scripted",
                 kind,
+                parsed["map_id"],
+                parsed["mob_id"],
+                parsed["x"],
+                parsed["y"],
+                parsed.get("x2"),
+                parsed.get("y2"),
+                parsed["amount"],
+                parsed["event_id"],
                 rel,
                 line_no,
             )
             rec = {
                 "spawn_id": sid,
-                "mob_id": body["mob_id"],
-                "map_id": map_id,
+                "mob_id": parsed["mob_id"],
+                "map_id": parsed["map_id"],
                 "spawn_type": stype,
                 "spawn_kind": kind,
-                "display_name": name,
-                "amount": body["amount"],
-                "x": x,
-                "y": y,
-                "x_area": x_area,
-                "y_area": y_area,
-                "respawn_min": body["respawn_min"],
-                "respawn_max": body["respawn_max"],
-                "respawn_unit": "ms" if body["respawn_min"] is not None else None,
-                "spawn_condition": None,
-                "event_id": body["event_id"],
-                "boss_flag": body["boss_flag"],
+                "display_name": parsed["display_name"],
+                "amount": parsed["amount"],
+                "x": parsed["x"],
+                "y": parsed["y"],
+                "x_area": parsed["x_area"],
+                "y_area": parsed["y_area"],
+                "x2": parsed.get("x2"),
+                "y2": parsed.get("y2"),
+                "respawn_min": None,
+                "respawn_max": None,
+                "respawn_unit": None,
+                "spawn_condition": cond,
+                "event_id": parsed["event_id"],
+                "boss_flag": None,
                 "script_path": rel,
                 "script_line": line_no,
-                "classification_layer": "absolute",
+                "classification_layer": "absolute"
+                if not unresolved
+                else "inferred",
                 "provenance_id": _provenance_id("spawns", sid, f"{rel}:{line_no}"),
-                "source": {"script_path": rel, "line": line_no},
+                "source": {
+                    "script_path": rel,
+                    "line": line_no,
+                    "form": "script_command",
+                    "command": kind,
+                },
             }
             records.append(rec)
             by_type[stype] = by_type.get(stype, 0) + 1
             by_kind[kind] = by_kind.get(kind, 0) + 1
+
+    # --- slaves from skill_summons.jsonl (run extract skills first) ---
+    summons_path = reports_dir / "skill_summons.jsonl"
+    slave_added = 0
+    if summons_path.is_file():
+        for line in summons_path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            s = json.loads(line)
+            if s.get("summon_kind") != "mob_slave":
+                continue
+            child = s.get("summoned_mob_id")
+            parent = s.get("parent_mob_id")
+            if child is None or parent is None:
+                continue
+            sid = _spawn_id(
+                "slave",
+                parent,
+                child,
+                s.get("skill_id"),
+                s.get("skill_name"),
+                s.get("source_file"),
+                s.get("source_line"),
+            )
+            rec = {
+                "spawn_id": sid,
+                "mob_id": int(child),
+                "map_id": None,
+                "spawn_type": "slave",
+                "spawn_kind": "mob_skill_summon",
+                "display_name": None,
+                "amount": s.get("amount"),
+                "x": None,
+                "y": None,
+                "x_area": None,
+                "y_area": None,
+                "respawn_min": None,
+                "respawn_max": None,
+                "respawn_unit": None,
+                "spawn_condition": s.get("conditions"),
+                "event_id": None,
+                "parent_mob_id": int(parent),
+                "skill_id": s.get("skill_id"),
+                "boss_flag": None,
+                "script_path": s.get("source_file"),
+                "script_line": s.get("source_line"),
+                "classification_layer": "absolute",
+                "provenance_id": _provenance_id(
+                    "spawns", sid, f"{s.get('source_file')}:{s.get('source_line')}"
+                ),
+                "source": {
+                    "form": "mob_skill_db",
+                    "summon_id": s.get("summon_id"),
+                    "skill_name": s.get("skill_name"),
+                },
+            }
+            records.append(rec)
+            by_type["slave"] = by_type.get("slave", 0) + 1
+            by_kind["mob_skill_summon"] = by_kind.get("mob_skill_summon", 0) + 1
+            slave_added += 1
 
     out_path = reports_dir / "spawns.jsonl"
     with out_path.open("w", encoding="utf-8") as f:
@@ -246,10 +609,13 @@ def extract_spawns(project_root: Path | None = None) -> dict[str, Any]:
         "spawn_count": len(records),
         "by_type": by_type,
         "by_kind": by_kind,
-        "unique_mobs": len({r["mob_id"] for r in records}),
-        "unique_maps": len({r["map_id"] for r in records}),
+        "unique_mobs": len({r["mob_id"] for r in records if r.get("mob_id") is not None}),
+        "unique_maps": len({r["map_id"] for r in records if r.get("map_id")}),
         "parse_fail": parse_fail,
-        "deferred": ["scripted", "skill_summon", "pet", "timed", "one_time"],
+        "scripted_skip_unresolved_mob": scripted_skip_no_mob,
+        "scripted_partial_fields": scripted_partial,
+        "slave_from_skills": slave_added,
+        "deferred": ["skill_summon", "pet", "timed", "one_time"],
         "wrote": str(out_path),
     }
     summary_path = reports_dir / "spawns_summary.json"

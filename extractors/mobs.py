@@ -89,10 +89,57 @@ def _is_thin_stub(row: dict[str, Any]) -> bool:
     )
 
 
+def _load_spawn_role_evidence(spawns_path: Path) -> dict[int, str]:
+    """mob_id → role from spawn evidence (Etapa 3).
+
+    Priority: map_spawn > instance > scripted > slave.
+    """
+    evidence: dict[int, dict[str, bool]] = {}
+    if not spawns_path.is_file():
+        return {}
+    for line in spawns_path.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        row = json.loads(line)
+        mid = row.get("mob_id")
+        if mid is None:
+            continue
+        mid = int(mid)
+        slot = evidence.setdefault(
+            mid,
+            {"map": False, "instance": False, "scripted": False, "slave": False},
+        )
+        st = row.get("spawn_type")
+        if st == "instance":
+            slot["instance"] = True
+        elif st == "scripted":
+            slot["scripted"] = True
+        elif st == "slave":
+            slot["slave"] = True
+        elif st in ("skill_summon", "pet"):
+            continue
+        else:
+            # permanent / event headers
+            slot["map"] = True
+
+    out: dict[int, str] = {}
+    for mid, flags in evidence.items():
+        if flags["map"]:
+            out[mid] = "map_spawn"
+        elif flags["instance"]:
+            out[mid] = "instance"
+        elif flags["scripted"]:
+            out[mid] = "scripted"
+        elif flags["slave"]:
+            out[mid] = "slave"
+    return out
+
+
 def classify_mob_role(
     mid: int,
     row: dict[str, Any],
     pet_aegis: set[str],
+    spawn_roles: dict[int, str] | None = None,
 ) -> tuple[str, str]:
     """Return (mob_role, role_reason). Layer is always inferred for now."""
     aegis = str(row.get("AegisName") or "")
@@ -112,9 +159,21 @@ def classify_mob_role(
     if _is_thin_stub(row):
         return "stub", "thin_yaml_stub"
 
-    # Pet-only stubs in pet_db (e.g. J_TAINI); field pets like PORING stay field.
+    # Pet-only stubs in pet_db (e.g. J_TAINI); field pets like PORING stay pending/map_spawn.
     if aegis in pet_aegis and row.get("Hp") is None:
         return "pet", "pet_db_without_hp"
+
+    spawn_roles = spawn_roles or {}
+    if mid in spawn_roles:
+        role = spawn_roles[mid]
+        if role == "map_spawn":
+            return "map_spawn", "spawn_header_permanent_or_event"
+        if role == "instance":
+            return "instance", "spawn_instance_only"
+        if role == "scripted":
+            return "scripted", "script_monster_areamonster_guardian"
+        if role == "slave":
+            return "slave", "mob_skill_db_summonslave"
 
     return "pending", "awaiting_spawn_or_usage_evidence"
 
@@ -130,6 +189,7 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
     by_id, import_ids = _load_mob_db(rathena, mob_files)
     gaps = _load_jsonl_index(reports_dir / "client_mob_server_gaps.jsonl", "mob_id")
     pet_aegis = _load_pet_aegis_names(rathena)
+    spawn_roles = _load_spawn_role_evidence(reports_dir / "spawns.jsonl")
 
     records: list[dict[str, Any]] = []
     for mid in sorted(by_id):
@@ -167,7 +227,7 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
             "race_groups": row.get("RaceGroups"),
         }
 
-        mob_role, role_reason = classify_mob_role(mid, row, pet_aegis)
+        mob_role, role_reason = classify_mob_role(mid, row, pet_aegis, spawn_roles)
         mvp_exp = row.get("MvpExp")
         is_mvp = bool(mvp_exp)
 
@@ -236,6 +296,7 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
         "mvp_count": sum(1 for r in records if r["is_mvp"]),
         "by_class": by_class,
         "by_role": by_role,
+        "spawn_evidence_mobs": len(spawn_roles),
         "wrote": str(out_path),
     }
     summary_path = reports_dir / "mobs_summary.json"

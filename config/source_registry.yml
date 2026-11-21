@@ -51,7 +51,19 @@ domains:
         via: [npc/scripts_monsters.conf, npc/re/scripts_monsters.conf]
       - kind: scripted_spawn
         entry: npc/re/scripts_main.conf
-        note: monster/areamonster/boss_monster in scripts
+        note: monster/areamonster/guardian in NPC scripts
+      - kind: mob_skill_slaves
+        path: db/re/mob_skill_db.txt
+        note: NPC_SUMMONSLAVE / NPC_SUMMONMONSTER → spawn_type slave
+
+  skills:
+    sources:
+      - kind: mob_skill_db
+        path: db/re/mob_skill_db.txt
+        note: monster skills + slave summons; Etapa 3 before NPC analysis
+      - kind: skill_db
+        path: db/re/skill_db.yml
+        note: player skill summons deferred
 
   items:
     sources:
