@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-20T23:57:02Z",
+  "generated_at": "2026-11-21T01:33:01Z",
   "data_ini": "patch/data.ini",
   "data_ini_order": [
     "ozro.grf",
@@ -16,10 +16,10 @@
       "label": "ozro",
       "file": "ozro.grf",
       "path": "patch/ozro.grf",
-      "entries": 102,
-      "winners_contributed": 102,
-      "sha256": "aefb4e97d9666b81f3d48e4e7d814c56eac6d967d90cf6c078ee0b95701c9bb6",
-      "size_bytes": 14773033
+      "entries": 1543,
+      "winners_contributed": 1543,
+      "sha256": "323a001d46bf39b4e971b454d7e42be9314baf5dd1edb99bfab211f1a633bb6e",
+      "size_bytes": 15439025
     },
     {
       "priority": 2,
@@ -32,10 +32,12 @@
       "size_bytes": 3216636020
     }
   ],
-  "active_path_count": 160791,
+  "active_path_count": 162232,
   "counts": {
-    "maps": 917,
-    "maps_complete": 917,
+    "maps": 1217,
+    "maps_complete": 1185,
+    "maps_alias": 285,
+    "maps_alias_complete": 268,
     "item_icons": 8647,
     "item_sprites": 8530,
     "item_info": 19317,
