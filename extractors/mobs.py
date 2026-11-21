@@ -116,7 +116,7 @@ def classify_mob_role(
     if aegis in pet_aegis and row.get("Hp") is None:
         return "pet", "pet_db_without_hp"
 
-    return "field", "default_provisional"
+    return "pending", "awaiting_spawn_or_usage_evidence"
 
 
 def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:

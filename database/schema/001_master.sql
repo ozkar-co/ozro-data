@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS ozro_mobs (
   name VARCHAR(128) NULL,
   japanese_name VARCHAR(128) NULL,
   mob_class VARCHAR(32) NULL,
-  mob_role VARCHAR(32) NOT NULL DEFAULT 'field',
+  mob_role VARCHAR(32) NOT NULL DEFAULT 'pending',
   is_mvp TINYINT(1) NOT NULL DEFAULT 0,
   level INT NULL,
   hp_base BIGINT NULL,

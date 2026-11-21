@@ -18,7 +18,6 @@ _CATEGORY_ORDER = (
     "Arena",
     "Dungeon",
     "Quest",
-    "Transport",
     "Interior",
     "Field",
     "City",
@@ -50,10 +49,6 @@ _GUILD_RE = re.compile(
     re.I,
 )
 _ARENA_RE = re.compile(r"(^force_|guild_vs|^ordeal_|pvp_|^gw_|^bl_|prt_are)", re.I)
-_TRANSPORT_RE = re.compile(
-    r"(airplane|airport|alb_ship|alb2trea|air_ship|_ship$)",
-    re.I,
-)
 _INTERIOR_RE = re.compile(
     r"(^in_|_in\d*$|_in_|ba_|_room|ecl_hub|iz_ac|iz_int|grademk|itemmall|"
     r"turbo_room|sec_pri|^job|arena_room|quiz|p_track|poring_w|s_atelier|"
@@ -75,7 +70,12 @@ _DUNGEON_RE = re.compile(
     re.I,
 )
 _QUEST_RE = re.compile(r"(^que_|_que\d|_q$|^evt_|e_hugel|mosk_que|new_event)", re.I)
-_SPECIAL_RE = re.compile(r"(^oz_|gon_test|ama_test|grademk|itemmall|nakhyang)", re.I)
+# Catch-all bucket (includes former "transport" maps, utilities, leftovers).
+_SPECIAL_RE = re.compile(
+    r"(^oz_|gon_test|ama_test|grademk|itemmall|nakhyang|"
+    r"airplane|airport|alb_ship|alb2trea|air_ship|_ship$)",
+    re.I,
+)
 _MAPFLAG_TOWN_RE = re.compile(r"^(\S+)\s+mapflag\s+town\b", re.I)
 
 
@@ -169,8 +169,6 @@ def classify_map(
     if _QUEST_RE.search(map_id):
         categories.append("Quest")
         flags["is_quest_map"] = True
-    if _TRANSPORT_RE.search(map_id):
-        categories.append("Transport")
     if _INTERIOR_RE.search(map_id):
         categories.append("Interior")
         flags["is_interior"] = True
