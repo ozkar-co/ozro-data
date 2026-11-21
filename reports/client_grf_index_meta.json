@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-11-21T01:33:01Z",
+  "schema_version": 2,
+  "generated_at": "2026-11-21T03:24:30Z",
   "data_ini": "patch/data.ini",
   "data_ini_order": [
     "ozro.grf",
@@ -16,10 +16,10 @@
       "label": "ozro",
       "file": "ozro.grf",
       "path": "patch/ozro.grf",
-      "entries": 1543,
-      "winners_contributed": 1543,
-      "sha256": "323a001d46bf39b4e971b454d7e42be9314baf5dd1edb99bfab211f1a633bb6e",
-      "size_bytes": 15439025
+      "entries": 7651,
+      "winners_contributed": 7651,
+      "sha256": "e9674625413ffc2c5a795f451061df91a4b7c67817c95743aaacc7d572045c7f",
+      "size_bytes": 58803425
     },
     {
       "priority": 2,
@@ -27,20 +27,26 @@
       "file": "data.grf",
       "path": "tmp/data.grf",
       "entries": 160731,
-      "winners_contributed": 160689,
+      "winners_contributed": 160683,
       "sha256": "630d594ec3ad795a3c3600ffed6644a9398726445fdb77e179edd417b455cfc7",
       "size_bytes": 3216636020
     }
   ],
-  "active_path_count": 162232,
+  "active_path_count": 168334,
+  "rathena": "/home/oz/Code/rathena",
   "counts": {
     "maps": 1217,
     "maps_complete": 1185,
     "maps_alias": 285,
     "maps_alias_complete": 268,
-    "item_icons": 8647,
-    "item_sprites": 8530,
-    "item_info": 19317,
+    "item_icons": 9957,
+    "item_sprites": 9840,
+    "item_info": 23691,
+    "item_info_assets_complete": 22806,
+    "items_server": 29061,
+    "items_server_ok": 21932,
+    "items_no_iteminfo": 6439,
+    "items_missing_assets": 690,
     "mob_sprites": 1448,
     "npc_sprites": 1235
   },
@@ -50,6 +56,7 @@
     "client_item_icons.jsonl",
     "client_item_sprites.jsonl",
     "client_item_info.jsonl",
+    "client_item_server_gaps.jsonl",
     "client_mob_sprites.jsonl",
     "client_npc_sprites.jsonl"
   ]
