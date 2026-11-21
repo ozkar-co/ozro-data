@@ -111,6 +111,8 @@ CREATE TABLE IF NOT EXISTS ozro_mobs (
   name VARCHAR(128) NULL,
   japanese_name VARCHAR(128) NULL,
   mob_class VARCHAR(32) NULL,
+  mob_role VARCHAR(32) NOT NULL DEFAULT 'field',
+  is_mvp TINYINT(1) NOT NULL DEFAULT 0,
   level INT NULL,
   hp_base BIGINT NULL,
   hp_multiplier DECIMAL(10,4) NULL,
@@ -132,8 +134,12 @@ CREATE TABLE IF NOT EXISTS ozro_mobs (
   element VARCHAR(32) NULL,
   element_level INT NULL,
   modes JSON NULL,
+  sprite_name VARCHAR(64) NULL,
+  has_sprite TINYINT(1) NULL,
   provenance_id CHAR(40) NULL,
-  UNIQUE KEY uq_mob_aegis (aegis_name)
+  UNIQUE KEY uq_mob_aegis (aegis_name),
+  INDEX idx_mob_role (mob_role),
+  INDEX idx_mob_class (mob_class)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_spawns (
