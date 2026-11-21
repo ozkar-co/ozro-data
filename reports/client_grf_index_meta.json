@@ -1,6 +1,6 @@
 {
-  "schema_version": 5,
-  "generated_at": "2026-11-21T04:11:43Z",
+  "schema_version": 6,
+  "generated_at": "2026-11-21T04:44:41Z",
   "data_ini": "patch/data.ini",
   "data_ini_order": [
     "ozro.grf",
@@ -18,8 +18,8 @@
       "path": "patch/ozro.grf",
       "entries": 8063,
       "winners_contributed": 8063,
-      "sha256": "7b0aefeb2c64696ed3346b5b6c0bc6cdedabd3466184d8c9498732296b5c0c1e",
-      "size_bytes": 75672542
+      "sha256": "30bf48d942fb2cac5d16cbe0d034e2dc25c01df6f18fae6e78d51bc64ade41ea",
+      "size_bytes": 75674903
     },
     {
       "priority": 2,
@@ -58,7 +58,9 @@
     "mobs_no_identity": 120,
     "mobs_no_jobname": 0,
     "mobs_missing_sprite": 4,
-    "npc_sprites": 1366,
+    "npc_sprites": 1289,
+    "npc_sprites_files": 1366,
+    "npc_sprites_unwired": 77,
     "npcs_act_deps_incomplete": 0,
     "npcs_act_gap_rows": 0,
     "npcs_act_wav_missing_unique": 0
