@@ -167,8 +167,14 @@ CREATE TABLE IF NOT EXISTS ozro_items (
   item_id INT NOT NULL PRIMARY KEY,
   aegis_name VARCHAR(64) NOT NULL,
   name VARCHAR(128) NULL,
+  display_name VARCHAR(128) NULL,
   type VARCHAR(32) NULL,
   subtype VARCHAR(32) NULL,
+  item_category VARCHAR(32) NULL,
+  item_subcategory VARCHAR(64) NULL,
+  is_costume TINYINT(1) NOT NULL DEFAULT 0,
+  equip_location VARCHAR(64) NULL,
+  equip_location_family VARCHAR(32) NULL,
   buy_base INT NULL,
   sell_base INT NULL,
   buy_effective INT NULL,
@@ -188,8 +194,15 @@ CREATE TABLE IF NOT EXISTS ozro_items (
   flags JSON NULL,
   jobs JSON NULL,
   locations JSON NULL,
+  sprite_name VARCHAR(128) NULL,
+  has_sprite TINYINT(1) NULL,
+  has_item_icon TINYINT(1) NULL,
+  assets_complete TINYINT(1) NULL,
   provenance_id CHAR(40) NULL,
-  UNIQUE KEY uq_item_aegis (aegis_name)
+  UNIQUE KEY uq_item_aegis (aegis_name),
+  INDEX idx_item_type (type),
+  INDEX idx_item_category (item_category),
+  INDEX idx_item_costume (is_costume)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_item_properties (
