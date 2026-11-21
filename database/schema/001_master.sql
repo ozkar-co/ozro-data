@@ -282,8 +282,12 @@ CREATE TABLE IF NOT EXISTS ozro_item_restrictions (
   item_id INT NOT NULL,
   restriction_key VARCHAR(64) NOT NULL,
   restriction_value JSON NOT NULL,
+  source_kind VARCHAR(32) NULL,
+  source_file VARCHAR(512) NULL,
   provenance_id CHAR(40) NULL,
-  PRIMARY KEY (item_id, restriction_key)
+  PRIMARY KEY (item_id, restriction_key),
+  INDEX idx_item_restrict_key (restriction_key),
+  INDEX idx_item_restrict_src (source_kind)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS ozro_item_enchantments (

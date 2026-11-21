@@ -108,11 +108,16 @@ domains:
 
   item_restrictions:
     sources:
+      - kind: item_yaml_trade
+        note: Trade.NoDrop/NoTrade/NoSell/… one key per row
       - kind: item_yaml_flags
+        note: Flags.NoConsume only (not BuyingStore/Container)
       - kind: txt
         path: db/re/item_noequip.txt
       - kind: txt_override
         path: db/import/item_noequip.txt
+      - kind: deferred
+        note: Jobs stay on items; zone mapflag names; script use-blocks
 
   drops:
     sources:
