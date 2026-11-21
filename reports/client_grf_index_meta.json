@@ -1,6 +1,6 @@
 {
-  "schema_version": 6,
-  "generated_at": "2026-11-21T04:44:41Z",
+  "schema_version": 7,
+  "generated_at": "2026-11-21T05:35:27Z",
   "data_ini": "patch/data.ini",
   "data_ini_order": [
     "ozro.grf",
@@ -37,6 +37,8 @@
   "counts": {
     "maps": 1217,
     "maps_complete": 1185,
+    "maps_with_display_name": 1095,
+    "maps_with_dimensions": 1185,
     "maps_alias": 285,
     "maps_alias_complete": 268,
     "item_icons": 9957,
@@ -50,9 +52,9 @@
     "mob_sprites": 1493,
     "mob_gr2_stems": 21,
     "mob_wavs_indexed": 2891,
-    "mobs_act_deps_incomplete": 0,
-    "mobs_act_gap_rows": 0,
-    "mobs_act_wav_missing_unique": 0,
+    "mobs_act_deps_incomplete": 6,
+    "mobs_act_gap_rows": 7,
+    "mobs_act_wav_missing_unique": 5,
     "mobs_server": 2675,
     "mobs_server_ok": 2551,
     "mobs_no_identity": 120,

@@ -42,11 +42,30 @@ def cmd_discover(_: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_extract(args: argparse.Namespace) -> int:
+    domain = args.domain
+    if domain == "maps":
+        from extractors import extract_maps
+
+        summary = extract_maps(ROOT)
+        print(json.dumps(summary, indent=2))
+        return 0
+    print(f"unknown domain: {domain}", file=sys.stderr)
+    return 2
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(prog="ozro-data")
     sub = parser.add_subparsers(dest="cmd", required=True)
     p_disc = sub.add_parser("discover", help="Etapa 1: scan sources and write manifest")
     p_disc.set_defaults(func=cmd_discover)
+    p_ext = sub.add_parser("extract", help="Etapa 2+: extract a domain")
+    p_ext.add_argument(
+        "domain",
+        choices=["maps"],
+        help="entity domain to extract",
+    )
+    p_ext.set_defaults(func=cmd_extract)
     args = parser.parse_args()
     return args.func(args)
 
