@@ -219,8 +219,11 @@ domains:
     sources:
       - kind: yaml
         path: db/re/item_combos.yml
+        note: Combos[] + shared Script; Clear via import
       - kind: yaml_override
         path: db/import/item_combos.yml
+      - kind: deferred
+        note: consume/produce/refine/socket/skill/quest item graphs
 
   client_resources:
     sources:

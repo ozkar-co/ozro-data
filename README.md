@@ -25,6 +25,7 @@ python pipeline.py extract instances        # instance_db + maps + NPC create li
 python pipeline.py extract boxes            # item_group_db + getgroupitem links
 python pipeline.py extract recipes          # produce_db → recipes + materials
 python pipeline.py extract enchantments     # item_enchant.yml targets/options/perfect/upgrades
+python pipeline.py extract item_relationships  # item_combos.yml groups/sets/members
 ```
 
 
