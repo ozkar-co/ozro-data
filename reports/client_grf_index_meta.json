@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-20T23:57:02Z",
+  "data_ini": "patch/data.ini",
+  "data_ini_order": [
+    "ozro.grf",
+    "data.grf"
+  ],
+  "grf_paths": {
+    "ozro": "patch/ozro.grf",
+    "data": "tmp/data.grf"
+  },
+  "grfs": [
+    {
+      "priority": 1,
+      "label": "ozro",
+      "file": "ozro.grf",
+      "path": "patch/ozro.grf",
+      "entries": 102,
+      "winners_contributed": 102,
+      "sha256": "aefb4e97d9666b81f3d48e4e7d814c56eac6d967d90cf6c078ee0b95701c9bb6",
+      "size_bytes": 14773033
+    },
+    {
+      "priority": 2,
+      "label": "data",
+      "file": "data.grf",
+      "path": "tmp/data.grf",
+      "entries": 160731,
+      "winners_contributed": 160689,
+      "sha256": "630d594ec3ad795a3c3600ffed6644a9398726445fdb77e179edd417b455cfc7",
+      "size_bytes": 3216636020
+    }
+  ],
+  "active_path_count": 160791,
+  "counts": {
+    "maps": 917,
+    "maps_complete": 917,
+    "item_icons": 8647,
+    "item_sprites": 8530,
+    "item_info": 19317,
+    "mob_sprites": 1448,
+    "npc_sprites": 1235
+  },
+  "outputs": [
+    "client_grf_index_meta.json",
+    "client_maps.jsonl",
+    "client_item_icons.jsonl",
+    "client_item_sprites.jsonl",
+    "client_item_info.jsonl",
+    "client_mob_sprites.jsonl",
+    "client_npc_sprites.jsonl"
+  ]
+}

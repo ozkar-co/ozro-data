@@ -6,6 +6,8 @@ __pycache__/
 .ruff_cache/
 reports/*
 !reports/.gitkeep
+!reports/client_*.jsonl
+!reports/client_*.json
 .tmp/
 docker-data/
 .env

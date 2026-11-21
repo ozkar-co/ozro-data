@@ -44,17 +44,13 @@ conf:
   inter: conf/inter_athena.conf
 
 client:
+  # data.ini: 1=ozro.grf 2=data.grf (flattened stack)
   grf_dir: tmp
   grf_files:
     - data.grf
-    - rdata.grf
-    - renewal2021.grf
-    - resources2021.grf
-    - gefenia.grf
   patch_grf:
     - patch/ozro.grf
-    - patch/ozro_fix.grf
-    - patch/gefenia.grf
+  data_ini: patch/data.ini
 
 output:
   reports_dir: reports
