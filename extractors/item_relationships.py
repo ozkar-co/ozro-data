@@ -203,7 +203,7 @@ def extract_item_relationships(project_root: Path | None = None) -> dict[str, An
         "combo_set_count": len(combo_sets),
         "member_rows": len(members_out),
         "by_member_count": by_size,
-        "skipped_no_client_set": skipped_no_client,
+        "skipped_missing_item_set": skipped_no_client,
         "unresolved_item": unresolved_item,
         "deferred": [
             "consume_produce_graphs",

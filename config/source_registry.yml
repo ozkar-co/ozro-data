@@ -202,7 +202,7 @@ domains:
       - kind: deferred
         note: barter_rgsr_in_*; EnchantGradeExchange; socket Seiyablem/Leablem
       - kind: runtime_unavailable
-        note: trash_bin rgsr_in.txt + enchantgrade.txt; grademk unloaded
+        note: reform/grade lab NPCs not loaded; grademk not in maps conf
 
   random_options:
     sources:

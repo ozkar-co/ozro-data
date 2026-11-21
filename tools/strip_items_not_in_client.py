@@ -1,7 +1,7 @@
 """Remove server item_db entries missing from client_item_info.
 
-Writes removed blocks to db/ozro_archive/ (NOT imported). Items stop existing
-on the map-server after @reloaditemdb / restart.
+Writes removed blocks under trash_bin/db/ozro_archive/ (outside live load tree).
+Items stop existing on the map-server after @reloaditemdb / restart.
 
 Usage (from ozro-data):
   python3 tools/strip_items_not_in_client.py
@@ -102,7 +102,7 @@ def main() -> None:
     rathena = Path(cfg["paths"]["rathena"])
     reports_dir = ROOT / cfg["output"]["reports_dir"]
     client = load_client_item_ids(reports_dir)
-    archive_dir = rathena / "db/ozro_archive"
+    archive_dir = rathena / "trash_bin/db/ozro_archive"
 
     files = [
         rel
