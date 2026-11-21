@@ -194,10 +194,26 @@ domains:
     sources:
       - kind: yaml
         path: db/re/item_enchant.yml
+        note: reference pools of Type:Card stones/orbs; UI off on OzRo 20190605
       - kind: yaml_override
         path: db/import/item_enchant.yml
       - kind: npc_scripts
-        note: refine/enchant/socket NPCs
+        note: getitem2 enchanters (Craftsman, Mora, …) — playable path
+      - kind: deferred
+        note: barter_rgsr_in_*; EnchantGradeExchange; socket Seiyablem/Leablem
+      - kind: runtime_unavailable
+        note: trash_bin rgsr_in.txt + enchantgrade.txt; grademk unloaded
+
+  random_options:
+    sources:
+      - kind: yaml
+        path: db/re/item_randomopt_db.yml
+      - kind: yaml
+        path: db/re/item_randomopt_group.yml
+      - kind: drops
+        note: RandomOptionGroup on mob/map drops (e.g. Crimson)
+      - kind: deferred
+        note: domain aparte de enchantments/cards — ver master_dataset §21bis
 
   item_relationships:
     sources:

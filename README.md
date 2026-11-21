@@ -24,6 +24,7 @@ python pipeline.py extract quests           # quest_db + npc links; needs mobs/i
 python pipeline.py extract instances        # instance_db + maps + NPC create links
 python pipeline.py extract boxes            # item_group_db + getgroupitem links
 python pipeline.py extract recipes          # produce_db → recipes + materials
+python pipeline.py extract enchantments     # item_enchant.yml targets/options/perfect/upgrades
 ```
 
 
