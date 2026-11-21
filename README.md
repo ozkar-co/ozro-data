@@ -7,6 +7,8 @@ python3 -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt
 python pipeline.py discover
 python pipeline.py extract maps   # needs reports/client_maps.jsonl
+python pipeline.py extract mobs   # needs reports/client_mob_server_gaps.jsonl
 ```
+
 
 Paths: `config/extractor.yml`. Schema: `database/schema/`. Final field docs: later (`DATA.md`).
