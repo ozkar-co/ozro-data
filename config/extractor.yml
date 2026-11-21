@@ -35,6 +35,7 @@ db:
     - db/re/item_enchant.yml
     - db/import/item_enchant.yml
     - db/re/produce_db.txt
+    - db/import/produce_db.txt
     - npc/barters.yml
 
 conf:

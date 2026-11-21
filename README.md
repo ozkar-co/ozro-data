@@ -23,6 +23,7 @@ python pipeline.py extract drops            # mob_db + map_drops; needs items+mo
 python pipeline.py extract quests           # quest_db + npc links; needs mobs/items/evidence
 python pipeline.py extract instances        # instance_db + maps + NPC create links
 python pipeline.py extract boxes            # item_group_db + getgroupitem links
+python pipeline.py extract recipes          # produce_db → recipes + materials
 ```
 
 

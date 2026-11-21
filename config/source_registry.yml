@@ -184,8 +184,11 @@ domains:
     sources:
       - kind: produce_db
         path: db/re/produce_db.txt
-      - kind: npc_scripts
-        note: crafting NPCs
+        note: ID,ProduceItemID,ItemLV,RequireSkill,RequireSkillLv,materials…
+      - kind: txt_override
+        path: db/import/produce_db.txt
+      - kind: deferred
+        note: NPC crafting scripts; zeny/success/fail runtime
 
   enchantments:
     sources:

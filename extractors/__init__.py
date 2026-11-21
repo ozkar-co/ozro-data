@@ -16,6 +16,7 @@ from .drops import extract_drops
 from .quests import extract_quests
 from .instances import extract_instances
 from .boxes import extract_boxes
+from .recipes import extract_recipes
 
 __all__ = [
     "extract_maps",
@@ -34,4 +35,5 @@ __all__ = [
     "extract_quests",
     "extract_instances",
     "extract_boxes",
+    "extract_recipes",
 ]
