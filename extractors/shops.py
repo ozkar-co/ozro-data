@@ -1,4 +1,8 @@
-"""NPC shops — headers + callshop→inventory links (Etapa 3)."""
+"""NPC shops — headers + callshop→inventory links.
+
+Pre-E5: declared inventory only; runtime mutation / dynamic callshop get
+explicit flags (is_runtime / runtime_mutated) for UI/guides — no live state.
+"""
 
 from __future__ import annotations
 
@@ -16,6 +20,13 @@ from resolvers import shop_price_effective
 
 _SHOP_TYPES = frozenset(
     {"shop", "cashshop", "itemshop", "pointshop", "marketshop"}
+)
+
+# Runtime inventory mutation (OnInit etc.) — header list may differ in-game.
+_NPCSHOP_MUT_RE = re.compile(
+    r"""\bnpcshop(?P<op>additem|delitem|item|attach)\s+"""
+    r"""(?P<q>["'])(?P<name>[^"']+)(?P=q)""",
+    re.IGNORECASE,
 )
 
 _SHOP_HEADER_RE = re.compile(
@@ -267,6 +278,7 @@ def _extract_callshop_links(
                             "caller_npc_id": caller_id,
                             "target_name": None,
                             "resolve_status": "dynamic",
+                            "is_runtime": True,
                             "shop_ids": [],
                             "script_path": rel,
                             "script_line": line_no,
@@ -332,6 +344,7 @@ def _extract_callshop_links(
                     "caller_npc_id": caller_id,
                     "target_name": name,
                     "resolve_status": status,
+                    "is_runtime": False,
                     "shop_ids": [s["shop_id"] for s in matched],
                     "item_count": sum(s.get("item_count") or 0 for s in matched),
                     "script_path": rel,
@@ -343,6 +356,53 @@ def _extract_callshop_links(
             )
 
     return links, stats
+
+
+def _scan_runtime_mutations(
+    rathena: Path, scripts: list[str], shops: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """Flag declared shops whose inventory is altered by npcshop* at runtime."""
+    by_name: dict[str, list[dict[str, Any]]] = {}
+    for s in shops:
+        by_name.setdefault(s["shop_name"], []).append(s)
+
+    for s in shops:
+        s["runtime_mutated"] = False
+        s["runtime_ops"] = []
+        s["inventory_declared"] = True
+
+    hits = 0
+    unmatched_names: set[str] = set()
+    op_counts: dict[str, int] = {}
+
+    for rel in scripts:
+        path = rathena / rel
+        if not path.is_file():
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        for m in _NPCSHOP_MUT_RE.finditer(text):
+            op = m.group("op").lower()
+            name = m.group("name")
+            op_counts[op] = op_counts.get(op, 0) + 1
+            targets = by_name.get(name) or []
+            if not targets:
+                unmatched_names.add(name)
+                continue
+            hits += 1
+            for s in targets:
+                s["runtime_mutated"] = True
+                ops: list[str] = s["runtime_ops"]
+                tag = f"npcshop{op}"
+                if tag not in ops:
+                    ops.append(tag)
+
+    mutated = sum(1 for s in shops if s.get("runtime_mutated"))
+    return {
+        "mutation_hits": hits,
+        "shops_mutated": mutated,
+        "ops": op_counts,
+        "unmatched_shop_names": sorted(unmatched_names),
+    }
 
 
 def extract_shops(project_root: Path | None = None) -> dict[str, Any]:
@@ -418,9 +478,11 @@ def extract_shops(project_root: Path | None = None) -> dict[str, Any]:
                 )
 
     barter_names = _load_barter_names(rathena)
+    mut_stats = _scan_runtime_mutations(rathena, scripts, shops)
     links, link_stats = _extract_callshop_links(
         rathena, scripts, shops, barter_names
     )
+    runtime_links = sum(1 for L in links if L.get("is_runtime"))
 
     shops_path = reports_dir / "npc_shops.jsonl"
     with shops_path.open("w", encoding="utf-8") as f:
@@ -447,11 +509,18 @@ def extract_shops(project_root: Path | None = None) -> dict[str, Any]:
         "default_price_resolved": default_price_count,
         "item_buy_index_size": len(item_buy),
         "callshop": link_stats,
+        "runtime": {
+            "shops_mutated": mut_stats["shops_mutated"],
+            "mutation_hits": mut_stats["mutation_hits"],
+            "mutation_ops": mut_stats["ops"],
+            "unmatched_shop_names": mut_stats["unmatched_shop_names"],
+            "callshop_runtime_links": runtime_links,
+            "note": (
+                "inventory_declared always from headers; runtime_mutated / "
+                "is_runtime flag review-in-game — state not modeled"
+            ),
+        },
         "barter_names_indexed": len(barter_names),
-        "deferred": [
-            "callshop_dynamic_arrays",
-            "buysell_scripted",
-        ],
         "barter_inventory": "domain barters",
         "wrote": [str(shops_path), str(items_path), str(links_path)],
     }

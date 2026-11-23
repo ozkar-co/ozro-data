@@ -1,4 +1,8 @@
-"""Recipes — produce_db.txt (+ import) (Etapa 3)."""
+"""Recipes — produce_db.txt (+ import).
+
+Pre-E5: success/zeny only when direct from src/DB. Player/RNG formulas →
+success_status=not_extractable (no invented %). Zeny is not in produce_db.
+"""
 
 from __future__ import annotations
 
@@ -10,6 +14,23 @@ from typing import Any
 
 from discovery.scan import _load_extractor_config
 from extractors.client_scope import load_client_item_ids
+
+# skill_produce_mix: rnd()%10000 < make_per  → unit per_10000 (10000 = 100%).
+# Skills where src sets make_per = 100000 (always succeed) after any qty logic.
+_FIXED_SUCCESS_SKILLS = frozenset(
+    {
+        "AL_HOLYWATER",
+        "AB_ANCILLA",
+        "SA_CREATECON",
+        "GN_S_PHARMACY",  # qty varies; success forced 100%
+        "GN_MAKEBOMB",  # qty may be 0; roll forced 100% when crafting
+        "GN_MIX_COOKING",
+        "MT_M_MACHINE",
+        "BO_BIONIC_PHARMACY",
+    }
+)
+# ITEMID_STAR_CRUMB in BS_ENCHANTEDSTONE path
+_STAR_CRUMB_ITEM_ID = 1000
 
 # ItemLV → family (from produce_db section comments).
 _ITEMLV_FAMILY: list[tuple[range, str]] = [
@@ -61,6 +82,87 @@ def _load_skill_names(rathena: Path) -> dict[int, str]:
             by[cur] = m.group(1)
             cur = None
     return by
+
+
+def _load_changematerial_rates(rathena: Path) -> dict[int, int]:
+    """ProductID → success per_10000. DB Rate is n/10%; src: make_per = rate * 10."""
+    by_product: dict[int, int] = {}
+    for rel in (
+        "db/skill_changematerial_db.txt",
+        "db/import/skill_changematerial_db.txt",
+    ):
+        path = rathena / rel
+        if not path.is_file():
+            continue
+        for raw in path.read_text(encoding="utf-8", errors="replace").splitlines():
+            line = raw.split("//", 1)[0].strip()
+            if not line or not line[0].isdigit():
+                continue
+            parts = [p.strip() for p in line.split(",")]
+            if len(parts) < 3:
+                continue
+            try:
+                product_id = int(parts[1])
+                base_rate = int(parts[2])
+            except ValueError:
+                continue
+            # rate n/10% → per_10000 via *10 (matches skill.cpp)
+            by_product[product_id] = base_rate * 10
+    return by_product
+
+
+def _success_fields(
+    *,
+    skill_name: str | None,
+    result_item_id: int,
+    family: str,
+    changematerial: dict[int, int],
+) -> dict[str, Any]:
+    """Only fixed values from src/DB; else not_extractable."""
+    if skill_name == "GN_CHANGEMATERIAL":
+        rate = changematerial.get(result_item_id)
+        if rate is None:
+            return {
+                "success_chance": None,
+                "success_chance_unit": "per_10000",
+                "success_status": "not_extractable",
+                "success_note": "GN_CHANGEMATERIAL product missing from skill_changematerial_db",
+            }
+        return {
+            "success_chance": rate,
+            "success_chance_unit": "per_10000",
+            "success_status": "fixed_db",
+            "success_note": "skill_changematerial_db BaseRate (n/10% → per_10000)",
+        }
+
+    if skill_name in _FIXED_SUCCESS_SKILLS:
+        note = "skill_produce_mix make_per=100000 (always succeeds)"
+        if skill_name in {"GN_S_PHARMACY", "GN_MAKEBOMB", "GN_MIX_COOKING"}:
+            note += "; output qty still player/RNG dependent"
+        return {
+            "success_chance": 10000,
+            "success_chance_unit": "per_10000",
+            "success_status": "fixed_src",
+            "success_note": note,
+        }
+
+    if skill_name == "BS_ENCHANTEDSTONE" and result_item_id == _STAR_CRUMB_ITEM_ID:
+        return {
+            "success_chance": 10000,
+            "success_chance_unit": "per_10000",
+            "success_status": "fixed_src",
+            "success_note": "ITEMID_STAR_CRUMB branch make_per=100000",
+        }
+
+    return {
+        "success_chance": None,
+        "success_chance_unit": "per_10000",
+        "success_status": "not_extractable",
+        "success_note": (
+            f"skill_produce_mix depends on player stats/skills/RNG "
+            f"(family={family}, skill={skill_name or 'none'})"
+        ),
+    }
 
 
 def _parse_produce_file(path: Path) -> dict[int, tuple[dict[str, Any], int]]:
@@ -130,6 +232,7 @@ def extract_recipes(project_root: Path | None = None) -> dict[str, Any]:
             item_name[int(it["item_id"])] = str(it.get("aegis_name") or "")
 
     skill_names = _load_skill_names(rathena)
+    changematerial = _load_changematerial_rates(rathena)
 
     files = [
         "db/re/produce_db.txt",
@@ -147,6 +250,7 @@ def extract_recipes(project_root: Path | None = None) -> dict[str, Any]:
     skipped_no_client = 0
     unresolved_material = 0
     by_family: dict[str, int] = {}
+    by_success_status: dict[str, int] = {}
 
     for pid in sorted(merged):
         row, src, line_no = merged[pid]
@@ -164,7 +268,17 @@ def extract_recipes(project_root: Path | None = None) -> dict[str, Any]:
         by_family[family] = by_family.get(family, 0) + 1
         req_skill = int(row["require_skill_id"])
         req_lv = int(row["require_skill_lv"])
+        skill_name = skill_names.get(req_skill) if req_skill else None
         recipe_id = hashlib.sha1(f"recipe|produce|{pid}".encode()).hexdigest()
+        success = _success_fields(
+            skill_name=skill_name,
+            result_item_id=result_id,
+            family=family,
+            changematerial=changematerial,
+        )
+        by_success_status[success["success_status"]] = (
+            by_success_status.get(success["success_status"], 0) + 1
+        )
 
         recipes.append(
             {
@@ -176,11 +290,20 @@ def extract_recipes(project_root: Path | None = None) -> dict[str, Any]:
                 "result_aegis_name": item_name.get(result_id) or None,
                 "result_amount": 1,
                 "require_skill_id": req_skill if req_skill else None,
-                "require_skill_name": skill_names.get(req_skill) if req_skill else None,
+                "require_skill_name": skill_name,
                 "require_skill_lv": req_lv if req_skill else None,
                 "zeny_cost": None,
-                "success_rate": None,
+                "zeny_status": "not_in_produce_db",
+                "zeny_note": (
+                    "produce_db has no zeny; materials only. "
+                    "Skill cast ZenyCost (if any) lives on skill_db, not per recipe."
+                ),
+                "success_chance": success["success_chance"],
+                "success_chance_unit": success["success_chance_unit"],
+                "success_status": success["success_status"],
+                "success_note": success["success_note"],
                 "fail_result_item_id": None,
+                "fail_status": "not_extractable",
                 "source_kind": "produce_db",
                 "source_file": src,
                 "source_line": line_no,
@@ -229,14 +352,15 @@ def extract_recipes(project_root: Path | None = None) -> dict[str, Any]:
         "recipe_count": len(recipes),
         "material_rows": len(materials_out),
         "by_family": by_family,
+        "by_success_status": by_success_status,
+        "changematerial_products": len(changematerial),
         "skipped_removed": skipped_removed,
         "skipped_no_client": skipped_no_client,
         "unresolved_material": unresolved_material,
-        "deferred": [
-            "npc_script_crafting",
-            "zeny_success_fail_runtime",
-            "skill_create_item_links",
-        ],
+        "zeny_policy": "not_in_produce_db — no invented per-recipe zeny",
+        "success_policy": (
+            "fixed_src/fixed_db only; player/RNG branches → not_extractable"
+        ),
         "wrote": [str(r_path), str(m_path)],
     }
     summary_path = reports_dir / "recipes_summary.json"
