@@ -7,6 +7,7 @@ python3 -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt
 python pipeline.py discover
 python pipeline.py resolve        # Etapa 4: rates catalog → configuration_effective.json + dataset_rates.jsonl
+python pipeline.py extract level_penalty  # Pre-E5: flat Type/Difference/Rate
 python pipeline.py extract maps   # needs reports/client_maps.jsonl
 python pipeline.py extract mobs   # needs reports/client_mob_server_gaps.jsonl
 python pipeline.py extract items  # needs reports/client_item_info.jsonl
@@ -20,7 +21,7 @@ python pipeline.py extract shops            # header shop/cashshop/… → npc_s
 python pipeline.py extract npc_scripts      # script body evidence → refine npc functions
 python pipeline.py extract item_scripts     # Script/EquipScript/UnEquipScript from item_db
 python pipeline.py extract item_restrictions # Trade.* + item_noequip bitmask
-python pipeline.py extract drops            # mob_db + map_drops; needs items+mobs
+python pipeline.py extract drops            # mob_db + map_drops + mob_item_ratio; needs items+mobs
 python pipeline.py extract quests           # quest_db + npc links; needs mobs/items/evidence
 python pipeline.py extract instances        # instance_db + maps + NPC create links
 python pipeline.py extract boxes            # item_group_db + getgroupitem links

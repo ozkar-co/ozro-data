@@ -26,6 +26,7 @@ from .acquisition import extract_acquisition
 from .item_dependencies import extract_item_dependencies
 from .npc_script_rewards import extract_npc_script_rewards
 from .closure_sanity import extract_closure_sanity
+from .level_penalty import extract_level_penalty
 
 __all__ = [
     "extract_maps",
@@ -54,4 +55,5 @@ __all__ = [
     "extract_item_dependencies",
     "extract_npc_script_rewards",
     "extract_closure_sanity",
+    "extract_level_penalty",
 ]

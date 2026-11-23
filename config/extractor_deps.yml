@@ -4,6 +4,7 @@ version: 1
 order:
   - discovery
   - resolve            # Etapa 4: battle conf merge (consumed live by extractors)
+  - level_penalty      # Pre-E5: flat Type/Difference/Rate (not baked into drops)
   - maps
   - mobs               # hp/exp effective via ConfigurationResolver
   - items              # buy/sell effective via item_value_resolver
@@ -12,7 +13,7 @@ order:
   - spawns            # needs maps + mobs
   - item_scripts      # needs items
   - item_restrictions # needs items
-  - drops             # needs mobs + items + config resolver
+  - drops             # needs mobs + items + config resolver (+ mob_item_ratio)
   - shops             # needs npcs + items (price -1 → buy_effective)
   - quests            # needs npcs + items + mobs
   - instances         # needs maps + npcs
@@ -32,6 +33,7 @@ order:
   - sql_sync
 
 depends:
+  level_penalty: [discovery]
   maps: [discovery]
   mobs: [discovery, resolve]
   items: [discovery]

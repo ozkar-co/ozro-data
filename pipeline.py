@@ -179,6 +179,10 @@ def cmd_extract(args: argparse.Namespace) -> int:
         from extractors import extract_closure_sanity
 
         summary = extract_closure_sanity(ROOT)
+    elif domain == "level_penalty":
+        from extractors import extract_level_penalty
+
+        summary = extract_level_penalty(ROOT)
     else:
         print(f"unknown domain: {domain}", file=sys.stderr)
         return 2
@@ -225,6 +229,7 @@ def main() -> int:
             "item_dependencies",
             "npc_script_rewards",
             "closure_sanity",
+            "level_penalty",
         ],
         help="entity domain to extract",
     )

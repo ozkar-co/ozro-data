@@ -1,4 +1,8 @@
-"""Mob drops — mob_db Drops/MvpDrops + map_drops, with OzRo rate adjust (Etapa 3)."""
+"""Mob drops — mob_db Drops/MvpDrops + map_drops, with OzRo rate adjust.
+
+Pre-E5: applies db/mob_item_ratio.yml (+ import) like item_dropratio_adjust —
+overrides rate_adjust for matching item (/ optional mob list). Empty Body = no-op.
+"""
 
 from __future__ import annotations
 
@@ -11,6 +15,52 @@ import yaml
 
 from discovery.scan import _load_extractor_config
 from resolvers import ConfigurationResolver
+
+
+def _load_mob_item_ratios(
+    rathena: Path,
+) -> dict[str, dict[str, Any]]:
+    """Aegis item name → {ratio: int, mob_aegis: set[str]|None}.
+
+    mob_aegis None/empty = all monsters (server: empty List → all).
+    """
+    by_item: dict[str, dict[str, Any]] = {}
+    for rel in ("db/mob_item_ratio.yml", "db/import/mob_item_ratio.yml"):
+        path = rathena / rel
+        if not path.is_file():
+            continue
+        doc = yaml.safe_load(path.read_text(encoding="utf-8", errors="replace")) or {}
+        for row in doc.get("Body") or []:
+            if not isinstance(row, dict):
+                continue
+            item = row.get("Item")
+            if item is None:
+                continue
+            item_key = str(item)
+            entry = by_item.get(item_key) or {
+                "ratio": None,
+                "mob_aegis": None,
+                "source_file": rel,
+            }
+            if "Ratio" in row and row["Ratio"] is not None:
+                entry["ratio"] = int(row["Ratio"])
+                entry["source_file"] = rel
+            lst = row.get("List")
+            if isinstance(lst, dict):
+                mobs: set[str] = set(entry["mob_aegis"] or [])
+                for mob_name, active in lst.items():
+                    if active:
+                        mobs.add(str(mob_name))
+                    else:
+                        mobs.discard(str(mob_name))
+                entry["mob_aegis"] = mobs
+            by_item[item_key] = entry
+    # Drop incomplete (no Ratio yet)
+    return {
+        k: v
+        for k, v in by_item.items()
+        if v.get("ratio") is not None
+    }
 
 # item Type (YAML) → rate family used by mob_drop_ratio_adjust
 _TYPE_FAMILY: dict[str, str] = {
@@ -114,6 +164,7 @@ def extract_drops(project_root: Path | None = None) -> dict[str, Any]:
     rates = resolver.drop_rates()
     mob_files = list(cfg.get("db", {}).get("mob_files") or [])
     mobs_yaml = _load_yaml_bodies(rathena, mob_files)
+    item_ratios = _load_mob_item_ratios(rathena)
 
     # indexes from reports
     item_by_aegis: dict[str, dict[str, Any]] = {}
@@ -158,6 +209,24 @@ def extract_drops(project_root: Path | None = None) -> dict[str, Any]:
     unresolved_mob = 0
     by_category: dict[str, int] = {}
     drop_rateincrease = bool(rates.get("drop_rateincrease", 0))
+    ratio_overrides = 0
+    ratio_removed = 0
+
+    def _ratio_override(
+        item_aegis: str, mob_id: int
+    ) -> tuple[int | None, str | None]:
+        """Return (ratio, source) if mob_item_ratio applies; else (None, None)."""
+        entry = item_ratios.get(item_aegis)
+        if not entry:
+            return None, None
+        mobs = entry.get("mob_aegis")
+        if mobs:
+            aegis = (mob_meta.get(mob_id) or {}).get("aegis_name")
+            yaml_aegis = (mobs_yaml.get(mob_id) or ({},))[0].get("AegisName")
+            name = str(aegis or yaml_aegis or "")
+            if name not in mobs:
+                return None, None
+        return int(entry["ratio"]), str(entry.get("source_file") or "mob_item_ratio")
 
     def _emit(
         *,
@@ -172,7 +241,7 @@ def extract_drops(project_root: Path | None = None) -> dict[str, Any]:
         map_id: str | None,
         rate_key_force: str | None = None,
     ) -> None:
-        nonlocal unresolved_item
+        nonlocal unresolved_item, ratio_overrides, ratio_removed
         it = item_by_aegis.get(item_aegis)
         if not it:
             unresolved_item += 1
@@ -189,11 +258,11 @@ def extract_drops(project_root: Path | None = None) -> dict[str, Any]:
             else _item_family(it.get("type"))
         )
         is_map_bonus = category == "map_specific"
+        item_ratio_src: str | None = None
 
         if is_map_bonus:
             # map_drops.yml: Rate is n/100000; bonus layer on top of mob_db.
             # YAML contract: unaffected by item_rate_*; not stealable.
-            # enable_bonus_map_drops runtime path → pending (not applied here).
             rate_key = None
             adj = None
             rate_unit = "per_100000"
@@ -205,6 +274,14 @@ def extract_drops(project_root: Path | None = None) -> dict[str, Any]:
             adj = rates.get(rate_key, 100)
             rmin = rates.get("item_drop_mvp_min", 1)
             rmax = rates.get("item_drop_mvp_max", 10000)
+            ratio, ratio_src = _ratio_override(item_aegis, mob_id)
+            if ratio is not None:
+                adj = ratio
+                item_ratio_src = ratio_src
+                ratio_overrides += 1
+                if ratio == 0:
+                    ratio_removed += 1
+                    return
             rate_unit = "per_10000"
             base = rate_original
             chance_effective = resolver.mob_drop_adjust(base, adj, rmin, rmax)
@@ -217,12 +294,19 @@ def extract_drops(project_root: Path | None = None) -> dict[str, Any]:
             if rate_key_force:
                 rate_key = rate_key_force
                 adj = rates.get(rate_key, adj)
+            ratio, ratio_src = _ratio_override(item_aegis, mob_id)
+            if ratio is not None:
+                adj = ratio
+                item_ratio_src = ratio_src
+                ratio_overrides += 1
+                if ratio == 0:
+                    ratio_removed += 1
+                    return
             rate_unit = "per_10000"
             base = rate_original
             if drop_rateincrease and base < 5000:
                 base = base + 1
             chance_effective = resolver.mob_drop_adjust(base, adj, rmin, rmax)
-            # MVP-floor *_mvp at 100 (1x) is verified OzRo policy (@rates/@mi), not pending.
             rate_status = "adjusted"
             stealable = False if steal_protected else True
 
@@ -249,6 +333,7 @@ def extract_drops(project_root: Path | None = None) -> dict[str, Any]:
             "rate_key": rate_key,
             "rate_adjust": adj,
             "rate_status": rate_status,
+            "item_ratio_source": item_ratio_src,
             "boss_kind": boss_kind if category != "mvp" else "mvp",
             "item_family": family,
             "stealable": stealable,
@@ -361,10 +446,14 @@ def extract_drops(project_root: Path | None = None) -> dict[str, Any]:
             if k.startswith("item_rate_") or k.startswith("item_drop_")
         },
         "mvp_floor_policy": "item_rate_*_mvp at 100 (1x) except card_mvp; verified live",
-        "deferred": [
-            "enable_bonus_map_drops_runtime",
-            "mob_item_ratio_yml",
-            "script_event_drops",
+        "mob_item_ratio": {
+            "entries": len(item_ratios),
+            "overrides_applied": ratio_overrides,
+            "removed_ratio_zero": ratio_removed,
+            "note": "Empty Body = no-op; Ratio replaces battle item_rate_* adjust",
+        },
+        "out_of_scope": [
+            "enable_bonus_map_drops_extra_transforms",
             "vip_luk_runtime_modifiers",
             "logarithmic_drops",
         ],
