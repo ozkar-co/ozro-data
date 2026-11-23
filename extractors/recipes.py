@@ -1,7 +1,8 @@
 """Recipes — produce_db.txt (+ import).
 
 Pre-E5: success/zeny only when direct from src/DB. Player/RNG formulas →
-success_status=not_extractable (no invented %). Zeny is not in produce_db.
+success_status=variable (chance not a fixed %; see recipes_variable_formulas.md).
+Zeny is not in produce_db.
 """
 
 from __future__ import annotations
@@ -118,7 +119,7 @@ def _success_fields(
     family: str,
     changematerial: dict[int, int],
 ) -> dict[str, Any]:
-    """Only fixed values from src/DB; else not_extractable."""
+    """Fixed src/DB → chance; player/RNG → variable (no invented %)."""
     if skill_name == "GN_CHANGEMATERIAL":
         rate = changematerial.get(result_item_id)
         if rate is None:
@@ -157,10 +158,11 @@ def _success_fields(
     return {
         "success_chance": None,
         "success_chance_unit": "per_10000",
-        "success_status": "not_extractable",
+        "success_status": "variable",
         "success_note": (
-            f"skill_produce_mix depends on player stats/skills/RNG "
-            f"(family={family}, skill={skill_name or 'none'})"
+            f"player/RNG formula in skill_produce_mix "
+            f"(family={family}, skill={skill_name or 'none'}); "
+            f"see docs recipes_variable_formulas.md"
         ),
     }
 
@@ -359,7 +361,8 @@ def extract_recipes(project_root: Path | None = None) -> dict[str, Any]:
         "unresolved_material": unresolved_material,
         "zeny_policy": "not_in_produce_db — no invented per-recipe zeny",
         "success_policy": (
-            "fixed_src/fixed_db only; player/RNG branches → not_extractable"
+            "fixed_src/fixed_db only; player/RNG → success_status=variable "
+            "(formulas in recipes_variable_formulas.md, not in dataset %)"
         ),
         "wrote": [str(r_path), str(m_path)],
     }
