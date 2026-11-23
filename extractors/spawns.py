@@ -1,4 +1,7 @@
-"""Spawns extractor — permanent headers + scripted monster/areamonster/guardian."""
+"""Spawns extractor — permanent headers + scripted monster/areamonster/guardian.
+
+Pre-E5: scripted spawns link enclosing npc_id (alternate route; conditions out of scope).
+"""
 
 from __future__ import annotations
 
@@ -11,6 +14,7 @@ from typing import Any
 import yaml
 
 from discovery.scan import _load_extractor_config
+from extractors.npcs import parse_npc_line
 
 # map[,x,y[,xs,ys]] <TAB> monster|boss_monster <TAB> Name <TAB> id,amount[,...]
 _SPAWN_RE = re.compile(
@@ -26,11 +30,25 @@ _EVENT_RE = re.compile(r'^"(?P<event>[^"]*)"\s*$')
 _SCRIPTED_CALL_RE = re.compile(
     r"^\s+(?P<kind>monster|areamonster|guardian)\s+(?P<args>.+?)\s*;?\s*$"
 )
+_SCRIPT_NPC_RE = re.compile(
+    r"^(?:-|[A-Za-z0-9_@-]+,-?\d+,-?\d+,\d+)\tscript\t"
+)
 _STR_LIT_RE = re.compile(r'^"(?P<val>(?:\\.|[^"\\])*)"$')
 _INT_LIT_RE = re.compile(r"^-?\d+$")
 _INSTANCE_MAP_RE = re.compile(
     r'^instance_mapname\s*\(\s*"(?P<map>[A-Za-z0-9_@-]+)"\s*\)$'
 )
+
+
+def _enclosing_script_npc(
+    lines: list[str], line_no: int, script_path: str
+) -> dict[str, Any] | None:
+    for i in range(line_no - 1, -1, -1):
+        raw = lines[i].split("//", 1)[0].rstrip()
+        if not _SCRIPT_NPC_RE.match(raw):
+            continue
+        return parse_npc_line(raw, script_path, i + 1)
+    return None
 
 
 def _provenance_id(domain: str, record_id: str, source_path: str) -> str:
@@ -388,13 +406,15 @@ def extract_spawns(project_root: Path | None = None) -> dict[str, Any]:
     scripted_skip_no_mob = 0
     scripted_partial = 0
 
+    scripted_with_npc = 0
+    scripted_missing_npc = 0
+
     for rel in scripts:
         path = rathena / rel
         if not path.is_file():
             continue
-        for line_no, raw in enumerate(
-            path.read_text(encoding="utf-8", errors="replace").splitlines(), 1
-        ):
+        lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+        for line_no, raw in enumerate(lines, 1):
             line = raw.split("//", 1)[0].rstrip()
             if not line.strip():
                 continue
@@ -488,6 +508,13 @@ def extract_spawns(project_root: Path | None = None) -> dict[str, Any]:
                 cond = cond or {}
                 cond["map_expr"] = parsed["map_raw"]
 
+            caller = _enclosing_script_npc(lines, line_no, rel)
+            npc_id = caller["npc_id"] if caller else None
+            if stype == "scripted":
+                if npc_id:
+                    scripted_with_npc += 1
+                else:
+                    scripted_missing_npc += 1
             sid = _spawn_id(
                 "scripted",
                 kind,
@@ -506,8 +533,12 @@ def extract_spawns(project_root: Path | None = None) -> dict[str, Any]:
                 "spawn_id": sid,
                 "mob_id": parsed["mob_id"],
                 "map_id": parsed["map_id"],
+                "npc_id": npc_id,
                 "spawn_type": stype,
                 "spawn_kind": kind,
+                "spawn_route": "npc_script"
+                if stype == "scripted"
+                else ("instance_script" if stype == "instance" else stype),
                 "display_name": parsed["display_name"],
                 "amount": parsed["amount"],
                 "x": parsed["x"],
@@ -614,8 +645,13 @@ def extract_spawns(project_root: Path | None = None) -> dict[str, Any]:
         "parse_fail": parse_fail,
         "scripted_skip_unresolved_mob": scripted_skip_no_mob,
         "scripted_partial_fields": scripted_partial,
+        "scripted_with_npc_id": scripted_with_npc,
+        "scripted_missing_npc_id": scripted_missing_npc,
         "slave_from_skills": slave_added,
-        "deferred": ["skill_summon", "pet", "timed", "one_time"],
+        "note": (
+            "scripted spawn_route=npc_script links enclosing npc_id when found; "
+            "conditions out of scope"
+        ),
         "wrote": str(out_path),
     }
     summary_path = reports_dir / "spawns_summary.json"

@@ -1,4 +1,8 @@
-"""NPC script rewards — literal getitem/getitembound in discovery scripts."""
+"""NPC → item deliveries (Pre-E5).
+
+Literal getitem / getitembound / getitem2 in scripts. Relation only
+(npc delivers X [/ modified]); conditions out of scope. Not produce/boxes.
+"""
 
 from __future__ import annotations
 
@@ -19,6 +23,14 @@ _SCRIPT_NPC_RE = re.compile(
 )
 _GETITEM_RE = re.compile(
     r"\b(?P<cmd>getitem|getitembound)\s+(?P<id>\d+)\s*,\s*(?P<qty>\d+)\b",
+    re.IGNORECASE,
+)
+# getitem2 item_id,amount,identify,refine,attribute,card1,card2,card3,card4
+_GETITEM2_RE = re.compile(
+    r"\b(?P<cmd>getitem2|getitembound2)\s+"
+    r"(?P<id>\d+)\s*,\s*(?P<qty>\d+)\s*,\s*"
+    r"(?P<identify>\d+)\s*,\s*(?P<refine>\d+)\s*,\s*(?P<attribute>\d+)\s*,\s*"
+    r"(?P<c1>\d+)\s*,\s*(?P<c2>\d+)\s*,\s*(?P<c3>\d+)\s*,\s*(?P<c4>\d+)\b",
     re.IGNORECASE,
 )
 
@@ -74,6 +86,56 @@ def extract_npc_script_rewards(project_root: Path | None = None) -> dict[str, An
     unresolved = 0
     missing_caller = 0
     by_cmd: dict[str, int] = {}
+    by_delivery: dict[str, int] = {}
+
+    def _emit(
+        *,
+        rel: str,
+        line_no: int,
+        lines: list[str],
+        cmd: str,
+        iid: int,
+        qty: int,
+        modified: bool,
+        refine: int | None = None,
+        identify: int | None = None,
+        attribute: int | None = None,
+        cards: list[int] | None = None,
+    ) -> None:
+        nonlocal unresolved, missing_caller
+        if iid not in item_ids or iid not in client_ids:
+            unresolved += 1
+            return
+        caller = _enclosing_script_npc(lines, line_no, rel)
+        npc_id = caller["npc_id"] if caller else None
+        if npc_id is None:
+            missing_caller += 1
+        delivery_kind = "npc_delivery_modified" if modified else "npc_delivery"
+        rid = _eid("npcreward", rel, line_no, cmd, iid, qty, refine, cards)
+        row: dict[str, Any] = {
+            "npc_script_reward_id": rid,
+            "acquisition_type": "npc_delivery",
+            "delivery_kind": delivery_kind,
+            "npc_id": npc_id,
+            "script_path": rel,
+            "script_line": line_no,
+            "command": cmd,
+            "item_id": iid,
+            "quantity": qty,
+            "is_modified": modified,
+            "map_id": caller.get("map_id") if caller else None,
+            "provenance_id": _provenance_id(
+                "npc_script_rewards", rid, f"{rel}:{line_no}"
+            ),
+        }
+        if modified:
+            row["identify"] = identify
+            row["refine"] = refine
+            row["attribute"] = attribute
+            row["cards"] = cards
+        rows.append(row)
+        by_cmd[cmd] = by_cmd.get(cmd, 0) + 1
+        by_delivery[delivery_kind] = by_delivery.get(delivery_kind, 0) + 1
 
     for rel in scripts:
         path = rathena / rel
@@ -82,34 +144,35 @@ def extract_npc_script_rewards(project_root: Path | None = None) -> dict[str, An
         lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
         for line_no, raw in enumerate(lines, 1):
             line = raw.split("//", 1)[0]
-            for m in _GETITEM_RE.finditer(line):
-                cmd = m.group("cmd").lower()
-                iid = int(m.group("id"))
-                qty = int(m.group("qty"))
-                if iid not in item_ids or iid not in client_ids:
-                    unresolved += 1
-                    continue
-                caller = _enclosing_script_npc(lines, line_no, rel)
-                npc_id = caller["npc_id"] if caller else None
-                if npc_id is None:
-                    missing_caller += 1
-                rid = _eid("npcreward", rel, line_no, cmd, iid, qty)
-                rows.append(
-                    {
-                        "npc_script_reward_id": rid,
-                        "npc_id": npc_id,
-                        "script_path": rel,
-                        "script_line": line_no,
-                        "command": cmd,
-                        "item_id": iid,
-                        "quantity": qty,
-                        "map_id": caller.get("map_id") if caller else None,
-                        "provenance_id": _provenance_id(
-                            "npc_script_rewards", rid, f"{rel}:{line_no}"
-                        ),
-                    }
+            for m in _GETITEM2_RE.finditer(line):
+                _emit(
+                    rel=rel,
+                    line_no=line_no,
+                    lines=lines,
+                    cmd=m.group("cmd").lower(),
+                    iid=int(m.group("id")),
+                    qty=int(m.group("qty")),
+                    modified=True,
+                    identify=int(m.group("identify")),
+                    refine=int(m.group("refine")),
+                    attribute=int(m.group("attribute")),
+                    cards=[
+                        int(m.group("c1")),
+                        int(m.group("c2")),
+                        int(m.group("c3")),
+                        int(m.group("c4")),
+                    ],
                 )
-                by_cmd[cmd] = by_cmd.get(cmd, 0) + 1
+            for m in _GETITEM_RE.finditer(line):
+                _emit(
+                    rel=rel,
+                    line_no=line_no,
+                    lines=lines,
+                    cmd=m.group("cmd").lower(),
+                    iid=int(m.group("id")),
+                    qty=int(m.group("qty")),
+                    modified=False,
+                )
 
     out_path = reports_dir / "npc_script_rewards.jsonl"
     with out_path.open("w", encoding="utf-8") as f:
@@ -118,13 +181,18 @@ def extract_npc_script_rewards(project_root: Path | None = None) -> dict[str, An
 
     summary = {
         "domain": "npc_script_rewards",
+        "acquisition_type": "npc_delivery",
         "reward_rows": len(rows),
         "unique_items": len({r["item_id"] for r in rows}),
         "unique_npcs": len({r["npc_id"] for r in rows if r["npc_id"]}),
         "by_command": by_cmd,
+        "by_delivery_kind": by_delivery,
         "unresolved_item": unresolved,
         "missing_caller": missing_caller,
-        "note": "literal getitem/getitembound only; variables omitted",
+        "note": (
+            "NPC→item relation only (branch/conditions ignored). "
+            "Not produce_db / item_group. Literals only; variables omitted."
+        ),
         "wrote": [str(out_path)],
     }
     summary_path = reports_dir / "npc_script_rewards_summary.json"

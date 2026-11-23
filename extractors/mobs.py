@@ -234,7 +234,25 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
         mvp_exp = row.get("MvpExp")
         # HP rate path uses Modes.Mvp (get_bosstype); keep is_mvp aligned with Mode or MvpExp.
         is_mvp = bool(modes_dict.get("Mvp")) or bool(mvp_exp)
-        hp_effective, hp_mult = resolver.apply_hp(row.get("Hp"), is_mvp=is_mvp)
+        hp_base = row.get("Hp")
+        # Player skill summons (ABR/bionic/…): no Hp in mob_db; status_calc_mob
+        # overwrites max_hp from caster stats/mastery → not a fixed effective value.
+        # Boss slaves (NPC_SUMMONSLAVE): use mob_db Hp + monster_hp_rate like field mobs.
+        if mob_role == "skill_summon" and hp_base is None:
+            hp_effective, hp_mult = None, None
+            hp_status = "not_extractable"
+            hp_note = (
+                "No Hp in mob_db; runtime max_hp from caster "
+                "(status_calc_mob ABR/bionic/etc.) — player-dependent"
+            )
+        elif hp_base is None:
+            hp_effective, hp_mult = None, None
+            hp_status = "not_extractable"
+            hp_note = "No Hp in mob_db"
+        else:
+            hp_effective, hp_mult = resolver.apply_hp(hp_base, is_mvp=is_mvp)
+            hp_status = "from_mob_db"
+            hp_note = None
 
         source_path = mob_files[0]
         record = {
@@ -246,9 +264,11 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
             "mob_role": mob_role,
             "is_mvp": is_mvp,
             "level": row.get("Level"),
-            "hp_base": row.get("Hp"),
+            "hp_base": hp_base,
             "hp_multiplier": hp_mult,
             "hp_effective": hp_effective,
+            "hp_status": hp_status,
+            "hp_note": hp_note,
             "sp": row.get("Sp"),
             "base_exp_base": row.get("BaseExp"),
             "base_exp_effective": resolver.apply_base_exp(row.get("BaseExp")),
@@ -288,9 +308,12 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
 
     by_class: dict[str, int] = {}
     by_role: dict[str, int] = {}
+    by_hp_status: dict[str, int] = {}
     for r in records:
         by_class[r["mob_class"]] = by_class.get(r["mob_class"], 0) + 1
         by_role[r["mob_role"]] = by_role.get(r["mob_role"], 0) + 1
+        st = r.get("hp_status") or "?"
+        by_hp_status[st] = by_hp_status.get(st, 0) + 1
 
     summary = {
         "domain": "mobs",
@@ -303,6 +326,11 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
         "exp_rates": resolver.exp_rates(),
         "by_class": by_class,
         "by_role": by_role,
+        "by_hp_status": by_hp_status,
+        "hp_policy": (
+            "slave/map: mob_db Hp × monster_hp_rate; "
+            "skill_summon without Hp: not_extractable (caster formula)"
+        ),
         "spawn_evidence_mobs": len(spawn_roles),
         "wrote": str(out_path),
     }

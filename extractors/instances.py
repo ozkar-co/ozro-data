@@ -242,11 +242,15 @@ def extract_instances(project_root: Path | None = None) -> dict[str, Any]:
         "instance_create_literal": create_literal,
         "instance_create_dynamic": create_dynamic,
         "unmatched_create_name": unmatched_name,
-        "deferred": [
-            "dynamic_instance_create_vars",
-            "requirements_rewards_scripts",
+        "out_of_scope": [
+            "dynamic_instance_create_vars",  # not identifiable statically
+            "requirements_rewards_scripts",  # player discovers flow
             "idle_timeout_fields",
         ],
+        "note": (
+            "Creator NPC = literal instance_create Name binds. "
+            "Dynamic .@var creates counted but not bound."
+        ),
         "wrote": [str(i_path), str(m_path), str(l_path)],
     }
     summary_path = reports_dir / "instances_summary.json"
