@@ -12,6 +12,7 @@ import yaml
 
 from discovery.scan import _load_extractor_config
 from extractors.npcs import _parse_name_fields, _stable_npc_id, parse_npc_line
+from resolvers import shop_price_effective
 
 _SHOP_TYPES = frozenset(
     {"shop", "cashshop", "itemshop", "pointshop", "marketshop"}
@@ -359,10 +360,22 @@ def extract_shops(project_root: Path | None = None) -> dict[str, Any]:
     disc = yaml.safe_load(files_path.read_text(encoding="utf-8"))
     scripts: list[str] = list(disc.get("scripts") or [])
 
+    item_buy: dict[int, int] = {}
+    catalog_path = reports_dir / "items.jsonl"
+    if catalog_path.is_file():
+        for line in catalog_path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            it = json.loads(line)
+            buy = it.get("buy_effective")
+            if buy is not None:
+                item_buy[int(it["item_id"])] = int(buy)
+
     shops: list[dict[str, Any]] = []
     shop_items: list[dict[str, Any]] = []
     by_type: dict[str, int] = {}
     parse_skip = 0
+    default_price_count = 0
 
     for rel in scripts:
         path = rathena / rel
@@ -384,14 +397,23 @@ def extract_shops(project_root: Path | None = None) -> dict[str, Any]:
             shops.append({k: v for k, v in rec.items() if k != "items"})
             by_type[rec["shop_type"]] = by_type.get(rec["shop_type"], 0) + 1
             for it in rec["items"]:
+                priced = shop_price_effective(
+                    it["price"],
+                    shop_type=rec["shop_type"],
+                    item_buy_effective=item_buy.get(it["item_id"]),
+                )
+                if priced["price_is_default"]:
+                    default_price_count += 1
                 shop_items.append(
                     {
                         "shop_id": rec["shop_id"],
                         "npc_id": rec["npc_id"],
                         "item_id": it["item_id"],
-                        "price": it["price"],
+                        "price": priced["price"],
+                        "price_effective": priced["price_effective"],
                         "stock": it["stock"],
-                        "price_is_default": it["price"] < 0,
+                        "price_is_default": priced["price_is_default"],
+                        "price_source": priced["price_source"],
                     }
                 )
 
@@ -422,6 +444,8 @@ def extract_shops(project_root: Path | None = None) -> dict[str, Any]:
         "unique_items": len({r["item_id"] for r in shop_items}),
         "by_type": by_type,
         "parse_skip": parse_skip,
+        "default_price_resolved": default_price_count,
+        "item_buy_index_size": len(item_buy),
         "callshop": link_stats,
         "barter_names_indexed": len(barter_names),
         "deferred": [
@@ -429,7 +453,6 @@ def extract_shops(project_root: Path | None = None) -> dict[str, Any]:
             "buysell_scripted",
         ],
         "barter_inventory": "domain barters",
-
         "wrote": [str(shops_path), str(items_path), str(links_path)],
     }
     summary_path = reports_dir / "shops_summary.json"

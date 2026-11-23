@@ -42,6 +42,37 @@ def cmd_discover(_: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_resolve(_: argparse.Namespace) -> int:
+    """Etapa 4: dump effective battle configuration snapshot."""
+    from resolvers import ConfigurationResolver
+
+    resolver = ConfigurationResolver.from_project(ROOT)
+    snap = resolver.snapshot()
+    reports = ROOT / "reports"
+    reports.mkdir(parents=True, exist_ok=True)
+    out = reports / "configuration_effective.json"
+    out.write_text(json.dumps(snap, indent=2) + "\n", encoding="utf-8")
+    # Flat rows for future ozro_dataset_rates (Etapa 5).
+    catalog_path = reports / "dataset_rates.jsonl"
+    with catalog_path.open("w", encoding="utf-8") as f:
+        for row in snap.get("catalog") or []:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+    print(
+        json.dumps(
+            {
+                "command": "resolve",
+                "schema_version": snap.get("schema_version"),
+                "catalog_count": snap.get("catalog_count"),
+                "sources": snap["sources"],
+                "ozro_highlights": snap["ozro_highlights"],
+                "wrote": [str(out), str(catalog_path)],
+            },
+            indent=2,
+        )
+    )
+    return 0
+
+
 def cmd_extract(args: argparse.Namespace) -> int:
     domain = args.domain
     if domain == "maps":
@@ -160,6 +191,10 @@ def main() -> int:
     sub = parser.add_subparsers(dest="cmd", required=True)
     p_disc = sub.add_parser("discover", help="Etapa 1: scan sources and write manifest")
     p_disc.set_defaults(func=cmd_discover)
+    p_res = sub.add_parser(
+        "resolve", help="Etapa 4: merge battle conf and write effective snapshot"
+    )
+    p_res.set_defaults(func=cmd_resolve)
     p_ext = sub.add_parser("extract", help="Etapa 2+: extract a domain")
     p_ext.add_argument(
         "domain",

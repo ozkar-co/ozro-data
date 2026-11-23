@@ -12,6 +12,7 @@ import yaml
 
 from discovery.scan import _load_extractor_config
 from extractors.client_scope import load_client_item_ids
+from resolvers import normalize_subgroup_chances
 
 _GETGROUP_RE = re.compile(
     r"\bget(?:rand)?groupitem\s*\(\s*(?P<name>IG_[A-Za-z0-9_]+)\s*\)",
@@ -104,12 +105,31 @@ def extract_boxes(project_root: Path | None = None) -> dict[str, Any]:
                 algos.append(str(algo))
                 by_algo[str(algo)] = by_algo.get(str(algo), 0) + 1
                 sg_num = sg.get("SubGroup")
+                # Pass 1: full subgroup list for pool total (server odds).
+                pending: list[dict[str, Any]] = []
                 for entry in sg.get("List") or []:
                     if not isinstance(entry, dict):
                         continue
                     item_aegis = entry.get("Item")
                     if not item_aegis:
                         continue
+                    pending.append(
+                        {
+                            "item_aegis_name": str(item_aegis),
+                            "rate": entry.get("Rate"),
+                            "index": entry.get("Index"),
+                            "amount": entry.get("Amount", 1),
+                            "refine_min": entry.get("RefineMinimum"),
+                            "refine_max": entry.get("RefineMaximum"),
+                            "announced": entry.get("Announced"),
+                            "duration": entry.get("Duration"),
+                            "random_option_group": entry.get("RandomOptionGroup"),
+                            "_yaml": entry,
+                        }
+                    )
+                normalize_subgroup_chances(pending, str(algo))
+                for pe in pending:
+                    item_aegis = pe["item_aegis_name"]
                     item_id = item_by_aegis.get(str(item_aegis).upper())
                     if item_id is None:
                         unresolved_item += 1
@@ -121,7 +141,7 @@ def extract_boxes(project_root: Path | None = None) -> dict[str, Any]:
                     reward_ids.add(item_id)
                     reward_count += 1
                     rid = hashlib.sha1(
-                        f"boxrew|{key}|{sg_num}|{entry.get('Index')}|{item_aegis}".encode()
+                        f"boxrew|{key}|{sg_num}|{pe.get('index')}|{item_aegis}".encode()
                     ).hexdigest()
                     rewards.append(
                         {
@@ -130,16 +150,20 @@ def extract_boxes(project_root: Path | None = None) -> dict[str, Any]:
                             "group_name": gname,
                             "subgroup": sg_num,
                             "algorithm": algo,
-                            "index": entry.get("Index"),
+                            "index": pe.get("index"),
                             "item_id": item_id,
                             "item_aegis_name": str(item_aegis),
-                            "rate": entry.get("Rate"),
-                            "amount": entry.get("Amount", 1),
-                            "refine_min": entry.get("RefineMinimum"),
-                            "refine_max": entry.get("RefineMaximum"),
-                            "announced": entry.get("Announced"),
-                            "duration": entry.get("Duration"),
-                            "random_option_group": entry.get("RandomOptionGroup"),
+                            "rate": pe.get("rate"),
+                            "chance_effective": pe.get("chance_effective"),
+                            "chance_unit": pe.get("chance_unit"),
+                            "chance_status": pe.get("chance_status"),
+                            "subgroup_total_rate": pe.get("subgroup_total_rate"),
+                            "amount": pe.get("amount", 1),
+                            "refine_min": pe.get("refine_min"),
+                            "refine_max": pe.get("refine_max"),
+                            "announced": pe.get("announced"),
+                            "duration": pe.get("duration"),
+                            "random_option_group": pe.get("random_option_group"),
                             "source_file": src,
                         }
                     )
@@ -247,11 +271,14 @@ def extract_boxes(project_root: Path | None = None) -> dict[str, Any]:
         "unique_opener_items": len({L["item_id"] for L in links}),
         "boxes_with_nested": len(nested_box_ids),
         "by_algorithm": by_algo,
+        "by_chance_status": {
+            st: sum(1 for r in rewards if r.get("chance_status") == st)
+            for st in sorted({r.get("chance_status") or "?" for r in rewards})
+        },
         "unresolved_reward_item": unresolved_item,
         "skipped_no_client": skipped_no_client,
         "getgroupitem_missing_group": missing_group,
         "deferred": [
-            "sharedpool_probability_normalize",
             "npc_quest_instance_rewards",
             "getrandgroupitem_full_args",
         ],

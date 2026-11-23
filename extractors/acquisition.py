@@ -146,9 +146,14 @@ def extract_acquisition(project_root: Path | None = None) -> dict[str, Any]:
                 item_id=r.get("item_id"),
                 quantity_min=amt,
                 quantity_max=amt,
-                probability=r.get("rate"),
-                probability_unit="raw_group_rate",
-                extra={"box_id": r.get("box_id"), "group_name": r.get("group_name")},
+                probability=r.get("chance_effective", r.get("rate")),
+                probability_unit=r.get("chance_unit") or "raw_group_rate",
+                extra={
+                    "box_id": r.get("box_id"),
+                    "group_name": r.get("group_name"),
+                    "algorithm": r.get("algorithm"),
+                    "chance_status": r.get("chance_status"),
+                },
                 provenance_src="box_rewards.jsonl",
             )
     else:

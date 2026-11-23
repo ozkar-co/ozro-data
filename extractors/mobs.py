@@ -11,6 +11,7 @@ from typing import Any
 import yaml
 
 from discovery.scan import _load_extractor_config
+from resolvers import ConfigurationResolver
 
 # Quest props studied in Etapa 2 (Rebellion targets + Prontera castle plate).
 _QUEST_PROP_IDS = frozenset({3169, 3170, 3455})
@@ -190,6 +191,7 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
     gaps = _load_jsonl_index(reports_dir / "client_mob_server_gaps.jsonl", "mob_id")
     pet_aegis = _load_pet_aegis_names(rathena)
     spawn_roles = _load_spawn_role_evidence(reports_dir / "spawns.jsonl")
+    resolver = ConfigurationResolver.from_project(root)
 
     records: list[dict[str, Any]] = []
     for mid in sorted(by_id):
@@ -205,6 +207,7 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
         modes = row.get("Modes")
         if modes is not None and not isinstance(modes, dict):
             modes = {"_raw": modes}
+        modes_dict = modes if isinstance(modes, dict) else {}
 
         stats = {
             "str": row.get("Str"),
@@ -229,7 +232,9 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
 
         mob_role, role_reason = classify_mob_role(mid, row, pet_aegis, spawn_roles)
         mvp_exp = row.get("MvpExp")
-        is_mvp = bool(mvp_exp)
+        # HP rate path uses Modes.Mvp (get_bosstype); keep is_mvp aligned with Mode or MvpExp.
+        is_mvp = bool(modes_dict.get("Mvp")) or bool(mvp_exp)
+        hp_effective, hp_mult = resolver.apply_hp(row.get("Hp"), is_mvp=is_mvp)
 
         source_path = mob_files[0]
         record = {
@@ -242,15 +247,15 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
             "is_mvp": is_mvp,
             "level": row.get("Level"),
             "hp_base": row.get("Hp"),
-            "hp_multiplier": None,
-            "hp_effective": None,
+            "hp_multiplier": hp_mult,
+            "hp_effective": hp_effective,
             "sp": row.get("Sp"),
             "base_exp_base": row.get("BaseExp"),
-            "base_exp_effective": None,
+            "base_exp_effective": resolver.apply_base_exp(row.get("BaseExp")),
             "job_exp_base": row.get("JobExp"),
-            "job_exp_effective": None,
+            "job_exp_effective": resolver.apply_job_exp(row.get("JobExp")),
             "mvp_exp_base": mvp_exp,
-            "mvp_exp_effective": None,
+            "mvp_exp_effective": resolver.apply_mvp_exp(mvp_exp),
             "attack": row.get("Attack"),
             "attack2": row.get("Attack2"),
             "defense": row.get("Defense"),
@@ -294,6 +299,8 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
         "without_sprite": sum(1 for r in records if not r["has_sprite"]),
         "import_override_count": len(import_ids),
         "mvp_count": sum(1 for r in records if r["is_mvp"]),
+        "hp_rates": resolver.hp_rates(),
+        "exp_rates": resolver.exp_rates(),
         "by_class": by_class,
         "by_role": by_role,
         "spawn_evidence_mobs": len(spawn_roles),

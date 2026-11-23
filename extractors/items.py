@@ -11,6 +11,7 @@ import yaml
 
 from discovery.scan import _load_extractor_config
 from extractors.client_scope import load_client_item_ids
+from resolvers import resolve_buy_sell
 
 _LOCATION_FAMILY = {
     "Head_Top": "head_top",
@@ -252,6 +253,7 @@ def extract_items(project_root: Path | None = None) -> dict[str, Any]:
             sprite_name = gap.get("identified_resource_name")
 
         source_path = item_files[0]
+        values = resolve_buy_sell(row.get("Buy"), row.get("Sell"))
         record = {
             "item_id": iid,
             "aegis_name": row.get("AegisName"),
@@ -268,8 +270,11 @@ def extract_items(project_root: Path | None = None) -> dict[str, Any]:
             "card_insert_key": classed["card_insert_key"],
             "buy_base": row.get("Buy"),
             "sell_base": row.get("Sell"),
-            "buy_effective": None,
-            "sell_effective": None,
+            "buy_effective": values["buy_effective"],
+            "sell_effective": values["sell_effective"],
+            "buy_source": values["buy_source"],
+            "sell_source": values["sell_source"],
+            "value_was_derived": values["value_was_derived"],
             "weight": row.get("Weight"),
             "attack": row.get("Attack"),
             "magic_attack": row.get("MagicAttack"),
@@ -322,6 +327,7 @@ def extract_items(project_root: Path | None = None) -> dict[str, Any]:
         "with_script": sum(1 for r in records if r["has_script"]),
         "import_override_count": len(import_ids),
         "client_gap_count": sum(1 for r in records if r["client_gap_reason"]),
+        "value_derived_count": sum(1 for r in records if r["value_was_derived"]),
         "by_category": by_cat,
         "by_type": by_type,
         "wrote": str(out_path),

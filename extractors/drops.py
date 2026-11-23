@@ -4,13 +4,13 @@ from __future__ import annotations
 
 import hashlib
 import json
-import re
 from pathlib import Path
 from typing import Any
 
 import yaml
 
 from discovery.scan import _load_extractor_config
+from resolvers import ConfigurationResolver
 
 # item Type (YAML) → rate family used by mob_drop_ratio_adjust
 _TYPE_FAMILY: dict[str, str] = {
@@ -34,46 +34,6 @@ def _provenance_id(domain: str, record_id: str, source_path: str) -> str:
 def _drop_id(*parts: Any) -> str:
     raw = "|".join("" if p is None else str(p) for p in parts)
     return hashlib.sha1(raw.encode("utf-8")).hexdigest()
-
-
-def _parse_battle_conf(path: Path) -> dict[str, int]:
-    out: dict[str, int] = {}
-    if not path.is_file():
-        return out
-    for raw in path.read_text(encoding="utf-8", errors="replace").splitlines():
-        line = raw.split("//", 1)[0].strip()
-        if not line or ":" not in line:
-            continue
-        key, _, val = line.partition(":")
-        key = key.strip()
-        val = val.strip()
-        if re.fullmatch(r"-?\d+", val):
-            out[key] = int(val)
-    return out
-
-
-def _load_drop_rates(rathena: Path, cfg: dict[str, Any]) -> dict[str, int]:
-    """Merge conf/battle/drops.conf then import (rAthena order)."""
-    rates: dict[str, int] = {}
-    battle_dir = rathena / cfg.get("conf", {}).get("battle_dir", "conf/battle")
-    drops_conf = battle_dir / "drops.conf"
-    rates.update(_parse_battle_conf(drops_conf))
-    # other battle files may redefine; import wins
-    import_path = rathena / cfg.get("conf", {}).get(
-        "battle_import", "conf/import/battle_conf.txt"
-    )
-    rates.update(_parse_battle_conf(import_path))
-    return rates
-
-
-def _mob_drop_adjust(
-    baserate: int, rate_adjust: int, rate_min: int, rate_max: int
-) -> int:
-    """Linear path of mob_drop_adjust (logarithmic_drops is off on OzRo)."""
-    if rate_adjust == 0:
-        return 0
-    rate = baserate * rate_adjust / 100.0
-    return int(max(rate_min, min(rate_max, rate)))
 
 
 def _item_family(item_type: str | None) -> str:
@@ -150,7 +110,8 @@ def extract_drops(project_root: Path | None = None) -> dict[str, Any]:
     reports_dir = root / cfg["output"]["reports_dir"]
     reports_dir.mkdir(parents=True, exist_ok=True)
 
-    rates = _load_drop_rates(rathena, cfg)
+    resolver = ConfigurationResolver.from_project(root)
+    rates = resolver.drop_rates()
     mob_files = list(cfg.get("db", {}).get("mob_files") or [])
     mobs_yaml = _load_yaml_bodies(rathena, mob_files)
 
@@ -246,7 +207,7 @@ def extract_drops(project_root: Path | None = None) -> dict[str, Any]:
             rmax = rates.get("item_drop_mvp_max", 10000)
             rate_unit = "per_10000"
             base = rate_original
-            chance_effective = _mob_drop_adjust(base, adj, rmin, rmax)
+            chance_effective = resolver.mob_drop_adjust(base, adj, rmin, rmax)
             rate_status = "adjusted"
             stealable = False if steal_protected else True
         else:
@@ -260,16 +221,9 @@ def extract_drops(project_root: Path | None = None) -> dict[str, Any]:
             base = rate_original
             if drop_rateincrease and base < 5000:
                 base = base + 1
-            chance_effective = _mob_drop_adjust(base, adj, rmin, rmax)
-            # Flag MVP-normal rows whose *_mvp key is still default 100 (1x)
+            chance_effective = resolver.mob_drop_adjust(base, adj, rmin, rmax)
+            # MVP-floor *_mvp at 100 (1x) is verified OzRo policy (@rates/@mi), not pending.
             rate_status = "adjusted"
-            if (
-                boss_kind == "mvp"
-                and rate_key
-                and rate_key.endswith("_mvp")
-                and adj == 100
-            ):
-                rate_status = "pending_config_verify"
             stealable = False if steal_protected else True
 
         did = _drop_id(
@@ -406,8 +360,8 @@ def extract_drops(project_root: Path | None = None) -> dict[str, Any]:
             for k in sorted(rates)
             if k.startswith("item_rate_") or k.startswith("item_drop_")
         },
+        "mvp_floor_policy": "item_rate_*_mvp at 100 (1x) except card_mvp; verified live",
         "deferred": [
-            "item_rate_mvp_family_config_verify",
             "enable_bonus_map_drops_runtime",
             "mob_item_ratio_yml",
             "script_event_drops",

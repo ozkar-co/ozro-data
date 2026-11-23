@@ -39,6 +39,7 @@ db:
     - npc/barters.yml
 
 conf:
+  battle_athena: conf/battle_athena.conf
   battle_import: conf/import/battle_conf.txt
   battle_dir: conf/battle
   map_import: conf/import/map_conf.txt

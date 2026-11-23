@@ -3,19 +3,20 @@ version: 1
 
 order:
   - discovery
+  - resolve            # Etapa 4: battle conf merge (consumed live by extractors)
   - maps
-  - mobs
-  - items
+  - mobs               # hp/exp effective via ConfigurationResolver
+  - items              # buy/sell effective via item_value_resolver
   - npcs
   - map_connections   # needs maps + npcs
   - spawns            # needs maps + mobs
   - item_scripts      # needs items
   - item_restrictions # needs items
   - drops             # needs mobs + items + config resolver
-  - shops             # needs npcs + items
+  - shops             # needs npcs + items (price -1 → buy_effective)
   - quests            # needs npcs + items + mobs
   - instances         # needs maps + npcs
-  - boxes             # needs items
+  - boxes             # needs items; SharedPool/Random normalize
   - recipes           # needs items + npcs
   - enchantments      # needs items + npcs
   - item_relationships
@@ -32,14 +33,14 @@ order:
 
 depends:
   maps: [discovery]
-  mobs: [discovery]
+  mobs: [discovery, resolve]
   items: [discovery]
   npcs: [discovery, maps]
   map_connections: [maps, npcs]
   spawns: [maps, mobs]
   item_scripts: [items]
   item_restrictions: [items]
-  drops: [mobs, items]
+  drops: [mobs, items, resolve]
   shops: [npcs, items]
   quests: [npcs, items, mobs]
   instances: [maps, npcs]

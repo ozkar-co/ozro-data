@@ -1,32 +1,62 @@
 # Conf keys that Effective Resolver must apply. Values read live from files; not hard-coded here.
-version: 1
+version: 2
 
-file: conf/import/battle_conf.txt
-# Also merge conf/battle/*.conf then import overrides (rAthena load order).
+# Merge order = conf/battle_athena.conf imports (ends with conf/import/battle_conf.txt).
+battle_athena: conf/battle_athena.conf
 
 rates:
   drops:
     - item_rate_common
     - item_rate_common_boss
+    - item_rate_common_mvp
     - item_rate_heal
     - item_rate_heal_boss
+    - item_rate_heal_mvp
     - item_rate_use
     - item_rate_use_boss
+    - item_rate_use_mvp
     - item_rate_equip
     - item_rate_equip_boss
+    - item_rate_equip_mvp
     - item_rate_card
     - item_rate_card_boss
     - item_rate_card_mvp
     - item_rate_mvp
     - item_rate_treasure
+    - item_rate_adddrop
+  drop_bounds:
+    - item_drop_common_min
+    - item_drop_common_max
+    - item_drop_heal_min
+    - item_drop_heal_max
+    - item_drop_use_min
+    - item_drop_use_max
+    - item_drop_equip_min
+    - item_drop_equip_max
+    - item_drop_card_min
+    - item_drop_card_max
+    - item_drop_mvp_min
+    - item_drop_mvp_max
+    - item_drop_treasure_min
+    - item_drop_treasure_max
+  drop_flags:
+    - item_logarithmic_drops
+    - drop_rateincrease
+    - enable_bonus_map_drops
   exp:
     - base_exp_rate
     - job_exp_rate
     - mvp_exp_rate
     - quest_exp_rate
   hp:
-    - monster_hp_rate
-    - mvp_hp_rate
+    - monster_hp_rate   # non-MVP max_hp *= rate/100 (OzRo: 200 = 2x)
+    - mvp_hp_rate       # MVP max_hp *= rate/100 (OzRo: 200 = 2x)
+
+# Semantics (rAthena src — do not invent):
+# - HP: mob.cpp loadingFinished — MVP uses mvp_hp_rate only; else monster_hp_rate only (no stack).
+# - EXP: BaseExp/JobExp/MvpExp scaled at YAML load by base/job/mvp_exp_rate.
+# - Drops: linear mob_drop_adjust when item_logarithmic_drops is off.
+# - Map bonus drops: enable_bonus_map_drops; rates in map_drops.yml are per_100000, no item_rate_*.
 
 # Observed OzRo import values at discovery time (verify on each run; do not trust this block as input):
 discovered_snapshot:
@@ -34,7 +64,7 @@ discovered_snapshot:
   item_rate_heal: 1000
   item_rate_use: 1000
   item_rate_equip: 1500
-  item_rate_card: 1000
+  item_rate_card: 5000
   item_rate_card_boss: 10000
   item_rate_card_mvp: 10000
   item_rate_mvp: 500
