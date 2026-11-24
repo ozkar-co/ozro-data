@@ -40,4 +40,5 @@ python pipeline.py sync                     # Etapa 5: full-replace JSONL → oz
 ```
 
 
+**Integration reference:** [`DATA.md`](DATA.md) (catalog, units, flags, query patterns).  
 Paths: `config/extractor.yml`. Schema: `database/schema/`. Delta vs E1: `database/SCHEMA_DELTA.md`.
