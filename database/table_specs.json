@@ -598,6 +598,12 @@
         "item_id",
         "item_subcategory",
         "jobs",
+        "stack",
+        "no_use",
+        "delay",
+        "gender",
+        "gradable",
+        "classes",
         "locations",
         "magic_attack",
         "name",
@@ -661,7 +667,13 @@
         "value_was_derived": "TINYINT(1)",
         "view_id": "INT",
         "weapon_level": "INT",
-        "weight": "INT"
+        "weight": "INT",
+        "classes": "JSON",
+        "gradable": "TINYINT(1)",
+        "gender": "VARCHAR(32)",
+        "delay": "JSON",
+        "no_use": "JSON",
+        "stack": "JSON"
       },
       "pk": [
         "item_id"
@@ -1871,8 +1883,10 @@
       "jsonl": "acquisition_outputs.jsonl",
       "columns": [
         "acquisition_output_id",
+        "algorithm",
         "barter_name",
         "box_id",
+        "chance_status",
         "command",
         "from_item_id",
         "func_name",
@@ -1898,8 +1912,10 @@
       ],
       "column_types": {
         "acquisition_output_id": "VARCHAR(128)",
+        "algorithm": "VARCHAR(255)",
         "barter_name": "VARCHAR(128)",
         "box_id": "VARCHAR(128)",
+        "chance_status": "VARCHAR(255)",
         "command": "VARCHAR(255)",
         "from_item_id": "INT",
         "func_name": "VARCHAR(255)",

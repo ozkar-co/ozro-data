@@ -41,4 +41,5 @@ python pipeline.py sync                     # Etapa 5: full-replace JSONL → oz
 
 
 **Integration reference:** [`DATA.md`](DATA.md) (catalog, units, flags, query patterns).  
+**Extract coverage:** [`database/EXTRACT_COVERAGE.md`](database/EXTRACT_COVERAGE.md) (YAML → JSONL gaps).  
 Paths: `config/extractor.yml`. Schema: `database/schema/`. Delta vs E1: `database/SCHEMA_DELTA.md`.

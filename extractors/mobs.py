@@ -228,6 +228,8 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
             "resistance": row.get("Resistance"),
             "magic_resistance": row.get("MagicResistance"),
             "race_groups": row.get("RaceGroups"),
+            "group_id": row.get("GroupId"),
+            "title": row.get("Title"),
         }
 
         mob_role, role_reason = classify_mob_role(mid, row, pet_aegis, spawn_roles)

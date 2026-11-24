@@ -241,9 +241,17 @@ def extract_items(project_root: Path | None = None) -> dict[str, Any]:
 
         flags = row.get("Flags") if isinstance(row.get("Flags"), dict) else row.get("Flags")
         jobs = row.get("Jobs") if isinstance(row.get("Jobs"), dict) else row.get("Jobs")
+        classes = row.get("Classes") if isinstance(row.get("Classes"), dict) else row.get("Classes")
+        if isinstance(classes, dict):
+            classes = {k: bool(v) for k, v in classes.items()}
         locations = row.get("Locations")
         if isinstance(locations, dict):
             locations = {k: bool(v) for k, v in locations.items()}
+        no_use = row.get("NoUse") if isinstance(row.get("NoUse"), dict) else row.get("NoUse")
+        if isinstance(no_use, dict):
+            no_use = {k: bool(v) for k, v in no_use.items()}
+        delay = row.get("Delay") if isinstance(row.get("Delay"), dict) else row.get("Delay")
+        stack = row.get("Stack") if isinstance(row.get("Stack"), dict) else row.get("Stack")
 
         has_script = any(row.get(k) for k in ("Script", "EquipScript", "UnEquipScript"))
         sprite_name = None
@@ -286,10 +294,16 @@ def extract_items(project_root: Path | None = None) -> dict[str, Any]:
             "equip_level_min": row.get("EquipLevelMin"),
             "equip_level_max": row.get("EquipLevelMax"),
             "refineable": row.get("Refineable"),
+            "gradable": row.get("Gradable"),
+            "gender": row.get("Gender"),
             "view_id": row.get("View"),
             "flags": flags,
             "jobs": jobs,
+            "classes": classes,
             "locations": locations,
+            "delay": delay,
+            "no_use": no_use,
+            "stack": stack,
             "sprite_name": sprite_name,
             "has_sprite": bool(info.get("has_sprite")) if info else False,
             "has_item_icon": bool(info.get("has_item_icon")) if info else False,

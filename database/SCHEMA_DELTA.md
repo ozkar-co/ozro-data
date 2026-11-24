@@ -84,7 +84,7 @@ Compares brief §25.1 / [`schema/001_master.sql`](schema/001_master.sql) (Etapa 
 | `ozro_item_combo_sets` | `item_combo_sets.jsonl` | |
 | `ozro_item_combo_members` | `item_combo_members.jsonl` | |
 | `ozro_item_dependencies` | `item_dependencies.jsonl` | §22.2 graph |
-| `ozro_acquisition_outputs` | `acquisition_outputs.jsonl` | Unified acquisition union |
+| `ozro_acquisition_outputs` | `acquisition_outputs.jsonl` | Unified acquisition union; `algorithm` / `chance_status` on `box_reward` rows |
 | `ozro_random_options` | `random_options.jsonl` | |
 | `ozro_random_option_groups` | `random_option_groups.jsonl` | |
 | `ozro_random_option_group_slots` | `random_option_group_slots.jsonl` | |

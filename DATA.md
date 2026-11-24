@@ -9,11 +9,14 @@ Single integration reference for consumers (web, CLI, market tools).
 | Spec / historia | `rathena/docs/ozro-market/historia/brief-02/master_dataset.md` |
 | Schema DDL | `database/schema/001_master.sql` |
 | E1 → E5 delta | `database/SCHEMA_DELTA.md` |
+| **Source → JSONL coverage** | [`database/EXTRACT_COVERAGE.md`](database/EXTRACT_COVERAGE.md) — what was / was not extracted |
 | Column map (machine) | `database/table_specs.json` |
 | Variable craft formulas | `rathena/.../brief-02/recipes_variable_formulas.md` |
 | Regenerate | `pipeline.py resolve` → `extract …` → `schema [--reset]` → `sync` |
 
 Last verified sync fingerprint / counts: see `reports/sync_summary.json` and `ozro_dataset_metadata`.
+
+**Coverage rule:** SQL only contains what extractors wrote to JSONL. A missing YAML field is an extract gap. Client item **descriptions** are intentionally out (translations). Equip constraints (`classes`, `gender`, `gradable`, `delay`, `no_use`, `stack`) are in `ozro_items`.
 
 ---
 
@@ -109,11 +112,28 @@ Row counts are approximate from the first E5 sync; re-check `sync_summary.json` 
 
 | Table | PK | Rows | Role |
 |---|---|---|---|
-| `ozro_items` | `item_id` | 22622 | Catalog + `buy_effective` / `sell_effective` |
+| `ozro_items` | `item_id` | 22622 | Catalog + buy/sell effective + equip constraints |
 | `ozro_item_scripts` | `item_script_id` | 15731 | Script / EquipScript / UnEquipScript |
-| `ozro_item_restrictions` | `(item_id, restriction_key)` | 40145 | Trade / noequip / etc. |
+| `ozro_item_restrictions` | `(item_id, restriction_key)` | 40145 | Trade.* / noequip / flag.NoConsume |
 | `ozro_item_dependencies` | `item_dependency_id` | 37129 | Consume/produce/socket/combo/box edges |
 | Combo | `item_combo_groups` / `_sets` / `_members` | 3k / 4k / 11k | item_combos.yml |
+
+**`ozro_items` JSON / constraint columns (consumers):**
+
+| Column | Source YAML | Notes |
+|---|---|---|
+| `jobs` | `Jobs` | e.g. `{"Knight": true, …}` |
+| `classes` | `Classes` | e.g. `{"Upper": true, "All_Third": true, "Fourth": true}` (~1943 rows) |
+| `locations` | `Locations` | e.g. `{"Right_Hand": true}` |
+| `flags` | `Flags` | |
+| `gender` | `Gender` | `Male` / `Female` / null |
+| `gradable` | `Gradable` | bool / null |
+| `delay` | `Delay` | `{Duration, Status}` JSON |
+| `no_use` | `NoUse` | e.g. `{Sitting: true}` |
+| `stack` | `Stack` | JSON / null |
+| `buy_effective` / `sell_effective` | Buy/Sell + resolver | Already rate-resolved |
+
+Not in SQL (by design): client lore/description text.
 
 ### 3.6 Acquisition (how to get an item)
 
@@ -132,7 +152,7 @@ Row counts are approximate from the first E5 sync; re-check `sync_summary.json` 
 **`acquisition_outputs.source_type` (observed):**  
 `box_reward` · `mob_drop` · `npc_shop` · `npc_reward` · `npc_barter` · `map_drop` · `crafting` · `socketing` · `enchanting` · `quest_drop`
 
-Prefer this table for “all sources of item X”; use domain tables when you need full drop/shop/recipe detail.
+**`box_reward` rows also carry** `algorithm` / `chance_status` (from `box_rewards`; NULL on other source types). Prefer this table for “all sources of item X”; use domain tables when you need full drop/shop/recipe detail.
 
 ### 3.7 Instances / enchant / random options / NPC enchant evidence
 
@@ -209,11 +229,14 @@ WHERE r.produce_id = ?;
 
 ## 6. What is intentionally out of scope
 
-- Client-only reports (`client_*`) — assets/gaps, not world truth.
+- Client item **descriptions** / lore (translations will replace them).
+- Client-only reports (`client_*`) beyond asset presence flags already on items/mobs.
 - Live shop mutation state (only flags).
 - Player-level penalty applied into each drop row.
 - Invented % for `variable` recipes or ABR/bionic HP.
 - Economic / market pricing (this dataset is world facts only).
+
+See `EXTRACT_COVERAGE.md` before assuming a YAML field is “missing from SQL”.
 
 ---
 

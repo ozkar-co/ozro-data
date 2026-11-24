@@ -307,6 +307,12 @@ CREATE TABLE IF NOT EXISTS ozro_items (
   item_id INT NOT NULL,
   item_subcategory VARCHAR(255) NULL,
   jobs JSON NULL,
+  stack JSON NULL,
+  no_use JSON NULL,
+  delay JSON NULL,
+  gender VARCHAR(32) NULL,
+  gradable TINYINT(1) NULL,
+  classes JSON NULL,
   locations JSON NULL,
   magic_attack INT NULL,
   name VARCHAR(255) NULL,
@@ -907,8 +913,10 @@ CREATE TABLE IF NOT EXISTS ozro_npc_item_transforms (
 
 CREATE TABLE IF NOT EXISTS ozro_acquisition_outputs (
   acquisition_output_id VARCHAR(128) NOT NULL,
+  algorithm VARCHAR(255) NULL,
   barter_name VARCHAR(128) NULL,
   box_id VARCHAR(128) NULL,
+  chance_status VARCHAR(255) NULL,
   command VARCHAR(255) NULL,
   from_item_id INT NULL,
   func_name VARCHAR(255) NULL,
