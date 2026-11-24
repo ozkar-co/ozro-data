@@ -1,0 +1,2102 @@
+{
+  "prefix_default": "ozro_",
+  "load_order": [
+    "dataset_rates",
+    "dataset_level_penalty",
+    "maps",
+    "map_connections",
+    "map_distances",
+    "map_routes",
+    "npcs",
+    "npc_functions",
+    "npc_quests",
+    "npc_script_evidence",
+    "npc_script_rewards",
+    "mobs",
+    "spawns",
+    "mob_skills",
+    "skill_summons",
+    "items",
+    "item_scripts",
+    "item_restrictions",
+    "mob_drops",
+    "drop_random_option_links",
+    "npc_shops",
+    "npc_shop_items",
+    "npc_shop_links",
+    "npc_shop_link_shops",
+    "quests",
+    "quest_targets",
+    "quest_drops",
+    "instances",
+    "instance_maps",
+    "instance_npc_links",
+    "boxes",
+    "box_rewards",
+    "box_item_links",
+    "recipes",
+    "recipe_materials",
+    "enchantments",
+    "enchant_targets",
+    "enchant_options",
+    "enchant_perfect",
+    "enchant_upgrades",
+    "enchant_materials",
+    "item_combo_groups",
+    "item_combo_sets",
+    "item_combo_members",
+    "item_dependencies",
+    "barters",
+    "barter_items",
+    "barter_required_items",
+    "random_options",
+    "random_option_groups",
+    "random_option_group_slots",
+    "random_option_group_random",
+    "npc_enchant_sources",
+    "npc_enchant_items",
+    "npc_item_transforms",
+    "acquisition_outputs",
+    "source_provenance",
+    "dataset_metadata"
+  ],
+  "tables": {
+    "maps": {
+      "jsonl": "maps.jsonl",
+      "columns": [
+        "access_conditions",
+        "categories",
+        "category",
+        "classification_layer",
+        "client",
+        "client_resource_present",
+        "display_name",
+        "display_name_source",
+        "height",
+        "is_accessible",
+        "is_dungeon",
+        "is_guild_map",
+        "is_instance",
+        "is_interior",
+        "is_quest_map",
+        "is_town",
+        "map_id",
+        "provenance_id",
+        "source",
+        "width"
+      ],
+      "column_types": {
+        "access_conditions": "JSON",
+        "categories": "JSON",
+        "category": "VARCHAR(255)",
+        "classification_layer": "VARCHAR(255)",
+        "client": "JSON",
+        "client_resource_present": "TINYINT(1)",
+        "display_name": "VARCHAR(255)",
+        "display_name_source": "VARCHAR(255)",
+        "height": "INT",
+        "is_accessible": "TINYINT(1)",
+        "is_dungeon": "TINYINT(1)",
+        "is_guild_map": "TINYINT(1)",
+        "is_instance": "TINYINT(1)",
+        "is_interior": "TINYINT(1)",
+        "is_quest_map": "TINYINT(1)",
+        "is_town": "TINYINT(1)",
+        "map_id": "VARCHAR(64)",
+        "provenance_id": "VARCHAR(128)",
+        "source": "JSON",
+        "width": "INT"
+      },
+      "pk": [
+        "map_id"
+      ]
+    },
+    "map_connections": {
+      "jsonl": "map_connections.jsonl",
+      "columns": [
+        "classification_layer",
+        "conditions",
+        "connection_id",
+        "connection_type",
+        "destination_map_id",
+        "destination_x",
+        "destination_y",
+        "friction_weight",
+        "is_directional",
+        "label",
+        "npc_id",
+        "provenance_id",
+        "required_items",
+        "route_id",
+        "source",
+        "source_map_id",
+        "source_x",
+        "source_y",
+        "trigger_xs",
+        "trigger_ys",
+        "warp_name",
+        "warp_variant",
+        "zeny_cost"
+      ],
+      "column_types": {
+        "classification_layer": "VARCHAR(255)",
+        "conditions": "JSON",
+        "connection_id": "VARCHAR(128)",
+        "connection_type": "VARCHAR(255)",
+        "destination_map_id": "VARCHAR(128)",
+        "destination_x": "INT",
+        "destination_y": "INT",
+        "friction_weight": "DOUBLE",
+        "is_directional": "TINYINT(1)",
+        "label": "VARCHAR(255)",
+        "npc_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "required_items": "JSON",
+        "route_id": "VARCHAR(128)",
+        "source": "JSON",
+        "source_map_id": "VARCHAR(128)",
+        "source_x": "INT",
+        "source_y": "INT",
+        "trigger_xs": "INT",
+        "trigger_ys": "INT",
+        "warp_name": "VARCHAR(255)",
+        "warp_variant": "VARCHAR(255)",
+        "zeny_cost": "INT"
+      },
+      "pk": [
+        "connection_id"
+      ]
+    },
+    "map_distances": {
+      "jsonl": "map_distances.jsonl",
+      "columns": [
+        "friction",
+        "from_map_id",
+        "hop_count",
+        "to_map_id"
+      ],
+      "column_types": {
+        "friction": "DOUBLE",
+        "from_map_id": "VARCHAR(64)",
+        "hop_count": "INT",
+        "to_map_id": "VARCHAR(64)"
+      },
+      "pk": [
+        "from_map_id",
+        "to_map_id"
+      ]
+    },
+    "map_routes": {
+      "jsonl": "map_routes.jsonl",
+      "columns": [
+        "connection_ids",
+        "from_map_id",
+        "to_map_id"
+      ],
+      "column_types": {
+        "connection_ids": "JSON",
+        "from_map_id": "VARCHAR(64)",
+        "to_map_id": "VARCHAR(64)"
+      },
+      "pk": [
+        "from_map_id",
+        "to_map_id"
+      ]
+    },
+    "npcs": {
+      "jsonl": "npcs.jsonl",
+      "columns": [
+        "classification_layer",
+        "client",
+        "display_name",
+        "duplicate_of",
+        "facing",
+        "has_sprite",
+        "map_id",
+        "name",
+        "npc_id",
+        "npc_type",
+        "provenance_id",
+        "script_analysis",
+        "script_line",
+        "script_path",
+        "source",
+        "sprite_id",
+        "sprite_stem",
+        "x",
+        "y"
+      ],
+      "column_types": {
+        "classification_layer": "VARCHAR(255)",
+        "client": "JSON",
+        "display_name": "VARCHAR(255)",
+        "duplicate_of": "VARCHAR(255)",
+        "facing": "INT",
+        "has_sprite": "TINYINT(1)",
+        "map_id": "VARCHAR(64)",
+        "name": "VARCHAR(255)",
+        "npc_id": "VARCHAR(128)",
+        "npc_type": "VARCHAR(255)",
+        "provenance_id": "VARCHAR(128)",
+        "script_analysis": "JSON",
+        "script_line": "INT",
+        "script_path": "VARCHAR(512)",
+        "source": "JSON",
+        "sprite_id": "VARCHAR(128)",
+        "sprite_stem": "VARCHAR(255)",
+        "x": "INT",
+        "y": "INT"
+      },
+      "pk": [
+        "npc_id"
+      ]
+    },
+    "npc_quests": {
+      "jsonl": "npc_quest_links.jsonl",
+      "columns": [
+        "in_quest_db",
+        "link_id",
+        "npc_id",
+        "provenance_id",
+        "quest_id",
+        "role",
+        "script_line",
+        "script_path"
+      ],
+      "column_types": {
+        "in_quest_db": "TINYINT(1)",
+        "link_id": "VARCHAR(128)",
+        "npc_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "quest_id": "INT",
+        "role": "VARCHAR(255)",
+        "script_line": "INT",
+        "script_path": "VARCHAR(512)"
+      },
+      "pk": [
+        "link_id"
+      ]
+    },
+    "npc_script_evidence": {
+      "jsonl": "npc_script_evidence.jsonl",
+      "columns": [
+        "evidence",
+        "evidence_id",
+        "functions",
+        "mob_commands",
+        "npc_id",
+        "provenance_id",
+        "quest_ids",
+        "script_line",
+        "script_path",
+        "variable_count",
+        "variables"
+      ],
+      "column_types": {
+        "evidence": "JSON",
+        "evidence_id": "VARCHAR(128)",
+        "functions": "JSON",
+        "mob_commands": "JSON",
+        "npc_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "quest_ids": "JSON",
+        "script_line": "INT",
+        "script_path": "VARCHAR(512)",
+        "variable_count": "INT",
+        "variables": "JSON"
+      },
+      "pk": [
+        "evidence_id"
+      ]
+    },
+    "npc_script_rewards": {
+      "jsonl": "npc_script_rewards.jsonl",
+      "columns": [
+        "acquisition_type",
+        "attribute",
+        "cards",
+        "command",
+        "delivery_kind",
+        "identify",
+        "is_modified",
+        "item_id",
+        "map_id",
+        "npc_id",
+        "npc_script_reward_id",
+        "provenance_id",
+        "quantity",
+        "refine",
+        "script_line",
+        "script_path"
+      ],
+      "column_types": {
+        "acquisition_type": "VARCHAR(255)",
+        "attribute": "INT",
+        "cards": "JSON",
+        "command": "VARCHAR(255)",
+        "delivery_kind": "VARCHAR(255)",
+        "identify": "INT",
+        "is_modified": "TINYINT(1)",
+        "item_id": "INT",
+        "map_id": "VARCHAR(64)",
+        "npc_id": "VARCHAR(128)",
+        "npc_script_reward_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "quantity": "INT",
+        "refine": "INT",
+        "script_line": "INT",
+        "script_path": "VARCHAR(512)"
+      },
+      "pk": [
+        "npc_script_reward_id"
+      ]
+    },
+    "mobs": {
+      "jsonl": "mobs.jsonl",
+      "columns": [
+        "aegis_name",
+        "attack",
+        "attack2",
+        "base_exp_base",
+        "base_exp_effective",
+        "classification_layer",
+        "client_gap_reason",
+        "defense",
+        "element",
+        "element_level",
+        "has_sprite",
+        "hp_base",
+        "hp_effective",
+        "hp_multiplier",
+        "hp_note",
+        "hp_status",
+        "is_mvp",
+        "japanese_name",
+        "job_exp_base",
+        "job_exp_effective",
+        "level",
+        "magic_defense",
+        "mob_class",
+        "mob_id",
+        "mob_role",
+        "modes",
+        "mvp_exp_base",
+        "mvp_exp_effective",
+        "name",
+        "provenance_id",
+        "race",
+        "size",
+        "source",
+        "sp",
+        "sprite_name",
+        "stats"
+      ],
+      "column_types": {
+        "aegis_name": "VARCHAR(128)",
+        "attack": "INT",
+        "attack2": "INT",
+        "base_exp_base": "BIGINT",
+        "base_exp_effective": "BIGINT",
+        "classification_layer": "VARCHAR(255)",
+        "client_gap_reason": "VARCHAR(255)",
+        "defense": "INT",
+        "element": "VARCHAR(255)",
+        "element_level": "INT",
+        "has_sprite": "TINYINT(1)",
+        "hp_base": "BIGINT",
+        "hp_effective": "BIGINT",
+        "hp_multiplier": "INT",
+        "hp_note": "MEDIUMTEXT",
+        "hp_status": "VARCHAR(255)",
+        "is_mvp": "TINYINT(1)",
+        "japanese_name": "VARCHAR(255)",
+        "job_exp_base": "BIGINT",
+        "job_exp_effective": "BIGINT",
+        "level": "INT",
+        "magic_defense": "INT",
+        "mob_class": "VARCHAR(255)",
+        "mob_id": "INT",
+        "mob_role": "VARCHAR(255)",
+        "modes": "JSON",
+        "mvp_exp_base": "BIGINT",
+        "mvp_exp_effective": "BIGINT",
+        "name": "VARCHAR(255)",
+        "provenance_id": "VARCHAR(128)",
+        "race": "VARCHAR(255)",
+        "size": "VARCHAR(255)",
+        "source": "JSON",
+        "sp": "INT",
+        "sprite_name": "VARCHAR(255)",
+        "stats": "JSON"
+      },
+      "pk": [
+        "mob_id"
+      ]
+    },
+    "spawns": {
+      "jsonl": "spawns.jsonl",
+      "columns": [
+        "amount",
+        "boss_flag",
+        "classification_layer",
+        "display_name",
+        "event_id",
+        "map_id",
+        "mob_id",
+        "npc_id",
+        "parent_mob_id",
+        "provenance_id",
+        "respawn_max",
+        "respawn_min",
+        "respawn_unit",
+        "script_line",
+        "script_path",
+        "skill_id",
+        "source",
+        "spawn_condition",
+        "spawn_id",
+        "spawn_kind",
+        "spawn_route",
+        "spawn_type",
+        "x",
+        "x2",
+        "x_area",
+        "y",
+        "y2",
+        "y_area"
+      ],
+      "column_types": {
+        "amount": "INT",
+        "boss_flag": "INT",
+        "classification_layer": "VARCHAR(255)",
+        "display_name": "VARCHAR(255)",
+        "event_id": "VARCHAR(128)",
+        "map_id": "VARCHAR(64)",
+        "mob_id": "INT",
+        "npc_id": "VARCHAR(128)",
+        "parent_mob_id": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "respawn_max": "INT",
+        "respawn_min": "INT",
+        "respawn_unit": "VARCHAR(255)",
+        "script_line": "INT",
+        "script_path": "VARCHAR(512)",
+        "skill_id": "INT",
+        "source": "JSON",
+        "spawn_condition": "JSON",
+        "spawn_id": "VARCHAR(128)",
+        "spawn_kind": "VARCHAR(255)",
+        "spawn_route": "VARCHAR(255)",
+        "spawn_type": "VARCHAR(255)",
+        "x": "INT",
+        "x2": "INT",
+        "x_area": "INT",
+        "y": "INT",
+        "y2": "INT",
+        "y_area": "INT"
+      },
+      "pk": [
+        "spawn_id"
+      ]
+    },
+    "mob_skills": {
+      "jsonl": "mob_skills.jsonl",
+      "columns": [
+        "condition_type",
+        "condition_value",
+        "mob_id",
+        "mob_skill_id",
+        "provenance_id",
+        "rate",
+        "skill_id",
+        "skill_lv",
+        "skill_name",
+        "source_file",
+        "source_line",
+        "state",
+        "val1",
+        "vals"
+      ],
+      "column_types": {
+        "condition_type": "VARCHAR(255)",
+        "condition_value": "VARCHAR(255)",
+        "mob_id": "INT",
+        "mob_skill_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "rate": "INT",
+        "skill_id": "INT",
+        "skill_lv": "INT",
+        "skill_name": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)",
+        "source_line": "INT",
+        "state": "VARCHAR(255)",
+        "val1": "INT",
+        "vals": "JSON"
+      },
+      "pk": [
+        "mob_skill_id"
+      ]
+    },
+    "skill_summons": {
+      "jsonl": "skill_summons.jsonl",
+      "columns": [
+        "amount",
+        "conditions",
+        "parent_mob_id",
+        "provenance_id",
+        "skill_id",
+        "skill_name",
+        "source_file",
+        "source_line",
+        "summon_id",
+        "summon_kind",
+        "summoned_mob_id"
+      ],
+      "column_types": {
+        "amount": "INT",
+        "conditions": "JSON",
+        "parent_mob_id": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "skill_id": "INT",
+        "skill_name": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)",
+        "source_line": "INT",
+        "summon_id": "VARCHAR(128)",
+        "summon_kind": "VARCHAR(255)",
+        "summoned_mob_id": "INT"
+      },
+      "pk": [
+        "summon_id"
+      ]
+    },
+    "items": {
+      "jsonl": "items.jsonl",
+      "columns": [
+        "aegis_name",
+        "armor_level",
+        "assets_complete",
+        "attack",
+        "buy_base",
+        "buy_effective",
+        "buy_source",
+        "card_insert_key",
+        "card_insert_slots",
+        "classification_layer",
+        "client_gap_reason",
+        "defense",
+        "display_name",
+        "equip_level_max",
+        "equip_level_min",
+        "equip_slot_families",
+        "equip_slot_key",
+        "flags",
+        "has_item_icon",
+        "has_script",
+        "has_sprite",
+        "is_costume",
+        "item_category",
+        "item_id",
+        "item_subcategory",
+        "jobs",
+        "locations",
+        "magic_attack",
+        "name",
+        "provenance_id",
+        "range_atk",
+        "refineable",
+        "sell_base",
+        "sell_effective",
+        "sell_source",
+        "slots",
+        "source",
+        "sprite_name",
+        "subtype",
+        "type",
+        "value_was_derived",
+        "view_id",
+        "weapon_level",
+        "weight"
+      ],
+      "column_types": {
+        "aegis_name": "VARCHAR(128)",
+        "armor_level": "INT",
+        "assets_complete": "TINYINT(1)",
+        "attack": "INT",
+        "buy_base": "INT",
+        "buy_effective": "INT",
+        "buy_source": "VARCHAR(255)",
+        "card_insert_key": "VARCHAR(255)",
+        "card_insert_slots": "JSON",
+        "classification_layer": "VARCHAR(255)",
+        "client_gap_reason": "VARCHAR(255)",
+        "defense": "INT",
+        "display_name": "VARCHAR(255)",
+        "equip_level_max": "INT",
+        "equip_level_min": "INT",
+        "equip_slot_families": "JSON",
+        "equip_slot_key": "VARCHAR(255)",
+        "flags": "JSON",
+        "has_item_icon": "TINYINT(1)",
+        "has_script": "TINYINT(1)",
+        "has_sprite": "TINYINT(1)",
+        "is_costume": "TINYINT(1)",
+        "item_category": "VARCHAR(255)",
+        "item_id": "INT",
+        "item_subcategory": "VARCHAR(255)",
+        "jobs": "JSON",
+        "locations": "JSON",
+        "magic_attack": "INT",
+        "name": "VARCHAR(255)",
+        "provenance_id": "VARCHAR(128)",
+        "range_atk": "INT",
+        "refineable": "TINYINT(1)",
+        "sell_base": "INT",
+        "sell_effective": "INT",
+        "sell_source": "VARCHAR(255)",
+        "slots": "INT",
+        "source": "JSON",
+        "sprite_name": "VARCHAR(255)",
+        "subtype": "VARCHAR(255)",
+        "type": "VARCHAR(255)",
+        "value_was_derived": "TINYINT(1)",
+        "view_id": "INT",
+        "weapon_level": "INT",
+        "weight": "INT"
+      },
+      "pk": [
+        "item_id"
+      ]
+    },
+    "item_scripts": {
+      "jsonl": "item_scripts.jsonl",
+      "columns": [
+        "aegis_name",
+        "item_id",
+        "item_script_id",
+        "parse_status",
+        "parsed_effects",
+        "provenance_id",
+        "script_body",
+        "script_hash",
+        "script_kind",
+        "source_file",
+        "trigger"
+      ],
+      "column_types": {
+        "aegis_name": "VARCHAR(128)",
+        "item_id": "INT",
+        "item_script_id": "VARCHAR(128)",
+        "parse_status": "VARCHAR(255)",
+        "parsed_effects": "JSON",
+        "provenance_id": "VARCHAR(128)",
+        "script_body": "MEDIUMTEXT",
+        "script_hash": "VARCHAR(255)",
+        "script_kind": "VARCHAR(255)",
+        "source_file": "VARCHAR(512)",
+        "trigger": "VARCHAR(255)"
+      },
+      "pk": [
+        "item_script_id"
+      ]
+    },
+    "item_restrictions": {
+      "jsonl": "item_restrictions.jsonl",
+      "columns": [
+        "aegis_name",
+        "item_id",
+        "provenance_id",
+        "restriction_key",
+        "restriction_value",
+        "source_file",
+        "source_kind",
+        "source_line"
+      ],
+      "column_types": {
+        "aegis_name": "VARCHAR(128)",
+        "item_id": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "restriction_key": "VARCHAR(255)",
+        "restriction_value": "JSON",
+        "source_file": "VARCHAR(512)",
+        "source_kind": "VARCHAR(255)",
+        "source_line": "INT"
+      },
+      "pk": [
+        "item_id",
+        "restriction_key"
+      ]
+    },
+    "mob_drops": {
+      "jsonl": "drops.jsonl",
+      "columns": [
+        "boss_kind",
+        "chance_base",
+        "chance_effective",
+        "drop_category",
+        "drop_id",
+        "drop_slot",
+        "is_map_bonus",
+        "item_aegis_name",
+        "item_family",
+        "item_id",
+        "item_ratio_source",
+        "map_id",
+        "mob_id",
+        "provenance_id",
+        "random_option_group",
+        "rate_adjust",
+        "rate_key",
+        "rate_status",
+        "rate_unit",
+        "source_file",
+        "stealable"
+      ],
+      "column_types": {
+        "boss_kind": "VARCHAR(255)",
+        "chance_base": "INT",
+        "chance_effective": "INT",
+        "drop_category": "VARCHAR(255)",
+        "drop_id": "VARCHAR(128)",
+        "drop_slot": "INT",
+        "is_map_bonus": "TINYINT(1)",
+        "item_aegis_name": "VARCHAR(255)",
+        "item_family": "VARCHAR(255)",
+        "item_id": "INT",
+        "item_ratio_source": "TINYINT(1)",
+        "map_id": "VARCHAR(64)",
+        "mob_id": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "random_option_group": "VARCHAR(255)",
+        "rate_adjust": "INT",
+        "rate_key": "VARCHAR(255)",
+        "rate_status": "VARCHAR(255)",
+        "rate_unit": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)",
+        "stealable": "TINYINT(1)"
+      },
+      "pk": [
+        "drop_id"
+      ]
+    },
+    "drop_random_option_links": {
+      "jsonl": "drop_random_option_links.jsonl",
+      "columns": [
+        "drop_category",
+        "drop_id",
+        "drop_random_option_link_id",
+        "group_db_id",
+        "group_name",
+        "item_id",
+        "map_id",
+        "mob_id",
+        "provenance_id",
+        "random_option_group_id"
+      ],
+      "column_types": {
+        "drop_category": "VARCHAR(255)",
+        "drop_id": "VARCHAR(128)",
+        "drop_random_option_link_id": "VARCHAR(128)",
+        "group_db_id": "INT",
+        "group_name": "VARCHAR(128)",
+        "item_id": "INT",
+        "map_id": "VARCHAR(64)",
+        "mob_id": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "random_option_group_id": "VARCHAR(128)"
+      },
+      "pk": [
+        "drop_random_option_link_id"
+      ]
+    },
+    "npc_shops": {
+      "jsonl": "npc_shops.jsonl",
+      "columns": [
+        "cost_item_id",
+        "cost_variable",
+        "currency",
+        "discount",
+        "inventory_declared",
+        "item_count",
+        "map_id",
+        "npc_id",
+        "provenance_id",
+        "runtime_mutated",
+        "runtime_ops",
+        "script_line",
+        "script_path",
+        "shop_id",
+        "shop_name",
+        "shop_type",
+        "source",
+        "sprite",
+        "x",
+        "y"
+      ],
+      "column_types": {
+        "cost_item_id": "TINYINT(1)",
+        "cost_variable": "TINYINT(1)",
+        "currency": "VARCHAR(255)",
+        "discount": "TINYINT(1)",
+        "inventory_declared": "TINYINT(1)",
+        "item_count": "INT",
+        "map_id": "VARCHAR(64)",
+        "npc_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "runtime_mutated": "TINYINT(1)",
+        "runtime_ops": "JSON",
+        "script_line": "INT",
+        "script_path": "VARCHAR(512)",
+        "shop_id": "VARCHAR(128)",
+        "shop_name": "VARCHAR(128)",
+        "shop_type": "VARCHAR(255)",
+        "source": "JSON",
+        "sprite": "VARCHAR(255)",
+        "x": "INT",
+        "y": "INT"
+      },
+      "pk": [
+        "shop_id"
+      ]
+    },
+    "npc_shop_items": {
+      "jsonl": "npc_shop_items.jsonl",
+      "columns": [
+        "item_id",
+        "npc_id",
+        "price",
+        "price_effective",
+        "price_is_default",
+        "price_source",
+        "shop_id",
+        "stock",
+        "list_index"
+      ],
+      "column_types": {
+        "item_id": "INT",
+        "npc_id": "VARCHAR(128)",
+        "price": "INT",
+        "price_effective": "INT",
+        "price_is_default": "TINYINT(1)",
+        "price_source": "VARCHAR(255)",
+        "shop_id": "VARCHAR(128)",
+        "stock": "INT",
+        "list_index": "INT"
+      },
+      "pk": [
+        "shop_id",
+        "list_index"
+      ]
+    },
+    "npc_shop_links": {
+      "jsonl": "npc_shop_links.jsonl",
+      "columns": [
+        "caller_npc_id",
+        "is_runtime",
+        "item_count",
+        "link_id",
+        "provenance_id",
+        "resolve_status",
+        "script_line",
+        "script_path",
+        "target_name"
+      ],
+      "column_types": {
+        "caller_npc_id": "VARCHAR(128)",
+        "is_runtime": "TINYINT(1)",
+        "item_count": "INT",
+        "link_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "resolve_status": "VARCHAR(255)",
+        "script_line": "INT",
+        "script_path": "VARCHAR(512)",
+        "target_name": "VARCHAR(255)"
+      },
+      "pk": [
+        "link_id"
+      ]
+    },
+    "quests": {
+      "jsonl": "quests.jsonl",
+      "columns": [
+        "drop_count",
+        "provenance_id",
+        "quest_id",
+        "source_file",
+        "target_count",
+        "time_limit",
+        "title"
+      ],
+      "column_types": {
+        "drop_count": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "quest_id": "INT",
+        "source_file": "VARCHAR(512)",
+        "target_count": "INT",
+        "time_limit": "JSON",
+        "title": "VARCHAR(255)"
+      },
+      "pk": [
+        "quest_id"
+      ]
+    },
+    "quest_targets": {
+      "jsonl": "quest_targets.jsonl",
+      "columns": [
+        "count",
+        "location",
+        "min_level",
+        "mob_aegis_name",
+        "mob_id",
+        "mob_subindex",
+        "objective_id",
+        "quest_id",
+        "race",
+        "source_file",
+        "target_index"
+      ],
+      "column_types": {
+        "count": "INT",
+        "location": "VARCHAR(255)",
+        "min_level": "INT",
+        "mob_aegis_name": "VARCHAR(255)",
+        "mob_id": "INT",
+        "mob_subindex": "INT",
+        "objective_id": "INT",
+        "quest_id": "INT",
+        "race": "VARCHAR(255)",
+        "source_file": "VARCHAR(512)",
+        "target_index": "INT"
+      },
+      "pk": [
+        "quest_id",
+        "target_index",
+        "mob_subindex"
+      ]
+    },
+    "quest_drops": {
+      "jsonl": "quest_drops.jsonl",
+      "columns": [
+        "drop_index",
+        "item_aegis_name",
+        "item_id",
+        "mob_aegis_name",
+        "mob_id",
+        "quest_id",
+        "rate",
+        "rate_unit",
+        "source_file"
+      ],
+      "column_types": {
+        "drop_index": "INT",
+        "item_aegis_name": "VARCHAR(255)",
+        "item_id": "INT",
+        "mob_aegis_name": "VARCHAR(255)",
+        "mob_id": "INT",
+        "quest_id": "INT",
+        "rate": "INT",
+        "rate_unit": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "quest_id",
+        "drop_index"
+      ]
+    },
+    "instances": {
+      "jsonl": "instances.jsonl",
+      "columns": [
+        "enter_map_id",
+        "enter_x",
+        "enter_y",
+        "instance_id",
+        "map_count",
+        "name",
+        "provenance_id",
+        "source_file",
+        "time_limit_seconds"
+      ],
+      "column_types": {
+        "enter_map_id": "VARCHAR(64)",
+        "enter_x": "INT",
+        "enter_y": "INT",
+        "instance_id": "INT",
+        "map_count": "INT",
+        "name": "VARCHAR(255)",
+        "provenance_id": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)",
+        "time_limit_seconds": "INT"
+      },
+      "pk": [
+        "instance_id"
+      ]
+    },
+    "instance_maps": {
+      "jsonl": "instance_maps.jsonl",
+      "columns": [
+        "in_maps_catalog",
+        "instance_id",
+        "map_id",
+        "role",
+        "spawn_rows"
+      ],
+      "column_types": {
+        "in_maps_catalog": "TINYINT(1)",
+        "instance_id": "INT",
+        "map_id": "VARCHAR(64)",
+        "role": "VARCHAR(255)",
+        "spawn_rows": "INT"
+      },
+      "pk": [
+        "instance_id",
+        "map_id"
+      ]
+    },
+    "instance_npc_links": {
+      "jsonl": "instance_npc_links.jsonl",
+      "columns": [
+        "instance_id",
+        "instance_name",
+        "link_id",
+        "match_kind",
+        "npc_id",
+        "provenance_id",
+        "role",
+        "script_path"
+      ],
+      "column_types": {
+        "instance_id": "INT",
+        "instance_name": "VARCHAR(255)",
+        "link_id": "VARCHAR(128)",
+        "match_kind": "VARCHAR(255)",
+        "npc_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "role": "VARCHAR(255)",
+        "script_path": "VARCHAR(512)"
+      },
+      "pk": [
+        "link_id"
+      ]
+    },
+    "boxes": {
+      "jsonl": "boxes.jsonl",
+      "columns": [
+        "algorithms",
+        "box_id",
+        "contains_nested_box",
+        "group_key",
+        "group_name",
+        "opener_item_count",
+        "provenance_id",
+        "reward_count",
+        "source_file",
+        "subgroup_count"
+      ],
+      "column_types": {
+        "algorithms": "JSON",
+        "box_id": "VARCHAR(128)",
+        "contains_nested_box": "TINYINT(1)",
+        "group_key": "VARCHAR(128)",
+        "group_name": "VARCHAR(128)",
+        "opener_item_count": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "reward_count": "INT",
+        "source_file": "VARCHAR(512)",
+        "subgroup_count": "INT"
+      },
+      "pk": [
+        "box_id"
+      ]
+    },
+    "box_rewards": {
+      "jsonl": "box_rewards.jsonl",
+      "columns": [
+        "algorithm",
+        "amount",
+        "announced",
+        "box_id",
+        "chance_effective",
+        "chance_status",
+        "chance_unit",
+        "duration",
+        "group_name",
+        "index",
+        "item_aegis_name",
+        "item_id",
+        "random_option_group",
+        "rate",
+        "refine_max",
+        "refine_min",
+        "reward_id",
+        "reward_is_container",
+        "reward_opens_group",
+        "source_file",
+        "subgroup",
+        "subgroup_total_rate"
+      ],
+      "column_types": {
+        "algorithm": "VARCHAR(255)",
+        "amount": "INT",
+        "announced": "TINYINT(1)",
+        "box_id": "VARCHAR(128)",
+        "chance_effective": "INT",
+        "chance_status": "VARCHAR(255)",
+        "chance_unit": "VARCHAR(128)",
+        "duration": "INT",
+        "group_name": "VARCHAR(128)",
+        "index": "INT",
+        "item_aegis_name": "VARCHAR(255)",
+        "item_id": "INT",
+        "random_option_group": "VARCHAR(255)",
+        "rate": "INT",
+        "refine_max": "INT",
+        "refine_min": "INT",
+        "reward_id": "VARCHAR(128)",
+        "reward_is_container": "TINYINT(1)",
+        "reward_opens_group": "TINYINT(1)",
+        "source_file": "VARCHAR(512)",
+        "subgroup": "INT",
+        "subgroup_total_rate": "INT"
+      },
+      "pk": [
+        "reward_id"
+      ]
+    },
+    "box_item_links": {
+      "jsonl": "box_item_links.jsonl",
+      "columns": [
+        "box_id",
+        "group_key",
+        "group_name",
+        "is_container_flag",
+        "item_id",
+        "link_id",
+        "provenance_id",
+        "script_kind",
+        "source_file"
+      ],
+      "column_types": {
+        "box_id": "VARCHAR(128)",
+        "group_key": "VARCHAR(128)",
+        "group_name": "VARCHAR(128)",
+        "is_container_flag": "TINYINT(1)",
+        "item_id": "INT",
+        "link_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "script_kind": "VARCHAR(255)",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "link_id"
+      ]
+    },
+    "recipes": {
+      "jsonl": "recipes.jsonl",
+      "columns": [
+        "fail_result_item_id",
+        "fail_status",
+        "item_lv",
+        "produce_id",
+        "provenance_id",
+        "recipe_family",
+        "recipe_id",
+        "require_skill_id",
+        "require_skill_lv",
+        "require_skill_name",
+        "result_aegis_name",
+        "result_amount",
+        "result_item_id",
+        "source_file",
+        "source_kind",
+        "source_line",
+        "success_chance",
+        "success_chance_unit",
+        "success_note",
+        "success_status",
+        "zeny_cost",
+        "zeny_note",
+        "zeny_status"
+      ],
+      "column_types": {
+        "fail_result_item_id": "TINYINT(1)",
+        "fail_status": "VARCHAR(255)",
+        "item_lv": "INT",
+        "produce_id": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "recipe_family": "VARCHAR(128)",
+        "recipe_id": "VARCHAR(128)",
+        "require_skill_id": "INT",
+        "require_skill_lv": "INT",
+        "require_skill_name": "VARCHAR(128)",
+        "result_aegis_name": "VARCHAR(255)",
+        "result_amount": "INT",
+        "result_item_id": "INT",
+        "source_file": "VARCHAR(512)",
+        "source_kind": "VARCHAR(255)",
+        "source_line": "INT",
+        "success_chance": "INT",
+        "success_chance_unit": "VARCHAR(128)",
+        "success_note": "MEDIUMTEXT",
+        "success_status": "VARCHAR(255)",
+        "zeny_cost": "TINYINT(1)",
+        "zeny_note": "MEDIUMTEXT",
+        "zeny_status": "VARCHAR(255)"
+      },
+      "pk": [
+        "recipe_id"
+      ]
+    },
+    "recipe_materials": {
+      "jsonl": "recipe_materials.jsonl",
+      "columns": [
+        "aegis_name",
+        "amount",
+        "index",
+        "item_id",
+        "produce_id",
+        "provenance_id",
+        "recipe_id",
+        "recipe_material_id",
+        "role",
+        "source_file"
+      ],
+      "column_types": {
+        "aegis_name": "VARCHAR(128)",
+        "amount": "INT",
+        "index": "INT",
+        "item_id": "INT",
+        "produce_id": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "recipe_id": "VARCHAR(128)",
+        "recipe_material_id": "VARCHAR(128)",
+        "role": "VARCHAR(255)",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "recipe_material_id"
+      ]
+    },
+    "enchantments": {
+      "jsonl": "enchantments.jsonl",
+      "columns": [
+        "allow_random_options",
+        "chance_unit",
+        "enchant_db_id",
+        "enchant_id",
+        "minimum_enchantgrade",
+        "minimum_refine",
+        "provenance_id",
+        "reset_chance",
+        "reset_price",
+        "slot_order",
+        "source_file",
+        "target_count"
+      ],
+      "column_types": {
+        "allow_random_options": "TINYINT(1)",
+        "chance_unit": "VARCHAR(128)",
+        "enchant_db_id": "INT",
+        "enchant_id": "VARCHAR(128)",
+        "minimum_enchantgrade": "INT",
+        "minimum_refine": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "reset_chance": "INT",
+        "reset_price": "INT",
+        "slot_order": "JSON",
+        "source_file": "VARCHAR(512)",
+        "target_count": "INT"
+      },
+      "pk": [
+        "enchant_id"
+      ]
+    },
+    "enchant_targets": {
+      "jsonl": "enchant_targets.jsonl",
+      "columns": [
+        "aegis_name",
+        "enchant_db_id",
+        "enchant_id",
+        "enchant_target_id",
+        "item_id",
+        "provenance_id",
+        "source_file"
+      ],
+      "column_types": {
+        "aegis_name": "VARCHAR(128)",
+        "enchant_db_id": "INT",
+        "enchant_id": "VARCHAR(128)",
+        "enchant_target_id": "VARCHAR(128)",
+        "item_id": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "enchant_target_id"
+      ]
+    },
+    "enchant_options": {
+      "jsonl": "enchant_options.jsonl",
+      "columns": [
+        "aegis_name",
+        "chance",
+        "chance_unit",
+        "enchant_db_id",
+        "enchant_id",
+        "enchant_option_id",
+        "enchantgrade",
+        "item_id",
+        "kind",
+        "provenance_id",
+        "slot",
+        "slot_price",
+        "source_file"
+      ],
+      "column_types": {
+        "aegis_name": "VARCHAR(128)",
+        "chance": "INT",
+        "chance_unit": "VARCHAR(128)",
+        "enchant_db_id": "INT",
+        "enchant_id": "VARCHAR(128)",
+        "enchant_option_id": "VARCHAR(128)",
+        "enchantgrade": "INT",
+        "item_id": "INT",
+        "kind": "VARCHAR(255)",
+        "provenance_id": "VARCHAR(128)",
+        "slot": "INT",
+        "slot_price": "INT",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "enchant_option_id"
+      ]
+    },
+    "enchant_perfect": {
+      "jsonl": "enchant_perfect.jsonl",
+      "columns": [
+        "aegis_name",
+        "enchant_db_id",
+        "enchant_id",
+        "enchant_perfect_id",
+        "item_id",
+        "price",
+        "provenance_id",
+        "slot",
+        "source_file"
+      ],
+      "column_types": {
+        "aegis_name": "VARCHAR(128)",
+        "enchant_db_id": "INT",
+        "enchant_id": "VARCHAR(128)",
+        "enchant_perfect_id": "VARCHAR(128)",
+        "item_id": "INT",
+        "price": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "slot": "INT",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "enchant_perfect_id"
+      ]
+    },
+    "enchant_upgrades": {
+      "jsonl": "enchant_upgrades.jsonl",
+      "columns": [
+        "enchant_db_id",
+        "enchant_id",
+        "enchant_upgrade_id",
+        "from_aegis_name",
+        "from_item_id",
+        "price",
+        "provenance_id",
+        "slot",
+        "source_file",
+        "to_aegis_name",
+        "to_item_id"
+      ],
+      "column_types": {
+        "enchant_db_id": "INT",
+        "enchant_id": "VARCHAR(128)",
+        "enchant_upgrade_id": "VARCHAR(128)",
+        "from_aegis_name": "VARCHAR(255)",
+        "from_item_id": "INT",
+        "price": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "slot": "INT",
+        "source_file": "VARCHAR(512)",
+        "to_aegis_name": "VARCHAR(255)",
+        "to_item_id": "INT"
+      },
+      "pk": [
+        "enchant_upgrade_id"
+      ]
+    },
+    "enchant_materials": {
+      "jsonl": "enchant_materials.jsonl",
+      "columns": [
+        "aegis_name",
+        "amount",
+        "context",
+        "enchant_material_id",
+        "index",
+        "item_id",
+        "parent_id",
+        "provenance_id",
+        "source_file"
+      ],
+      "column_types": {
+        "aegis_name": "VARCHAR(128)",
+        "amount": "INT",
+        "context": "VARCHAR(255)",
+        "enchant_material_id": "VARCHAR(128)",
+        "index": "INT",
+        "item_id": "INT",
+        "parent_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "enchant_material_id"
+      ]
+    },
+    "item_combo_groups": {
+      "jsonl": "item_combo_groups.jsonl",
+      "columns": [
+        "combo_group_id",
+        "parse_status",
+        "parsed_effects",
+        "provenance_id",
+        "script_body",
+        "script_hash",
+        "set_count",
+        "source_file"
+      ],
+      "column_types": {
+        "combo_group_id": "VARCHAR(128)",
+        "parse_status": "VARCHAR(255)",
+        "parsed_effects": "JSON",
+        "provenance_id": "VARCHAR(128)",
+        "script_body": "MEDIUMTEXT",
+        "script_hash": "VARCHAR(255)",
+        "set_count": "INT",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "combo_group_id"
+      ]
+    },
+    "item_combo_sets": {
+      "jsonl": "item_combo_sets.jsonl",
+      "columns": [
+        "combo_group_id",
+        "combo_set_id",
+        "index",
+        "member_count",
+        "provenance_id",
+        "source_file"
+      ],
+      "column_types": {
+        "combo_group_id": "VARCHAR(128)",
+        "combo_set_id": "VARCHAR(128)",
+        "index": "INT",
+        "member_count": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "combo_set_id"
+      ]
+    },
+    "item_combo_members": {
+      "jsonl": "item_combo_members.jsonl",
+      "columns": [
+        "aegis_name",
+        "combo_group_id",
+        "combo_member_id",
+        "combo_set_id",
+        "index",
+        "item_id",
+        "provenance_id",
+        "source_file"
+      ],
+      "column_types": {
+        "aegis_name": "VARCHAR(128)",
+        "combo_group_id": "VARCHAR(128)",
+        "combo_member_id": "VARCHAR(128)",
+        "combo_set_id": "VARCHAR(128)",
+        "index": "INT",
+        "item_id": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "combo_member_id"
+      ]
+    },
+    "item_dependencies": {
+      "jsonl": "item_dependencies.jsonl",
+      "columns": [
+        "amount",
+        "barter_name",
+        "box_id",
+        "combo_group_id",
+        "combo_set_id",
+        "dependency_kind",
+        "from_item_id",
+        "func_name",
+        "group_name",
+        "item_dependency_id",
+        "provenance_id",
+        "recipe_id",
+        "role",
+        "script_path",
+        "source_ref",
+        "to_item_id"
+      ],
+      "column_types": {
+        "amount": "INT",
+        "barter_name": "VARCHAR(128)",
+        "box_id": "VARCHAR(128)",
+        "combo_group_id": "VARCHAR(128)",
+        "combo_set_id": "VARCHAR(128)",
+        "dependency_kind": "VARCHAR(255)",
+        "from_item_id": "INT",
+        "func_name": "VARCHAR(255)",
+        "group_name": "VARCHAR(128)",
+        "item_dependency_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "recipe_id": "VARCHAR(128)",
+        "role": "VARCHAR(255)",
+        "script_path": "VARCHAR(512)",
+        "source_ref": "VARCHAR(255)",
+        "to_item_id": "INT"
+      },
+      "pk": [
+        "item_dependency_id"
+      ]
+    },
+    "barters": {
+      "jsonl": "barters.jsonl",
+      "columns": [
+        "barter_id",
+        "barter_name",
+        "direction",
+        "map_name",
+        "npc_id",
+        "provenance_id",
+        "source_file",
+        "sprite",
+        "x",
+        "y"
+      ],
+      "column_types": {
+        "barter_id": "VARCHAR(128)",
+        "barter_name": "VARCHAR(128)",
+        "direction": "TINYINT(1)",
+        "map_name": "TINYINT(1)",
+        "npc_id": "TINYINT(1)",
+        "provenance_id": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)",
+        "sprite": "TINYINT(1)",
+        "x": "INT",
+        "y": "INT"
+      },
+      "pk": [
+        "barter_id"
+      ]
+    },
+    "barter_items": {
+      "jsonl": "barter_items.jsonl",
+      "columns": [
+        "aegis_name",
+        "barter_id",
+        "barter_item_id",
+        "barter_name",
+        "index",
+        "item_id",
+        "provenance_id",
+        "refine",
+        "source_file",
+        "stock",
+        "zeny"
+      ],
+      "column_types": {
+        "aegis_name": "VARCHAR(128)",
+        "barter_id": "VARCHAR(128)",
+        "barter_item_id": "VARCHAR(128)",
+        "barter_name": "VARCHAR(128)",
+        "index": "INT",
+        "item_id": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "refine": "INT",
+        "source_file": "VARCHAR(512)",
+        "stock": "INT",
+        "zeny": "INT"
+      },
+      "pk": [
+        "barter_item_id"
+      ]
+    },
+    "barter_required_items": {
+      "jsonl": "barter_required_items.jsonl",
+      "columns": [
+        "aegis_name",
+        "amount",
+        "barter_id",
+        "barter_item_id",
+        "barter_name",
+        "barter_required_id",
+        "item_id",
+        "offer_index",
+        "provenance_id",
+        "refine",
+        "req_index",
+        "source_file"
+      ],
+      "column_types": {
+        "aegis_name": "VARCHAR(128)",
+        "amount": "INT",
+        "barter_id": "VARCHAR(128)",
+        "barter_item_id": "VARCHAR(128)",
+        "barter_name": "VARCHAR(128)",
+        "barter_required_id": "VARCHAR(128)",
+        "item_id": "INT",
+        "offer_index": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "refine": "INT",
+        "req_index": "INT",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "barter_required_id"
+      ]
+    },
+    "random_options": {
+      "jsonl": "random_options.jsonl",
+      "columns": [
+        "option_db_id",
+        "option_name",
+        "provenance_id",
+        "random_option_id",
+        "script",
+        "source_file"
+      ],
+      "column_types": {
+        "option_db_id": "INT",
+        "option_name": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "random_option_id": "VARCHAR(128)",
+        "script": "MEDIUMTEXT",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "random_option_id"
+      ]
+    },
+    "random_option_groups": {
+      "jsonl": "random_option_groups.jsonl",
+      "columns": [
+        "group_db_id",
+        "group_name",
+        "max_random",
+        "provenance_id",
+        "random_option_group_id",
+        "source_file"
+      ],
+      "column_types": {
+        "group_db_id": "INT",
+        "group_name": "VARCHAR(128)",
+        "max_random": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "random_option_group_id": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "random_option_group_id"
+      ]
+    },
+    "random_option_group_slots": {
+      "jsonl": "random_option_group_slots.jsonl",
+      "columns": [
+        "chance",
+        "chance_unit",
+        "group_db_id",
+        "group_name",
+        "group_slot_entry_id",
+        "index",
+        "max_value",
+        "min_value",
+        "option_db_id",
+        "option_name",
+        "param",
+        "provenance_id",
+        "random_option_group_id",
+        "slot",
+        "source_file"
+      ],
+      "column_types": {
+        "chance": "INT",
+        "chance_unit": "VARCHAR(128)",
+        "group_db_id": "INT",
+        "group_name": "VARCHAR(128)",
+        "group_slot_entry_id": "VARCHAR(128)",
+        "index": "INT",
+        "max_value": "INT",
+        "min_value": "INT",
+        "option_db_id": "INT",
+        "option_name": "VARCHAR(128)",
+        "param": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "random_option_group_id": "VARCHAR(128)",
+        "slot": "INT",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "group_slot_entry_id"
+      ]
+    },
+    "random_option_group_random": {
+      "jsonl": "random_option_group_random.jsonl",
+      "columns": [
+        "chance",
+        "chance_unit",
+        "group_db_id",
+        "group_name",
+        "group_random_entry_id",
+        "index",
+        "max_value",
+        "min_value",
+        "option_db_id",
+        "option_name",
+        "param",
+        "provenance_id",
+        "random_option_group_id",
+        "source_file"
+      ],
+      "column_types": {
+        "chance": "INT",
+        "chance_unit": "VARCHAR(128)",
+        "group_db_id": "INT",
+        "group_name": "VARCHAR(128)",
+        "group_random_entry_id": "VARCHAR(128)",
+        "index": "INT",
+        "max_value": "INT",
+        "min_value": "INT",
+        "option_db_id": "INT",
+        "option_name": "VARCHAR(128)",
+        "param": "INT",
+        "provenance_id": "VARCHAR(128)",
+        "random_option_group_id": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)"
+      },
+      "pk": [
+        "group_random_entry_id"
+      ]
+    },
+    "npc_enchant_sources": {
+      "jsonl": "npc_enchant_sources.jsonl",
+      "columns": [
+        "getitem2_count",
+        "kind",
+        "npc_enchant_source_id",
+        "provenance_id",
+        "script_path",
+        "stone_count",
+        "target_count",
+        "transform_count"
+      ],
+      "column_types": {
+        "getitem2_count": "INT",
+        "kind": "VARCHAR(255)",
+        "npc_enchant_source_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "script_path": "VARCHAR(512)",
+        "stone_count": "INT",
+        "target_count": "INT",
+        "transform_count": "INT"
+      },
+      "pk": [
+        "npc_enchant_source_id"
+      ]
+    },
+    "npc_enchant_items": {
+      "jsonl": "npc_enchant_items.jsonl",
+      "columns": [
+        "evidence",
+        "item_id",
+        "npc_enchant_item_id",
+        "npc_enchant_source_id",
+        "provenance_id",
+        "role",
+        "script_path"
+      ],
+      "column_types": {
+        "evidence": "JSON",
+        "item_id": "INT",
+        "npc_enchant_item_id": "VARCHAR(128)",
+        "npc_enchant_source_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "role": "VARCHAR(255)",
+        "script_path": "VARCHAR(512)"
+      },
+      "pk": [
+        "npc_enchant_item_id"
+      ]
+    },
+    "npc_item_transforms": {
+      "jsonl": "npc_item_transforms.jsonl",
+      "columns": [
+        "from_item_id",
+        "func_name",
+        "npc_enchant_source_id",
+        "npc_item_transform_id",
+        "provenance_id",
+        "script_path",
+        "to_item_id",
+        "transform_kind"
+      ],
+      "column_types": {
+        "from_item_id": "INT",
+        "func_name": "VARCHAR(255)",
+        "npc_enchant_source_id": "VARCHAR(128)",
+        "npc_item_transform_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "script_path": "VARCHAR(512)",
+        "to_item_id": "INT",
+        "transform_kind": "VARCHAR(255)"
+      },
+      "pk": [
+        "npc_item_transform_id"
+      ]
+    },
+    "acquisition_outputs": {
+      "jsonl": "acquisition_outputs.jsonl",
+      "columns": [
+        "acquisition_output_id",
+        "barter_name",
+        "box_id",
+        "command",
+        "from_item_id",
+        "func_name",
+        "group_name",
+        "item_id",
+        "map_id",
+        "mob_id",
+        "npc_id",
+        "price",
+        "probability",
+        "probability_unit",
+        "provenance_id",
+        "quantity_max",
+        "quantity_min",
+        "refine",
+        "role",
+        "script_path",
+        "source_ref",
+        "source_type",
+        "stock",
+        "zeny",
+        "list_index"
+      ],
+      "column_types": {
+        "acquisition_output_id": "VARCHAR(128)",
+        "barter_name": "VARCHAR(128)",
+        "box_id": "VARCHAR(128)",
+        "command": "VARCHAR(255)",
+        "from_item_id": "INT",
+        "func_name": "VARCHAR(255)",
+        "group_name": "VARCHAR(128)",
+        "item_id": "INT",
+        "map_id": "VARCHAR(64)",
+        "mob_id": "INT",
+        "npc_id": "VARCHAR(128)",
+        "price": "INT",
+        "probability": "INT",
+        "probability_unit": "VARCHAR(255)",
+        "provenance_id": "VARCHAR(128)",
+        "quantity_max": "INT",
+        "quantity_min": "INT",
+        "refine": "INT",
+        "role": "VARCHAR(255)",
+        "script_path": "VARCHAR(512)",
+        "source_ref": "VARCHAR(255)",
+        "source_type": "VARCHAR(255)",
+        "stock": "INT",
+        "zeny": "INT",
+        "list_index": "INT"
+      },
+      "pk": [
+        "acquisition_output_id",
+        "list_index"
+      ]
+    },
+    "dataset_rates": {
+      "jsonl": "dataset_rates.jsonl",
+      "columns": [
+        "group",
+        "key",
+        "unit",
+        "value"
+      ],
+      "column_types": {
+        "group": "VARCHAR(255)",
+        "key": "VARCHAR(255)",
+        "unit": "VARCHAR(128)",
+        "value": "INT"
+      },
+      "pk": [
+        "key"
+      ]
+    },
+    "dataset_level_penalty": {
+      "jsonl": "level_penalty.jsonl",
+      "columns": [
+        "difference",
+        "penalty_id",
+        "provenance_id",
+        "rate",
+        "rate_unit",
+        "source_file",
+        "type"
+      ],
+      "column_types": {
+        "difference": "INT",
+        "penalty_id": "VARCHAR(128)",
+        "provenance_id": "VARCHAR(128)",
+        "rate": "INT",
+        "rate_unit": "VARCHAR(128)",
+        "source_file": "VARCHAR(512)",
+        "type": "VARCHAR(255)"
+      },
+      "pk": [
+        "penalty_id"
+      ]
+    },
+    "npc_functions": {
+      "jsonl": null,
+      "columns": [
+        "npc_id",
+        "function_name"
+      ],
+      "column_types": {
+        "npc_id": "VARCHAR(128)",
+        "function_name": "VARCHAR(64)"
+      },
+      "pk": [
+        "npc_id",
+        "function_name"
+      ]
+    },
+    "npc_shop_link_shops": {
+      "jsonl": null,
+      "columns": [
+        "link_id",
+        "shop_id"
+      ],
+      "column_types": {
+        "link_id": "VARCHAR(128)",
+        "shop_id": "VARCHAR(128)"
+      },
+      "pk": [
+        "link_id",
+        "shop_id"
+      ]
+    },
+    "source_provenance": {
+      "jsonl": null,
+      "columns": [
+        "provenance_id",
+        "domain",
+        "record_id",
+        "source_kind",
+        "source_path",
+        "source_ref",
+        "transform"
+      ],
+      "column_types": {
+        "provenance_id": "CHAR(40)",
+        "domain": "VARCHAR(64)",
+        "record_id": "VARCHAR(128)",
+        "source_kind": "VARCHAR(64)",
+        "source_path": "VARCHAR(512)",
+        "source_ref": "VARCHAR(256)",
+        "transform": "VARCHAR(64)"
+      },
+      "pk": [
+        "provenance_id"
+      ]
+    },
+    "dataset_metadata": {
+      "jsonl": null,
+      "columns": [
+        "dataset_version",
+        "generated_at",
+        "source_fingerprint",
+        "notes"
+      ],
+      "column_types": {
+        "dataset_version": "VARCHAR(64)",
+        "generated_at": "DATETIME",
+        "source_fingerprint": "CHAR(64)",
+        "notes": "JSON"
+      },
+      "pk": [
+        "dataset_version"
+      ]
+    }
+  },
+  "jsonl_to_table": {
+    "maps": "maps",
+    "map_connections": "map_connections",
+    "map_distances": "map_distances",
+    "map_routes": "map_routes",
+    "npcs": "npcs",
+    "npc_quest_links": "npc_quests",
+    "npc_script_evidence": "npc_script_evidence",
+    "npc_script_rewards": "npc_script_rewards",
+    "mobs": "mobs",
+    "spawns": "spawns",
+    "mob_skills": "mob_skills",
+    "skill_summons": "skill_summons",
+    "items": "items",
+    "item_scripts": "item_scripts",
+    "item_restrictions": "item_restrictions",
+    "drops": "mob_drops",
+    "drop_random_option_links": "drop_random_option_links",
+    "npc_shops": "npc_shops",
+    "npc_shop_items": "npc_shop_items",
+    "npc_shop_links": "npc_shop_links",
+    "quests": "quests",
+    "quest_targets": "quest_targets",
+    "quest_drops": "quest_drops",
+    "instances": "instances",
+    "instance_maps": "instance_maps",
+    "instance_npc_links": "instance_npc_links",
+    "boxes": "boxes",
+    "box_rewards": "box_rewards",
+    "box_item_links": "box_item_links",
+    "recipes": "recipes",
+    "recipe_materials": "recipe_materials",
+    "enchantments": "enchantments",
+    "enchant_targets": "enchant_targets",
+    "enchant_options": "enchant_options",
+    "enchant_perfect": "enchant_perfect",
+    "enchant_upgrades": "enchant_upgrades",
+    "enchant_materials": "enchant_materials",
+    "item_combo_groups": "item_combo_groups",
+    "item_combo_sets": "item_combo_sets",
+    "item_combo_members": "item_combo_members",
+    "item_dependencies": "item_dependencies",
+    "barters": "barters",
+    "barter_items": "barter_items",
+    "barter_required_items": "barter_required_items",
+    "random_options": "random_options",
+    "random_option_groups": "random_option_groups",
+    "random_option_group_slots": "random_option_group_slots",
+    "random_option_group_random": "random_option_group_random",
+    "npc_enchant_sources": "npc_enchant_sources",
+    "npc_enchant_items": "npc_enchant_items",
+    "npc_item_transforms": "npc_item_transforms",
+    "acquisition_outputs": "acquisition_outputs",
+    "dataset_rates": "dataset_rates",
+    "level_penalty": "dataset_level_penalty"
+  }
+}

@@ -4,6 +4,6 @@ table_prefix: ozro_
 mysql:
   host: 127.0.0.1
   port: 3306
-  user: ozro
-  password: ozro
-  database: ozro_data
+  user: ragnarok
+  password: ragnarok
+  database: rathena

@@ -1,6 +1,6 @@
 # ozro-data
 
-Master World Dataset for OzRo. Regenerates SQL from rAthena + client GRF sources.
+Master World Dataset for OzRo. Extracts rAthena + client GRF sources to JSONL, then syncs into MySQL (`ozro_*`).
 
 ```bash
 python3 -m venv .venv && . .venv/bin/activate
@@ -35,7 +35,9 @@ python pipeline.py extract acquisition      # union drops/shops/barters/boxes/re
 python pipeline.py extract item_dependencies  # §22.2 consume/produce/socket/combo/box edges
 python pipeline.py extract npc_script_rewards # literal getitem/getitembound → NPC
 python pipeline.py extract closure_sanity   # Etapa 3 closure checks + smoke map list
+python pipeline.py schema --reset           # Etapa 5: DROP+CREATE ozro_* (MySQL in config/database.yml)
+python pipeline.py sync                     # Etapa 5: full-replace JSONL → ozro_*
 ```
 
 
-Paths: `config/extractor.yml`. Schema: `database/schema/`. Final field docs: later (`DATA.md`).
+Paths: `config/extractor.yml`. Schema: `database/schema/`. Delta vs E1: `database/SCHEMA_DELTA.md`.

@@ -73,6 +73,24 @@ def cmd_resolve(_: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_schema(args: argparse.Namespace) -> int:
+    """Etapa 5: apply ozro_* DDL (optionally DROP + recreate)."""
+    from database import apply_schema
+
+    summary = apply_schema(ROOT, reset=bool(args.reset))
+    print(json.dumps(summary, indent=2))
+    return 0
+
+
+def cmd_sync(_: argparse.Namespace) -> int:
+    """Etapa 5: full-replace sync reports JSONL → ozro_* tables."""
+    from database import sync_dataset
+
+    summary = sync_dataset(ROOT)
+    print(json.dumps(summary, indent=2))
+    return 0
+
+
 def cmd_extract(args: argparse.Namespace) -> int:
     domain = args.domain
     if domain == "maps":
@@ -234,6 +252,19 @@ def main() -> int:
         help="entity domain to extract",
     )
     p_ext.set_defaults(func=cmd_extract)
+    p_schema = sub.add_parser(
+        "schema", help="Etapa 5: apply ozro_* schema (use --reset to DROP first)"
+    )
+    p_schema.add_argument(
+        "--reset",
+        action="store_true",
+        help="DROP all ozro_* tables then CREATE from 001_master.sql",
+    )
+    p_schema.set_defaults(func=cmd_schema)
+    p_sync = sub.add_parser(
+        "sync", help="Etapa 5: full-replace sync JSONL reports into ozro_* tables"
+    )
+    p_sync.set_defaults(func=cmd_sync)
     args = parser.parse_args()
     return args.func(args)
 
