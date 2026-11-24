@@ -53,13 +53,25 @@ def _iter_jsonl(path: Path) -> Iterable[dict[str, Any]]:
                 yield json.loads(line)
 
 
+def _hash_file(path: Path, *, chunk_size: int = 1024 * 1024) -> bytes:
+    """SHA-256 of file contents without loading the whole file into RAM."""
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        while True:
+            chunk = f.read(chunk_size)
+            if not chunk:
+                break
+            h.update(chunk)
+    return h.digest()
+
+
 def _fingerprint(paths: list[Path]) -> str:
     h = hashlib.sha256()
     for p in sorted(paths, key=lambda x: str(x)):
         h.update(p.name.encode())
         h.update(b"\0")
         if p.is_file():
-            h.update(hashlib.sha256(p.read_bytes()).digest())
+            h.update(_hash_file(p))
     return h.hexdigest()
 
 
