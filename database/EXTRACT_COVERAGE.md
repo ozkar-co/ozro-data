@@ -28,7 +28,7 @@ Re-run mindset: for each domain, compare source keys vs JSONL keys (allowlist). 
 
 | Area | Status |
 |---|---|
-| Core stats, HP/EXP effective, element/race/size, modes, drops→`ozro_mob_drops` | OK |
+| Core stats, HP/EXP effective, element/race/size, modes (YAML) + modes_effective (Ai∨Modes∨Class), drops→`ozro_mob_drops` | OK |
 | GroupId / Title | OK — in `stats.group_id` / `stats.title` |
 
 ---

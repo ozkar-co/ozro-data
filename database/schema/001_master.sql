@@ -196,6 +196,7 @@ CREATE TABLE IF NOT EXISTS ozro_mobs (
   mob_id INT NOT NULL,
   mob_role VARCHAR(255) NULL,
   modes JSON NULL,
+  modes_effective JSON NULL,
   mvp_exp_base BIGINT NULL,
   mvp_exp_effective BIGINT NULL,
   name VARCHAR(255) NULL,

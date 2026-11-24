@@ -12,6 +12,7 @@ import yaml
 
 from discovery.scan import _load_extractor_config
 from resolvers import ConfigurationResolver
+from resolvers.mob_modes import compute_modes_effective
 
 # Quest props studied in Etapa 2 (Rebellion targets + Prontera castle plate).
 _QUEST_PROP_IDS = frozenset({3169, 3170, 3455})
@@ -288,6 +289,11 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
             "element": row.get("Element"),
             "element_level": row.get("ElementLevel"),
             "modes": modes,
+            "modes_effective": compute_modes_effective(
+                ai=row.get("Ai"),
+                modes=modes_dict,
+                mob_class=row.get("Class") or "Normal",
+            ),
             "sprite_name": sprite_name,
             "has_sprite": has_sprite,
             "client_gap_reason": gap.get("reason") if gap else None,
@@ -311,11 +317,14 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
     by_class: dict[str, int] = {}
     by_role: dict[str, int] = {}
     by_hp_status: dict[str, int] = {}
+    mode_eff_keys: dict[str, int] = {}
     for r in records:
         by_class[r["mob_class"]] = by_class.get(r["mob_class"], 0) + 1
         by_role[r["mob_role"]] = by_role.get(r["mob_role"], 0) + 1
         st = r.get("hp_status") or "?"
         by_hp_status[st] = by_hp_status.get(st, 0) + 1
+        for k in (r.get("modes_effective") or {}):
+            mode_eff_keys[k] = mode_eff_keys.get(k, 0) + 1
 
     summary = {
         "domain": "mobs",
@@ -329,9 +338,16 @@ def extract_mobs(project_root: Path | None = None) -> dict[str, Any]:
         "by_class": by_class,
         "by_role": by_role,
         "by_hp_status": by_hp_status,
+        "modes_effective_key_counts": dict(
+            sorted(mode_eff_keys.items(), key=lambda kv: (-kv[1], kv[0]))
+        ),
         "hp_policy": (
             "slave/map: mob_db Hp × monster_hp_rate; "
             "skill_summon without Hp: not_extractable (caster formula)"
+        ),
+        "modes_policy": (
+            "modes = YAML Modes sparse; modes_effective = Ai bitmask "
+            "| Modes | Class overlays (mob.cpp parse + loadingFinished)"
         ),
         "spawn_evidence_mobs": len(spawn_roles),
         "wrote": str(out_path),

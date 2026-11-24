@@ -5,6 +5,11 @@ Master World Dataset for OzRo. Extracts rAthena + client GRF sources to JSONL, t
 ```bash
 python3 -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt
+
+# Full rebuild (discover → resolve → all extracts → schema --reset → sync):
+./rebuild.sh
+
+# Or step by step:
 python pipeline.py discover
 python pipeline.py resolve        # Etapa 4: rates catalog → configuration_effective.json + dataset_rates.jsonl
 python pipeline.py extract level_penalty  # Pre-E5: flat Type/Difference/Rate

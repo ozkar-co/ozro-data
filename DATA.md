@@ -44,7 +44,7 @@ python pipeline.py sync             # after extracts
 | Recipe / box / enchant chance | see `*_unit` / `chance_unit` on the row |
 | IDs | Stable hashes (`CHAR(40)` / `VARCHAR(128)`) or natural ids (`item_id`, `mob_id`, `quest_id`, `map_id`) |
 | Booleans | `TINYINT(1)` |
-| JSON blobs | lists/dicts from extract (`modes`, `flags`, `connection_ids`, …) |
+| JSON blobs | lists/dicts from extract (`modes`, `modes_effective`, `flags`, `connection_ids`, …) |
 | Duplicate shop lines | `list_index` in PK (`npc_shop_items`, `acquisition_outputs`) |
 
 **Join keys (most used):**
@@ -99,7 +99,7 @@ Row counts are approximate from the first E5 sync; re-check `sync_summary.json` 
 
 | Table | PK | Rows | Role |
 |---|---|---|---|
-| `ozro_mobs` | `mob_id` | 2675 | Stats + `hp_*` / EXP effective |
+| `ozro_mobs` | `mob_id` | 2675 | Stats + `hp_*` / EXP effective; `modes` (YAML) + `modes_effective` (Ai∨Modes∨Class) |
 | `ozro_spawns` | `spawn_id` | 9375 | Natural / script / instance; `spawn_route`, `npc_id` |
 | `ozro_mob_skills` | `mob_skill_id` | 14449 | mob_skill_db |
 | `ozro_skill_summons` | `summon_id` | 1177 | Summon/slave links |

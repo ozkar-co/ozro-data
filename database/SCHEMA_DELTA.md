@@ -47,7 +47,7 @@ Compares brief §25.1 / [`schema/001_master.sql`](schema/001_master.sql) (Etapa 
 
 | Table | Notable new / real columns vs E1 stub |
 |---|---|
-| `ozro_mobs` | `hp_status`, `hp_note`, `classification_layer`, `client_gap_reason`, `source` JSON |
+| `ozro_mobs` | `hp_status`, `hp_note`, `classification_layer`, `client_gap_reason`, `source` JSON, `modes_effective` JSON (Ai∨Modes∨Class) |
 | `ozro_spawns` | `npc_id`, `spawn_route`, `spawn_kind`, `boss_flag`, `x2`/`y2`, `classification_layer`, `source` JSON |
 | `ozro_mob_drops` | `item_aegis_name`, `item_ratio_source`, `random_option_group` |
 | `ozro_npc_shops` | `inventory_declared`, `runtime_mutated`, `runtime_ops` JSON, `map_id`, `x`/`y`, `sprite` |
