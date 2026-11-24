@@ -12,23 +12,25 @@ Single integration reference for consumers (web, CLI, market tools).
 | **Source → JSONL coverage** | [`database/EXTRACT_COVERAGE.md`](database/EXTRACT_COVERAGE.md) — what was / was not extracted |
 | Column map (machine) | `database/table_specs.json` |
 | Variable craft formulas | `rathena/.../brief-02/recipes_variable_formulas.md` |
-| Regenerate | `pipeline.py resolve` → `extract …` → `schema [--reset]` → `sync` |
+| Regenerate | `./rebuild.sh` or `pipeline.py resolve` → `extract …` → `schema [--reset]` → `sync` |
 
 Last verified sync fingerprint / counts: see `reports/sync_summary.json` and `ozro_dataset_metadata`.
 
-**Coverage rule:** SQL only contains what extractors wrote to JSONL. A missing YAML field is an extract gap. Client item **descriptions** are intentionally out (translations). Equip constraints (`classes`, `gender`, `gradable`, `delay`, `no_use`, `stack`) are in `ozro_items`.
+**Coverage rule:** SQL only contains what extractors wrote to JSONL. A missing YAML field is an extract gap. Client item **descriptions** are intentionally out (translations). Equip constraints (`classes`, `gender`, `gradable`, `delay`, `no_use`, `stack`) are in `ozro_items`. Mob behavior for UI: prefer `modes_effective`, not sparse YAML `modes`.
 
 ---
 
 ## 1. How to use this DB
 
 1. Read **only** `ozro_*`.
-2. Prefer `*_effective` fields (HP, EXP, buy/sell, drop/box chances) — already resolved for OzRo rates.
+2. Prefer `*_effective` fields (HP, EXP, buy/sell, drop/box chances, **`modes_effective`**) — already resolved for OzRo rates / runtime behavior.
 3. Respect status flags (`success_status`, `hp_status`, `rate_status`, …). `NULL` chance/HP + status ≠ “0%” / “0 HP”.
 4. `level_penalty` is **not** baked into drop/EXP rows. Apply at query time if the UI knows player vs mob level.
 5. Full replace on sync: empty window is OK; no incremental merge API.
 
 ```bash
+./rebuild.sh                        # full discover → extract → schema --reset → sync
+# or after extracts only:
 python pipeline.py schema --reset   # first time / contract change
 python pipeline.py sync             # after extracts
 ```
@@ -99,14 +101,29 @@ Row counts are approximate from the first E5 sync; re-check `sync_summary.json` 
 
 | Table | PK | Rows | Role |
 |---|---|---|---|
-| `ozro_mobs` | `mob_id` | 2675 | Stats + `hp_*` / EXP effective; `modes` (YAML) + `modes_effective` (Ai∨Modes∨Class) |
+| `ozro_mobs` | `mob_id` | 2675 | Stats + `hp_*` / EXP effective + behavior modes |
 | `ozro_spawns` | `spawn_id` | 9375 | Natural / script / instance; `spawn_route`, `npc_id` |
 | `ozro_mob_skills` | `mob_skill_id` | 14449 | mob_skill_db |
-| `ozro_skill_summons` | `summon_id` | 1177 | Summon/slave links |
+| `ozro_skill_summons` | `summon_id` | 1177 | Summon/slave links (`summon_kind=mob_slave` today; player skill summons deferred) |
 
 **`hp_status`:** `from_mob_db` (normal) · `not_extractable` (ABR/bionic caster formula — HP NULL).
 
 **`spawn_route` (sample):** `npc_script` · `instance_script` · NULL (natural headers).
+
+**Behavior modes (`ozro_mobs`):**
+
+| Column | Layer | Meaning |
+|---|---|---|
+| `modes` | original | Sparse YAML `Modes` only (e.g. `Mvp`, `Detector`, `Ignore*`). Most mobs are `NULL`/`{}`. **Not** full in-game behavior. |
+| `modes_effective` | normalized | Runtime `status.mode` after load: **Ai bitmask ∨ YAML Modes ∨ Class overlays** (same rules as `mob.cpp` parse + `loadingFinished`). Sparse `{ "Aggressive": true, … }`. |
+| `stats.ai` | original | YAML `Ai` (`"02"`, `"10"`, `Abr_Offensive`, …) kept inside `stats` JSON. |
+| `mob_class` | original | YAML `Class` (`Normal` / `Boss` / `Guardian` / `Battlefield` / `Event`). Boss overlays add Detector + StatusImmune + KnockBackImmune even when absent from `modes`. |
+
+Consumer rule: encyclopedia / filters / tags → **`modes_effective`**. Keep `modes` only when you need “what the YAML declared”.
+
+Observed effective keys (counts vary by sync): `CanMove`, `CanAttack`, `Aggressive`, `Looter`, `Assist`, `Angry`, `CastSensorIdle`, `CastSensorChase`, `ChangeChase`, `ChangeTargetMelee`, `ChangeTargetChase`, `Detector`, `Mvp`, `StatusImmune`, `KnockBackImmune`, `FixedItemDrop`, `TeleportBlock`, `IgnoreMelee` / `IgnoreMagic` / `IgnoreRanged` / `IgnoreMisc`, `SkillImmune`, `NoRandomWalk`, `RandomTarget`, `TargetWeak`, …
+
+Logic lives in `resolvers/mob_modes.py` (extract → `mobs.jsonl` → SQL). Assumes `monster_active_enable: yes` (OzRo default; Aggressive is not stripped).
 
 ### 3.5 Items
 
@@ -171,6 +188,7 @@ Not in SQL (by design): client lore/description text.
 |---|---|---|
 | `recipes.success_status` | `fixed_src` · `fixed_db` · `variable` | If `variable`: `success_chance` is NULL — use formula doc / calculator, do not show 0% |
 | `mobs.hp_status` | `from_mob_db` · `not_extractable` | If not_extractable: do not show HP as 0 |
+| `mobs.modes` vs `modes_effective` | JSON sparse bool maps | UI behavior tags → `modes_effective` only; `modes` is YAML original |
 | `npc_shops.inventory_declared` | bool | Inventory = declared header only |
 | `npc_shops.runtime_mutated` | bool | Warn “may change in-game” |
 | `npc_shop_links.is_runtime` | bool | Dynamic callshop |
@@ -210,6 +228,19 @@ JOIN ozro_items i ON i.item_id = d.item_id
 WHERE m.aegis_name = 'PORING' AND d.is_map_bonus = 0;
 ```
 
+**Mob behavior (effective modes)**
+```sql
+SELECT mob_id, aegis_name, modes, modes_effective,
+       JSON_EXTRACT(stats, '$.ai') AS ai, mob_class
+FROM ozro_mobs
+WHERE aegis_name IN ('PORING', 'AMON_RA');
+
+-- Filter: aggressive field mobs
+SELECT mob_id, aegis_name
+FROM ozro_mobs
+WHERE JSON_EXTRACT(modes_effective, '$.Aggressive') = true;
+```
+
 **Travel friction**
 ```sql
 SELECT friction, hop_count FROM ozro_map_distances
@@ -245,8 +276,8 @@ See `EXTRACT_COVERAGE.md` before assuming a YAML field is “missing from SQL”
 1. MySQL reachable; user can DDL/DML on target DB.
 2. Copy/update `config/database.yml` (host/user/pass/database; keep `table_prefix: ozro_`).
 3. On app host: venv + `pip install -r requirements.txt`.
-4. Ensure `reports/` present (or re-run discover → resolve → extract pipeline).
-5. `python pipeline.py schema --reset` (only `ozro_*`; does not touch rAthena game tables).
-6. `python pipeline.py sync`.
-7. Confirm `SELECT * FROM ozro_dataset_metadata` and spot-check one drop + one shop query.
-8. Point consumers at this DB; never at raw `db/re/*.yml` for world answers.
+4. Full rebuild: `./rebuild.sh` (discover → resolve → all extracts → `schema --reset` → `sync`).  
+   Or ensure `reports/` present and run `schema --reset` + `sync` only.
+5. `schema --reset` only touches `ozro_*` (not rAthena game tables).
+6. Confirm `SELECT * FROM ozro_dataset_metadata`, one drop, one shop, and one mob `modes_effective` (e.g. `AMON_RA`).
+7. Point consumers at this DB; never at raw `db/re/*.yml` for world answers.
