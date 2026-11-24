@@ -32,7 +32,7 @@ Compares brief §25.1 / [`schema/001_master.sql`](schema/001_master.sql) (Etapa 
 
 **Dropped / unused from E1 stubs (no matching extract):**
 
-- `ozro_skills` — no standalone `skills.jsonl` (skill ids live on mob_skills / summons / recipes)
+- ~~`ozro_skills`~~ — **added**: player `skill_db.yml` catalog + item costs + teachers (see Added)
 - `ozro_item_properties` — no extract; item scalars live on `ozro_items`
 - `ozro_item_enchantments` (single JSON blob) — replaced by normalized enchant_* tables
 - `ozro_enchantment_materials` E1 stub — replaced by `ozro_enchant_materials`
@@ -68,6 +68,9 @@ Compares brief §25.1 / [`schema/001_master.sql`](schema/001_master.sql) (Etapa 
 
 | Table | Source JSONL | Why |
 |---|---|---|
+| `ozro_skills` | `skills.jsonl` | Player skill_db catalog: aegis_prefix, skill_type, is_quest, is_platinum |
+| `ozro_skill_item_costs` | `skill_item_costs.jsonl` | Requires.ItemCost rows |
+| `ozro_skill_teachers` | `skill_teachers.jsonl` | NPC `skill … SKILL_PERM` (platinum) + `F_GetPlatinumSkills` |
 | `ozro_dataset_rates` | `dataset_rates.jsonl` | §24.4 rates catalog (E4) |
 | `ozro_dataset_level_penalty` | `level_penalty.jsonl` | Pre-E5 flat Type/Difference/Rate |
 | `ozro_npc_script_rewards` | `npc_script_rewards.jsonl` | Pre-E5 NPC→item deliveries |

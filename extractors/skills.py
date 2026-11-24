@@ -1,4 +1,4 @@
-"""Skills / mob_skill_db — summons & slave links (Etapa 3, before NPC analysis)."""
+"""Skills — mob_skill_db summons + player skill_db catalog / platinum teachers."""
 
 from __future__ import annotations
 
@@ -8,7 +8,17 @@ import re
 from pathlib import Path
 from typing import Any
 
+import yaml
+
 from discovery.scan import _load_extractor_config
+from extractors.player_skills import (
+    build_skill_records,
+    extract_skill_teachers,
+    iter_skill_db_entries,
+    merge_skill_entries,
+    parse_platinum_skill_names,
+    load_npc_index,
+)
 
 # NPC_DEATHSUMMON also calls mob_summonslave(); skill_lv = amount; val[0..4] = mob ids.
 _SUMMON_SKILLS = frozenset({"NPC_SUMMONSLAVE", "NPC_SUMMONMONSTER", "NPC_DEATHSUMMON"})
@@ -206,6 +216,53 @@ def extract_skills(project_root: Path | None = None) -> dict[str, Any]:
         for rec in summons:
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
+    # --- Player skill catalog (skill_db.yml) ---
+    base_rel = "db/re/skill_db.yml"
+    import_rel = "db/import/skill_db.yml"
+    base_entries = iter_skill_db_entries(rathena / base_rel, source_file=base_rel)
+    override_entries = iter_skill_db_entries(
+        rathena / import_rel, source_file=import_rel
+    )
+    merged = merge_skill_entries(base_entries, override_entries)
+    platinum_names = set(parse_platinum_skill_names(rathena))
+    skill_records, cost_records = build_skill_records(merged, platinum_names)
+    aegis_to_id = {
+        r["aegis_name"]: r["skill_id"]
+        for r in skill_records
+        if r.get("aegis_name")
+    }
+
+    skills_path = reports_dir / "skills.jsonl"
+    with skills_path.open("w", encoding="utf-8") as f:
+        for rec in skill_records:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+
+    costs_path = reports_dir / "skill_item_costs.jsonl"
+    with costs_path.open("w", encoding="utf-8") as f:
+        for rec in cost_records:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+
+    # Teachers: enabled scripts from discovery + always Global_Functions not needed
+    # (function definition is not a teacher). Scan live npc scripts.
+    discovery_path = reports_dir / "discovery_files.yml"
+    script_rels: list[str] = []
+    if discovery_path.is_file():
+        disc = yaml.safe_load(discovery_path.read_text(encoding="utf-8")) or {}
+        script_rels = list(disc.get("scripts") or [])
+    # job scripts that teach SKILL_PERM are in discovery; custom platinum may be off
+    npc_index = load_npc_index(reports_dir)
+    teacher_records = extract_skill_teachers(
+        rathena,
+        script_rels,
+        platinum_names=platinum_names,
+        aegis_to_id=aegis_to_id,
+        npc_index=npc_index,
+    )
+    teachers_path = reports_dir / "skill_teachers.jsonl"
+    with teachers_path.open("w", encoding="utf-8") as f:
+        for rec in teacher_records:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+
     summary = {
         "domain": "skills",
         "mob_skill_rows": len(mob_skill_records),
@@ -213,8 +270,26 @@ def extract_skills(project_root: Path | None = None) -> dict[str, Any]:
         "unique_parent_mobs": len({s["parent_mob_id"] for s in summons}),
         "unique_summoned_mobs": len({s["summoned_mob_id"] for s in summons}),
         "summon_skills": sorted(_SUMMON_SKILLS),
-        "deferred": ["player_skill_db_summons", "full_player_skill_catalog"],
-        "wrote": [str(ms_path), str(sum_path)],
+        "player_skills": len(skill_records),
+        "player_skills_quest": sum(1 for r in skill_records if r.get("is_quest")),
+        "player_skills_platinum": sum(1 for r in skill_records if r.get("is_platinum")),
+        "skill_item_costs": len(cost_records),
+        "skill_teachers": len(teacher_records),
+        "skill_teachers_f_get_platinum": sum(
+            1 for r in teacher_records if r.get("grant_kind") == "f_get_platinum"
+        ),
+        "skill_teachers_skill_perm": sum(
+            1 for r in teacher_records if r.get("grant_kind") == "skill_perm"
+        ),
+        "platinum_names": sorted(platinum_names),
+        "deferred": ["player_skill_db_summons"],
+        "wrote": [
+            str(ms_path),
+            str(sum_path),
+            str(skills_path),
+            str(costs_path),
+            str(teachers_path),
+        ],
     }
     summary_path = reports_dir / "skills_summary.json"
     summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")

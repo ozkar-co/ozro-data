@@ -33,6 +33,22 @@ Re-run mindset: for each domain, compare source keys vs JSONL keys (allowlist). 
 
 ---
 
+## Skills (`skill_db.yml` → `skills.jsonl` / `ozro_skills`)
+
+| Field / area | Status | Where |
+|---|---|---|
+| Id, Name (aegis), Description, MaxLevel, Type, TargetType | OK | `ozro_skills` |
+| `aegis_prefix` (WZ/NPC/SM…) | OK | derived from Name |
+| Flags.IsQuest + other Flags map | OK | `is_quest` + `flags` JSON |
+| `is_platinum` | OK | `F_GetPlatinumSkills` name set |
+| Requires.ItemCost | OK | `ozro_skill_item_costs` |
+| NPC teachers (`skill … SKILL_PERM` platinum / `F_GetPlatinumSkills`) | OK | `ozro_skill_teachers` |
+| Client lore / icons | Out of scope | JSONL/atlas (site) |
+| Produce outputs | Via join | `ozro_recipes.require_skill_id` |
+| Sp/Hp/cast timings per level | Gap (optional later) | not extracted |
+
+---
+
 ## Other domains (spot-check)
 
 | Domain | Notes |

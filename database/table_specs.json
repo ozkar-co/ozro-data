@@ -16,6 +16,9 @@
     "spawns",
     "mob_skills",
     "skill_summons",
+    "skills",
+    "skill_item_costs",
+    "skill_teachers",
     "items",
     "item_scripts",
     "item_restrictions",
@@ -2059,6 +2062,100 @@
       "pk": [
         "dataset_version"
       ]
+    },
+    "skills": {
+      "jsonl": "skills.jsonl",
+      "columns": [
+        "skill_id",
+        "aegis_name",
+        "aegis_prefix",
+        "description",
+        "max_level",
+        "skill_type",
+        "target_type",
+        "is_quest",
+        "is_platinum",
+        "flags",
+        "source_file",
+        "source_line",
+        "provenance_id"
+      ],
+      "column_types": {
+        "skill_id": "INT",
+        "aegis_name": "VARCHAR(128)",
+        "aegis_prefix": "VARCHAR(32)",
+        "description": "VARCHAR(255)",
+        "max_level": "INT",
+        "skill_type": "VARCHAR(64)",
+        "target_type": "VARCHAR(64)",
+        "is_quest": "TINYINT(1)",
+        "is_platinum": "TINYINT(1)",
+        "flags": "JSON",
+        "source_file": "VARCHAR(512)",
+        "source_line": "INT",
+        "provenance_id": "VARCHAR(128)"
+      },
+      "pk": [
+        "skill_id"
+      ]
+    },
+    "skill_item_costs": {
+      "jsonl": "skill_item_costs.jsonl",
+      "columns": [
+        "skill_item_cost_id",
+        "skill_id",
+        "skill_aegis_name",
+        "item_aegis_name",
+        "amount",
+        "level",
+        "provenance_id"
+      ],
+      "column_types": {
+        "skill_item_cost_id": "VARCHAR(128)",
+        "skill_id": "INT",
+        "skill_aegis_name": "VARCHAR(128)",
+        "item_aegis_name": "VARCHAR(128)",
+        "amount": "INT",
+        "level": "INT",
+        "provenance_id": "VARCHAR(128)"
+      },
+      "pk": [
+        "skill_item_cost_id"
+      ]
+    },
+    "skill_teachers": {
+      "jsonl": "skill_teachers.jsonl",
+      "columns": [
+        "skill_teacher_id",
+        "grant_kind",
+        "skill_id",
+        "skill_aegis_name",
+        "npc_id",
+        "npc_display_name",
+        "map_id",
+        "x",
+        "y",
+        "script_path",
+        "script_line",
+        "provenance_id"
+      ],
+      "column_types": {
+        "skill_teacher_id": "VARCHAR(128)",
+        "grant_kind": "VARCHAR(64)",
+        "skill_id": "INT",
+        "skill_aegis_name": "VARCHAR(128)",
+        "npc_id": "VARCHAR(128)",
+        "npc_display_name": "VARCHAR(255)",
+        "map_id": "VARCHAR(128)",
+        "x": "INT",
+        "y": "INT",
+        "script_path": "VARCHAR(512)",
+        "script_line": "INT",
+        "provenance_id": "VARCHAR(128)"
+      },
+      "pk": [
+        "skill_teacher_id"
+      ]
     }
   },
   "jsonl_to_table": {
@@ -2115,6 +2212,9 @@
     "npc_item_transforms": "npc_item_transforms",
     "acquisition_outputs": "acquisition_outputs",
     "dataset_rates": "dataset_rates",
-    "level_penalty": "dataset_level_penalty"
+    "level_penalty": "dataset_level_penalty",
+    "skills": "skills",
+    "skill_item_costs": "skill_item_costs",
+    "skill_teachers": "skill_teachers"
   }
 }

@@ -105,6 +105,9 @@ Row counts are approximate from the first E5 sync; re-check `sync_summary.json` 
 | `ozro_spawns` | `spawn_id` | 9375 | Natural / script / instance; `spawn_route`, `npc_id` |
 | `ozro_mob_skills` | `mob_skill_id` | 14449 | mob_skill_db |
 | `ozro_skill_summons` | `summon_id` | 1177 | Summon/slave links (`summon_kind=mob_slave` today; player skill summons deferred) |
+| `ozro_skills` | `skill_id` | ~1635 | Player `skill_db.yml`: `aegis_prefix`, `skill_type`, `is_quest`, `is_platinum` |
+| `ozro_skill_item_costs` | `skill_item_cost_id` | ~ItemCost rows | Cast consume items (`Requires.ItemCost`) |
+| `ozro_skill_teachers` | `skill_teacher_id` | varies | Platinum grants: `skill_perm` / `f_get_platinum` (+ optional `npc_id`) |
 
 **`hp_status`:** `from_mob_db` (normal) · `not_extractable` (ABR/bionic caster formula — HP NULL).
 

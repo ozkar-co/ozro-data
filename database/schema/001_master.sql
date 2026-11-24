@@ -281,6 +281,58 @@ CREATE TABLE IF NOT EXISTS ozro_skill_summons (
   PRIMARY KEY (summon_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE IF NOT EXISTS ozro_skills (
+  skill_id INT NOT NULL,
+  aegis_name VARCHAR(128) NULL,
+  aegis_prefix VARCHAR(32) NULL,
+  description VARCHAR(255) NULL,
+  max_level INT NULL,
+  skill_type VARCHAR(64) NULL,
+  target_type VARCHAR(64) NULL,
+  is_quest TINYINT(1) NULL,
+  is_platinum TINYINT(1) NULL,
+  flags JSON NULL,
+  source_file VARCHAR(512) NULL,
+  source_line INT NULL,
+  provenance_id VARCHAR(128) NULL,
+  PRIMARY KEY (skill_id),
+  INDEX idx_skills_aegis (aegis_name),
+  INDEX idx_skills_prefix (aegis_prefix),
+  INDEX idx_skills_platinum (is_platinum)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_skill_item_costs (
+  skill_item_cost_id VARCHAR(128) NOT NULL,
+  skill_id INT NULL,
+  skill_aegis_name VARCHAR(128) NULL,
+  item_aegis_name VARCHAR(128) NULL,
+  amount INT NULL,
+  level INT NULL,
+  provenance_id VARCHAR(128) NULL,
+  PRIMARY KEY (skill_item_cost_id),
+  INDEX idx_skill_item_costs_skill (skill_id),
+  INDEX idx_skill_item_costs_item (item_aegis_name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_skill_teachers (
+  skill_teacher_id VARCHAR(128) NOT NULL,
+  grant_kind VARCHAR(64) NULL,
+  skill_id INT NULL,
+  skill_aegis_name VARCHAR(128) NULL,
+  npc_id VARCHAR(128) NULL,
+  npc_display_name VARCHAR(255) NULL,
+  map_id VARCHAR(128) NULL,
+  x INT NULL,
+  y INT NULL,
+  script_path VARCHAR(512) NULL,
+  script_line INT NULL,
+  provenance_id VARCHAR(128) NULL,
+  PRIMARY KEY (skill_teacher_id),
+  INDEX idx_skill_teachers_skill (skill_id),
+  INDEX idx_skill_teachers_npc (npc_id),
+  INDEX idx_skill_teachers_kind (grant_kind)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE IF NOT EXISTS ozro_items (
   aegis_name VARCHAR(128) NULL,
   armor_level INT NULL,

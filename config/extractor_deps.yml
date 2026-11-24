@@ -10,6 +10,7 @@ order:
   - items              # buy/sell effective via item_value_resolver
   - npcs
   - map_connections   # needs maps + npcs
+  - skills            # mob_skill_db + player skill_db catalog / teachers (needs npcs for npc_id)
   - spawns            # needs maps + mobs
   - item_scripts      # needs items
   - item_restrictions # needs items
@@ -39,7 +40,8 @@ depends:
   items: [discovery]
   npcs: [discovery, maps]
   map_connections: [maps, npcs]
-  spawns: [maps, mobs]
+  skills: [discovery, npcs]
+  spawns: [maps, mobs, skills]
   item_scripts: [items]
   item_restrictions: [items]
   drops: [mobs, items, resolve]

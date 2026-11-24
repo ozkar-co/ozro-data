@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-24T08:09:23.416374+00:00",
+  "sources": {
+    "item_info": "/home/oz/Code/ozro-cli/patch/System/itemInfo_EN.lua",
+    "skillid": "data/luafiles514/lua files/skillinfoz/skillid.lub",
+    "skillinfolist": "data/luafiles514/lua files/skillinfoz/skillinfolist.lub",
+    "skilldescript": "data/luafiles514/lua files/skillinfoz/skilldescript.lub",
+    "grf_stack": [
+      {
+        "priority": 1,
+        "label": "ozro",
+        "file": "ozro.grf"
+      },
+      {
+        "priority": 2,
+        "label": "data",
+        "file": "data.grf"
+      }
+    ]
+  },
+  "counts": {
+    "items": 23691,
+    "items_with_identified_description": 23586,
+    "items_with_effect_id": 1504,
+    "items_costume": 3175,
+    "skills": 1662,
+    "skills_with_description": 1171,
+    "skills_with_id": 1662
+  },
+  "outputs": [
+    "client_item_descriptions.jsonl",
+    "client_skill_descriptions.jsonl",
+    "client_descriptions_meta.json"
+  ]
+}

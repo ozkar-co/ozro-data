@@ -19,7 +19,7 @@ python pipeline.py extract items  # needs reports/client_item_info.jsonl
 python pipeline.py extract npcs   # needs reports/discovery_files.yml
 python pipeline.py extract map_connections  # warps+OzRo TP+kafra+airship+boat; audit JSON
 python pipeline.py extract map_distances    # Dijkstra all-pairs from map_connections.jsonl
-python pipeline.py extract skills           # mob_skill_db → summons/slaves
+python pipeline.py extract skills           # mob_skill_db + player skill_db/item costs/teachers
 python pipeline.py extract spawns           # headers+scripted+slaves; needs skills for slaves
 python pipeline.py extract mobs             # re-run after spawns to resolve mob_role
 python pipeline.py extract shops            # header shop/cashshop/… → npc_shops + items
