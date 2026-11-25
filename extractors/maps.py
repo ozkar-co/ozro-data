@@ -239,8 +239,9 @@ def extract_maps(project_root: Path | None = None) -> dict[str, Any]:
             "is_quest_map": classed["is_quest_map"],
             "is_guild_map": classed["is_guild_map"],
             "is_interior": classed["is_interior"],
-            "is_accessible": True,
-            "access_conditions": None,
+            # Filled by map_distances (reachable from town/city via traditional graph).
+            "is_accessible": False,
+            "access_conditions": {"pending": "map_distances"},
             "width": client.get("width") if client else None,
             "height": client.get("height") if client else None,
             "client_resource_present": present,

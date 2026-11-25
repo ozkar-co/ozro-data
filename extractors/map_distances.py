@@ -122,6 +122,92 @@ def _load_excluded_maps(maps_path: Path) -> set[str]:
     return excluded
 
 
+def _is_hub_map(row: dict[str, Any]) -> bool:
+    """Town / city maps are traditional travel origins."""
+    if row.get("is_instance") or row.get("category") == "Instance":
+        return False
+    return bool(row.get("is_town")) or row.get("category") == "City"
+
+
+def _reachable_from_hubs(
+    hubs: set[str],
+    adj: dict[str, list[tuple[str, float, str, str]]],
+) -> set[str]:
+    """Maps reachable from any hub over the traditional (non-quest) graph."""
+    reachable = set(hubs)
+    stack = [h for h in hubs if h in adj]
+    seen = set(stack)
+    while stack:
+        u = stack.pop()
+        for v, _w, _cid, _ctype in adj.get(u, []):
+            if v in seen:
+                continue
+            seen.add(v)
+            reachable.add(v)
+            stack.append(v)
+    return reachable
+
+
+def _patch_maps_accessibility(
+    maps_path: Path,
+    adj: dict[str, list[tuple[str, float, str, str]]],
+) -> dict[str, Any]:
+    """Rewrite maps.jsonl is_accessible from Dijkstra traditional reachability."""
+    if not maps_path.is_file():
+        return {"patched": False, "reason": "maps.jsonl missing"}
+
+    rows: list[dict[str, Any]] = []
+    for line in maps_path.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        rows.append(json.loads(line))
+
+    hubs = {row["map_id"] for row in rows if _is_hub_map(row)}
+    reachable = _reachable_from_hubs(hubs, adj)
+
+    accessible_n = 0
+    inaccessible_n = 0
+    for row in rows:
+        map_id = row["map_id"]
+        if row.get("is_instance") or row.get("category") == "Instance":
+            row["is_accessible"] = False
+            row["access_conditions"] = {
+                "reason": "instance",
+                "reachable_from_town": False,
+            }
+            inaccessible_n += 1
+            continue
+        if map_id in reachable:
+            row["is_accessible"] = True
+            row["access_conditions"] = {
+                "reason": "reachable_from_town",
+                "reachable_from_town": True,
+                "is_hub": map_id in hubs,
+            }
+            accessible_n += 1
+        else:
+            row["is_accessible"] = False
+            row["access_conditions"] = {
+                "reason": "unreachable_without_quest_or_special",
+                "reachable_from_town": False,
+                "is_hub": False,
+            }
+            inaccessible_n += 1
+
+    with maps_path.open("w", encoding="utf-8") as f:
+        for row in rows:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+    return {
+        "patched": True,
+        "maps_total": len(rows),
+        "hubs": len(hubs),
+        "accessible": accessible_n,
+        "inaccessible": inaccessible_n,
+        "wrote": str(maps_path),
+    }
+
+
 def extract_map_distances(project_root: Path | None = None) -> dict[str, Any]:
     root = project_root or Path(__file__).resolve().parents[1]
     cfg = _load_extractor_config(root)
@@ -235,6 +321,8 @@ def extract_map_distances(project_root: Path | None = None) -> dict[str, Any]:
                 }
             )
 
+    accessibility = _patch_maps_accessibility(reports_dir / "maps.jsonl", adj)
+
     summary = {
         "domain": "map_distances",
         "nodes": n,
@@ -245,6 +333,7 @@ def extract_map_distances(project_root: Path | None = None) -> dict[str, Any]:
         "unreachable_pairs": unreachable_pairs,
         "unreachable_sample": unreachable_sample,
         "examples": examples,
+        "map_accessibility": accessibility,
         "rules": {
             "types": sorted(GRAPH_TYPES),
             "collapse": "min friction per (from_map, to_map); tie-break type rank then connection_id",
@@ -254,6 +343,10 @@ def extract_map_distances(project_root: Path | None = None) -> dict[str, Any]:
                 "VIP pricing",
                 "instance maps (is_instance)",
             ],
+            "accessible": (
+                "is_accessible=true iff map is a town/city hub or reachable from one "
+                "via the traditional graph (no quest_gated edges)"
+            ),
             "weights": {
                 "warp": 1.0,
                 "kafra": 0.2,
@@ -262,7 +355,7 @@ def extract_map_distances(project_root: Path | None = None) -> dict[str, Any]:
                 "airship": 1.5,
             },
         },
-        "wrote": [str(dist_path), str(routes_path)],
+        "wrote": [str(dist_path), str(routes_path), str(reports_dir / "maps.jsonl")],
     }
     summary_path = reports_dir / "map_distances_summary.json"
     summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
