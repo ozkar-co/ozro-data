@@ -1,6 +1,6 @@
 {
   "schema_version": 12,
-  "generated_at": "2026-11-27T21:12:16Z",
+  "generated_at": "2026-11-27T21:18:28Z",
   "data_ini": "patch/data.ini",
   "data_ini_order": [
     "ozro.grf",
@@ -67,9 +67,9 @@
     "npcs_act_deps_incomplete": 0,
     "npcs_act_gap_rows": 0,
     "npcs_act_wav_missing_unique": 0,
-    "npcs_server": 838,
+    "npcs_server": 837,
     "npcs_server_ok": 837,
-    "npcs_no_identity": 1,
+    "npcs_no_identity": 0,
     "npcs_no_jobname": 0,
     "npcs_missing_sprite": 0,
     "npcs_unresolved_view": 0,
