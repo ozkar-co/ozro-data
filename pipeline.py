@@ -149,6 +149,10 @@ def cmd_extract(args: argparse.Namespace) -> int:
         from extractors import extract_quests
 
         summary = extract_quests(ROOT)
+    elif domain == "quest_groups":
+        from extractors import extract_quest_groups
+
+        summary = extract_quest_groups(ROOT)
     elif domain == "instances":
         from extractors import extract_instances
 
@@ -235,6 +239,7 @@ def main() -> int:
             "item_restrictions",
             "drops",
             "quests",
+            "quest_groups",
             "instances",
             "boxes",
             "recipes",

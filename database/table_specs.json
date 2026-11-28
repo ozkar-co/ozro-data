@@ -31,6 +31,10 @@
     "quests",
     "quest_targets",
     "quest_drops",
+    "quest_groups",
+    "quest_group_members",
+    "quest_group_edges",
+    "quest_group_npcs",
     "instances",
     "instance_maps",
     "instance_npc_links",
@@ -2156,6 +2160,103 @@
       "pk": [
         "skill_teacher_id"
       ]
+    },
+    "quest_groups": {
+      "jsonl": "quest_groups.jsonl",
+      "columns": [
+        "display_title",
+        "group_id",
+        "member_count",
+        "merge_reasons",
+        "primary_merge_reason",
+        "provenance_id"
+      ],
+      "column_types": {
+        "display_title": "VARCHAR(255)",
+        "group_id": "VARCHAR(128)",
+        "member_count": "INT",
+        "merge_reasons": "JSON",
+        "primary_merge_reason": "VARCHAR(64)",
+        "provenance_id": "VARCHAR(128)"
+      },
+      "pk": [
+        "group_id"
+      ]
+    },
+    "quest_group_members": {
+      "jsonl": "quest_group_members.jsonl",
+      "columns": [
+        "group_id",
+        "in_quest_db",
+        "provenance_id",
+        "quest_id",
+        "sort_index",
+        "title"
+      ],
+      "column_types": {
+        "group_id": "VARCHAR(128)",
+        "in_quest_db": "TINYINT(1)",
+        "provenance_id": "VARCHAR(128)",
+        "quest_id": "INT",
+        "sort_index": "INT",
+        "title": "VARCHAR(255)"
+      },
+      "pk": [
+        "group_id",
+        "quest_id"
+      ]
+    },
+    "quest_group_edges": {
+      "jsonl": "quest_group_edges.jsonl",
+      "columns": [
+        "edge_id",
+        "from_quest_id",
+        "group_id",
+        "primary_reason",
+        "provenance_id",
+        "reasons",
+        "to_quest_id",
+        "transitions"
+      ],
+      "column_types": {
+        "edge_id": "VARCHAR(128)",
+        "from_quest_id": "INT",
+        "group_id": "VARCHAR(128)",
+        "primary_reason": "VARCHAR(64)",
+        "provenance_id": "VARCHAR(128)",
+        "reasons": "JSON",
+        "to_quest_id": "INT",
+        "transitions": "JSON"
+      },
+      "pk": [
+        "edge_id"
+      ]
+    },
+    "quest_group_npcs": {
+      "jsonl": "quest_group_npcs.jsonl",
+      "columns": [
+        "group_id",
+        "link_id",
+        "npc_id",
+        "primary_reason",
+        "provenance_id",
+        "reasons",
+        "script_line",
+        "script_path"
+      ],
+      "column_types": {
+        "group_id": "VARCHAR(128)",
+        "link_id": "VARCHAR(128)",
+        "npc_id": "VARCHAR(128)",
+        "primary_reason": "VARCHAR(64)",
+        "provenance_id": "VARCHAR(128)",
+        "reasons": "JSON",
+        "script_line": "INT",
+        "script_path": "VARCHAR(512)"
+      },
+      "pk": [
+        "link_id"
+      ]
     }
   },
   "jsonl_to_table": {
@@ -2215,6 +2316,10 @@
     "level_penalty": "dataset_level_penalty",
     "skills": "skills",
     "skill_item_costs": "skill_item_costs",
-    "skill_teachers": "skill_teachers"
+    "skill_teachers": "skill_teachers",
+    "quest_groups": "quest_groups",
+    "quest_group_members": "quest_group_members",
+    "quest_group_edges": "quest_group_edges",
+    "quest_group_npcs": "quest_group_npcs"
   }
 }

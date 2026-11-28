@@ -556,6 +556,54 @@ CREATE TABLE IF NOT EXISTS ozro_quest_drops (
   PRIMARY KEY (quest_id, drop_index)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE IF NOT EXISTS ozro_quest_groups (
+  display_title VARCHAR(255) NULL,
+  group_id VARCHAR(128) NOT NULL,
+  member_count INT NULL,
+  merge_reasons JSON NULL,
+  primary_merge_reason VARCHAR(64) NULL,
+  provenance_id VARCHAR(128) NULL,
+  PRIMARY KEY (group_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_quest_group_members (
+  group_id VARCHAR(128) NOT NULL,
+  in_quest_db TINYINT(1) NULL,
+  provenance_id VARCHAR(128) NULL,
+  quest_id INT NOT NULL,
+  sort_index INT NULL,
+  title VARCHAR(255) NULL,
+  PRIMARY KEY (group_id, quest_id),
+  INDEX idx_qgm_quest (quest_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_quest_group_edges (
+  edge_id VARCHAR(128) NOT NULL,
+  from_quest_id INT NULL,
+  group_id VARCHAR(128) NULL,
+  primary_reason VARCHAR(64) NULL,
+  provenance_id VARCHAR(128) NULL,
+  reasons JSON NULL,
+  to_quest_id INT NULL,
+  transitions JSON NULL,
+  PRIMARY KEY (edge_id),
+  INDEX idx_qge_group (group_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS ozro_quest_group_npcs (
+  group_id VARCHAR(128) NULL,
+  link_id VARCHAR(128) NOT NULL,
+  npc_id VARCHAR(128) NULL,
+  primary_reason VARCHAR(64) NULL,
+  provenance_id VARCHAR(128) NULL,
+  reasons JSON NULL,
+  script_line INT NULL,
+  script_path VARCHAR(512) NULL,
+  PRIMARY KEY (link_id),
+  INDEX idx_qgn_group (group_id),
+  INDEX idx_qgn_npc (npc_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE IF NOT EXISTS ozro_instances (
   enter_map_id VARCHAR(64) NULL,
   enter_x INT NULL,

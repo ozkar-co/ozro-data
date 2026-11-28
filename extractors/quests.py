@@ -296,6 +296,7 @@ def extract_quests(project_root: Path | None = None) -> dict[str, Any]:
             "quest_type_classification",
             "map_from_location",
             "ozro_bounty_repeatables",
+            "quest_groups (see extract quest_groups)",
         ],
         "wrote": [str(q_path), str(t_path), str(d_path), str(l_path)],
     }

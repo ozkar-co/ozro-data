@@ -167,6 +167,7 @@ Not in SQL (by design): client lore/description text.
 | `ozro_boxes` / `_rewards` / `_item_links` | … | 3k / 33k / 2k | item_group + openers |
 | `ozro_recipes` / `_materials` | … | 293 / 1003 | produce_db |
 | `ozro_quests` / `_targets` / `_drops` | … | 5k / 1k / 69 | quest_db |
+| `ozro_quest_groups` / `_members` / `_edges` / `_npcs` | `group_id` / … | varies | High-precision clusters: `script_transition`, `same_title_contig`; NPC `same_id` / `same_file` |
 | `ozro_acquisition_outputs` | `(acquisition_output_id, list_index)` | 53684 | **Union** of sources for “where does item X come from?” |
 
 **`acquisition_outputs.source_type` (observed):**  

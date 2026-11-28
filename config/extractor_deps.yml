@@ -17,6 +17,7 @@ order:
   - drops             # needs mobs + items + config resolver (+ mob_item_ratio)
   - shops             # needs npcs + items (price -1 → buy_effective)
   - quests            # needs npcs + items + mobs
+  - quest_groups      # needs quests + npc links + npcs + scripts
   - instances         # needs maps + npcs
   - boxes             # needs items; SharedPool/Random normalize
   - recipes           # needs items + npcs
@@ -47,6 +48,7 @@ depends:
   drops: [mobs, items, resolve]
   shops: [npcs, items]
   quests: [npcs, items, mobs]
+  quest_groups: [quests, npcs]
   instances: [maps, npcs]
   boxes: [items]
   recipes: [items, npcs]

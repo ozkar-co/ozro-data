@@ -14,6 +14,7 @@ from .item_scripts import extract_item_scripts
 from .item_restrictions import extract_item_restrictions
 from .drops import extract_drops
 from .quests import extract_quests
+from .quest_groups import extract_quest_groups
 from .instances import extract_instances
 from .boxes import extract_boxes
 from .recipes import extract_recipes
@@ -43,6 +44,7 @@ __all__ = [
     "extract_item_restrictions",
     "extract_drops",
     "extract_quests",
+    "extract_quest_groups",
     "extract_instances",
     "extract_boxes",
     "extract_recipes",

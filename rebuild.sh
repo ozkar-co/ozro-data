@@ -49,6 +49,7 @@ run extract item_scripts
 run extract item_restrictions
 run extract drops
 run extract quests
+run extract quest_groups
 run extract instances
 run extract boxes
 run extract recipes

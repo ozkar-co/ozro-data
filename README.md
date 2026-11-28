@@ -28,6 +28,7 @@ python pipeline.py extract item_scripts     # Script/EquipScript/UnEquipScript f
 python pipeline.py extract item_restrictions # Trade.* + item_noequip bitmask
 python pipeline.py extract drops            # mob_db + map_drops + mob_item_ratio; needs items+mobs
 python pipeline.py extract quests           # quest_db + npc links; needs mobs/items/evidence
+python pipeline.py extract quest_groups     # groups via transition / title contig + NPC reasons
 python pipeline.py extract instances        # instance_db + maps + NPC create links
 python pipeline.py extract boxes            # item_group_db + getgroupitem links
 python pipeline.py extract recipes          # produce_db → recipes + materials

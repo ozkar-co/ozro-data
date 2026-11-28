@@ -54,6 +54,7 @@ Re-run mindset: for each domain, compare source keys vs JSONL keys (allowlist). 
 | Domain | Notes |
 |---|---|
 | Quests / instances | Top-level YAML keys covered; nested targets/drops in child tables |
+| Quest groups | Derived: `script_transition` + `same_title_contig` (case-normalized); NPC `same_id` / exclusive-`same_file` |
 | Enchantments | `TargetItems` / `Slots` live in `enchant_targets` / `enchant_options` (not omitted) |
 | Boxes / barters / recipes / random options | Structured into child JSONL tables |
 | NPC script rewards | Literals only by design (variables omitted — documented) |

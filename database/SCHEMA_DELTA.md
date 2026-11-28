@@ -61,6 +61,7 @@ Compares brief §25.1 / [`schema/001_master.sql`](schema/001_master.sql) (Etapa 
 | `ozro_map_connections` | `classification_layer`, friction, conditions JSON |
 | `ozro_instance_maps` | `in_maps_catalog`, `spawn_rows` |
 | `ozro_quests` | `time_limit` JSON (was only seconds) |
+| `ozro_quest_groups` (+ members/edges/npcs) | High-precision quest clusters + NPC reasons |
 
 ---
 
